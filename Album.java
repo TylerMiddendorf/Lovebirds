@@ -35,6 +35,7 @@ public class Album {
                 found = album.get(i);
                 isFound = true;
             }
+            i++;
         }
         if(!isFound) {
             // the Photo variable found is still set to null and will return null
