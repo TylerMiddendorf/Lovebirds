@@ -12,7 +12,7 @@ public class Photo {
         this.fileFormat = fileFormat;
     }
 
-    public void setFileName(String name) {
+    public void setFileName(String fileName) {
         this.fileName = fileName;
     }   
 
@@ -20,7 +20,7 @@ public class Photo {
         return fileName;
     }
 
-    public void setFilePath(String fileParh) {
+    public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 

@@ -17,7 +17,7 @@ public class Album {
     }
 
     public String getAlbumName() {
-        return this.albumName;
+        return albumName;
     }
 
     public void addPhoto(Photo toAdd) {
@@ -42,6 +42,10 @@ public class Album {
             System.out.println("Photo not found with that ID.");
         } 
         return found;
+    }
+
+    public int getPhotoCount() {
+        return photoCount;
     }
     
 }
