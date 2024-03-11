@@ -25,6 +25,12 @@ public class Album {
         this.photoCount++;
     }
 
+    public void addPhotos(ArrayList<Photo> toAdd) {
+        for(int i = 0; i < toAdd.size(); i++) {
+            this.addPhoto(toAdd.get(i));
+        }
+    }
+
     public Photo getPhoto(String photoID) {
         int i = 0;
         boolean isFound = false;
@@ -43,6 +49,8 @@ public class Album {
         } 
         return found;
     }
+
+    
 
     public int getPhotoCount() {
         return photoCount;
