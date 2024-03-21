@@ -1,6 +1,4 @@
-/*
- * Random comment
- */
+// CLass photo
 
 public class Photo {
 
