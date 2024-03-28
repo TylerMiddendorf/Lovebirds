@@ -10,16 +10,10 @@ public class MatchmakerSystem {
     
     private ArrayList<Profile> matches;
 
-<<<<<<< HEAD:MatchmakerSystem.java
-    // public ArrayList generateMatches(Profile profile) {
-        
-    // }
-=======
     // implement generateMatches and removeMatch methods below later
     public ArrayList generateMatches(Profile profile) {
         return new ArrayList<>();
     }
->>>>>>> main:Matchmaker/MatchmakerSystem.java
 
     // public void removeMatch(Profile profile) {
 
