@@ -17,6 +17,9 @@ public class Preferences {
    private int minAge;
    private int maxAge;
 
+
+
+   //replace parameters with dictionary where if the values don't exist they are set with a default value
    public Preferences(String gender, String sexuality, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge){
     this.preferredGender = gender;
     this.preferredSexuality = sexuality;
