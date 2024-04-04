@@ -84,15 +84,5 @@ public class Profile {
         this.preferences.setMinAge(minAge);
         this.preferences.setMaxAge(maxAge);
     }
-
-    // implement logIn and logOut methods later
-    // public boolean logIn(String username, String password) {
-        
-    // }
-    
-    // public void logOut() {
-
-    // }
-
     
 }
