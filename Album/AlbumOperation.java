@@ -1,3 +1,22 @@
 public class AlbumOperation {
-    //code
+
+    public Album createAlbum()
+    {
+        return null;
+    }
+
+    public Album readAlbum()
+    {
+        return null;
+    }
+
+    public boolean updateAlbum()
+    {
+        return false;
+    }
+
+    public boolean deleteAlbum()
+    {
+        return false;
+    }
 }
