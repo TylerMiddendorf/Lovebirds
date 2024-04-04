@@ -1,7 +1,4 @@
-
-
-public void Persistence(){
-
+public class Persistence {
 
     
 }
