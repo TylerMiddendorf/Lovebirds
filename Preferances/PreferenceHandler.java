@@ -8,7 +8,6 @@ public class PreferenceHandler {
         return true;
     }
 
-
     public boolean deletePreferences() {
         return true;
     }
