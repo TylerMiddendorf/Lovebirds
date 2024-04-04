@@ -1,20 +1,22 @@
-public class ProfileOperation {
+public class ProfileOperation{
 
-    public void createProfile() {
-        //
+    public Photo createPhoto()
+    {
+        return null;
     }
 
-    public void readProfile() {
-        //
+    public Photo readPhoto()
+    {
+        return null;
     }
 
-    public boolean updateProfile() {
-        return true;
+    public boolean updatePhoto()
+    {
+        return false;
     }
 
-    public boolean deleteProfile() {
-        return true;
+    public boolean deleteAlbum()
+    {
+        return false;
     }
-
-
 }
