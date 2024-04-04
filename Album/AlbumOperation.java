@@ -1,23 +1,22 @@
 public class AlbumOperation {
 
-    //methods below are just for place holder!
-    public void createAlbum()
+    public Album createAlbum()
     {
-
+        return null;
     }
 
-    public void readAlbum()
+    public Album readAlbum()
     {
-
+        return null;
     }
 
-    public void updateAlbum()
+    public boolean updateAlbum()
     {
-
+        return false;
     }
 
-    public void deleteAlbum()
+    public boolean deleteAlbum()
     {
-
+        return false;
     }
 }

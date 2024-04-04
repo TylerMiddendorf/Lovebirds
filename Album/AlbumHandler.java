@@ -1,3 +1,18 @@
 public class AlbumHandler {
-    //code
+    
+    public boolean editAlbum()
+    {
+        return false;
+    }
+
+    public boolean deleteAlbum()
+    {
+        return false;
+    }
+
+    public Album createAlbum()
+    {
+        return null;
+    }
+
 }
