@@ -1,3 +1,5 @@
+// CLass photo
+
 public class Photo {
 
     private String photoID;
