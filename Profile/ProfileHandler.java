@@ -1,4 +1,5 @@
-public class ProfileHandler{
+public class ProfileHandler {
+
     private Profile profile;
 
     public ProfileHandler()
@@ -72,6 +73,5 @@ public class ProfileHandler{
         return true; // user has been unmatched
     }
 
-
-     
+    
 }

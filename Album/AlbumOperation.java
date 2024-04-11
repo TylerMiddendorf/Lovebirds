@@ -1,16 +1,16 @@
-public class ProfileOperation{
+public class AlbumOperation {
 
-    public Photo createPhoto()
+    public Album createAlbum()
     {
         return null;
     }
 
-    public Photo readPhoto()
+    public Album readAlbum()
     {
         return null;
     }
 
-    public boolean updatePhoto()
+    public boolean updateAlbum()
     {
         return false;
     }
