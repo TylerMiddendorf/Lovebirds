@@ -82,7 +82,7 @@ class Controller{
     /*
      * calls blockUser in Profile Handler
      * @param user
-     * @return true if block sucessful
+     * @return true if block successful
      */
     public boolean blockUser(Profile user){
         return profileHandler.blockUser(user);
@@ -91,10 +91,45 @@ class Controller{
     /*
      * calls dismissUser in Profile Hanlder
      * @param user
-     * @return true if dismiss sucessful
+     * @return true if dismissUser successful
      */
     public boolean dismissUser(Profile user){
         return profileHandler.dismissUser(user);
+    }
+
+    /*
+     * calls rateUser in Profile Handler
+     * @param user
+     * @return rating
+     */
+    public int rateUser(Profile user){
+        return profileHandler.rateUser(user);
+    }
+
+    /*
+     * calls likeUser in Profile Handler
+     * @param user
+     * @return true if likeUser successful
+     */
+    public boolean likeUser(Profile user){
+        return profileHandler.likeUser(user);
+    }
+
+    /*
+     * calls unmatchUnser in Profile Handler
+     * @param user
+     * @return true if unmatchUser successful
+     */
+    public boolean unmatchUser(Profile user){
+        return profileHandler.unmatchUser(user);
+    }
+
+    /*
+     * THIS NEEDS FIXED to take parm
+     * Also add createPreferences method in ProfileHandler
+     */
+    public Preferences createPreferences(){
+        return profileHandler.createPreferences();
     }
 
 }
