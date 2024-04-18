@@ -12,11 +12,21 @@ class Controller{
     /*
      * calls retrieveSugUsers from Matchmaker handler
      * @param id
-     * @return suggested
+     * @return suggestedUsers
      */
     public ArrayList<Profile> retrieveSugUsers(int id){
-        ArrayList<Profile> suggested = matchmakerHandler.retrieveSugUsers(id);
-        return suggested;
+        ArrayList<Profile> suggestedUsers = matchmakerHandler.retrieveSugUsers(id);
+        return suggestedUsers;
+    }
+
+    /*
+     * does stuff
+     * @param id
+     * @return suggestedProfile
+     */
+    public ArrayList<Profile> retrieveSugProfile(int id){
+        ArrayList<Profile> suggestedProfile = matchmakerHandler.retrieveSugProfile(id);
+        return suggestedProfile;
     }
 
 }
