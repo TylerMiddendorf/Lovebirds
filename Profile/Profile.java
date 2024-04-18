@@ -13,21 +13,17 @@ public class Profile {
     private Photo profilePicture;
     private Preferences preferences;
 
-    public Profile(String profileID, String emailAddress, String username, String password, String firstName, String lastName, int height, int weight,
-    int age, String gender, String sexuality, Photo profilePicture, Preferences preferences) {
+    /*
+     * Constructor that only takes key values to create profile object
+     * will use setters after object creatation to fill height, weight, age, gender, sexuality, profilePicture, and preferences
+     */
+    public Profile(String profileID, String emailAddress, String username, String password, String firstName, String lastName) {
         this.profileID = profileID;
         this.emailAddress = emailAddress;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.height = height;
-        this.weight = weight;
-        this.age = age;
-        this.gender = gender;
-        this.sexuality = sexuality;
-        this.profilePicture = profilePicture;
-        this.preferences = preferences;
     }
 
     public void enterEmail(String emailAddress) {
