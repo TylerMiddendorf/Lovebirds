@@ -15,4 +15,9 @@ public class MatchmakerHandler {
         return new ArrayList<Profile>();
     }
 
+    public ArrayList<String> retrieveStatistics(String stats)
+    {
+        return new ArrayList<String>();
+    }
+
 }
