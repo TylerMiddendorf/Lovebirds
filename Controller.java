@@ -132,4 +132,28 @@ class Controller{
         return profileHandler.createPreferences();
     }
 
+    /*
+     * THIS NEEDS FIXED to take parm
+     * also add editPreference method in ProfileHandler
+     */
+    public boolean editPreferences(){
+        return profileHandler.editPreference();
+    }
+
+    /*
+     * calls clearConversation in Chat Handler
+     * return true if clearConversation successful
+     */
+    public boolean clearConversation(){
+        return chatHandler.clearConversation();
+    }
+
+    /*
+     * calls sendMessage in Chat Handler
+     * return true if sendMessage successful
+     */
+    public boolean sendMessage(String message){
+        return chatHandler.sendMessage(message);
+    }
+
 }
