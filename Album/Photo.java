@@ -1,4 +1,4 @@
-// CLass photo
+// Class photo
 
 public class Photo {
 
