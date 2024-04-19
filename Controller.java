@@ -156,4 +156,55 @@ class Controller{
         return chatHandler.sendMessage(message);
     }
 
+    /*
+     * THIS NEEDS FIXED to take parm
+     * calls uploadPhoto in Photo Handler
+     * @param
+     * @return
+     */
+    public Photo uploadPhoto(){
+        return photoHandler.uploadPhoto();
+    }
+
+    /*
+     * THIS NEEDS FIXED to take parm
+     * calls deletePhoto in Photo Handler
+     * @param
+     * @return
+     */
+    public boolean deletePhoto(){
+        return photoHandler.deletePhoto();
+    }
+
+    /*
+     * THIS NEEDS FIXED to take parm
+     * calls editAlbum in Album Handler
+     * @param
+     * @return true if editAlbum is successful
+     */
+    public boolean editAlbum(){
+        return albumHandler.editAlbum();
+    }
+
+    /*
+     * THIS NEEDS FIXED to take parm
+     * calls deleteAlbum in Album Handler
+     * @param
+     * @return true if deleteAlbum is successful
+     */
+    public boolean deleteAlbum(){
+        return albumHandler.deleteAlbum();
+    }
+
+    /*
+     * MAYBE NEEDS FIXED to take param
+     * calls createAlbum in Album Handler
+     * @param
+     * @return
+     */
+    public Album createAlbum(){
+        return albumHandler.createAlbum();
+    }
+    
+
 }

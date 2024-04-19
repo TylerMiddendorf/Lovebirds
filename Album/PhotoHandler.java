@@ -1,7 +1,8 @@
 public class PhotoHandler {
     
-    public void uploadPhoto() {
-        //
+    public Photo uploadPhoto() {
+        Photo temp;
+        return temp;
     }
     public boolean deletePhoto() {
         return true;
