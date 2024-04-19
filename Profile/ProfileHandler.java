@@ -23,7 +23,7 @@ public class ProfileHandler {
 
     public boolean deleteProfile(Profile profile)
     {
-        // delete the profile from the database?
+        // delete the profile from the database
         profile = null;
 
         return true; // profile deleted 
@@ -56,16 +56,6 @@ public class ProfileHandler {
         boolean liked = false;
         // user may or may not like the user, if they do then turn true
         return liked;
-    }
-
-    public boolean clearConversation()
-    {
-        return true; // conversation has been cleared
-    }
-
-    public boolean sendMessage()
-    {
-        return true; // message has been sent
     }
 
     public boolean unmatchUser(Profile user)
