@@ -137,7 +137,7 @@ class Controller{
      * also add editPreference method in ProfileHandler
      */
     public boolean editPreferences(){
-        return profileHandler.editPreference();
+        return profileHandler.editPreferences();
     }
 
     /*

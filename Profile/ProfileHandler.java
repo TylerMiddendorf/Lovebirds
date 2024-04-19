@@ -2,6 +2,9 @@ public class ProfileHandler {
 
     private Profile profile;
 
+    /*
+     * Need to chain these CRUD functions to call the Profile Operation ones???
+     */
     public Profile createProfile()
     {
         Profile profile = null; // input the username and other data?
