@@ -2,11 +2,6 @@ public class ProfileHandler {
 
     private Profile profile;
 
-    public ProfileHandler()
-    {
-        this.profile = null;
-    }
-
     public Profile createProfile()
     {
         Profile profile = null; // input the username and other data?
@@ -61,6 +56,21 @@ public class ProfileHandler {
     public boolean unmatchUser(Profile user)
     {
         return true; // user has been unmatched
+    }
+
+    public Preferences createPreferences()
+    {
+        return null;
+    }
+
+    public boolean editPreferences()
+    {
+        return true;
+    }
+
+    public boolean deletePreferences()
+    {
+        return true;
     }
 
     
