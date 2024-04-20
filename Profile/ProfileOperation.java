@@ -16,7 +16,7 @@ public class ProfileOperation{
         return true;
     }
 
-    public boolean deletProfile(){
+    public boolean deleteProfile(){
         return true;
     }
 
