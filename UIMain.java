@@ -60,11 +60,11 @@ public class UIMain {
     public static void displayMenu(){
         System.out.println("");
 		System.out.println("Select one of the following: ");
-		System.out.println("1: For fun");
-		System.out.println("2: For fun");
-		System.out.println("3: For fun");
-		System.out.println("4: For fun");
-		System.out.println("5: For fun");
+		System.out.println("1: Option 1");
+		System.out.println("2: Option 2");
+		System.out.println("3: Option 3");
+		System.out.println("4: Option 4");
+		System.out.println("5: Quit");
     }
 
 }//end UIMain
