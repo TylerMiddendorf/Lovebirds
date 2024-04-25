@@ -1,4 +1,4 @@
-public class ProfileOperation{
+public class ProfileOperationMySQL{
 
     /*
      * Need to add params to these functions as well as chain the functions in profilehandler to these

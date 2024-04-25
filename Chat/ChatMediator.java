@@ -1,4 +1,4 @@
-public class ChatOperation {
+public class ChatMediator {
     public Chat createChat()
     {
         //create the chat from the user and their match

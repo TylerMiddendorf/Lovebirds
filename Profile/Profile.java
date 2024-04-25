@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Profile {
     private String profileID;
     private String emailAddress;
@@ -12,6 +14,7 @@ public class Profile {
     private String sexuality;
     private Photo profilePicture;
     private Preferences preferences;
+    private ArrayList<Chat> chats;
 
     /*
      * Constructor that only takes key values to create profile object
@@ -80,5 +83,64 @@ public class Profile {
         this.preferences.setMinAge(minAge);
         this.preferences.setMaxAge(maxAge);
     }
-    
+
+    public void setChats(ArrayList<Chat> chats) {
+        this.chats = chats;
+    }
+
+    public String getProfileID() {
+        return profileID;
+    }
+
+    public String getEmail() {
+        return emailAddress;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getSexuality() {
+        return sexuality;
+    }
+
+    public Photo getProfilePicture() {
+        return profilePicture;
+    }
+
+    public Preferences getPreferences() {
+        return preferences;
+    }
+
+    public ArrayList<Chat> getChats() {
+        return chats;
+    }
 }
