@@ -128,10 +128,6 @@ public class Profile {
         return gender;
     }
 
-    public String getSexuality() {
-        return sexuality;
-    }
-
     public Photo getProfilePicture() {
         return profilePicture;
     }
