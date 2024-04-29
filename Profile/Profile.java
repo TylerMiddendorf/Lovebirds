@@ -11,14 +11,13 @@ public class Profile {
     private int weight;
     private int age;
     private String gender;
-    private String sexuality;
     private Photo profilePicture;
     private Preferences preferences;
     private ArrayList<Chat> chats;
 
     /*
      * Constructor that only takes key values to create profile object
-     * will use setters after object creatation to fill height, weight, age, gender, sexuality, profilePicture, and preferences
+     * will use setters after object creatation to fill height, weight, age, gender, profilePicture, and preferences
      */
     public Profile(String profileID, String emailAddress, String username, String password, String firstName, String lastName) {
         this.profileID = profileID;
@@ -65,17 +64,12 @@ public class Profile {
         this.gender = gender;
     }
 
-    public void setSexuality(String sexuality) {
-        this.sexuality = sexuality;
-    }
-
     public void setProfilePicture(Photo profilePicture) {
         this.profilePicture = profilePicture;
     }
 
-    public void setPreferences(String preferredGender, String preferredSexuality, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge) {
+    public void setPreferences(String preferredGender,, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge) {
         this.preferences.setPreferredGender(preferredGender);
-        this.preferences.setPreferredSexuality(preferredSexuality);
         this.preferences.setMinHeight(minHeight);
         this.preferences.setMaxHeight(maxHeight);
         this.preferences.setMinWeight(minWeight);
@@ -126,10 +120,6 @@ public class Profile {
 
     public String getGender() {
         return gender;
-    }
-
-    public String getSexuality() {
-        return sexuality;
     }
 
     public Photo getProfilePicture() {
