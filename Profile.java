@@ -17,7 +17,7 @@ public class Profile {
 
     /*
      * Constructor that only takes key values to create profile object
-     * will use setters after object creatation to fill height, weight, age, gender, sexuality, profilePicture, and preferences
+     * will use setters after object creatation to fill height, weight, age, gender, profilePicture, and preferences
      */
     public Profile(String profileID, String emailAddress, String username, String password, String firstName, String lastName) {
         this.profileID = profileID;
