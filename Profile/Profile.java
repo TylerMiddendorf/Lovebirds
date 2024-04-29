@@ -68,7 +68,7 @@ public class Profile {
         this.profilePicture = profilePicture;
     }
 
-    public void setPreferences(String preferredGender,, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge) {
+    public void setPreferences(String preferredGender, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge) {
         this.preferences.setPreferredGender(preferredGender);
         this.preferences.setMinHeight(minHeight);
         this.preferences.setMaxHeight(maxHeight);
