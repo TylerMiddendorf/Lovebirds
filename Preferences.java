@@ -9,7 +9,6 @@
 public class Preferences {
 
    private String preferredGender;
-   private String preferredSexuality;
    private int minHeight;
    private int maxHeight;
    private int minWeight;
@@ -20,9 +19,8 @@ public class Preferences {
 
 
    //replace parameters with dictionary where if the values don't exist they are set with a default value
-   public Preferences(String gender, String sexuality, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge){
+   public Preferences(String gender, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge){
     this.preferredGender = gender;
-    this.preferredSexuality = sexuality;
     this.minHeight = minHeight;
     this.maxHeight = maxHeight;
     this.minWeight = minHeight;
@@ -37,14 +35,6 @@ public class Preferences {
 
    public String getPreferredGender() {
     return preferredGender;
-   }
-
-   public void setPreferredSexuality(String sexuality) {
-    this.preferredSexuality = sexuality;
-   }
-
-   public String getPreferredSexuality() {
-    return preferredSexuality;
    }
 
    public void setMinHeight(int height) {
