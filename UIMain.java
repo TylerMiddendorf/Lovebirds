@@ -67,4 +67,13 @@ public class UIMain {
 		System.out.println("5: Quit");
     }
 
+	private static int loopForInteger(Scanner scan) {
+		while(!scan.hasNextInt()) {
+			String clearInput = scan.nextLine();
+			System.out.print("Please enter a valid integer: ");
+		}
+		int num = scan.nextInt();
+		return num;
+	}
+
 }//end UIMain

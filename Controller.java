@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 class Controller{
     
-    private AlbumHandler albumHandler;
+    private MediaHandler mediaHandler;
     private MatchmakerHandler matchmakerHandler;
     private ProfileHandler profileHandler;
     private ChatHandler chatHandler;
-    private PhotoHandler photoHandler;
     
 
     /*
@@ -156,55 +155,36 @@ class Controller{
         return chatHandler.sendMessage(message);
     }
 
-    /*
-     * THIS NEEDS FIXED to take parm
-     * calls uploadPhoto in Photo Handler
-     * @param
-     * @return
-     */
+    /* 
+
+    MediaHandler has been created to encapsulate the Photo and Album methods,
+    needs to be updated. I'm just commenting this out to prevent the errors.
+    
     public Photo uploadPhoto(){
-        return photoHandler.uploadPhoto();
+        return mediaHandler.uploadPhoto();
     }
 
-    /*
-     * THIS NEEDS FIXED to take parm
-     * calls deletePhoto in Photo Handler
-     * @param
-     * @return
-     */
+    
     public boolean deletePhoto(){
-        return photoHandler.deletePhoto();
+        return mediaHandler.deletePhoto();
     }
 
-    /*
-     * THIS NEEDS FIXED to take parm
-     * calls editAlbum in Album Handler
-     * @param
-     * @return true if editAlbum is successful
-     */
+    
     public boolean editAlbum(){
-        return albumHandler.editAlbum();
+        return  mediaHandler.editAlbum();
     }
 
-    /*
-     * THIS NEEDS FIXED to take parm
-     * calls deleteAlbum in Album Handler
-     * @param
-     * @return true if deleteAlbum is successful
-     */
+   
     public boolean deleteAlbum(){
         return albumHandler.deleteAlbum();
     }
 
-    /*
-     * MAYBE NEEDS FIXED to take param
-     * calls createAlbum in Album Handler
-     * @param
-     * @return
-     */
+  
     public Album createAlbum(){
-        return albumHandler.createAlbum();
+        return mediaHandler.createAlbum();
     }
+
+    */
     
 
 }
