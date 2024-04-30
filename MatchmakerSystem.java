@@ -12,10 +12,22 @@ public class MatchmakerSystem {
 
     // implement generateMatches and removeMatch methods below later
     public ArrayList generateMatches(Profile profile) {
-        return new ArrayList<>();
+
+        Preferences userPreferences = profile.getPreferences();
+        int minAge = userPreferences.getMinAge();
+        int maxAge = userPreferences.getMaxAge();
+        int minWeight = userPreferences.getMinWeight();
+        int maxWeight = userPreferences.getMaxAge();
+        String preferredGender = userPreferences.getPreferredGender();
+        
+        ArrayList<Profile> matches = new ArrayList<Profile>();
+
+        return matches;
     }
 
     // public void removeMatch(Profile profile) {
-
+    
     // }
+
+
  }
