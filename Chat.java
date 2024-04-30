@@ -6,7 +6,7 @@ public class Chat{
 
 
     public Chat() {
-        
+
     }
 
     public void addMessage(String message)
@@ -24,4 +24,6 @@ public class Chat{
     {
         return true;
     }
+
+    
 }

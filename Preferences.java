@@ -16,8 +16,7 @@ public class Preferences {
    private int minAge;
    private int maxAge;
 
-
-
+   
    public Preferences() {
       
    }
