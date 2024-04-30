@@ -1,4 +1,4 @@
-package lovebirds.src.main.java.com.lovebirds;
+package com.lovebirds;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -18,7 +18,7 @@ public class MySQLDatabase extends Database {
 
     public boolean connect(String password) {
 
-        String path = "jdbc:mysql://localhost:3306/lovebirds_schema";
+        String path = "jdbc:mysql://localhost:3306/mysql";
 
         try {
             conn = DriverManager.getConnection(path, username, password);

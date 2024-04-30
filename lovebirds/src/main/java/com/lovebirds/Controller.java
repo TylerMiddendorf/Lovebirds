@@ -1,4 +1,4 @@
-package lovebirds.src.main.java.com.lovebirds;
+package com.lovebirds;
 
 import java.util.ArrayList;
 

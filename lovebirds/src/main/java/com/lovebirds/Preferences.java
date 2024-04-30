@@ -1,4 +1,4 @@
-package lovebirds.src.main.java.com.lovebirds;
+package com.lovebirds;
 
 /*
  * This class contains the preferences for a user and will be used by the
