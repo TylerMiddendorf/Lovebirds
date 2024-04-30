@@ -4,6 +4,11 @@ public class Chat{
     private String[] messages;
     private double[] timestamps;
 
+
+    public Chat() {
+        
+    }
+
     public void addMessage(String message)
     {
         //write the message

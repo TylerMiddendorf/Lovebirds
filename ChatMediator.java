@@ -1,23 +1,8 @@
-public class ChatMediator {
-    public Chat createChat()
-    {
-        //create the chat from the user and their match
-        return null;
-    }
+public  abstract class ChatMediator {
 
-    public Chat readChat()
-    {
-        return null;
-    }
-
-    public boolean updateChat()
-    {
-        //refreshes the chat?
-        return true;
-    }
-
-    public boolean deleteChat()
-    {
-        return true;
-    }
+    public abstract Chat createChat(Chat chat);
+    public abstract Chat readChat();
+    public abstract Chat updateChat();
+    public abstract Chat deleteChat();
+    
 }

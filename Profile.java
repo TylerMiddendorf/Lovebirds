@@ -15,6 +15,11 @@ public class Profile {
     private Preferences preferences;
     private ArrayList<Chat> chats;
 
+
+    public Profile() {
+        
+    }
+
     /*
      * Constructor that only takes key values to create profile object
      * will use setters after object creatation to fill height, weight, age, gender, profilePicture, and preferences

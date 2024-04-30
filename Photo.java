@@ -7,6 +7,10 @@ public class Photo {
     private String fileName;
     private String fileFormat;
 
+    public Photo() {
+        
+    }
+
     public Photo(String photoId, String filePath, String fileName, String fileFormat) {
         this.photoID = photoId;
         this.filePath = filePath;
