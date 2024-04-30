@@ -3,6 +3,79 @@ import java.util.Scanner;
 public class UIMain {
     public static void main(String[] args){
 
+		// welcome message
+		// display menu for creating an account or logging in
+		// if creating an account
+		// 	call createProfile()
+		// 	enter & set profile info
+		// 	call createPreferences()
+		// 	enter & set preferences
+		// else if logging in
+		// 	enter username & password
+		// 	call logIn()
+		
+		// then
+		
+		// How do we incorporate retrieveSugProfile
+		// add text in the functions for the console messages instead of hardcoding in main
+		// iterate through ArrayList in functions
+		
+		// display options menu (view matches "retrieveSugUsers()",
+		// edit profile "editProfile()", edit preferences 
+		// edit preferences "editPreferences()", edit album "editAlbum()",
+		// logout "logOut()"
+		// 1. View matches 
+		// 2. Edit profile 
+		// 3. Edit preferences
+		// 4. Edit album
+		// 5. Logout
+		
+		// if view matches
+		// 	display matches ( call function "retrieveSugUsers()"):
+		// 	displays one name from the ArrayList of Profiles
+		// 	1. View user
+		// 	2. Dismiss user
+			
+		// 	if View user								
+		// 		display options menu 2 (like user "likeUser()", rate user "rateUser()", 
+		// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
+		// 		1. Like user
+		// 		2. Rate user
+		// 		3. Unmatch user
+		// 		4. Block user
+			
+		// 		if Like user	
+		// 			if (isLiked == false)
+		// 				set "isLiked" variable to true
+		// 			else
+		// 				print("You already liked this user.")
+		// 			go back to options menu 2
+		// 		else if Rate user
+		// 			print ("Rate this user 1-5: )
+		// 			Scan the integer entered by the user
+		// 			Store in ratings array/table
+				
+		// 		else if Unmatch user
+		// 			remove this user from the ArrayList
+		
+		// 		else if Block user
+		// 			// need to figure out the logic for this
+			
+		// 	else if Dismiss user
+		// 		increment, move on to next user in ArrayList
+			
+		// else if edit profile 
+		// 	call edit/updateProfile
+		// 	Have option to go back to options menu
+		
+		// else if edit preferences
+		// 	call edit/updatePreferences
+		// 	Have option to go back to options menu	
+		
+		// else if edit album
+		// 	call edit/updatePreferences
+		// 	Have option to go back to options menu
+
         //scanner object
 		Scanner sc = new Scanner(System.in);
 		
