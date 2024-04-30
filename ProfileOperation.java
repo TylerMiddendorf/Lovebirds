@@ -9,6 +9,4 @@ public abstract class ProfileOperation {
     public abstract boolean updatePreferences();
     public abstract boolean deletePreferences();
 
-
-
 }
