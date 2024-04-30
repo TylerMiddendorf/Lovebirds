@@ -1,4 +1,4 @@
-
+/*
 
 public abstract class GeneralFactory {
     
@@ -7,3 +7,5 @@ public abstract class GeneralFactory {
     public abstract MediaOperation getMedia(String mediaType);
     public abstract ProfileOperation getProfile(String profileType);
 }
+
+*/

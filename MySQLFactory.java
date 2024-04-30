@@ -3,7 +3,7 @@ public class MySQLFactory extends GeneralFactory {
 
     @Override
     public Database getDatabase(String dbType) {
-        return new Database();
+        Database db = Database.connect(dbType);
     }
     
     @Override
@@ -24,4 +24,5 @@ public class MySQLFactory extends GeneralFactory {
 }
 
 */
+
 
