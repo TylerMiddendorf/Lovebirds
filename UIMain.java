@@ -12,6 +12,8 @@ public class UIMain {
 		
 		//welcome message
 		System.out.println("Welcome to Lovebirds dating app!");
+
+		//create profile, login, or quit options right here
 	
 		do 
 		{
@@ -25,25 +27,31 @@ public class UIMain {
 			{
 				System.out.println("Invalid entry. Try again.");
 			}
-			else if(userInput == 5)
+			else if(userInput == 6)
 			{
+				System.out.println("Logging out...");
 				run = false;
 			}
 			else if(userInput == 1)
 			{
-				System.out.println("Option 1 selected");
+				//retrieve suggested users
 			}
 			else if(userInput == 2)
 			{
-				System.out.println("Option 2 selected");
+				//retrieve messages
+				//this is where you can see messages and people you've "matched with" via messages
 			}
 			else if(userInput == 3)
 			{
-				System.out.println("Option 3 selected");
+				//edit profile
 			}
 			else if(userInput == 4)
 			{
-                System.out.println("Option 4 selected");
+				//edit preferences
+			}
+			else if(userInput == 5)
+			{
+                //edit album
 			}
 		}
 		while(run);
@@ -60,11 +68,12 @@ public class UIMain {
     public static void displayMenu(){
         System.out.println("");
 		System.out.println("Select one of the following: ");
-		System.out.println("1: Option 1");
-		System.out.println("2: Option 2");
-		System.out.println("3: Option 3");
-		System.out.println("4: Option 4");
-		System.out.println("5: Quit");
+		System.out.println("1: Retrieve Suggested Users");
+		System.out.println("2: Retrieve messages");
+		System.out.println("3: Edit Profile");
+		System.out.println("4: Edit Preferences");
+		System.out.println("5: Edit Album");
+		System.out.print("6: Logout");
     }
 
 	private static int loopForInteger(Scanner scan) {
