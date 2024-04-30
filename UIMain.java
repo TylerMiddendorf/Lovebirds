@@ -93,7 +93,7 @@ public class UIMain {
 			//prints menu
 			displayMenu();
 			//gets user input
-			userInput = sc.nextInt();
+			userInput = loopForInteger(sc);
 			
 			//if-else-if for processing user input
 			if(userInput < 1 || userInput > 5)
@@ -107,6 +107,7 @@ public class UIMain {
 			}
 			else if(userInput == 1)
 			{
+				System.out.println("Call to retrieve suggested users.");
 				//retrieve suggested users
 			}
 			else if(userInput == 2)
@@ -140,13 +141,13 @@ public class UIMain {
     //displays menu for user data entries
     public static void displayMenu(){
         System.out.println("");
-		System.out.println("Select one of the following: ");
 		System.out.println("1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
 		System.out.println("3: Edit Profile");
 		System.out.println("4: Edit Preferences");
 		System.out.println("5: Edit Album");
-		System.out.print("6: Logout");
+		System.out.println("6: Logout");
+		System.out.print("Select one of the following: ");
     }
 
 	private static int loopForInteger(Scanner scan) {
