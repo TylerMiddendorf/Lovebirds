@@ -68,8 +68,9 @@ public class ProfileHandler {
         return null;
     }
 
-    public boolean editPreferences()
+    public boolean editPreferences(Profile user)
     {
+        user.getPreferences();
         return true;
     }
 

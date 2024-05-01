@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "Profile",
+        "Matchmaker",
+        "Chat",
+        "Album",
+        "lovebirds/src/main/java/com/lovebirds"
+    ]
+}
