@@ -3,6 +3,8 @@ package com.lovebirds;
 import java.util.Scanner;
 
 public class UIMain {
+	static Profile profile;
+	static Controller controller;
     public static void main(String[] args){
 
 		// welcome message
@@ -80,7 +82,7 @@ public class UIMain {
 
         //scanner object
 		Scanner sc = new Scanner(System.in);
-		
+		controller = new Controller();
 		//variables that assist with looped program
 		int userInput = 0;
 		boolean run = true;
@@ -89,6 +91,44 @@ public class UIMain {
 		System.out.println("Welcome to Lovebirds dating app!");
 
 		//create profile, login, or quit options right here
+		boolean firstTime = true;
+		while(userInput == 0){
+			if(!firstTime)
+				System.out.println("Invalid Input (follow instructions)");
+			System.out.println("");
+			System.out.println("1: Login");
+			System.out.println("2: Create Account");
+			System.out.println("3: Forgot Password");
+			System.out.println("4: Exit");
+			System.out.print("Select one of the following: ");
+			userInput = loopForInteger(sc);
+			switch (userInput) {
+				case 1://login
+					System.out.println("Enter Username:");
+					String username = sc.nextLine();
+					System.out.println("Enter Password:");
+					String password = sc.nextLine();
+					int value = controller.logIn(username, password);
+					break;
+				case 2://Create Account
+					// 	call createProfile()
+					// 	enter & set profile info
+					// 	call createPreferences()
+					// 	enter & set preferences
+					break;
+				case 3://Forgot Password
+					
+					break;
+				case 4://exit
+					System.exit(0);
+				default:
+					userInput = 0;		
+			}
+		}
+
+
+
+
 	
 		do 
 		{

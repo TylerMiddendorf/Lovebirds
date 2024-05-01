@@ -9,6 +9,9 @@ class Controller{
     private ProfileHandler profileHandler;
     private ChatHandler chatHandler;
     
+    public void controller(){
+
+    }
 
     /*
      * calls retrieveSugUsers from Matchmaker Handler
@@ -187,6 +190,32 @@ class Controller{
     }
 
     */
+
+    /*
+     * handles login of account
+     * @param username and password
+     * @returns int exception handling?
+     */
+    public int logIn(String username, String password)
+    {
+        return Authentication.logIn(username, password);
+    }
+
+    /*
+     * handles logout of account
+     */
+    public void logOut(){
+
+    }
+
+    /*
+     * allows user to change password
+     * @param newPass
+     * @return string confirmation message?
+     */
+    public String forgotPassword(String newPass){
+        return null;
+    }
     
 
 }

@@ -36,8 +36,16 @@ public class Photo {
         return filePath;
     }
 
+    public void setFileFormat(String fileFormat) {
+        this.fileFormat = fileFormat;
+    }
+
     public String getFileFormat() {
         return fileFormat;
+    }
+
+    public void setPhotoID(String photoID) {
+        this.photoID = photoID;
     }
 
     public String getPhotoID() {
