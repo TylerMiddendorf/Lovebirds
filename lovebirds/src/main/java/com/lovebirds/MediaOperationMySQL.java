@@ -12,10 +12,6 @@ public class MediaOperationMySQL extends MediaOperation { //
         return null;
     }
 
-    public boolean updatePhoto() {
-        return true;
-    }
-
     public boolean deletePhoto() {
         return true;
     }

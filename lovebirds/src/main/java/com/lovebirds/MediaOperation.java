@@ -5,7 +5,6 @@ public abstract class MediaOperation {
     private Database db;
     public abstract Photo createPhoto(Photo photo);
     public abstract Photo readPhoto();
-    public abstract boolean updatePhoto();
     public abstract boolean deletePhoto();
     public abstract Album createAlbum();
     public abstract Album readAlbum();
