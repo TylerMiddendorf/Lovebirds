@@ -1,7 +1,6 @@
 package com.lovebirds;
 
 
-
 public class FactoryProducer {
     
     public static Database getDatabase(String type) {
@@ -16,7 +15,7 @@ public class FactoryProducer {
     public static ChatMediator getMediator(String type) {
         switch(type) {
             case "mySQL":
-                //return new ChatMediatorMySQL();
+                return new ChatMediatorMySQL();
             default:
                 return null;
         }
@@ -25,7 +24,7 @@ public class FactoryProducer {
     public static MediaOperation getMedia(String type) {
         switch(type) {
             case "mySQL":
-                //return new MediaOperationMySQL();
+                return new MediaOperationMySQL();
             default:
                 return null;
         }
