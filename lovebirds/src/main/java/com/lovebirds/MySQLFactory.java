@@ -1,28 +1,28 @@
-/*
+
 public class MySQLFactory extends GeneralFactory {
 
     @Override
     public Database getDatabase(String dbType) {
-        Database db = Database.connect(dbType);
+        Database db = new MySQLDatabase();
     }
     
     @Override
     public ChatMediator getMediator(String chatType) {
-        return new ChatMediator();
+        return new ChatMediatorMySQL();
     }
 
     @Override
     public MediaOperation getMedia(String mediaType) {
-        return new MediaOperation();
+        return new MediaOperationMySQL();
     }
     
     @Override
     public ProfileOperation getProfile(String profileType) {
-        return new ProfileOperation();
+        return new ProfileOperationMySQL();
     }
     
 }
 
-*/
+
 
 

@@ -36,6 +36,11 @@ public class MySQLDatabase extends Database {
     public String getUsername() {
         return username;
     }  
+
+    public static void main(String[] args){
+        MySQLDatabase db = new MySQLDatabase();
+        System.out.println(db.connect("GGman567"));
+    }
     
 }
 
