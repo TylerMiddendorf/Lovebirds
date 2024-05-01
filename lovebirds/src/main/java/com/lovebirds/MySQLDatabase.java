@@ -19,19 +19,15 @@ public class MySQLDatabase extends Database {
     public boolean connect(String password) {
 
         String path = "jdbc:mysql://localhost:3306/mysql";
-
         try {
             conn = DriverManager.getConnection(path, username, password);
             return true;
         } catch (SQLException e) {
-           
-            System.out.println(e.getSQLState());
-            System.out.println(e.getMessage());
             //System.out.println("Could not connect to database.");
             return false;
         }
     
-    }  
+    }
 
     public Connection getConnection() {
         return conn;
@@ -41,9 +37,5 @@ public class MySQLDatabase extends Database {
         return username;
     }  
     
-    public static void main(String[] args) {
-        MySQLDatabase db = new MySQLDatabase();
-        System.out.println(db.connect("Root123!@#"));
-    }
 }
 
