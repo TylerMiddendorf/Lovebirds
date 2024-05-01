@@ -102,13 +102,18 @@ public class UIMain {
 			System.out.println("4: Exit");
 			System.out.print("Select one of the following: ");
 			userInput = loopForInteger(sc);
+			//buffer scanner to prevent skipping over the next scanner
+			sc.nextLine();
 			switch (userInput) {
 				case 1://login
-					System.out.println("Enter Username:");
+					System.out.print("Enter Username: ");
 					String username = sc.nextLine();
-					System.out.println("Enter Password:");
+					System.out.print("Enter Password: ");
 					String password = sc.nextLine();
 					int value = controller.logIn(username, password);
+					//error handling something like this
+					//int error_code;
+					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
 					break;
 				case 2://Create Account
 					// 	call createProfile()
@@ -138,7 +143,7 @@ public class UIMain {
 			userInput = loopForInteger(sc);
 			
 			//if-else-if for processing user input
-			if(userInput < 1 || userInput > 5)
+			if(userInput < 1 || userInput > 6)
 			{
 				System.out.println("Invalid entry. Try again.");
 			}
@@ -154,19 +159,23 @@ public class UIMain {
 			}
 			else if(userInput == 2)
 			{
+				System.out.println("Call to retrieve messages.");
 				//retrieve messages
 				//this is where you can see messages and people you've "matched with" via messages
 			}
 			else if(userInput == 3)
 			{
+				System.out.println("Call to edit profile.");
 				//edit profile
 			}
 			else if(userInput == 4)
 			{
+				System.out.println("Call to edit preferences.");
 				//edit preferences
 			}
 			else if(userInput == 5)
 			{
+				System.out.println("Call to edit album.");
                 //edit album
 			}
 		}
