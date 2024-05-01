@@ -1,7 +1,6 @@
 package com.lovebirds;
 
 
-/*
 
 public abstract class GeneralFactory {
     
@@ -11,4 +10,4 @@ public abstract class GeneralFactory {
     public abstract ProfileOperation getProfile(String profileType);
 }
 
-*/
+
