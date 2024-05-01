@@ -1,23 +1,23 @@
 package com.lovebirds;
 
-public class ChatMediatorMySQL { // extends ChatMediator
+public class ChatMediatorMySQL  extends ChatMediator{ // 
     
-    /* 
-    public abstract Chat createChat(Chat chat) {
-        
+    
+    public Chat createChat(Chat chat) {
+        return new Chat();
     }
 
-    public abstract Chat readChat() {
-
+    public Chat readChat() {
+        return new Chat();
     }
 
-    public abstract Chat updateChat() {
-
+    public boolean updateChat() {
+        return true;
     }
 
-    public abstract Chat deleteChat() {
-
+    public boolean deleteChat() {
+        return true;
     }
-    */
+    
     
 }
