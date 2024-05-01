@@ -1,7 +1,8 @@
 package com.lovebirds;
 
-public class MediaOperationMySQL { // extends MediaOperation
+public class MediaOperationMySQL extends MediaOperation { // 
     
+
     
     public Photo createPhoto(Photo photo) {
         return null;
