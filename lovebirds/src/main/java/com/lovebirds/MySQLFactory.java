@@ -1,9 +1,10 @@
+package com.lovebirds;
 
 public class MySQLFactory extends GeneralFactory {
 
     @Override
     public Database getDatabase(String dbType) {
-        Database db = new MySQLDatabase();
+        return new MySQLDatabase();
     }
     
     @Override
