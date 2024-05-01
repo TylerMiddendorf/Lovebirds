@@ -19,7 +19,8 @@ public class MySQLFactory extends GeneralFactory {
     
     @Override
     public ProfileOperation getProfile(String profileType) {
-        return new ProfileOperationMySQL();
+        MySQLDatabase mySQLDB = new MySQLDatabase();
+        return new ProfileOperationMySQL(mySQLDB);
     }
     
 }

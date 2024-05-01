@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class MySQLDatabase extends Database {
 
     private String username;
-    private String password;
+    private String password = "Root123!@#";
     private Connection conn;
 
     public MySQLDatabase() {
@@ -16,7 +16,7 @@ public class MySQLDatabase extends Database {
         conn = null;
     }
 
-    public boolean connect(String password) {
+    public boolean connect() {
 
         String path = "jdbc:mysql://localhost:3306/mysql";
         try {
@@ -37,10 +37,12 @@ public class MySQLDatabase extends Database {
         return username;
     }  
 
+    /* 
     public static void main(String[] args){
         MySQLDatabase db = new MySQLDatabase();
         System.out.println(db.connect("GGman567"));
     }
+    */
     
 }
 

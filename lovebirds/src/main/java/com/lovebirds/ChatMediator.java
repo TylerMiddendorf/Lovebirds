@@ -2,6 +2,7 @@ package com.lovebirds;
 
 public  abstract class ChatMediator {
 
+    private Database db;
     public abstract Chat createChat(Chat chat);
     public abstract Chat readChat();
     public abstract boolean updateChat();

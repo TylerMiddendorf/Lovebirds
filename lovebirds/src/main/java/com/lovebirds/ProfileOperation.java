@@ -2,6 +2,7 @@ package com.lovebirds;
 
 public abstract class ProfileOperation {
     
+    private Database db;
     public abstract Profile createProfile(Profile profile);
     public abstract Profile readProfile(int userID);
     public abstract boolean updateProfile(Profile profile);
