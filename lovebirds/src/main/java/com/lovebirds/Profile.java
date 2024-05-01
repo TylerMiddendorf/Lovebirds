@@ -14,7 +14,7 @@ public class Profile {
     private int weight;
     private int age;
     private String gender;
-    private Photo profilePicture;
+    private String profilePicture;
     private Preferences preferences;
     private ArrayList<Chat> chats;
 
@@ -72,7 +72,7 @@ public class Profile {
         this.gender = gender;
     }
 
-    public void setProfilePicture(Photo profilePicture) {
+    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 
@@ -130,7 +130,7 @@ public class Profile {
         return gender;
     }
 
-    public Photo getProfilePicture() {
+    public String getProfilePicture() {
         return profilePicture;
     }
 

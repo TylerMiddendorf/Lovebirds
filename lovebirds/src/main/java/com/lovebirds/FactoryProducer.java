@@ -1,6 +1,5 @@
 package com.lovebirds;
 
-
 public class FactoryProducer {
     
     public static Database getDatabase(String type) {
