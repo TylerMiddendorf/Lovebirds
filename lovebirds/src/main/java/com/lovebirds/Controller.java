@@ -140,8 +140,8 @@ class Controller{
      * THIS NEEDS FIXED to take parm
      * also add editPreference method in ProfileHandler
      */
-    public boolean editPreferences(){
-        return profileHandler.editPreferences();
+    public boolean editPreferences(Profile user){
+        return profileHandler.editPreferences(user);
     }
 
     /*
