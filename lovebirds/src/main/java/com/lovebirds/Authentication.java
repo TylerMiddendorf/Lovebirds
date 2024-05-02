@@ -35,7 +35,7 @@ public class Authentication {
      * @param username - user's username
      * @return Profile object
      */
-    public static Profile authenticateForgotPassword(String email, String username){
+    public static Profile authenticateForgotPassword(String email, String username, String newPassword){
         
         try {
 
