@@ -220,9 +220,9 @@ public class UIMain {
 
 
 	/**
-	 * get username, email, and age from user to authenticate
+	 * get username and email from user to authenticate
 	 * update users password in the database
-	 * calls forgotPassword in Controller
+	 * invoke forgotPassword in Controller
 	 * @return
 	 */
 	private static boolean forgotPassword() {
