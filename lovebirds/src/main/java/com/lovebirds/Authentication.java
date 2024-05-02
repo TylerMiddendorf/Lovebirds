@@ -4,6 +4,7 @@ import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.mysql.cj.xdevapi.PreparableStatement;
 
@@ -42,7 +43,9 @@ public class Authentication {
             db.connect();
             Connection dbConn = db.getConnection();
             String sql = "SELECT * FROM PROFILE WHERE EMAIL = ? AND USERNAME = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, email);
+            pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
 
             String username = rs.getString(0);

@@ -55,16 +55,16 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setInt(1, userID);
             ResultSet rs = pstmt.executeQuery();
 
-            String username = rs.getString(0);
-            String email = rs.getString(1);
-            String firstName = rs.getString(2);
-            String lastName = rs.getString(3);
-            String profilePic = rs.getString(4);
-            int age = rs.getInt(5);
-            int height = rs.getInt(6);
-            int weight = rs.getInt(7);
-            String gender = rs.getString(8);
-            String password = rs.getString(9);
+            String username = rs.getString(1);
+            String email = rs.getString(2);
+            String firstName = rs.getString(3);
+            String lastName = rs.getString(4);
+            String profilePic = rs.getString(5);
+            int age = rs.getInt(6);
+            int height = rs.getInt(7);
+            int weight = rs.getInt(8);
+            String gender = rs.getString(9);
+            String password = rs.getString(10);
 
             Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
             newProfile.setAge(age);
@@ -175,7 +175,6 @@ public class ProfileOperationMySQL extends ProfileOperation{
     }
 
     public boolean updatePreferences(int userID, Preferences newPref) {
-
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
