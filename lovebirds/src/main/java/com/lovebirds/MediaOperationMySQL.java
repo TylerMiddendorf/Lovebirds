@@ -56,27 +56,39 @@ public class MediaOperationMySQL extends MediaOperation { //
         return true;
     }
 
-    public Photo readPhoto() {
+    public Photo readPhoto(int userID) {
+        this.db.connect();
+        Connection dbConn = db.getConnection();
         return null;
     }
 
-    public boolean deletePhoto() {
+    public boolean deletePhoto(int userID) {
+        this.db.connect();
+        Connection dbConn = db.getConnection();
         return true;
     }
 
-    public Album createAlbum() {
+    public Album createAlbum(int userID, String albumName) {
+        this.db.connect();
+        Connection dbConn = db.getConnection();
         return null;
     }
 
-    public Album readAlbum() {
-        return null;
+    public Album readAlbum(int userID, String albumName) {
+        this.db.connect();
+        Connection dbConn = db.getConnection();
+        return new Album(null, null);
     }
 
-    public boolean updateAlbum() {
+    public boolean updateAlbum(int userID, String albumName) {
+        this.db.connect();
+        Connection dbConn = db.getConnection();
         return true;
     }
 
-    public boolean deleteAlbum() {
+    public boolean deleteAlbum(int userID, String albumName) {
+        this.db.connect();
+        Connection dbConn = db.getConnection();
         return true;
     }
 

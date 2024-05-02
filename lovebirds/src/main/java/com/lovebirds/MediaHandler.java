@@ -1,5 +1,5 @@
 package com.lovebirds;
 
-public class MediaHandler {
+public class MediaHandler extends Handler {
     
 }

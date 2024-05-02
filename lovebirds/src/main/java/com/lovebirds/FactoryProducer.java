@@ -2,7 +2,7 @@ package com.lovebirds;
 
 public class FactoryProducer {
     
-    public MySQLFactory geSqlFactory() {
+    public MySQLFactory geSQLFactory() {
         return new MySQLFactory();
     }
 }

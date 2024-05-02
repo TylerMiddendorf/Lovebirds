@@ -3,7 +3,7 @@ package com.lovebirds;
 import java.util.Scanner;
 
 public class UIMain {
-	static Profile profile;
+
 	static Controller controller;
     public static void main(String[] args){
 

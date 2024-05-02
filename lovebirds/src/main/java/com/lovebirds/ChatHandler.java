@@ -1,6 +1,6 @@
 package com.lovebirds;
 
-public class ChatHandler {
+public class ChatHandler extends Handler {
 
     //set user id in database to admin account
     public boolean clearConversation()
