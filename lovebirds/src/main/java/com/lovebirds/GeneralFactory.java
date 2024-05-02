@@ -1,7 +1,5 @@
 package com.lovebirds;
 
-
-
 public abstract class GeneralFactory {
     
     public abstract Database getDatabase(String dbType);

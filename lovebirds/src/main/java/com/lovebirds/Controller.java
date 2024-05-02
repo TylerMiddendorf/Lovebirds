@@ -9,7 +9,7 @@ class Controller{
     private ProfileHandler profileHandler;
     private ChatHandler chatHandler;
     
-    public void controller(){
+    public void Controller(){
 
     }
 

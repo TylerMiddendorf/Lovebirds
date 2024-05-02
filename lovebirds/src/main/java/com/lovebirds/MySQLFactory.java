@@ -2,25 +2,46 @@ package com.lovebirds;
 
 public class MySQLFactory extends GeneralFactory {
 
+    private MySQLDatabase mySQLDB = new MySQLDatabase();
+
     @Override
-    public Database getDatabase(String dbType) {
-        return new MySQLDatabase();
-    }
-    
-    @Override
-    public ChatMediator getMediator(String chatType) {
-        return new ChatMediatorMySQL();
+    public Database getDatabase(String type) {
+        switch(type) {
+            case "mySQL":
+                return new MySQLDatabase();
+            default:
+                return null;
+        }
     }
 
     @Override
-    public MediaOperation getMedia(String mediaType) {
-        return new MediaOperationMySQL();
+    public ChatMediator getMediator(String type) {
+        switch(type) {
+            case "mySQL":
+                return new ChatMediatorMySQL(mySQLDB);
+            default:
+                return null;
+        }
     }
-    
+
     @Override
-    public ProfileOperation getProfile(String profileType) {
-        MySQLDatabase mySQLDB = new MySQLDatabase();
-        return new ProfileOperationMySQL(mySQLDB);
+    public MediaOperation getMedia(String type) {
+        switch(type) {
+            case "mySQL":
+                return new MediaOperationMySQL(mySQLDB);
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public ProfileOperation getProfile(String type) {
+        switch(type) {
+            case "mySQL":
+                return new ProfileOperationMySQL(mySQLDB);
+            default:
+                return null;
+        }
     }
     
 }

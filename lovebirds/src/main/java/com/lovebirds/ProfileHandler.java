@@ -1,8 +1,7 @@
 package com.lovebirds;
 
-public class ProfileHandler {
+public class ProfileHandler extends Handler {
 
-    private Profile profile;
 
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???

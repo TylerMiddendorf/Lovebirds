@@ -8,7 +8,7 @@ public class Chat{
 
 
     public Chat() {
-
+        
     }
 
     public void addMessage(String message)

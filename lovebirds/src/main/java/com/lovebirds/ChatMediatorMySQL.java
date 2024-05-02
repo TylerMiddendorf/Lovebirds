@@ -1,10 +1,32 @@
 package com.lovebirds;
 
-public class ChatMediatorMySQL  extends ChatMediator{ // 
-    
+import java.sql.Connection;
+import java.util.Date;
+import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+
+
+public class ChatMediatorMySQL extends ChatMediator{ // 
+
+
+    private MySQLDatabase db;
+
+    public ChatMediatorMySQL(MySQLDatabase db) {
+        this.db = db;
+    }
     
     public Chat createChat(Chat chat) {
-        return new Chat();
+        try {
+            db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "INSERT INTO PREFERENCES(TIMESTAMP, SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            Date date = new Date();
+            
+            return new Chat();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Chat readChat() {
