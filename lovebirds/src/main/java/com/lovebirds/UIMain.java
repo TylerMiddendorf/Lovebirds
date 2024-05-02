@@ -211,7 +211,7 @@ public class UIMain {
 
 	private static int loopForInteger(Scanner scan) {
 		while(!scan.hasNextInt()) {
-			scan.nextLine();
+			scan.next();
 			System.out.print("Please enter a valid integer: ");
 		}
 		int num = scan.nextInt();
@@ -246,9 +246,9 @@ public class UIMain {
 		newPasswordInput = scan.nextLine();
 
 		//this returns null if no profile is found in database
-		Profile confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
+		boolean confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 
-		if(confirmedProfile != null){
+		if(!confirmedProfile){
 			//update profile password in database here
 			return success = true;
 		}
