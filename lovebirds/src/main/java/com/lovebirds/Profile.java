@@ -4,7 +4,7 @@ import java.sql.Blob;
 import java.util.ArrayList;
 
 public class Profile {
-    private String profileID;
+    private int profileID;
     private String emailAddress;
     private String username;
     private String password;
@@ -27,7 +27,7 @@ public class Profile {
      * Constructor that only takes key values to create profile object
      * will use setters after object creatation to fill height, weight, age, gender, profilePicture, and preferences
      */
-    public Profile(String profileID, String emailAddress, String username, String password, String firstName, String lastName) {
+    public Profile(int profileID, String emailAddress, String username, String password, String firstName, String lastName) {
         this.profileID = profileID;
         this.emailAddress = emailAddress;
         this.username = username;
@@ -90,7 +90,7 @@ public class Profile {
         this.chats = chats;
     }
 
-    public String getProfileID() {
+    public int getProfileID() {
         return profileID;
     }
 
