@@ -45,27 +45,21 @@ public class Authentication {
             String sql = "SELECT * FROM PROFILE WHERE EMAIL = ? AND USERNAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, email);
-            pstmt.setString(1, username);
+            pstmt.setString(2, username);
             ResultSet rs = pstmt.executeQuery();
 
-            String username = rs.getString(0);
-            String email = rs.getString(1);
-            String firstName = rs.getString(2);
-            String lastName = rs.getString(3);
-            String profilePic = rs.getString(4);
-            int age = rs.getInt(5);
-            int height = rs.getInt(6);
-            int weight = rs.getInt(7);
-            String gender = rs.getString(8);
-            String password = rs.getString(9);
+            int userID = rs.getInt(0);
+            String firstName = rs.getString(3);
+            String lastName = rs.getString(4);
+            String profilePic = rs.getString(5);
+            int age = rs.getInt(6);
+            int height = rs.getInt(7);
+            int weight = rs.getInt(8);
+            String gender = rs.getString(9);
+            String password = rs.getString(10);
 
-            Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
-            newProfile.setAge(age);
-            newProfile.setHeight(height);
-            newProfile.setWeight(weight);
-            newProfile.setGender(gender);
-            newProfile.setProfilePicture(profilePic);
-            return newProfile;
+            Profile authenticated = new Profile(userID, email, username, password, firstName, lastName);
+            return authenticated;
             
         } catch (SQLException e) {
             // TODO: handle exception
