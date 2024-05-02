@@ -131,7 +131,7 @@ public class UIMain {
 						System.out.println("\nPassword has been successfully reset");
 					}
 					else{
-						System.out.print("Error finding user with the details provided");
+						System.out.print("\nError finding user with the details provided");
 					}
 					//make userInput 0 so it will loop back into switch statement
 					break;
@@ -220,15 +220,16 @@ public class UIMain {
 
 
 	/**
-	 * get username, email, and age from user to authenticate
+	 * get username, email, and new password from user to authenticate
 	 * update users password in the database
-	 * calls forgotPassword in Controller
+	 * invoke forgotPassword in Controller
 	 * @return
 	 */
 	private static boolean forgotPassword() {
 		Scanner scan = new Scanner(System.in);
 		String usernameInput;
 		String emailInput;
+		String newPasswordInput;
 		boolean success = false;
 
 		//if statement for matching inputs within database
@@ -241,15 +242,16 @@ public class UIMain {
 		usernameInput = scan.nextLine();
 		System.out.print("Please enter your email: ");
 		emailInput = scan.nextLine();
+		System.out.print("Please enter your new password: ");
+		newPasswordInput = scan.nextLine();
 
 		//this returns null if no profile is found in database
-		Profile confirmedProfile = controller.forgotPassword(emailInput, usernameInput);
+		Profile confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 
 		if(confirmedProfile != null){
+			//update profile password in database here
 			return success = true;
 		}
-
-		//need to call update profile for password somewhere
 
 		return success;
 	}

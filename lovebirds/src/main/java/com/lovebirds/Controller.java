@@ -213,10 +213,11 @@ class Controller{
      * invokes forgot password in Authentication
      * @param email - user's email
      * @param username - user's username
+     * @param newPassword - new password user wants
      * @return Profile object
      */
-    public Profile forgotPassword(String email, String username){
-        Authentication.authenticateForgotPassword(email, username);
+    public Profile forgotPassword(String email, String username, String newPassword){
+        Authentication.authenticateForgotPassword(email, username, newPassword);
         return null;
     }
     
