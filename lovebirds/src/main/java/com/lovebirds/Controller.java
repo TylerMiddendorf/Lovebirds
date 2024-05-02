@@ -216,9 +216,9 @@ class Controller{
      * @param newPassword - new password user wants
      * @return Profile object
      */
-    public Profile forgotPassword(String email, String username, String newPassword){
-        Authentication.authenticateForgotPassword(email, username, newPassword);
-        return null;
+    public boolean forgotPassword(String email, String username, String newPassword){
+        boolean authenticated = Authentication.authenticateForgotPassword(email, username, newPassword);
+        return authenticated;
     }
     
 
