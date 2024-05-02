@@ -2,8 +2,13 @@ package com.lovebirds;
 
 import java.net.ConnectException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.mysql.cj.xdevapi.PreparableStatement;
 
 public class Authentication {
+
     public static Database db;
     /*
      * handles login of account
@@ -30,10 +35,39 @@ public class Authentication {
      * @return Profile object
      */
     public static Profile authenticateForgotPassword(String email, String username){
-        db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
-        db.connect();
-        Connection dbConn = db.getConnection();
         
+        try {
+
+            db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
+            db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "SELECT * FROM PROFILE WHERE EMAIL = ? AND USERNAME = ?";
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            String username = rs.getString(0);
+            String email = rs.getString(1);
+            String firstName = rs.getString(2);
+            String lastName = rs.getString(3);
+            String profilePic = rs.getString(4);
+            int age = rs.getInt(5);
+            int height = rs.getInt(6);
+            int weight = rs.getInt(7);
+            String gender = rs.getString(8);
+            String password = rs.getString(9);
+
+            Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
+            newProfile.setAge(age);
+            newProfile.setHeight(height);
+            newProfile.setWeight(weight);
+            newProfile.setGender(gender);
+            newProfile.setProfilePicture(profilePic);
+            return newProfile;
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+           
         return null;
     }
 }
