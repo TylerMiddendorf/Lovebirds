@@ -62,7 +62,7 @@ public class Authentication {
             return authenticated;
             
         } catch (SQLException e) {
-            // TODO: handle exception
+            System.out.println("Could not find profile to update password.");
         }
            
         return null;
