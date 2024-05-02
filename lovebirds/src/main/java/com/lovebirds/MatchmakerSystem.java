@@ -21,7 +21,6 @@ public class MatchmakerSystem {
         int minWeight = userPreferences.getMinWeight();
         int maxWeight = userPreferences.getMaxAge();
         String preferredGender = userPreferences.getPreferredGender();
-        
         ArrayList<Profile> matches = new ArrayList<Profile>();
 
         return matches;
