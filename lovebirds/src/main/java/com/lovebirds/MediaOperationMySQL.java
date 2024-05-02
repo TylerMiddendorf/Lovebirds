@@ -79,18 +79,22 @@ public class MediaOperationMySQL extends MediaOperation { //
             System.out.println("Could not retrieve image. Please try again.");
             return null;
         }
-
-
-
-
-
-        
     }
 
     public boolean deletePhoto(int userID) {
-        this.db.connect();
-        Connection dbConn = db.getConnection();
-        return true;
+        try{
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "DELETE FROM Photo WHERE USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            pstmt.executeQuery();
+            return true;
+        } catch(SQLException e){
+            System.out.println("Could not delete image. Please try again.");
+            return false;
+        }
+        
     }
 
     public Album createAlbum(int userID, String albumName) {
