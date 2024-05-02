@@ -30,7 +30,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         try {
-        ImageIO.write(image, "png", baos);
+            ImageIO.write(image, "png", baos);
         }
         catch(Exception e) {
             return false;
