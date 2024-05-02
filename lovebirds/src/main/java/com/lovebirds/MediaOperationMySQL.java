@@ -18,9 +18,9 @@ public class MediaOperationMySQL extends MediaOperation { //
     }
     
     
-    public boolean createPhoto(Photo photo, String album, int UID, String Photo_name) {
+    public boolean createPhoto(String path, String album, int UID, String Photo_name) {
         
-        String path = photo.getFilePath();
+       
         BufferedImage image = null;
         try {
             image = ImageIO.read(new File(path));
@@ -69,11 +69,11 @@ public class MediaOperationMySQL extends MediaOperation { //
             ResultSet rs = pstmt.executeQuery();
             int UID = rs.getInt(0);
             String albumName = rs.getString(1);
-            byte[] image = rs.getBytes(2);
+            byte image[] = rs.getBytes(2);
             String photoName = rs.getString(3);
+
             
-            
-            Photo photo = new Photo(photo_name, filePath, fileName, "png");
+            Photo photo = new Photo(photoName, image , "png");
             return photo;
         } catch(SQLException e){
             System.out.println("Could not retrieve image. Please try again.");

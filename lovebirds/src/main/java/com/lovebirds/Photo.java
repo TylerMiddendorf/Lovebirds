@@ -5,35 +5,28 @@ package com.lovebirds;
 public class Photo {
 
     private String photoID;
-    private String filePath; 
-    private String fileName;
+    private byte photo[]; 
     private String fileFormat;
 
     public Photo() {
         
     }
 
-    public Photo(String photoId, String filePath, String fileName, String fileFormat) {
+    public Photo(String photoId, byte photo[], String fileFormat) {
         this.photoID = photoId;
-        this.filePath = filePath;
-        this.fileName = fileName;
+        this.photo = photo;
         this.fileFormat = fileFormat;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }   
+ 
 
-    public String getFileName() {
-        return fileName;
+
+    public void setPhoto(byte photo[]) {
+        this.photo = photo;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public String getFilePath() {
-        return filePath;
+    public byte[] getPhoto() {
+        return photo;
     }
 
     public void setFileFormat(String fileFormat) {
