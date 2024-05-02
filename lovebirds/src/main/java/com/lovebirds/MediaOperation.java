@@ -3,7 +3,7 @@ package com.lovebirds;
 public abstract class MediaOperation {
     
     private Database db;
-    public abstract Photo createPhoto(Photo photo);
+    public abstract boolean createPhoto(Photo photo, String album, int UID);
     public abstract Photo readPhoto();
     public abstract boolean deletePhoto();
     public abstract Album createAlbum();
