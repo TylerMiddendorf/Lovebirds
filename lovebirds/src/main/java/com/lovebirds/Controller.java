@@ -208,12 +208,14 @@ class Controller{
 
     }
 
-    /*
-     * allows user to change password
-     * @param newPass
-     * @return string confirmation message?
+    /**
+     * invokes forgot password in Authentication
+     * @param email - user's email
+     * @param username - user's username
+     * @return Profile object
      */
-    public String forgotPassword(String newPass){
+    public Profile forgotPassword(String email, String username){
+        Authentication.authenticateForgotPassword(email, username);
         return null;
     }
     

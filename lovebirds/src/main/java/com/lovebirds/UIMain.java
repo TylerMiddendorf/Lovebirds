@@ -102,6 +102,9 @@ public class UIMain {
 			System.out.println("4: Exit");
 			System.out.print("Select one of the following: ");
 			userInput = loopForInteger(sc);
+
+			//this needs fixed (looped) because it does not require login after forgot password case
+
 			//buffer scanner to prevent skipping over the next scanner
 			sc.nextLine();
 			switch (userInput) {
@@ -122,7 +125,13 @@ public class UIMain {
 					// 	enter & set preferences
 					break;
 				case 3://Forgot Password
-					
+					boolean passwordReset = forgotPassword();
+					if (passwordReset){
+						System.out.println("\nPassword has been successfully reset");
+					}
+					else{
+						System.out.print("Error finding user with the details provided");
+					}
 					break;
 				case 4://exit
 					System.exit(0);
@@ -190,7 +199,7 @@ public class UIMain {
     }//end main
 
     //displays menu for user data entries
-    public static void displayMenu(){
+    private static void displayMenu(){
         System.out.println("");
 		System.out.println("1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
@@ -208,6 +217,42 @@ public class UIMain {
 		}
 		int num = scan.nextInt();
 		return num;
+	}
+
+	/*
+	 * get username, email, and age from user to authenticate
+	 * update users password in the database
+	 */
+	private static boolean forgotPassword() {
+		Scanner scan = new Scanner(System.in);
+		String usernameInput;
+		String emailInput;
+		boolean success = false;
+
+		//if statement for matching inputs within database
+		//if theres a match, ask user for new password, update password in database for that user,
+		//set success to true
+		//no match set success to false
+		//return success
+
+		System.out.print("Please enter your username: ");
+		usernameInput = scan.nextLine();
+		System.out.print("Please enter your email: ");
+		emailInput = scan.nextLine();
+
+		//call forgot password from controller
+		//call forgot password in controller from authentication
+
+		//this returns null if no profile is found in database
+		Profile confirmedProfile = controller.forgotPassword(emailInput, usernameInput);
+
+		if(confirmedProfile != null){
+			return success = true;
+		}
+
+		//need to call update profile for password somewhere
+
+		return success;
 	}
 
 } //end UIMain
