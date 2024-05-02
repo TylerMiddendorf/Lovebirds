@@ -7,7 +7,7 @@ public class Authentication {
      * @param username and password
      * @returns int exception handling?
      */
-    static public int logIn(String username, String password)
+    public static int logIn(String username, String password)
     {
         //db = FactoryProducer.getDatabase();
         return 0;
@@ -20,12 +20,14 @@ public class Authentication {
 
     }
 
-    /*
-     * allows user to change password
-     * @param newPass
-     * @return string confirmation message?
+    /**
+     * Searches for profile record in database with user entered information
+     * @param email - user's email
+     * @param username - user's username
+     * @return Profile object
      */
-    public String forgotPassword(String newPass){
+    public static Profile authenticateForgotPassword(String email, String username){
+        //databse connection and searching for record match here
         return null;
     }
 }
