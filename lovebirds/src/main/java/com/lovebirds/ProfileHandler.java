@@ -67,8 +67,13 @@ public class ProfileHandler extends Handler {
         return null;
     }
 
-    public boolean editPreferences()
+    public boolean editPreferences(Profile user)
     {
+        user.getPreferences();
+        // get the preferences from the profile
+        // take in input from the user for new preference settings
+        // set each new preference to the new preference in profile
+        // update the new preferences for the profile in the database
         return true;
     }
 

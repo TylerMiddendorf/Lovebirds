@@ -10,13 +10,13 @@ public class UIMain {
 		// welcome message
 		// display menu for creating an account or logging in
 		// if creating an account
-		// 	call createProfile()
-		// 	enter & set profile info
-		// 	call createPreferences()
-		// 	enter & set preferences
+		// call createProfile()
+		// enter & set profile info
+		// call createPreferences()
+		// enter & set preferences
 		// else if logging in
-		// 	enter username & password
-		// 	call logIn()
+		// enter username & password
+		// call logIn()
 		
 		// then
 		
@@ -83,6 +83,7 @@ public class UIMain {
         //scanner object
 		Scanner sc = new Scanner(System.in);
 		controller = new Controller();
+
 		//variables that assist with looped program
 		int userInput = 0;
 		boolean run = true;
@@ -141,9 +142,6 @@ public class UIMain {
 		}
 
 
-
-
-	
 		do 
 		{
 			//prints menu
