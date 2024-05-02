@@ -1,7 +1,10 @@
 package com.lovebirds;
 
+import java.net.ConnectException;
+import java.sql.Connection;
+
 public class Authentication {
-    Database db;
+    public static Database db;
     /*
      * handles login of account
      * @param username and password
@@ -27,7 +30,10 @@ public class Authentication {
      * @return Profile object
      */
     public static Profile authenticateForgotPassword(String email, String username){
-        //databse connection and searching for record match here
+        db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
+        db.connect();
+        Connection dbConn = db.getConnection();
+        
         return null;
     }
 }
