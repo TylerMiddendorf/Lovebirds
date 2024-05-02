@@ -133,6 +133,7 @@ public class UIMain {
 					else{
 						System.out.print("Error finding user with the details provided");
 					}
+					//make userInput 0 so it will loop back into switch statement
 					break;
 				case 4://exit
 					System.exit(0);
@@ -217,9 +218,12 @@ public class UIMain {
 		return num;
 	}
 
-	/*
+
+	/**
 	 * get username, email, and age from user to authenticate
 	 * update users password in the database
+	 * calls forgotPassword in Controller
+	 * @return
 	 */
 	private static boolean forgotPassword() {
 		Scanner scan = new Scanner(System.in);
@@ -237,9 +241,6 @@ public class UIMain {
 		usernameInput = scan.nextLine();
 		System.out.print("Please enter your email: ");
 		emailInput = scan.nextLine();
-
-		//call forgot password from controller
-		//call forgot password in controller from authentication
 
 		//this returns null if no profile is found in database
 		Profile confirmedProfile = controller.forgotPassword(emailInput, usernameInput);
