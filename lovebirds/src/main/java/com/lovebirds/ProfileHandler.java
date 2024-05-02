@@ -1,5 +1,4 @@
 package com.lovebirds;
-
 import java.util.Scanner;
 
 public class ProfileHandler extends Handler {
