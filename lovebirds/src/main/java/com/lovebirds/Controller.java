@@ -137,8 +137,9 @@ class Controller{
     }
 
     /*
-     * THIS NEEDS FIXED to take parm
-     * also add editPreference method in ProfileHandler
+     * calls editPreferences in profile handler
+     * @param user
+     * @return true if preferences have been edited/updated
      */
     public boolean editPreferences(Profile user){
         return profileHandler.editPreferences(user);
