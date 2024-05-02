@@ -33,6 +33,7 @@ public class Authentication {
      * Searches for profile record in database with user entered information
      * @param email - user's email
      * @param username - user's username
+     * @param newPassword - new password user wants
      * @return Profile object
      */
     public static Profile authenticateForgotPassword(String email, String username, String newPassword){
