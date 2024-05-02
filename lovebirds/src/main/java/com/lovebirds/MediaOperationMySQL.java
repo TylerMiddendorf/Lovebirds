@@ -1,6 +1,5 @@
 package com.lovebirds;
 
-
 import java.awt.image.*;
 import java.io.*;
 import java.sql.Connection;
@@ -22,23 +21,22 @@ public class MediaOperationMySQL extends MediaOperation { //
         
         String path = photo.getFilePath();
         BufferedImage image = null;
-        try
-        {
+        try {
             image = ImageIO.read(new File(path));
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             return false;
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try
-        {
+
+        try {
         ImageIO.write(image, "png", baos);
         }
-        catch(Exception e){
+        catch(Exception e) {
             return false;
         }
-        InputStream is = new ByteArrayInputStream(baos.toByteArray());//Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+        InputStream is = new ByteArrayInputStream(baos.toByteArray());
+        //Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
         //setBlob(int parameterIndex, InputStream is)
         try {
 
@@ -49,8 +47,6 @@ public class MediaOperationMySQL extends MediaOperation { //
             pstmt.setInt(1, UID);
             pstmt.setString(2, album);
             pstmt.setBlob(3,  is);
-           
-         
             
         } catch (SQLException e) {
             System.out.println("Could not create image. Please try again.");
@@ -63,8 +59,6 @@ public class MediaOperationMySQL extends MediaOperation { //
     public Photo readPhoto() {
         return null;
     }
-
- 
 
     public boolean deletePhoto() {
         return true;
