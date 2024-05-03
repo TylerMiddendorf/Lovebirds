@@ -1,6 +1,8 @@
 package com.lovebirds;
 
-public class MediaHandler extends Handler {
+import java.lang.*;
+
+@SuppressWarnings("unused") public class MediaHandler extends Handler {
 
     public boolean uploadPhoto(Photo photo) {
 
