@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class MatchmakerHandler {
     
-    // displays the suggested users
-    public ArrayList<Profile> retrieveSugUsers(int id) {
+    // displays the suggested users, generates the suggested users on call. 
+    public ArrayList<Profile> retrieveSugUsers(int userID) {
         return new ArrayList<Profile>();
     }
 
