@@ -23,7 +23,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO PROFILE (USERNAME, EMAIL, FIRSTNAME, LASTNAME, PROFILEPICTURE, AGE, HEIGHT, WEIGHT, GENDER, PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO PROFILE (USERNAME, EMAIL, FIRST_NAME, LAST_NAME, PROFILE_PICTURE, AGE, HEIGHT, WEIGHT, GENDER, PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, profile.getUsername());
             pstmt.setString(2, profile.getEmail());
@@ -35,10 +35,13 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setInt(8, profile.getWeight());
             pstmt.setString(9, profile.getGender());
             pstmt.setString(10, profile.getPassword());
-            pstmt.executeQuery();
+            int affectedRows = pstmt.executeUpdate();
+            pstmt.close();
             return true;
             
         } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getNextException());
             System.out.println("Could not create profile. Please try again.");
             return false;
         }
