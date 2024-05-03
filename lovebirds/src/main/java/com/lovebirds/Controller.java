@@ -61,8 +61,8 @@ public class Controller {
      * calls createProfile from Profile Handler
      * @preturn newProfile
      */
-    public boolean createProfile(String email, String username, String password, String firstName, String lastName){
-        Profile newProfile = new Profile(email, username, password, firstName, lastName);
+    public boolean createProfile(String username, String email, String firstName, String lastName, String profilePicture, int age, int height, int weight, String gender, String password){
+        Profile newProfile = new Profile(username, email, firstName, lastName, profilePicture, age, height, weight, gender, password);
         boolean created = profileHandler.createProfile(newProfile);
         return created;
     }
