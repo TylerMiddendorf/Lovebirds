@@ -9,7 +9,7 @@ public class Controller {
     private ProfileHandler profileHandler;
     private ChatHandler chatHandler;
     
-    public void Controller(){
+    public Controller(){
         mediaHandler = new MediaHandler();
         matchmakerHandler = new MatchmakerHandler();
         profileHandler = new ProfileHandler();
