@@ -8,12 +8,11 @@ public class ProfileHandler extends Handler {
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???
      */
-    public Profile createProfile()
+    public boolean createProfile(Profile newProfile)
     {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        profileOperation.createProfile(profile);
+        boolean created = profileOperation.createProfile(profile);
         // input the username and other data?
-        Profile created = new Profile();
         return created;
     }
 
