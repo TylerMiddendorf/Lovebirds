@@ -23,6 +23,7 @@ public class ProfileHandler extends Handler {
     public Profile editProfile(Profile profile)
     {
         //edit the profile
+        //able to change first name, last name, age, email, username
 
         return profile;
     }

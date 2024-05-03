@@ -185,6 +185,8 @@ public class UIMain {
 				System.out.println("Call to edit profile.");
 				//calls edit profile in controller 
 				//able to change first name, last name, age, email, username
+				Profile testProfile = null;
+				controller.editProfile(testProfile);
 			}
 			else if(userInput == 4)
 			{
