@@ -41,7 +41,8 @@ public class UIMain {
 					int resultID = controller.logIn(username, password);
 					if(resultID != -1) {
 						controller.initializeProfile(resultID);
-					}
+						userInput = 0;
+					} 
 					//error handling something like this
 					//int error_code;
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
@@ -63,6 +64,7 @@ public class UIMain {
 					int height = loopForInteger(sc);
 					System.out.print("Enter weight: ");
 					int weight = loopForInteger(sc);
+					sc.nextLine();
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
 					controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
@@ -85,7 +87,7 @@ public class UIMain {
 
 					//userInput = 0 so it will loop back into switch statement
 					//force login after changing password
-					userInput = 0;
+					// userInput = 0;
 					break;
 				case 4: //exit
 					System.out.println("Exiting...");
