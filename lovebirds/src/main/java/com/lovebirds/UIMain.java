@@ -84,6 +84,7 @@ public class UIMain {
 					userInput = 0;
 					break;
 				case 4: //exit
+					System.out.println("Exiting...");
 					System.exit(0);
 				default:
 					userInput = 0;		
