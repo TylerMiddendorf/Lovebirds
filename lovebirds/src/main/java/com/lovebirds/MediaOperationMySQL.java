@@ -67,8 +67,6 @@ public class MediaOperationMySQL extends MediaOperation { //
             pstmt.setString(3, photo_name);
 
             ResultSet rs = pstmt.executeQuery();
-            int UID = rs.getInt(0);
-            String albumName = rs.getString(1);
             byte image[] = rs.getBytes(2);
             String photoName = rs.getString(3);
 
