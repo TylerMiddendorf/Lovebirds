@@ -1,9 +1,8 @@
 package com.lovebirds;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
-import java.time.LocalDateTime;
+
 
 
 public class ChatMediatorMySQL extends ChatMediator{ // 

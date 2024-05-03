@@ -1,6 +1,8 @@
 package com.lovebirds;
 
-public abstract class MediaOperation {
+import java.lang.*;
+
+@SuppressWarnings("unused") public abstract class MediaOperation {
     
     private Database db;
     public abstract boolean createPhoto(String path, String albumName, int userID, String photoName);

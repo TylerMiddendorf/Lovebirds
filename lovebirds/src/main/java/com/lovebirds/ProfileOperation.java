@@ -1,6 +1,8 @@
 package com.lovebirds;
 
-public abstract class ProfileOperation {
+import java.lang.*;
+
+@SuppressWarnings("unused") public abstract class ProfileOperation {
     
     private Database db;
     public abstract boolean createProfile(Profile profile);

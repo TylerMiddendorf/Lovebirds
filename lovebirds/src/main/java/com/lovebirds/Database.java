@@ -1,8 +1,9 @@
 package com.lovebirds;
 
 import java.sql.Connection;
+import java.lang.*;
 
-public abstract class Database {
+@SuppressWarnings("unused") public abstract class Database {
     
     private String username;
     private String password;
