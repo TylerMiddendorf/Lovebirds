@@ -1,4 +1,5 @@
 package com.lovebirds;
+
 import java.util.Scanner;
 
 public class ProfileHandler extends Handler {
@@ -45,10 +46,27 @@ public class ProfileHandler extends Handler {
 
     public int rateUser(Profile user)
     {
-        int rating = 0;
-        //prompt for rating, set rating
-
-        return rating;
+		int rating = 0;
+	    Scanner sc = new Scanner(System.in);
+	    displayRateUserMenu();
+	    while (rating == 0) {
+	        int userInput;
+	        if (sc.hasNextInt()) { 
+	            userInput = sc.nextInt();
+	            if (userInput >= 1 && userInput <= 5) { 
+	                rating = userInput;
+	            } else {
+	                System.out.println("\nInvalid input. Please rate the user 1-5.");
+	                displayRateUserMenu();
+	            }
+	        } else {
+	            sc.next(); 
+	            System.out.print("\nPlease enter a valid integer.\n"); 
+	            displayRateUserMenu();
+	        }
+	    }
+	    sc.close();
+	    return rating;
     }
 
     public boolean likeUser(Profile user)
@@ -74,6 +92,7 @@ public class ProfileHandler extends Handler {
      */
     public boolean editPreferences(Profile user)
     {
+        user.getPreferences();
         // get the preferences from the profile
         // take in input from the user for new preference settings
         // set each new preference to the new preference in profile
@@ -202,6 +221,16 @@ public class ProfileHandler extends Handler {
         return true;
     }
 
+    private void displayRateUserMenu() {
+        System.out.println("Rate the user 1-5.");
+        System.out.println("\n1: Not interested at all.");
+        System.out.println("2: Not interested.");
+        System.out.println("3: Kind of interested.");
+        System.out.println("4: Interested.");
+        System.out.println("5: Very interested.");
+        System.out.print("Select one of the following: ");
+    }
+
     private void displayEditPreferencesMenu()
     {
         System.out.println("Which preference would you like to edit?");
@@ -218,8 +247,8 @@ public class ProfileHandler extends Handler {
 
     private int loopForInteger(Scanner scan) {
 		while(!scan.hasNextInt()) {
-			scan.next();
-			System.out.print("Please enter a valid integer: ");
+			scan.nextLine();
+			System.out.print("\nPlease enter a valid integer.");
 		}
 		int num = scan.nextInt();
 		return num;
