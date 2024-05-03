@@ -5,82 +5,8 @@ import java.util.Scanner;
 public class UIMain {
 
 	static Controller controller;
-    public static void main(String[] args){
-
-		// welcome message
-		// display menu for creating an account or logging in
-		// if creating an account
-		// call createProfile()
-		// enter & set profile info
-		// call createPreferences()
-		// enter & set preferences
-		// else if logging in
-		// enter username & password
-		// call logIn()
-		
-		// then
-		
-		// How do we incorporate retrieveSugProfile
-		// add text in the functions for the console messages instead of hardcoding in main
-		// iterate through ArrayList in functions
-		
-		// display options menu (view matches "retrieveSugUsers()",
-		// edit profile "editProfile()", edit preferences 
-		// edit preferences "editPreferences()", edit album "editAlbum()",
-		// logout "logOut()"
-		// 1. View matches 
-		// 2. Edit profile 
-		// 3. Edit preferences
-		// 4. Edit album
-		// 5. Logout
-		
-		// if view matches
-		// 	display matches ( call function "retrieveSugUsers()"):
-		// 	displays one name from the ArrayList of Profiles
-		// 	1. View user
-		// 	2. Dismiss user
-			
-		// 	if View user								
-		// 		display options menu 2 (like user "likeUser()", rate user "rateUser()", 
-		// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
-		// 		1. Like user
-		// 		2. Rate user
-		// 		3. Unmatch user
-		// 		4. Block user
-			
-		// 		if Like user	
-		// 			if (isLiked == false)
-		// 				set "isLiked" variable to true
-		// 			else
-		// 				print("You already liked this user.")
-		// 			go back to options menu 2
-		// 		else if Rate user
-		// 			print ("Rate this user 1-5: )
-		// 			Scan the integer entered by the user
-		// 			Store in ratings array/table
-				
-		// 		else if Unmatch user
-		// 			remove this user from the ArrayList
-		
-		// 		else if Block user
-		// 			// need to figure out the logic for this
-			
-		// 	else if Dismiss user
-		// 		increment, move on to next user in ArrayList
-			
-		// else if edit profile 
-		// 	call edit/updateProfile
-		// 	Have option to go back to options menu
-		
-		// else if edit preferences
-		// 	call edit/updatePreferences
-		// 	Have option to go back to options menu	
-		
-		// else if edit album
-		// 	call edit/updatePreferences
-		// 	Have option to go back to options menu
-
-        //scanner object
+    public static void main(String[] args) {
+		//scanner object
 		Scanner sc = new Scanner(System.in);
 		controller = new Controller();
 		String username = "";
@@ -89,10 +15,17 @@ public class UIMain {
 		//variables that assist with looped program
 		int userInput = 0;
 		boolean run = true;
-		
+				
 		//welcome message
 		System.out.println("Welcome to Lovebirds dating app!");
 
+		// display menu for login, create account, forgot password, or exit
+
+		// 2 if logging in
+			// enter username & password
+			// call logIn()
+		// 3 forgot password
+		// 4 exit
 		//create profile, login, or quit options right here
 		boolean firstTime = true;
 		while(userInput == 0){
@@ -149,7 +82,21 @@ public class UIMain {
 			}
 		}
 
-
+		// then
+		
+		// How do we incorporate retrieveSugProfile
+		// add text in the functions for the console messages instead of hardcoding in main
+		// iterate through ArrayList in functions
+		
+		// display options menu (view matches "retrieveSugUsers()",
+		// edit profile "editProfile()", edit preferences 
+		// edit preferences "editPreferences()", edit album "editAlbum()",
+		// logout "logOut()"
+		// 1. View matches 
+		// 2. Edit profile 
+		// 3. Edit preferences
+		// 4. Edit album
+		// 5. Logout
 		do 
 		{
 			//prints menu
@@ -183,12 +130,18 @@ public class UIMain {
 			else if(userInput == 3)
 			{
 				System.out.println("Call to edit profile.");
-				//edit profile
+				//calls edit profile in controller 
+				//able to change first name, last name, age, email, username
+				Profile testProfile = null;
+				controller.editProfile(testProfile);
 			}
 			else if(userInput == 4)
 			{
 				System.out.println("Call to edit preferences.");
-				//edit preferences
+				// retrieve the profile of the user that is currently logged in. 
+				// call editPreferences with the profile of user
+				Profile testProfile = null;
+				editPreferences(user);
 			}
 			else if(userInput == 5)
 			{
@@ -197,6 +150,73 @@ public class UIMain {
 			}
 		}
 		while(run);
+		
+		// if view matches
+		// 	display matches ( call function "retrieveSugUsers()"):
+		// 	displays one name from the ArrayList of Profiles
+		// 	1. View user
+		// 	2. Dismiss user
+			
+		// 	if View user								
+		// 		display options menu 2 (like user "likeUser()", rate user "rateUser()", 
+		// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
+		// 		1. Like user
+		// 		2. Rate user
+		int rating = 0;
+	    displayRateUserMenu();
+	    while (rating == 0) {
+	        int ratingInput;
+	        if (sc.hasNextInt()) { 
+	            ratingInput = sc.nextInt();
+	            if (ratingInput >= 1 && ratingInput <= 5) { 
+	                rating = ratingInput;
+	            } else {
+	                System.out.println("\nInvalid input. Please rate the user 1-5.");
+	                displayRateUserMenu();
+	            }
+	        } else {
+	            sc.next(); 
+	            System.out.print("\nPlease enter a valid integer.\n"); 
+	            displayRateUserMenu();
+	        }
+	    }
+
+		// 		3. Unmatch user
+		// 		4. Block user
+			
+		// 		if Like user	
+		// 			if (isLiked == false)
+		// 				set "isLiked" variable to true
+		// 			else
+		// 				print("You already liked this user.")
+		// 			go back to options menu 2
+		// 		else if Rate user
+		// 			print ("Rate this user 1-5: )
+		// 			Scan the integer entered by the user
+		// 			Store in ratings array/table
+				
+		// 		else if Unmatch user
+		// 			remove this user from the ArrayList
+		
+		// 		else if Block user
+		// 			// need to figure out the logic for this
+			
+		// 	else if Dismiss user
+		// 		increment, move on to next user in ArrayList
+			
+		// else if edit profile 
+		// 	call edit/updateProfile
+		// 	Have option to go back to options menu
+		
+		// else if edit preferences
+		// 	call edit/updatePreferences
+		// 	Have option to go back to options menu	
+		
+		// else if edit album
+		// 	call edit/updatePreferences
+		// 	Have option to go back to options menu
+
+
 		
 		//goodbye message
 		System.out.println("Thank you, Goodbye!");
@@ -226,6 +246,155 @@ public class UIMain {
 		System.out.println("5: Edit Album");
 		System.out.println("6: Logout");
 		System.out.print("Select one of the following: ");
+    }
+
+	// displays menu for rate 
+	private static void displayRateUserMenu() {
+        System.out.println("Rate the user 1-5.");
+        System.out.println("\n1: Not interested at all.");
+        System.out.println("2: Not interested.");
+        System.out.println("3: Kind of interested.");
+        System.out.println("4: Interested.");
+        System.out.println("5: Very interested.");
+        System.out.print("Select one of the following: ");
+    }
+	
+	private void displayEditPreferencesMenu()
+    {
+        System.out.println("Which preference would you like to edit?");
+        System.out.println("1. Gender");
+        System.out.println("2. Minimum Height");
+        System.out.println("3. Maximum Height");
+        System.out.println("4. Minimum Weight");
+        System.out.println("5. Maximum Weight");
+        System.out.println("6. Minimum Age");
+        System.out.println("7. Maximum Age");
+        System.out.println("8. Finish Editing");
+        System.out.print("Enter a number: ");
+    }
+
+	private void editPreferences(Profile user)
+    {
+		//controller = new Controller();
+        user.getPreferences();
+        // get the preferences from the profile
+        // take in input from the user for new preference settings
+        // set each new preference to the new preference in profile
+        // update the new preferences for the profile in the database
+
+        boolean edited = false;
+        boolean correctNum = false;
+        Scanner scanner = new Scanner(System.in);
+        int userInput = 0;
+
+
+        Preferences usersPreferences = user.getPreferences();
+
+        while(!edited)
+        {
+            displayEditPreferencesMenu();
+
+            userInput = loopForInteger(scanner);
+
+            switch (userInput) {
+                case 1:
+                    //update gender
+                    while(!correctNum)
+                    {
+                        System.out.println("Choose your updated preferred gender: ");
+                        System.out.println("1. Female");
+                        System.out.println("2. Male");
+                        System.out.println("3. Both");
+                        System.out.println("Enter a number: ");
+                        userInput = loopForInteger(scanner);
+                        switch (userInput)
+                        {
+                        case 1:
+                            usersPreferences.setPreferredGender("Female");
+                            correctNum = true;
+                            break;
+                        case 2:
+                            usersPreferences.setPreferredGender("Male");
+                            correctNum = true;
+                            break;
+                        case 3:
+                            usersPreferences.setPreferredGender("Both");
+                            correctNum = true;
+                            break;
+                        default:
+                            System.out.println("Enter a number 1-3.");
+                            break;
+                        }
+                    }
+                    correctNum = false;
+                    break;
+
+                case 2:
+                    //min height
+                    System.out.print("Enter preferred minimum height in inches: ");
+                    userInput = loopForInteger(scanner);
+                    usersPreferences.setMinHeight(userInput);
+                    break;
+
+                case 3:
+                    //max height
+                    System.out.print("Enter preferred maximum height in inches: ");
+                    userInput = loopForInteger(scanner);
+                    usersPreferences.setMaxHeight(userInput);
+                    break;
+
+                case 4:
+                    //min weight
+                    System.out.print("Enter preferred minimum weight in pounds: ");
+                    userInput = loopForInteger(scanner);
+                    usersPreferences.setMinWeight(userInput);
+                    break;
+
+                case 5:
+                    //max weight
+                    System.out.print("Enter preferred maximum weight in pounds: ");
+                    userInput = loopForInteger(scanner);
+                    usersPreferences.setMaxWeight(userInput);
+                    break;
+
+                case 6:
+                    //min age
+                    while(!correctNum)
+                    {
+                        System.out.print("Enter preferred minimum age: ");
+                        userInput = loopForInteger(scanner);
+                        if(userInput >= 18)
+                        {
+                            usersPreferences.setMinAge(userInput);
+                            correctNum = true;
+                        }
+                        else
+                            System.out.println("Minimum age must be at least 18.");
+                    }
+                    correctNum = false;
+                    break;
+
+                case 7:
+                    //max age
+                    System.out.print("Enter preferred maximum age: ");
+                    userInput = loopForInteger(scanner);
+                    usersPreferences.setMaxAge(userInput);
+                    break;
+
+                case 8:
+                    // update preferences in the database
+                    controller.editPreferences(user);
+
+                    System.out.println("Preferences updated.");
+                    edited = true;
+                    break;
+                default:
+                    System.out.println("Enter a number 1-8.");
+                    break;
+            }
+            
+        }
+        scanner.close();
     }
 
 	private static int loopForInteger(Scanner scan) {
