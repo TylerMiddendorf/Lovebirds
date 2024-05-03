@@ -38,7 +38,10 @@ public class UIMain {
 					username = sc.nextLine();
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
-					int value = controller.logIn(username, password);
+					int resultID = controller.logIn(username, password);
+					if(resultID != -1) {
+						controller.initializeProfile(resultID);
+					}
 					//error handling something like this
 					//int error_code;
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");

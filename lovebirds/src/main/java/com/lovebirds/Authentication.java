@@ -13,11 +13,30 @@ public class Authentication {
      * @param username and password
      * @returns int exception handling?
      */
-    public static int logIn(String username, String password)
+    public static int authenticateLogIn(String username, String password)
     {
-        db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
-        
-        return 0;
+
+        try {
+
+            db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
+            db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "SELECT * FROM PROFILE WHERE USERNAME = ? AND EMAIL = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.getFetchSize() < 1) {
+                return -1;
+            }
+
+            int userID = rs.getInt(0);
+            return userID;
+
+        } catch (SQLException e) {
+            System.out.println("Could not log into the profile with the profile information provided.\nPlease try again.");
+            return -1;
+        }
     }
 
     /**
