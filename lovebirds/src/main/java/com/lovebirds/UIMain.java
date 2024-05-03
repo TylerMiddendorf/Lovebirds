@@ -147,7 +147,8 @@ public class UIMain {
 					else{
 						System.out.println("\nError finding user with the details provided");
 					}
-					//make userInput 0 so it will loop back into switch statement
+					//userInput = 0 so it will loop back into switch statement
+					userInput = 0;
 					break;
 				case 4: //exit
 					System.exit(0);
