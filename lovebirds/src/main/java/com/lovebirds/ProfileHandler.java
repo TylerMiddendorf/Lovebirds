@@ -87,6 +87,12 @@ public class ProfileHandler extends Handler {
         return true;
     }
 
+    public Profile initializeProfile(int userID) {
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        Profile profile = profileOperation.readProfile(userID);
+        return profile;
+    }
+
     public boolean deletePreferences()
     {
         return true;

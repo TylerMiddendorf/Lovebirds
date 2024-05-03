@@ -24,7 +24,7 @@ public class UIMain {
 		while(userInput == 0){
 			if(!firstTime)
 				System.out.println("Invalid Input (follow instructions)");
-			displayLoginMenu();
+			displayMenu();
 			userInput = loopForInteger(sc);
 
 			//buffer scanner to prevent skipping over the next scanner
@@ -38,7 +38,11 @@ public class UIMain {
 					username = sc.nextLine();
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
-					int value = controller.logIn(username, password);
+					int resultID = controller.logIn(username, password);
+					if(resultID != -1) {
+						controller.initializeProfile(resultID);
+						userInput = 0;
+					} 
 					//error handling something like this
 					//int error_code;
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
@@ -60,6 +64,7 @@ public class UIMain {
 					int height = loopForInteger(sc);
 					System.out.print("Enter weight: ");
 					int weight = loopForInteger(sc);
+					sc.nextLine();
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
 					controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
@@ -69,6 +74,7 @@ public class UIMain {
 					//userInput = 0 so it will loop back into switch statement
 					//force login after creating account
 					userInput = 0;
+					// firstTime = true;
 					break;
 				case 3: //Forgot Password
 					boolean passwordReset = forgotPassword();
@@ -81,7 +87,7 @@ public class UIMain {
 
 					//userInput = 0 so it will loop back into switch statement
 					//force login after changing password
-					userInput = 0;
+					// userInput = 0;
 					break;
 				case 4: //exit
 					System.out.println("Exiting...");
@@ -109,7 +115,7 @@ public class UIMain {
 		do 
 		{
 			//prints menu
-			displayMenu();
+			displayLoginMenu();
 			//gets user input
 			userInput = loopForInteger(sc);
 			
@@ -133,12 +139,9 @@ public class UIMain {
 				// 	display matches -> call function "retrieveSugUsers()":
 				// 	displays one name from the ArrayList of Profiles
 				// display view matches menu
-				displayMatchesMenu();
-				// 	1. View user
-				// 	2. Dismiss user
-					// 	increment, move on to next user in ArrayList
-				// 	if View user								
-				// 		display options menu 2 (like user "likeUser()", rate user "rateUser()", 
+				displayViewMatchesMenu();
+				// 	1. View user								
+				// 		display ViewUserMenu (like user "likeUser()", rate user "rateUser()", 
 				// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
 				// 		1. Like user
 					// 		if Like user	
@@ -148,8 +151,8 @@ public class UIMain {
 					// 				print("You already liked this user.")
 					// 			go back to options menu 2
 				// 		2. Rate user
-				int rating = 0;
 				displayRateUserMenu();
+				int rating = 0;
 				while (rating == 0) {
 					int ratingInput;
 					if (sc.hasNextInt()) { 
@@ -167,11 +170,12 @@ public class UIMain {
 					}
 				}	
 
-		// 		3. Unmatch user
-			// 		remove this user from the ArrayList
-		// 		4. Block user
-			// need to figure out the logic for this
-		
+				// 		3. Unmatch user
+					// 		remove this user from the ArrayList
+				// 		4. Block user
+					// need to figure out the logic for this
+				// 	2. Dismiss user
+					// 	increment, move on to next user in ArrayList		
 			}
 			else if(userInput == 2)
 			{
@@ -216,8 +220,11 @@ public class UIMain {
 
     }//end main
 
-	//displays menu for login
-	private static void displayLoginMenu(){
+	/*
+	 * Helper method to display start menu
+	 * Displays menu of options
+	 */
+	private static void displayMenu(){
 		System.out.println("");
 		System.out.println("1: Login");
 		System.out.println("2: Create Account");
@@ -226,8 +233,11 @@ public class UIMain {
 		System.out.print("Select one of the following: ");
 	}
 
-    //displays menu for user data entries
-    private static void displayMenu(){
+	/*
+	 * Helper method to display a menu after login 
+	 * Displays menu of options
+	 */
+    private static void displayLoginMenu(){
         System.out.println("");
 		System.out.println("1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
@@ -238,26 +248,47 @@ public class UIMain {
 		System.out.print("Select one of the following: ");
     }
 
-	// display view matches menu
-	// 	1. View user
-	// 	2. Dismiss user
-	private static void displayMatchesMenu() {
+	/*
+	 * Helper method for "1. View matches"
+	 * Displays menu of options
+	 */
+	private static void displayViewMatchesMenu() {
 		System.out.println("\n1: View user");
 		System.out.println("2: Dismiss user");
 		System.out.println("Select one of the following: ");
 	}
 
-	// displays menu for rate 
+	/*
+	 * Helper method for "1. View user" 
+	 * Displays menu of options
+	 */
+	private static void displayViewUserMenu() {
+		System.out.println("\n1: Like user");
+		System.out.println("2: Rate user");
+		System.out.println("3: Dismiss user");
+		System.out.println("4: Unmatch user");
+		System.out.println("5: Block user");
+		System.out.println("Select one of the following options: ");
+	}
+
+	/*
+	 * Helper method for rateUser
+	 * Displays menu of options
+	 */
 	private static void displayRateUserMenu() {
         System.out.println("Rate the user 1-5.");
-        System.out.println("\n1: Not interested at all.");
-        System.out.println("2: Not interested.");
-        System.out.println("3: Kind of interested.");
-        System.out.println("4: Interested.");
-        System.out.println("5: Very interested.");
+        System.out.println("\n1: Not interested at all");
+        System.out.println("2: Not interested");
+        System.out.println("3: Kind of interested");
+        System.out.println("4: Interested");
+        System.out.println("5: Very interested");
         System.out.print("Select one of the following: ");
     }
 	
+	/*
+	 * Helper method for editPreferences
+	 * Displays menu of options
+	 */
 	private static void displayEditPreferencesMenu()
     {
         System.out.println("Which preference would you like to edit?");
@@ -274,7 +305,7 @@ public class UIMain {
 
 	/**
 	 * Helper method for editProfile
-	 * displays menu of options
+	 * Displays menu of options
 	 */
 	private static void displayEditProfileMenu()
 	{

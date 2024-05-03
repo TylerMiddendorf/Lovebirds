@@ -68,17 +68,11 @@ public class ProfileOperationMySQL extends ProfileOperation{
             int weight = rs.getInt(8);
             String gender = rs.getString(9);
             String password = rs.getString(10);
-
-            Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
-            newProfile.setAge(age);
-            newProfile.setHeight(height);
-            newProfile.setWeight(weight);
-            newProfile.setGender(gender);
-            newProfile.setProfilePicture(profilePic);
+            Profile newProfile = new Profile(username, email, firstName, lastName, profilePic, age, height, weight, gender, password);
             return newProfile;
             
         } catch (SQLException e) {
-            System.out.println("Could not create profile.");
+            System.out.println("Could not find profile.");
             return null;
         }
         

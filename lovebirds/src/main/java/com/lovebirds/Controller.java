@@ -202,7 +202,13 @@ public class Controller {
      */
     public int logIn(String username, String password)
     {
-        return Authentication.logIn(username, password);
+        return Authentication.authenticateLogIn(username, password);
+    }
+
+    public Profile initializeProfile(int userID)
+    {
+        Profile profile = profileHandler.initializeProfile(userID);
+        return profile;
     }
 
     /*
