@@ -206,7 +206,7 @@ class Controller{
      * handles logout of account
      */
     public void logOut(){
-
+        
     }
 
     /**
