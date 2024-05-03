@@ -15,8 +15,54 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
     }
 
     public ArrayList<Profile> readProfilesThatMatchPreferences(Profile profile) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'readProfilesThatMatchPreferences'");
+        ArrayList<Profile> suggestedUsers = new ArrayList<Profile>();
+
+        Preferences userPreferences = profile.getPreferences();
+        String preferredGender = userPreferences.getPreferredGender();
+
+        if(!preferredGender.equals("Both"))
+        {
+            try {
+                this.db.connect();
+                Connection dbConn = db.getConnection();
+                String sql = "SELECT * FROM PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ? AND GENDER = ?";
+                PreparedStatement pstmt = dbConn.prepareStatement(sql);
+                pstmt.setInt(1, userPreferences.getMinAge());
+                pstmt.setInt(2, userPreferences.getMaxAge());
+                pstmt.setInt(3, userPreferences.getMinWeight());
+                pstmt.setInt(4, userPreferences.getMaxWeight());
+                pstmt.setInt(5, userPreferences.getMinHeight());
+                pstmt.setInt(6, userPreferences.getMaxHeight());
+                pstmt.setString(7, userPreferences.getPreferredGender());
+                ResultSet rs = pstmt.executeQuery();
+
+                return suggestedUsers;
+            } catch (SQLException e) {
+                System.out.println("Could not create profile.");
+                return null;
+            }
+        }
+        else // if it does = both, dont query gender
+        {
+            try {
+                this.db.connect();
+                Connection dbConn = db.getConnection();
+                String sql = "SELECT * FROM PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ?";
+                PreparedStatement pstmt = dbConn.prepareStatement(sql);
+                pstmt.setInt(1, userPreferences.getMinAge());
+                pstmt.setInt(2, userPreferences.getMaxAge());
+                pstmt.setInt(3, userPreferences.getMinWeight());
+                pstmt.setInt(4, userPreferences.getMaxWeight());
+                pstmt.setInt(5, userPreferences.getMinHeight());
+                pstmt.setInt(6, userPreferences.getMaxHeight());
+                ResultSet rs = pstmt.executeQuery();
+
+                return suggestedUsers;
+            } catch (SQLException e) {
+                System.out.println("Could not create profile.");
+                return null;
+            }
+        }
     }
 
     public Profile readProfile(int userID) {
