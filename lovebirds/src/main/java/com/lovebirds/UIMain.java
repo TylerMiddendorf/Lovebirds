@@ -211,8 +211,8 @@ public class UIMain {
 
 	private static int loopForInteger(Scanner scan) {
 		while(!scan.hasNextInt()) {
-			scan.next();
-			System.out.print("Please enter a valid integer: ");
+			scan.nextLine();
+			System.out.print("Please enter a valid integer.");
 		}
 		int num = scan.nextInt();
 		return num;
