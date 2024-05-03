@@ -171,6 +171,8 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve suggested users.");
 				//retrieve suggested users
+					//loop to select specific user
+						//loop for specific operations on user (like, match, dismiss, block, rate)
 			}
 			else if(userInput == 2)
 			{

@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class ProfileHandler extends Handler {
 
 
+    public ProfileHandler() {
+        
+    }
+
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???
      */

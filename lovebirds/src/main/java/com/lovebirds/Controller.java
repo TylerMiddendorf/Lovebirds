@@ -2,14 +2,14 @@ package com.lovebirds;
 
 import java.util.ArrayList;
 
-class Controller{
+public class Controller {
     
     private MediaHandler mediaHandler;
     private MatchmakerHandler matchmakerHandler;
     private ProfileHandler profileHandler;
     private ChatHandler chatHandler;
     
-    public void Controller(){
+    public Controller(){
         mediaHandler = new MediaHandler();
         matchmakerHandler = new MatchmakerHandler();
         profileHandler = new ProfileHandler();
@@ -61,10 +61,10 @@ class Controller{
      * calls createProfile from Profile Handler
      * @preturn newProfile
      */
-    public Profile createProfile(String email, String username, String password, String firstName, String lastName){
+    public boolean createProfile(String email, String username, String password, String firstName, String lastName){
         Profile newProfile = new Profile(email, username, password, firstName, lastName);
         boolean created = profileHandler.createProfile(newProfile);
-        return newProfile;
+        return created;
     }
 
     /*
