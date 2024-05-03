@@ -99,20 +99,6 @@ public class MediaOperationMySQL extends MediaOperation { //
         
     }
 
-    public Album createAlbum(int userID, String albumName) {
-       /*
-        try{
-            this.db.connect();
-            Connection dbConn = db.getConnection();
-            ArrayList<Photo> photos = new ArrayList<>();
-
-            return new Album(albumName, photos);
-        } catch(SQLException e){
-            return null;
-        }
-        */
-        return null;
-    }
 
     public Album readAlbum(int userID, String albumName) {
         try{
