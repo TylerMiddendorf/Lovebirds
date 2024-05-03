@@ -15,7 +15,7 @@ public class ProfileHandler extends Handler {
     public boolean createProfile(Profile newProfile)
     {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        boolean created = profileOperation.createProfile(profile);
+        boolean created = profileOperation.createProfile(newProfile);
         // input the username and other data?
         return created;
     }
