@@ -35,7 +35,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setInt(8, profile.getWeight());
             pstmt.setString(9, profile.getGender());
             pstmt.setString(10, profile.getPassword());
-            int affectedRows = pstmt.executeUpdate();
+            pstmt.executeUpdate();
             pstmt.close();
             return true;
             
