@@ -131,7 +131,7 @@ public class UIMain {
 						System.out.println("\nPassword has been successfully reset");
 					}
 					else{
-						System.out.print("\nError finding user with the details provided");
+						System.out.println("\nError finding user with the details provided");
 					}
 					//make userInput 0 so it will loop back into switch statement
 					break;
@@ -248,7 +248,7 @@ public class UIMain {
 		//this returns false if no profile is found in database
 		boolean confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 
-		if(!confirmedProfile){
+		if(confirmedProfile){
 			success = true;
 			return success;
 		}

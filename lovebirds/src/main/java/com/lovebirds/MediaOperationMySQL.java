@@ -124,6 +124,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             System.out.println("Could not updateAlbum. Please try again.");
             return false;
         }
+        */
         return true;
     }
 
