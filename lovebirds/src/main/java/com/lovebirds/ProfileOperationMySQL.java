@@ -23,7 +23,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO PROFILE (USERNAME, EMAIL, FIRST_NAME, LAST_NAME, PROFILE_PICTURE, AGE, HEIGHT, WEIGHT, GENDER, PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.PROFILE (USERNAME, EMAIL, FIRST_NAME, LAST_NAME, PROFILE_PICTURE, AGE, HEIGHT, WEIGHT, GENDER, PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, profile.getUsername());
             pstmt.setString(2, profile.getEmail());

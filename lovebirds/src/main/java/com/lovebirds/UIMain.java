@@ -50,17 +50,23 @@ public class UIMain {
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
 					break;
 				case 2: //Create Account
-					System.out.print("Enter email: ");
-					String email = sc.nextLine();
 					System.out.print("Enter username: ");
 					username = sc.nextLine();
+					System.out.print("Enter email: ");
+					String email = sc.nextLine();
 					System.out.print("Enter password: ");
 					password = sc.nextLine();
 					System.out.print("Enter first name: ");
 					String firstName = sc.nextLine();
 					System.out.print("Enter last name: ");
 					String lastName = sc.nextLine();
-					controller.createProfile(email, username, password, firstName, lastName);
+					System.out.print("Enter age: ");
+					int age = loopForInteger(sc);
+					System.out.print("Enter height: ");
+					int height = loopForInteger(sc);
+					System.out.print("Enter weight: ");
+					int height = loopForInteger(sc);
+					controller.createProfile(username, email, firstName, lastName, age, height, weight, gender, password);
 					// 	call createPreferences()
 					// 	enter & set preferences
 					break;
