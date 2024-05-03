@@ -127,8 +127,51 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve suggested users.");
 				//retrieve suggested users
-					//loop to select specific user
-						//loop for specific operations on user (like, match, dismiss, block, rate)
+				//loop to select specific user
+				//loop for specific operations on user (like, match, dismiss, block, rate)
+				// if view matches
+				// 	display matches -> call function "retrieveSugUsers()":
+				// 	displays one name from the ArrayList of Profiles
+				// display view matches menu
+				displayMatchesMenu();
+				// 	1. View user
+				// 	2. Dismiss user
+					// 	increment, move on to next user in ArrayList
+				// 	if View user								
+				// 		display options menu 2 (like user "likeUser()", rate user "rateUser()", 
+				// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
+				// 		1. Like user
+					// 		if Like user	
+					// 			if (isLiked == false)
+					// 				set "isLiked" variable to true
+					// 			else
+					// 				print("You already liked this user.")
+					// 			go back to options menu 2
+				// 		2. Rate user
+				int rating = 0;
+				displayRateUserMenu();
+				while (rating == 0) {
+					int ratingInput;
+					if (sc.hasNextInt()) { 
+						ratingInput = sc.nextInt();
+						if (ratingInput >= 1 && ratingInput <= 5) { 
+							rating = ratingInput;
+						} else {
+							System.out.println("\nInvalid input. Please rate the user 1-5.");
+							displayRateUserMenu();
+						}
+					} else {
+						sc.next(); 
+						System.out.print("\nPlease enter a valid integer.\n"); 
+						displayRateUserMenu();
+					}
+				}	
+
+		// 		3. Unmatch user
+			// 		remove this user from the ArrayList
+		// 		4. Block user
+			// need to figure out the logic for this
+		
 			}
 			else if(userInput == 2)
 			{
@@ -150,82 +193,20 @@ public class UIMain {
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
 				Profile testProfile = null;
-				//editPreferences(user);
+				
+				//DO NOT put controller. before this. update preferences uses controller
+				updatePreferences(testProfile); //edit preferences
+				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5)
 			{
 				System.out.println("Call to edit album.");
                 //edit album
+				// 	Have option to go back to options menu
+
 			}
 		}
 		while(run);
-		
-		// if view matches
-		// 	display matches ( call function "retrieveSugUsers()"):
-		// 	displays one name from the ArrayList of Profiles
-		// 	1. View user
-		// 	2. Dismiss user
-			
-		// 	if View user								
-		// 		display options menu 2 (like user "likeUser()", rate user "rateUser()", 
-		// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
-		// 		1. Like user
-		// 		2. Rate user
-		int rating = 0;
-	    displayRateUserMenu();
-	    while (rating == 0) {
-	        int ratingInput;
-	        if (sc.hasNextInt()) { 
-	            ratingInput = sc.nextInt();
-	            if (ratingInput >= 1 && ratingInput <= 5) { 
-	                rating = ratingInput;
-	            } else {
-	                System.out.println("\nInvalid input. Please rate the user 1-5.");
-	                displayRateUserMenu();
-	            }
-	        } else {
-	            sc.next(); 
-	            System.out.print("\nPlease enter a valid integer.\n"); 
-	            displayRateUserMenu();
-	        }
-	    }
-
-		// 		3. Unmatch user
-		// 		4. Block user
-			
-		// 		if Like user	
-		// 			if (isLiked == false)
-		// 				set "isLiked" variable to true
-		// 			else
-		// 				print("You already liked this user.")
-		// 			go back to options menu 2
-		// 		else if Rate user
-		// 			print ("Rate this user 1-5: )
-		// 			Scan the integer entered by the user
-		// 			Store in ratings array/table
-				
-		// 		else if Unmatch user
-		// 			remove this user from the ArrayList
-		
-		// 		else if Block user
-		// 			// need to figure out the logic for this
-			
-		// 	else if Dismiss user
-		// 		increment, move on to next user in ArrayList
-			
-		// else if edit profile 
-		// 	call edit/updateProfile
-		// 	Have option to go back to options menu
-		
-		// else if edit preferences
-		// 	call edit/updatePreferences
-		// 	Have option to go back to options menu	
-		
-		// else if edit album
-		// 	call edit/updatePreferences
-		// 	Have option to go back to options menu
-
-
 		
 		//goodbye message
 		System.out.println("Thank you, Goodbye!");
@@ -257,6 +238,15 @@ public class UIMain {
 		System.out.print("Select one of the following: ");
     }
 
+	// display view matches menu
+	// 	1. View user
+	// 	2. Dismiss user
+	private static void displayMatchesMenu() {
+		System.out.println("\n1: View user");
+		System.out.println("2: Dismiss user");
+		System.out.println("Select one of the following: ");
+	}
+
 	// displays menu for rate 
 	private static void displayRateUserMenu() {
         System.out.println("Rate the user 1-5.");
@@ -268,7 +258,7 @@ public class UIMain {
         System.out.print("Select one of the following: ");
     }
 	
-	private void displayEditPreferencesMenu()
+	private static void displayEditPreferencesMenu()
     {
         System.out.println("Which preference would you like to edit?");
         System.out.println("1. Gender");
@@ -282,10 +272,10 @@ public class UIMain {
         System.out.print("Enter a number: ");
     }
 
-	private void editPreferences(Profile user)
+	private static void updatePreferences(Profile user)
     {
 		//controller = new Controller();
-        user.getPreferences();
+        user.getPreferences(); 
         // get the preferences from the profile
         // take in input from the user for new preference settings
         // set each new preference to the new preference in profile
