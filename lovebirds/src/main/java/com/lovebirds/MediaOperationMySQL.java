@@ -119,7 +119,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             this.db.connect();
             Connection dbConn = db.getConnection();
             ArrayList<Photo> photos = new ArrayList<>();
-            String sql = "SELECT * FROM WHERE USER_ID = ? AND ALBUM_NAME = ?"
+            String sql = "SELECT * FROM WHERE USER_ID = ? AND ALBUM_NAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, albumName);
@@ -160,7 +160,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM Images WHERE ALBUMNAME = ? AND USER_ID = ?";
+            String sql = "DELETE FROM IMAGES WHERE ALBUMNAME = ? AND USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, albumName);
             pstmt.setInt(2, userID);
@@ -171,5 +171,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             return false;
         }
     }
+
+
 
 }
