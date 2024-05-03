@@ -214,7 +214,7 @@ class Controller{
      * @param email - user's email
      * @param username - user's username
      * @param newPassword - new password user wants
-     * @return Profile object
+     * @return true if Profile found and password updated, false if Profile not found
      */
     public boolean forgotPassword(String email, String username, String newPassword){
         boolean authenticated = Authentication.authenticateForgotPassword(email, username, newPassword);

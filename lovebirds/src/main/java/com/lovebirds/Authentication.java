@@ -1,6 +1,5 @@
 package com.lovebirds;
 
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +31,7 @@ public class Authentication {
      * @param email - user's email
      * @param username - user's username
      * @param newPassword - new password user wants
-     * @return Profile object
+     * @return true if the Profile is found, false if otherwise 
      */
     public static boolean authenticateForgotPassword(String email, String username, String newPassword){
         
