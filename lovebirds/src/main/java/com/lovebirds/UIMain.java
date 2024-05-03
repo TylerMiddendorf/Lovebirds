@@ -98,12 +98,7 @@ public class UIMain {
 		while(userInput == 0){
 			if(!firstTime)
 				System.out.println("Invalid Input (follow instructions)");
-			System.out.println("");
-			System.out.println("1: Login");
-			System.out.println("2: Create Account");
-			System.out.println("3: Forgot Password");
-			System.out.println("4: Exit");
-			System.out.print("Select one of the following: ");
+			displayLoginMenu();
 			userInput = loopForInteger(sc);
 
 			//this needs fixed (looped) because it does not require login after forgot password case
@@ -215,6 +210,16 @@ public class UIMain {
 
 
     }//end main
+
+	//displays menu for login
+	private static void displayLoginMenu(){
+		System.out.println("");
+		System.out.println("1: Login");
+		System.out.println("2: Create Account");
+		System.out.println("3: Forgot Password");
+		System.out.println("4: Exit");
+		System.out.print("Select one of the following: ");
+	}
 
     //displays menu for user data entries
     private static void displayMenu(){
