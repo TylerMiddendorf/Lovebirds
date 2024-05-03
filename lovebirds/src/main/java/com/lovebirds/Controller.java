@@ -106,7 +106,7 @@ class Controller{
      * @param user
      * @return rating
      */
-    public int rateUser(Profile user){
+    public boolean rateUser(Profile user){
         return profileHandler.rateUser(user);
     }
 
