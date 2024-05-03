@@ -245,7 +245,7 @@ public class UIMain {
 		System.out.print("Please enter your new password: ");
 		newPasswordInput = scan.nextLine();
 
-		//this returns null if no profile is found in database
+		//this returns false if no profile is found in database
 		boolean confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 
 		if(!confirmedProfile){
