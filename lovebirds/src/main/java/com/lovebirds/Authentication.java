@@ -20,13 +20,6 @@ public class Authentication {
         return 0;
     }
 
-    /*
-     * handles logout of account
-     */
-    public void logOut(){
-
-    }
-
     /**
      * Searches for profile record in database with user entered information
      * @param email - user's email
