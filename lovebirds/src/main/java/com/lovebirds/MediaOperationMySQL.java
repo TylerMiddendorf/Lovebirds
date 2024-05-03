@@ -40,7 +40,6 @@ public class MediaOperationMySQL extends MediaOperation { //
         //Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
         //setBlob(int parameterIndex, InputStream is)
         try {
-
             this.db.connect();
             Connection dbConn = db.getConnection();
             String sql = "INSERT INTO MESSAGES(USERID, ALBUMNAME, PHOTO, PHOTONAME) VALUES (?, ?, ?, ?)";
@@ -60,7 +59,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM WHERE USER_ID = ? AND PHOTO = ? AND PHOTONAME = ?";
+            String sql = "SELECT * FROM Images WHERE USER_ID = ? AND PHOTO = ? AND PHOTONAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, album);
@@ -81,13 +80,15 @@ public class MediaOperationMySQL extends MediaOperation { //
         }
     }
 
-    public boolean deletePhoto(int userID) {
+    public boolean deletePhoto(int userID, String albumName, String photoName) {
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM Photo WHERE USER_ID = ?";
+            String sql = "DELETE FROM Images WHERE USER_ID = ? AND ALBUMNAME = ? AND PHOTONAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
+            pstmt.setString(2, albumName);
+            pstmt.setString(3, photoName);
             pstmt.executeQuery();
             return true;
         } catch(SQLException e){
