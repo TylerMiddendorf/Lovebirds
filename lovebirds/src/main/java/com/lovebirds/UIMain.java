@@ -50,14 +50,6 @@ public class UIMain {
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
 					break;
 				case 2: //Create Account
-					/*
-						this.profileID = profileID;
-						this.emailAddress = emailAddress;
-						this.username = username;
-						this.password = password;
-						this.firstName = firstName;
-						this.lastName = lastName;
-					 */
 					System.out.print("Enter email: ");
 					String email = sc.nextLine();
 					System.out.print("Enter username: ");
@@ -80,7 +72,8 @@ public class UIMain {
 					else{
 						System.out.println("\nError finding user with the details provided");
 					}
-					//make userInput 0 so it will loop back into switch statement
+					//userInput = 0 so it will loop back into switch statement
+					userInput = 0;
 					break;
 				case 4: //exit
 					System.exit(0);
@@ -125,6 +118,8 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve suggested users.");
 				//retrieve suggested users
+					//loop to select specific user
+						//loop for specific operations on user (like, match, dismiss, block, rate)
 			}
 			else if(userInput == 2)
 			{
@@ -135,7 +130,10 @@ public class UIMain {
 			else if(userInput == 3)
 			{
 				System.out.println("Call to edit profile.");
-				//edit profile
+				//calls edit profile in controller 
+				//able to change first name, last name, age, email, username
+				Profile testProfile = null;
+				controller.editProfile(testProfile);
 			}
 			else if(userInput == 4)
 			{

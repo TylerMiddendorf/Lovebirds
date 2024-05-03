@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class ProfileHandler extends Handler {
 
 
+    public ProfileHandler() {
+        
+    }
+
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???
      */
@@ -19,6 +23,7 @@ public class ProfileHandler extends Handler {
     public Profile editProfile(Profile profile)
     {
         //edit the profile
+        //able to change first name, last name, age, email, username
 
         return profile;
     }

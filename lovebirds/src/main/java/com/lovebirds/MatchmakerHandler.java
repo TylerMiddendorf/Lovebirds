@@ -13,6 +13,7 @@ public class MatchmakerHandler {
         return new ArrayList<Profile>();
     }
 
+    //filter based on average rating (set minimum average rating)
     public ArrayList<Profile> filterUsers(String filter) {
         return new ArrayList<Profile>();
     }

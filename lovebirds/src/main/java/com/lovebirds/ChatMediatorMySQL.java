@@ -19,9 +19,11 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         try {
             db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO PREFERENCES(TIMESTAMP, SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO PREFERENCES(SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
-            Date date = new Date();
+            //pstmt.setInt(3, chat.getSe);
+            //pstmt.setInt(3, photoName);
+            //pstmt.setString(3, photoName);
             
             return new Chat();
         } catch (Exception e) {
