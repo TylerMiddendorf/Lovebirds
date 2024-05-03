@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.imageio.*;
 
@@ -59,7 +60,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM Images WHERE USER_ID = ? AND PHOTO = ? AND PHOTONAME = ?";
+            String sql = "SELECT FROM Images WHERE USER_ID = ? AND PHOTO = ? AND PHOTONAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, album);
@@ -99,15 +100,42 @@ public class MediaOperationMySQL extends MediaOperation { //
     }
 
     public Album createAlbum(int userID, String albumName) {
-        this.db.connect();
-        Connection dbConn = db.getConnection();
+       /*
+        try{
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            ArrayList<Photo> photos = new ArrayList<>();
+
+            return new Album(albumName, photos);
+        } catch(SQLException e){
+            return null;
+        }
+        */
         return null;
     }
 
     public Album readAlbum(int userID, String albumName) {
-        this.db.connect();
-        Connection dbConn = db.getConnection();
-        return new Album(null, null);
+        try{
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            ArrayList<Photo> photos = new ArrayList<>();
+            String sql = "SELECT * FROM WHERE USER_ID = ? AND ALBUM_NAME = ?"
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            pstmt.setString(2, albumName);
+
+
+
+            //LOOP THROUGH THE RETURNED VALUE TO GET THE PHOTOS AND
+            //MAKE THE ALBUM
+
+
+
+
+            return new Album(albumName, photos);
+        } catch(SQLException e){
+            return null;
+        }
     }
 
     public boolean updateAlbum(int userID, String albumName, String newAlbumName) {
@@ -120,12 +148,12 @@ public class MediaOperationMySQL extends MediaOperation { //
             pstmt.setInt(2, userID);
             pstmt.setString(3, newAlbumName); 
             pstmt.executeQuery();
+            return true;
         } catch(SQLException e){
             System.out.println("Could not updateAlbum. Please try again.");
             return false;
         }
-        */
-        return true;
+        
     }
 
     public boolean deleteAlbum(int userID, String albumName) {
