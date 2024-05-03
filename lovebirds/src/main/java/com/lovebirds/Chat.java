@@ -1,18 +1,26 @@
 package com.lovebirds;
 
 public class Chat{
-    private Profile userProfile1;
-    private Profile userProfile2;
+    private int userProfile1;
+    private int userProfile2;
     private String[] messages;
-    private double[] timestamps;
+    private String[] timestamps;
 
 
     public Chat() {
         
     }
 
-    public void addMessage(String message)
+    public void addMessage(String message, String timestamp)
     {
+        String[] newMessages = new String[messages.length + 1];
+        String[] newtimestamps = new String[timestamps.length + 1];
+        for(int i=0; i<messages.length; i++){
+            newMessages[i] = messages[i];
+            newtimestamps[i] = timestamps[i];
+        }
+        newMessages[messages.length] = message;
+        newtimestamps[timestamps.length] = timestamp;
         //write the message
     }
 
@@ -22,26 +30,21 @@ public class Chat{
         return true;
     }
 
-    public boolean sendMessage(String message)
-    {
-        return true;
-    }
-
      // Setter and Getter for userProfile1
-     public void setUserProfile1(Profile userProfile1) {
+     public void setUserProfile1(int userProfile1) {
         this.userProfile1 = userProfile1;
     }
 
-    public Profile getUserProfile1() {
+    public int getUserProfile1() {
         return userProfile1;
     }
 
     // Setter and Getter for userProfile2
-    public void setUserProfile2(Profile userProfile2) {
+    public void setUserProfile2(int userProfile2) {
         this.userProfile2 = userProfile2;
     }
 
-    public Profile getUserProfile2() {
+    public int getUserProfile2() {
         return userProfile2;
     }
 
@@ -55,11 +58,11 @@ public class Chat{
     }
 
     // Setter and Getter for timestamps
-    public void setTimestamps(double[] timestamps) {
+    public void setTimestamps(String[] timestamps) {
         this.timestamps = timestamps;
     }
 
-    public double[] getTimestamps() {
+    public String[] getTimestamps() {
         return timestamps;
     }
     
