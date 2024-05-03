@@ -46,24 +46,7 @@ public class ProfileHandler extends Handler {
 
     public boolean rateUser(Profile user)
     {
-		int rating = 0;
-	    displayRateUserMenu();
-	    while (rating == 0) {
-	        int userInput;
-	        if (sc.hasNextInt()) { 
-	            userInput = sc.nextInt();
-	            if (userInput >= 1 && userInput <= 5) { 
-	                rating = userInput;
-	            } else {
-	                System.out.println("\nInvalid input. Please rate the user 1-5.");
-	                displayRateUserMenu();
-	            }
-	        } else {
-	            sc.next(); 
-	            System.out.print("\nPlease enter a valid integer.\n"); 
-	            displayRateUserMenu();
-	        }
-	    }
+        // rate user 1-5
 	    return true;
     }
 
