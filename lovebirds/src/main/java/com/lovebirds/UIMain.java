@@ -83,6 +83,8 @@ public class UIMain {
         //scanner object
 		Scanner sc = new Scanner(System.in);
 		controller = new Controller();
+		String username = "";
+		String password = "";
 
 		//variables that assist with looped program
 		int userInput = 0;
@@ -109,23 +111,26 @@ public class UIMain {
 			//buffer scanner to prevent skipping over the next scanner
 			sc.nextLine();
 			switch (userInput) {
-				case 1://login
+				case 1: //login
 					System.out.print("Enter Username: ");
-					String username = sc.nextLine();
+					username = sc.nextLine();
 					System.out.print("Enter Password: ");
-					String password = sc.nextLine();
+					password = sc.nextLine();
 					int value = controller.logIn(username, password);
 					//error handling something like this
 					//int error_code;
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
 					break;
-				case 2://Create Account
-					// 	call createProfile()
-					// 	enter & set profile info
+				case 2: //Create Account
+					controller.createProfile();
+					System.out.print("Enter Username: ");
+					username = sc.nextLine();
+					System.out.print("Enter Password: ");
+					password = sc.nextLine();
 					// 	call createPreferences()
 					// 	enter & set preferences
 					break;
-				case 3://Forgot Password
+				case 3: //Forgot Password
 					boolean passwordReset = forgotPassword();
 					if (passwordReset){
 						System.out.println("\nPassword has been successfully reset");
@@ -135,7 +140,7 @@ public class UIMain {
 					}
 					//make userInput 0 so it will loop back into switch statement
 					break;
-				case 4://exit
+				case 4: //exit
 					System.exit(0);
 				default:
 					userInput = 0;		
