@@ -10,7 +10,10 @@ class Controller{
     private ChatHandler chatHandler;
     
     public void Controller(){
-
+        mediaHandler = new MediaHandler();
+        matchmakerHandler = new MatchmakerHandler();
+        profileHandler = new ProfileHandler();
+        chatHandler = new ChatHandler();
     }
 
     /*

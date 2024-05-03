@@ -117,14 +117,6 @@ public class UIMain {
 					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
 					break;
 				case 2: //Create Account
-					/*
-						this.profileID = profileID;
-						this.emailAddress = emailAddress;
-						this.username = username;
-						this.password = password;
-						this.firstName = firstName;
-						this.lastName = lastName;
-					 */
 					System.out.print("Enter email: ");
 					String email = sc.nextLine();
 					System.out.print("Enter username: ");
