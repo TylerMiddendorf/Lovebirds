@@ -65,8 +65,10 @@ public class UIMain {
 					System.out.print("Enter height: ");
 					int height = loopForInteger(sc);
 					System.out.print("Enter weight: ");
-					int height = loopForInteger(sc);
-					controller.createProfile(username, email, firstName, lastName, age, height, weight, gender, password);
+					int weight = loopForInteger(sc);
+					System.out.print("Enter gender: ");
+					String gender = sc.nextLine();
+					controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
 					// 	call createPreferences()
 					// 	enter & set preferences
 					break;
