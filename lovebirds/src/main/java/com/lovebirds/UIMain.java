@@ -183,7 +183,8 @@ public class UIMain {
 			else if(userInput == 3)
 			{
 				System.out.println("Call to edit profile.");
-				//edit profile
+				//calls edit profile in controller 
+				//able to change first name, last name, age, email, username
 			}
 			else if(userInput == 4)
 			{
