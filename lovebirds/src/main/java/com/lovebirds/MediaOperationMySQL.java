@@ -110,6 +110,7 @@ public class MediaOperationMySQL extends MediaOperation { //
     }
 
     public boolean updateAlbum(int userID, String albumName) {
+        /* 
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
@@ -117,6 +118,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             System.out.println("Could not updateAlbum. Please try again.");
             return false;
         }
+        */
         return true;
     }
 
