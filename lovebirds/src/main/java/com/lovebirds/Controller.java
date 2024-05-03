@@ -2,14 +2,14 @@ package com.lovebirds;
 
 import java.util.ArrayList;
 
-class Controller{
+public class Controller {
     
     private MediaHandler mediaHandler;
     private MatchmakerHandler matchmakerHandler;
     private ProfileHandler profileHandler;
     private ChatHandler chatHandler;
     
-    public void Controller(){
+    public Controller(){
         mediaHandler = new MediaHandler();
         matchmakerHandler = new MatchmakerHandler();
         profileHandler = new ProfileHandler();
