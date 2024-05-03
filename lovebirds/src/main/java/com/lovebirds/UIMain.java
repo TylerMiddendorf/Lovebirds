@@ -140,7 +140,7 @@ public class UIMain {
 				System.out.println("Call to edit preferences.");
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
-				editPreferences(user);
+				//editPreferences(user);
 			}
 			else if(userInput == 5)
 			{
@@ -394,7 +394,7 @@ public class UIMain {
             
         }
         scanner.close();
-        return true;
+        //return true;
     }
 
 	private static int loopForInteger(Scanner scan) {

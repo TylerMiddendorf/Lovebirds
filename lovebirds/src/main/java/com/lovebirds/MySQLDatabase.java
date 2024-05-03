@@ -24,6 +24,9 @@ public class MySQLDatabase extends Database {
             return true;
         } catch (SQLException e) {
             //System.out.println("Could not connect to database.");
+            System.out.println(e.getSQLState());
+            System.out.println(e.getErrorCode());
+            System.out.println(e.getMessage());
             return false;
         }
     
