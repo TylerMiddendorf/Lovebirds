@@ -60,6 +60,7 @@ class Controller{
      */
     public Profile createProfile(String email, String username, String password, String firstName, String lastName){
         Profile newProfile = new Profile(email, username, password, firstName, lastName);
+        boolean created = profileHandler.createProfile(newProfile);
         return newProfile;
     }
 
@@ -105,7 +106,7 @@ class Controller{
      * @param user
      * @return rating
      */
-    public int rateUser(Profile user){
+    public boolean rateUser(Profile user){
         return profileHandler.rateUser(user);
     }
 

@@ -8,12 +8,11 @@ public class ProfileHandler extends Handler {
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???
      */
-    public Profile createProfile()
+    public boolean createProfile(Profile newProfile)
     {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        profileOperation.createProfile(profile);
+        boolean created = profileOperation.createProfile(profile);
         // input the username and other data?
-        Profile created = new Profile();
         return created;
     }
 
@@ -48,24 +47,7 @@ public class ProfileHandler extends Handler {
 
     public boolean rateUser(Profile user)
     {
-		int rating = 0;
-	    displayRateUserMenu();
-	    while (rating == 0) {
-	        int userInput;
-	        if (sc.hasNextInt()) { 
-	            userInput = sc.nextInt();
-	            if (userInput >= 1 && userInput <= 5) { 
-	                rating = userInput;
-	            } else {
-	                System.out.println("\nInvalid input. Please rate the user 1-5.");
-	                displayRateUserMenu();
-	            }
-	        } else {
-	            sc.next(); 
-	            System.out.print("\nPlease enter a valid integer.\n"); 
-	            displayRateUserMenu();
-	        }
-	    }
+        // rate user 1-5
 	    return true;
     }
 
