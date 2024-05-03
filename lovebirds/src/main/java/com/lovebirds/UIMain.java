@@ -71,6 +71,10 @@ public class UIMain {
 					controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
 					// 	call createPreferences()
 					// 	enter & set preferences
+
+					//userInput = 0 so it will loop back into switch statement
+					//force login after creating account
+					userInput = 0;
 					break;
 				case 3: //Forgot Password
 					boolean passwordReset = forgotPassword();
@@ -80,7 +84,9 @@ public class UIMain {
 					else{
 						System.out.println("\nError finding user with the details provided");
 					}
+
 					//userInput = 0 so it will loop back into switch statement
+					//force login after changing password
 					userInput = 0;
 					break;
 				case 4: //exit
@@ -183,9 +189,9 @@ public class UIMain {
 			{
 				System.out.println("Call to edit profile.");
 				//calls edit profile in controller 
-				//able to change first name, last name, age, email, username
+				//able to change username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
 				Profile testProfile = null;
-				controller.editProfile(testProfile);
+				editProfile(testProfile);
 			}
 			else if(userInput == 4)
 			{
@@ -272,10 +278,143 @@ public class UIMain {
         System.out.print("Enter a number: ");
     }
 
+	/**
+	 * Helper method for editProfile
+	 * displays menu of options
+	 */
+	private static void displayEditProfileMenu()
+	{
+		System.out.println("Which element of your profie would you like to edit?");
+        System.out.println("1. Username");
+        System.out.println("2. Email");
+        System.out.println("3. First Name");
+        System.out.println("4. Last Name");
+        System.out.println("5. Profile Picture");
+        System.out.println("6. Age");
+        System.out.println("7. Height");
+		System.out.println("8. Weight");
+		System.out.println("9. Gender");
+		System.out.println("10. Password");
+        System.out.println("11. Finish Editing");
+        System.out.print("Enter a number: ");
+	}
+
+	/**
+	 * Edit profile method that assists with editing elements of a user's profile
+	 * this includes username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
+	 * @param user
+	 */
+	private static void editProfile(Profile user)
+	{
+		boolean edited = false;
+		boolean correctNum = false;
+		Scanner scanner = new Scanner(System.in);
+		int userInput = 0;
+
+		//show current profile elements here?
+
+		while(!edited)
+		{
+			//print current profile elements here?
+
+			displayEditProfileMenu();
+
+			userInput = loopForInteger(scanner);
+
+			//edit below
+			switch (userInput) {
+                case 1:
+                    //update username
+					System.out.println("Enter your updated username: ");
+					//capture user input here and update profile
+                    break;
+
+                case 2:
+                    //update email
+                    System.out.print("Enter your updated email: ");
+                    //capture user input and update profile
+                    break;
+
+                case 3:
+                    //update first name
+                    System.out.print("Enter your updated first name: ");
+                    //capture user input and update profile
+                    break;
+
+                case 4:
+                    //update last name
+                    System.out.print("Enter your updated last name: ");
+                    //capture user input and update profile
+                    break;
+
+                case 5:
+                    //update profile picture
+                    System.out.print("Enter your updated profile picture: ");
+                    //capture user input and update profile
+                    break;
+
+                case 6:
+                    //update age
+                    while(!correctNum)
+                    {
+                        System.out.print("Enter your updated age: ");
+                        userInput = loopForInteger(scanner);
+                        if(userInput >= 18)
+                        {
+                            //capture user input and update profile
+                        }
+                        else
+                            System.out.println("Must be at least 18 years old.");
+                    }
+                    correctNum = false;
+                    break;
+
+                case 7:
+                    //update height
+                    System.out.print("Enter your updated height: ");
+                    userInput = loopForInteger(scanner);
+                    //capture user input and update profile
+                    break;
+
+				case 8:
+					//update weight
+					System.out.print("Enter your updated weight: ");
+					userInput = loopForInteger(scanner);
+					//capture user input and update profile
+					break;
+
+				case 9:
+					//update gender
+					System.out.print("Enter your updated gender: ");
+					//capture user input and update profile
+					break;
+
+				case 10:
+					//update password
+					System.out.print("Enter your updated password: ");
+					//capture user input and update profile
+					break;
+
+                case 11:
+                    //update profile in the database
+                    //controller.editProfile(user);
+
+                    System.out.println("Profile has been updated.");
+                    edited = true;
+                    break;
+                default:
+                    System.out.println("Enter a number 1-11.");
+                    break;
+            }
+            
+        }
+        scanner.close();
+	}
+
 	private static void updatePreferences(Profile user)
     {
 		//controller = new Controller();
-        user.getPreferences(); 
+        //user.getPreferences(); 
         // get the preferences from the profile
         // take in input from the user for new preference settings
         // set each new preference to the new preference in profile
