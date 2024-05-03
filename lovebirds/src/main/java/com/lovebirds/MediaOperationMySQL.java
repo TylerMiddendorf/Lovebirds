@@ -99,20 +99,6 @@ public class MediaOperationMySQL extends MediaOperation { //
         
     }
 
-    public Album createAlbum(int userID, String albumName) {
-       /*
-        try{
-            this.db.connect();
-            Connection dbConn = db.getConnection();
-            ArrayList<Photo> photos = new ArrayList<>();
-
-            return new Album(albumName, photos);
-        } catch(SQLException e){
-            return null;
-        }
-        */
-        return null;
-    }
 
     public Album readAlbum(int userID, String albumName) {
         try{
@@ -123,15 +109,13 @@ public class MediaOperationMySQL extends MediaOperation { //
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, albumName);
-
-
-
-            //LOOP THROUGH THE RETURNED VALUE TO GET THE PHOTOS AND
-            //MAKE THE ALBUM
-
-
-
-
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                byte image[] = rs.getBytes(2);
+                String photoName = rs.getString(3);            
+                Photo photo = new Photo(photoName, image , "png");
+                photos.add(photo);
+            }
             return new Album(albumName, photos);
         } catch(SQLException e){
             return null;
