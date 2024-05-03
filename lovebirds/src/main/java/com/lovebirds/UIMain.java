@@ -20,13 +20,6 @@ public class UIMain {
 		System.out.println("Welcome to Lovebirds dating app!");
 
 		// display menu for login, create account, forgot password, or exit
-
-		// 2 if logging in
-			// enter username & password
-			// call logIn()
-		// 3 forgot password
-		// 4 exit
-		//create profile, login, or quit options right here
 		boolean firstTime = true;
 		while(userInput == 0){
 			if(!firstTime)
@@ -34,12 +27,13 @@ public class UIMain {
 			displayLoginMenu();
 			userInput = loopForInteger(sc);
 
-			//this needs fixed (looped) because it does not require login after forgot password case
-
 			//buffer scanner to prevent skipping over the next scanner
 			sc.nextLine();
 			switch (userInput) {
+			//create profile, login, or quit options right here
 				case 1: //login
+				// enter username & password
+				// call logIn()
 					System.out.print("Enter Username: ");
 					username = sc.nextLine();
 					System.out.print("Enter Password: ");
