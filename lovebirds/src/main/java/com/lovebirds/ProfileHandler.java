@@ -10,9 +10,11 @@ public class ProfileHandler extends Handler {
      */
     public Profile createProfile()
     {
-        Profile profile = null; // input the username and other data?
-
-        return profile;
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        profileOperation.createProfile(profile);
+        // input the username and other data?
+        Profile created = new Profile();
+        return created;
     }
 
     public Profile editProfile(Profile profile)

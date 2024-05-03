@@ -15,15 +15,9 @@ public class Authentication {
      */
     public static int logIn(String username, String password)
     {
-        //db = FactoryProducer.getDatabase();
+        db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
+        
         return 0;
-    }
-
-    /*
-     * handles logout of account
-     */
-    public void logOut(){
-
     }
 
     /**

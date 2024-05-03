@@ -49,7 +49,7 @@ class Controller{
      * @param stat
      * @return statistics
      */
-    public ArrayList<String> retrieveStatistics(String stat){
+    public ArrayList<String> retrieveStatistics(String stat) {
         ArrayList<String> statistics = matchmakerHandler.retrieveStatistics(stat);
         return statistics;
     }
@@ -58,9 +58,8 @@ class Controller{
      * calls createProfile from Profile Handler
      * @preturn newProfile
      */
-    public Profile createProfile()
-    {
-        Profile newProfile = profileHandler.createProfile();
+    public Profile createProfile(String email, String username, String password, String firstName, String lastName){
+        Profile newProfile = new Profile(email, username, password, firstName, lastName);
         return newProfile;
     }
 
@@ -206,7 +205,7 @@ class Controller{
      * handles logout of account
      */
     public void logOut(){
-
+        
     }
 
     /**
