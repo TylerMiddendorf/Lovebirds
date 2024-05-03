@@ -2,7 +2,7 @@ package com.lovebirds;
 
 import java.util.ArrayList;
 
-class Controller{
+public class Controller {
     
     private MediaHandler mediaHandler;
     private MatchmakerHandler matchmakerHandler;
