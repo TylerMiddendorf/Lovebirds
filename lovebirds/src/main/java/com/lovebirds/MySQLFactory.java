@@ -7,8 +7,8 @@ public class MySQLFactory extends GeneralFactory {
     @Override
     public Database getDatabase(String type) {
         switch(type) {
-            case "mySQL":
-                return new MySQLDatabase();
+            case "MySQL":
+                return mySQLDB;
             default:
                 return null;
         }
@@ -17,7 +17,7 @@ public class MySQLFactory extends GeneralFactory {
     @Override
     public ChatMediator getMediator(String type) {
         switch(type) {
-            case "mySQL":
+            case "MySQL":
                 return new ChatMediatorMySQL(mySQLDB);
             default:
                 return null;
@@ -27,7 +27,7 @@ public class MySQLFactory extends GeneralFactory {
     @Override
     public MediaOperation getMedia(String type) {
         switch(type) {
-            case "mySQL":
+            case "MySQL":
                 return new MediaOperationMySQL(mySQLDB);
             default:
                 return null;
@@ -37,7 +37,7 @@ public class MySQLFactory extends GeneralFactory {
     @Override
     public ProfileOperation getProfile(String type) {
         switch(type) {
-            case "mySQL":
+            case "MySQL":
                 return new ProfileOperationMySQL(mySQLDB);
             default:
                 return null;

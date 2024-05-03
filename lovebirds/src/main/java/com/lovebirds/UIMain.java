@@ -249,8 +249,8 @@ public class UIMain {
 		boolean confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 
 		if(!confirmedProfile){
-			//update profile password in database here
-			return success = true;
+			success = true;
+			return success;
 		}
 
 		return success;
