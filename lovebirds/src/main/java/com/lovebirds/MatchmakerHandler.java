@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class MatchmakerHandler {
     
-
+    // displays the suggested users
     public ArrayList<Profile> retrieveSugUsers(int id) {
         return new ArrayList<Profile>();
     }
 
+    // after displaying / retrieve suggested users, the user will pick one of the profiles. Retrieve it
     public ArrayList<Profile> retrieveSugProfile(int id) {
         return new ArrayList<Profile>();
     }
