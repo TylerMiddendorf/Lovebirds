@@ -46,10 +46,9 @@ public class ProfileHandler extends Handler {
         return true; // user has been dismissed
     }
 
-    public int rateUser(Profile user)
+    public boolean rateUser(Profile user)
     {
 		int rating = 0;
-	    Scanner sc = new Scanner(System.in);
 	    displayRateUserMenu();
 	    while (rating == 0) {
 	        int userInput;
@@ -67,8 +66,7 @@ public class ProfileHandler extends Handler {
 	            displayRateUserMenu();
 	        }
 	    }
-	    sc.close();
-	    return rating;
+	    return true;
     }
 
     public boolean likeUser(Profile user)
@@ -221,16 +219,6 @@ public class ProfileHandler extends Handler {
     public boolean deletePreferences()
     {
         return true;
-    }
-
-    private void displayRateUserMenu() {
-        System.out.println("Rate the user 1-5.");
-        System.out.println("\n1: Not interested at all.");
-        System.out.println("2: Not interested.");
-        System.out.println("3: Kind of interested.");
-        System.out.println("4: Interested.");
-        System.out.println("5: Very interested.");
-        System.out.print("Select one of the following: ");
     }
 
     private void displayEditPreferencesMenu()
