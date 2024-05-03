@@ -110,15 +110,30 @@ public class MediaOperationMySQL extends MediaOperation { //
     }
 
     public boolean updateAlbum(int userID, String albumName) {
-        this.db.connect();
-        Connection dbConn = db.getConnection();
+        try{
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+        } catch(SQLException e){
+            System.out.println("Could not updateAlbum. Please try again.");
+            return false;
+        }
         return true;
     }
 
     public boolean deleteAlbum(int userID, String albumName) {
-        this.db.connect();
-        Connection dbConn = db.getConnection();
-        return true;
+        try{
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "DELETE FROM Images WHERE ALBUMNAME = ? AND USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setString(1, albumName);
+            pstmt.setInt(2, userID);
+            pstmt.executeQuery();
+            return true;
+        } catch(SQLException e){
+            System.out.println("Could not updateAlbum. Please try again.");
+            return false;
+        }
     }
 
 }
