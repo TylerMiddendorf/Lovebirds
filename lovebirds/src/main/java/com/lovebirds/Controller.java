@@ -167,8 +167,8 @@ public class Controller {
      * calls clearConversation in Chat Handler
      * return true if clearConversation successful
      */
-    public boolean clearConversation(){
-        boolean created = chatHandler.clearConversation();
+    public boolean clearConversation(int recieverID){
+        boolean created = chatHandler.clearConversation(recieverID);
         return created;
     }
 
@@ -176,8 +176,8 @@ public class Controller {
      * calls sendMessage in Chat Handler
      * return true if sendMessage successful
      */
-    public boolean sendMessage(String message){
-        boolean created = chatHandler.sendMessage(message);
+    public boolean sendMessage(String message, int recieverID){
+        boolean created = chatHandler.sendMessage(message, recieverID);
         return created;
     }
 

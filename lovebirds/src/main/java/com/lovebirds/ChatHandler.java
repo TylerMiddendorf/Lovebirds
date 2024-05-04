@@ -5,8 +5,7 @@ public class ChatHandler extends Handler {
     //set user id in database to admin account
     public boolean clearConversation(int userID)
     {   
-        Profile currentProfile = getProfile();
-        return true; // conversation has been cleared
+        return FactoryProducer.getSQLFactory().getMediator("MySQL").deleteChat(userID, userID); // conversation has been cleared
     }
 
     public boolean sendMessage(String message, int userID)

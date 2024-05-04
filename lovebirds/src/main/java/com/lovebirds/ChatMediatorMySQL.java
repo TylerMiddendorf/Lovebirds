@@ -66,6 +66,11 @@ public class ChatMediatorMySQL extends ChatMediator{ //
             pstmt.setInt(1, senderID);
             pstmt.setInt(1, recieverID);
             pstmt.executeUpdate();
+            sql = "DELETE FROM lovebirds_schema.MESSAGE WHERE USER_ID = ? AND RECEIVER_ID = ?";
+            pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, recieverID);
+            pstmt.setInt(1, senderID);
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.out.println("Could not delete preferences.");
