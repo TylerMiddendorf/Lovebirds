@@ -75,15 +75,16 @@ public class Controller {
     public boolean editProfile(Profile profile){
         boolean editedProfile = profileHandler.editProfile(profile);
         return editedProfile;
-    }
+    }    
 
     /*
      * THIS NEEDS FIXED to take param
      * @param
      * @return
      */
-    public boolean deleteProfile(){
-        return false;
+    public boolean deleteProfile(Profile profile ){
+       boolean deletedProfile = profileHandler.deleteProfile(profile);
+       return deletedProfile;
     }
 
     /*
@@ -167,30 +168,18 @@ public class Controller {
      * calls clearConversation in Chat Handler
      * return true if clearConversation successful
      */
-<<<<<<< HEAD
-    public boolean clearConversation(){
-        //boolean created = chatHandler.clearConversation();
-        return true;
-=======
     public boolean clearConversation(int recieverID){
         boolean created = chatHandler.clearConversation(recieverID);
         return created;
->>>>>>> 15577c003ea11c8f746145278a063989f5e9984c
     }
 
     /*
      * calls sendMessage in Chat Handler
      * return true if sendMessage successful
      */
-<<<<<<< HEAD
-    public boolean sendMessage(String message){
-        //boolean created = chatHandler.sendMessage(message);
-        return true;
-=======
     public boolean sendMessage(String message, int recieverID){
         boolean created = chatHandler.sendMessage(message, recieverID);
         return created;
->>>>>>> 15577c003ea11c8f746145278a063989f5e9984c
     }
 
     /* 
