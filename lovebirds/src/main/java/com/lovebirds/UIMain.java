@@ -627,9 +627,10 @@ public class UIMain {
 
 		if(confirmedProfile){
 			success = true;
+			scan.close();
 			return success;
 		}
-
+		scan.close();
 		return success;
 	}
 
