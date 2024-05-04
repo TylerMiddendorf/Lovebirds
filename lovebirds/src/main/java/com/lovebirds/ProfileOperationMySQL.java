@@ -128,7 +128,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.PREFERENCES(USERID, PREFERREDGENDER, MINHEIGHT, MAXHEIGHT, MINWEIGHT, MAXWEIGHT, MINAGE, MAXAGE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.PREFERENCES(USER_ID, PREFERRED_GENDER, MIN_HEIGHT, MAX_HEIGHT, MIN_WEIGHT, MAX_WEIGHT, MIN_AGE, MAX_AGE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, newPref.getPreferredGender());
@@ -138,7 +138,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setInt(6, newPref.getMaxWeight());
             pstmt.setInt(7, newPref.getMinAge());
             pstmt.setInt(8, newPref.getMaxAge());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.out.println("Could not create preferences.");
@@ -175,7 +175,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "UPDATE lovebirds_schema.PREFERENCES SET MinHeight = ? AND MaxHeight = ? AND MinAge = ? AND MaxAge = ? AND MaxWeight = ? AND MinWeight = ? AND PreferedGender = ? AND WHERE USER_ID = ?";
+            String sql = "UPDATE lovebirds_schema.PREFERENCES SET MIN_HEIGHT = ? AND MAX_HEIGHT = ? AND MIN_AGE = ? AND MAX_AGE = ? AND MAX_WEIGHT = ? AND MIN_WEIGHT = ? AND PREFERRED_GENDER = ? WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, newPref.getMinHeight());
             pstmt.setInt(2, newPref.getMaxHeight());

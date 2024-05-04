@@ -72,8 +72,8 @@ public class Controller {
      * @param profile
      * @return editedProfile
      */
-    public Profile editProfile(Profile profile){
-        Profile editedProfile = profileHandler.editProfile(profile);
+    public boolean editProfile(Profile profile){
+        boolean editedProfile = profileHandler.editProfile(profile);
         return editedProfile;
     }
 
@@ -131,12 +131,26 @@ public class Controller {
         return profileHandler.unmatchUser(user);
     }
 
+
+    /*
+
+    private String preferredGender;
+    private int minHeight;
+    private int maxHeight;
+    private int minWeight;
+    private int maxWeight;
+    private int minAge;
+    private int maxAge;
+
+    */
+
     /*
      * THIS NEEDS FIXED to take parm
      * Also add createPreferences method in ProfileHandler
      */
-    public Preferences createPreferences(){
-        return profileHandler.createPreferences();
+    public boolean createPreferences(String preferredGender, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge){
+        boolean created = profileHandler.createPreferences(preferredGender, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge);
+        return created;
     }
 
     /*
@@ -145,7 +159,8 @@ public class Controller {
      * @return true if preferences have been edited/updated
      */
     public boolean editPreferences(Profile user){
-        return profileHandler.editPreferences(user);
+        boolean created = profileHandler.editPreferences(user);
+        return created;
     }
 
     /*
@@ -153,7 +168,8 @@ public class Controller {
      * return true if clearConversation successful
      */
     public boolean clearConversation(){
-        return chatHandler.clearConversation();
+        boolean created = chatHandler.clearConversation();
+        return created;
     }
 
     /*
@@ -161,7 +177,8 @@ public class Controller {
      * return true if sendMessage successful
      */
     public boolean sendMessage(String message){
-        return chatHandler.sendMessage(message);
+        boolean created = chatHandler.sendMessage(message);
+        return created;
     }
 
     /* 
@@ -209,7 +226,7 @@ public class Controller {
     {
         Profile profile = profileHandler.initializeProfile(userID);
         return profile;
-    }
+    } 
 
     /*
      * handles logout of account

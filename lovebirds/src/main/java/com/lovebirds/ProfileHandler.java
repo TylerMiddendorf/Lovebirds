@@ -20,12 +20,12 @@ public class ProfileHandler extends Handler {
         return created;
     }
 
-    public Profile editProfile(Profile profile)
+    public boolean editProfile(Profile profile)
     {
         //edit the profile
         //able to change first name, last name, age, email, username
 
-        return profile;
+        return true;
     }
 
     public boolean deleteProfile(Profile profile)
@@ -68,9 +68,12 @@ public class ProfileHandler extends Handler {
         return true; // user has been unmatched
     }
 
-    public Preferences createPreferences()
+    public boolean createPreferences(String preferredGender, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge)
     {
-        return null;
+        Preferences newPreferences = new Preferences(preferredGender, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge);
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        boolean created = profileOperation.createPreferences(maxAge, newPreferences);
+        return created;
     }
 
     public boolean editPreferences(Profile user)
@@ -81,7 +84,7 @@ public class ProfileHandler extends Handler {
 
         // update preferences in the database
         GeneralFactory factory = FactoryProducer.getSQLFactory();
-        ProfileOperation profileOp = factory.getProfile("mySQL");
+        ProfileOperation profileOp = factory.getProfile("MySQL");
         profileOp.updatePreferences(user.getProfileID(), usersPreferences);
         
         return true;

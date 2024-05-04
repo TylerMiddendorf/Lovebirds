@@ -65,7 +65,41 @@ public class UIMain {
 					sc.nextLine();
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
-					controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
+					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
+
+					if(!created) {
+						System.out.println("Account could not be created. Please try again.");
+						continue;
+					}
+
+					System.out.println("Now you need to enter your preferences that will be used for matching.");
+
+					/*
+						private String preferredGender;
+						private int minHeight;
+						private int maxHeight;
+						private int minWeight;
+						private int maxWeight;
+						private int minAge;
+						private int maxAge;
+					 */
+
+					System.out.println("Please enter the gender you want to match with: ");
+					String preferredGender = sc.nextLine();
+					System.out.println("Please enter your minimum height: ");
+					int minHeight = sc.nextInt();
+					System.out.println("Please enter your maximum height (enter 2000 if you have no preference): ");
+					int maxHeight = sc.nextInt();
+					System.out.println("Please enter your minimum weight (enter 0 if you have no preference): ");
+					int minWeight = sc.nextInt();
+					System.out.println("Please enter your maximum weight (enter 2000 if you have no preference): ");
+					int maxWeight = sc.nextInt();
+					System.out.println("Please enter your minimum age (enter 18 if you have no preference): ");
+					int minAge = sc.nextInt();
+					System.out.println("Please enter your maximum age (enter 2000 if you have no preference): ");
+					int maxAge = sc.nextInt();
+					sc.nextLine();
+					controller.createPreferences(preferredGender, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge);
 
 					userInput = 0;
 					firstTime = true;
