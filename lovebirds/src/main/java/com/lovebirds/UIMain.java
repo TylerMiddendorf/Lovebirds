@@ -65,9 +65,9 @@ public class UIMain {
 					sc.nextLine();
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
-					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
+					int createdID = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
 
-					if(!created) {
+					if(createdID == -1) {
 						System.out.println("Account could not be created. Please try again.");
 						continue;
 					}
@@ -99,7 +99,7 @@ public class UIMain {
 					System.out.println("Please enter your maximum age (enter 2000 if you have no preference): ");
 					int maxAge = sc.nextInt();
 					sc.nextLine();
-					controller.createPreferences(preferredGender, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge);
+					controller.createPreferences(createdID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 
 					userInput = 0;
 					firstTime = true;

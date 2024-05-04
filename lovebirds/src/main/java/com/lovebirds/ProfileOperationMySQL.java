@@ -18,7 +18,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         this.db = db;
     }
 
-    public boolean createProfile(Profile profile) {
+    public int createProfile(Profile profile) {
 
         try {
             this.db.connect();
@@ -37,13 +37,19 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setString(10, profile.getPassword());
             pstmt.executeUpdate();
             pstmt.close();
-            return true;
+
+            sql = "SELECT USER_ID FROM PROFILE WHERE USERNAME = ?";
+            PreparedStatement nextpstmt = dbConn.prepareStatement(sql);
+            nextpstmt.setInt(1, profile.getProfileID());
+            ResultSet rsID = nextpstmt.executeQuery();
+            int returnID = rsID.getInt(1);
+            return returnID;
             
         } catch (SQLException e) {
             System.out.println(e.getSQLState());
             System.out.println(e.getNextException());
             System.out.println("Could not create profile. Please try again.");
-            return false;
+            return -1;
         }
             
     }
@@ -128,19 +134,21 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.PREFERENCES(USER_ID, PREFERRED_GENDER, MIN_HEIGHT, MAX_HEIGHT, MIN_WEIGHT, MAX_WEIGHT, MIN_AGE, MAX_AGE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.PREFERENCES(USER_ID, MIN_HEIGHT, MAX_HEIGHT, MIN_WEIGHT, MAX_WEIGHT, MIN_AGE, MAX_AGE, PREFERRED_GENDER) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
-            pstmt.setString(2, newPref.getPreferredGender());
-            pstmt.setInt(3, newPref.getMinHeight());
-            pstmt.setInt(4, newPref.getMaxHeight());
-            pstmt.setInt(5, newPref.getMinWeight());
-            pstmt.setInt(6, newPref.getMaxWeight());
-            pstmt.setInt(7, newPref.getMinAge());
-            pstmt.setInt(8, newPref.getMaxAge());
+            pstmt.setInt(2, newPref.getMinHeight());
+            pstmt.setInt(3, newPref.getMaxHeight());
+            pstmt.setInt(4, newPref.getMinWeight());
+            pstmt.setInt(5, newPref.getMaxWeight());
+            pstmt.setInt(6, newPref.getMinAge());
+            pstmt.setInt(7, newPref.getMaxAge());
+            pstmt.setString(8, newPref.getPreferredGender());
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
             System.out.println("Could not create preferences.");
             return false;
         }

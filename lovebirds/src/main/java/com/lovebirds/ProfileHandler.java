@@ -12,12 +12,12 @@ public class ProfileHandler extends Handler {
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???
      */
-    public boolean createProfile(Profile newProfile)
+    public int createProfile(Profile newProfile)
     {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        boolean created = profileOperation.createProfile(newProfile);
+        int createdUserID = profileOperation.createProfile(newProfile);
         // input the username and other data?
-        return created;
+        return createdUserID;
     }
 
     public boolean editProfile(Profile profile)
@@ -68,11 +68,11 @@ public class ProfileHandler extends Handler {
         return true; // user has been unmatched
     }
 
-    public boolean createPreferences(String preferredGender, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge)
+    public boolean createPreferences(int userID, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge, String preferredGender)
     {
         Preferences newPreferences = new Preferences(preferredGender, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge);
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        boolean created = profileOperation.createPreferences(maxAge, newPreferences);
+        boolean created = profileOperation.createPreferences(userID, newPreferences);
         return created;
     }
 
