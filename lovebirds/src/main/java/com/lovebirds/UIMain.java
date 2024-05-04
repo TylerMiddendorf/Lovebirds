@@ -131,6 +131,7 @@ public class UIMain {
 		// 3. Edit preferences
 		// 4. Edit album
 		// 5. Logout
+		// 6. Delete account
 		do 
 		{
 			//prints menu
@@ -139,14 +140,9 @@ public class UIMain {
 			userInput = loopForInteger(sc);
 			
 			//if-else-if for processing user input
-			if(userInput < 1 || userInput > 6)
+			if(userInput < 1 || userInput > 7)
 			{
 				System.out.println("Invalid entry. Try again.");
-			}
-			else if(userInput == 6)
-			{
-				System.out.println("Logging out...");
-				run = false;
 			}
 			else if(userInput == 1)
 			{
@@ -228,6 +224,15 @@ public class UIMain {
 				// 	Have option to go back to options menu
 
 			}
+			else if(userInput == 6)
+			{
+				System.out.println("Logging out...");
+				run = false;
+			}
+			else if(userInput == 7)
+			{
+				controller.deleteProfile();
+			}	
 		}
 		while(run);
 		
@@ -244,8 +249,7 @@ public class UIMain {
 	 * Displays menu of options
 	 */
 	private static void displayMenu(){
-		System.out.println("");
-		System.out.println("1: Login");
+		System.out.println("\n1: Login");
 		System.out.println("2: Create Account");
 		System.out.println("3: Forgot Password");
 		System.out.println("4: Exit");
@@ -257,13 +261,13 @@ public class UIMain {
 	 * Displays menu of options
 	 */
     private static void displayLoginMenu(){
-        System.out.println("");
-		System.out.println("1: Retrieve Suggested Users");
+		System.out.println("\n1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
 		System.out.println("3: Edit Profile");
 		System.out.println("4: Edit Preferences");
 		System.out.println("5: Edit Album");
 		System.out.println("6: Logout");
+		System.out.println("7: Delete account");
 		System.out.print("Select one of the following: ");
     }
 
@@ -295,7 +299,7 @@ public class UIMain {
 	 * Displays menu of options
 	 */
 	private static void displayRateUserMenu() {
-        System.out.println("Rate the user 1-5.");
+        System.out.println("\nRate the user 1-5.");
         System.out.println("\n1: Not interested at all");
         System.out.println("2: Not interested");
         System.out.println("3: Kind of interested");
@@ -310,7 +314,7 @@ public class UIMain {
 	 */
 	private static void displayEditPreferencesMenu()
     {
-        System.out.println("Which preference would you like to edit?");
+        System.out.println("\nWhich preference would you like to edit?");
         System.out.println("1. Gender");
         System.out.println("2. Minimum Height");
         System.out.println("3. Maximum Height");
@@ -328,7 +332,7 @@ public class UIMain {
 	 */
 	private static void displayEditProfileMenu()
 	{
-		System.out.println("Which element of your profie would you like to edit?");
+		System.out.println("\nWhich element of your profie would you like to edit?");
         System.out.println("1. Username");
         System.out.println("2. Email");
         System.out.println("3. First Name");

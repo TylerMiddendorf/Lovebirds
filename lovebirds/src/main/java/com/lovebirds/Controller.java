@@ -21,7 +21,7 @@ public class Controller {
      * @param id
      * @return suggestedUsers
      */
-    public ArrayList<Profile> retrieveSugUsers(int id){
+    public ArrayList<Profile> retrieveSugUsers(int id) {
         ArrayList<Profile> suggestedUsers = matchmakerHandler.retrieveSugUsers(id);
         return suggestedUsers;
     }
@@ -31,7 +31,7 @@ public class Controller {
      * @param id
      * @return suggestedProfile
      */
-    public ArrayList<Profile> retrieveSugProfile(int id){
+    public ArrayList<Profile> retrieveSugProfile(int id) { 
         ArrayList<Profile> suggestedProfile = matchmakerHandler.retrieveSugProfile(id);
         return suggestedProfile;
     }
@@ -41,7 +41,7 @@ public class Controller {
      * @param filter
      * @return filtered
      */
-    public ArrayList<Profile> filterUsers(String filter){
+    public ArrayList<Profile> filterUsers(String filter) { 
         ArrayList<Profile> filtered = matchmakerHandler.filterUsers(filter);
         return filtered;
     }
@@ -61,7 +61,7 @@ public class Controller {
      * calls createProfile from Profile Handler
      * @preturn newProfile
      */
-    public boolean createProfile(String username, String email, String firstName, String lastName, String profilePicture, int age, int height, int weight, String gender, String password){
+    public boolean createProfile(String username, String email, String firstName, String lastName, String profilePicture, int age, int height, int weight, String gender, String password) {
         Profile newProfile = new Profile(username, email, firstName, lastName, profilePicture, age, height, weight, gender, password);
         boolean created = profileHandler.createProfile(newProfile);
         return created;
@@ -82,9 +82,10 @@ public class Controller {
      * @param
      * @return
      */
-    public boolean deleteProfile(Profile profile ){
-       boolean deletedProfile = profileHandler.deleteProfile(profile);
-       return deletedProfile;
+    public boolean deleteProfile() {
+        Profile profileToDelete = Handler.getProfile(); 
+        boolean deletedProfile = profileHandler.deleteProfile(profileToDelete.getProfileID());
+        return deletedProfile;
     }
 
     /*
@@ -92,7 +93,7 @@ public class Controller {
      * @param user
      * @return true if block successful
      */
-    public boolean blockUser(Profile user){
+    public boolean blockUser(Profile user) {
         return profileHandler.blockUser(user);
     }
 
@@ -101,7 +102,7 @@ public class Controller {
      * @param user
      * @return true if dismissUser successful
      */
-    public boolean dismissUser(Profile user){
+    public boolean dismissUser(Profile user) {
         return profileHandler.dismissUser(user);
     }
 
@@ -110,7 +111,7 @@ public class Controller {
      * @param user
      * @return rating
      */
-    public boolean rateUser(Profile user){
+    public boolean rateUser(Profile user) {
         return profileHandler.rateUser(user);
     }
 
@@ -119,7 +120,7 @@ public class Controller {
      * @param user
      * @return true if likeUser successful
      */
-    public boolean likeUser(Profile user){
+    public boolean likeUser(Profile user) {
         return profileHandler.likeUser(user);
     }
 
@@ -128,7 +129,7 @@ public class Controller {
      * @param user
      * @return true if unmatchUser successful
      */
-    public boolean unmatchUser(Profile user){
+    public boolean unmatchUser(Profile user) {
         return profileHandler.unmatchUser(user);
     }
 
@@ -149,7 +150,7 @@ public class Controller {
      * THIS NEEDS FIXED to take parm
      * Also add createPreferences method in ProfileHandler
      */
-    public boolean createPreferences(int userID, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge, String preferredGender){
+    public boolean createPreferences(int userID, int minHeight, int maxHeight, int minWeight, int maxWeight, int minAge, int maxAge, String preferredGender) {
         boolean created = profileHandler.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
         return created;
     }
@@ -159,7 +160,7 @@ public class Controller {
      * @param user
      * @return true if preferences have been edited/updated
      */
-    public boolean editPreferences(Profile user){
+    public boolean editPreferences(Profile user) {
         boolean created = profileHandler.editPreferences(user);
         return created;
     }
@@ -168,7 +169,7 @@ public class Controller {
      * calls clearConversation in Chat Handler
      * return true if clearConversation successful
      */
-    public boolean clearConversation(int recieverID){
+    public boolean clearConversation(int recieverID) {
         boolean created = chatHandler.clearConversation(recieverID);
         return created;
     }
@@ -177,7 +178,7 @@ public class Controller {
      * calls sendMessage in Chat Handler
      * return true if sendMessage successful
      */
-    public boolean sendMessage(String message, int recieverID){
+    public boolean sendMessage(String message, int recieverID) {
         boolean created = chatHandler.sendMessage(message, recieverID);
         return created;
     }
@@ -232,7 +233,7 @@ public class Controller {
     /*
      * handles logout of account
      */
-    public void logOut(){
+    public void logOut() {
         
     }
 
@@ -243,7 +244,7 @@ public class Controller {
      * @param newPassword - new password user wants
      * @return true if Profile found and password updated, false if Profile not found
      */
-    public boolean forgotPassword(String email, String username, String newPassword){
+    public boolean forgotPassword(String email, String username, String newPassword) {
         boolean authenticated = Authentication.authenticateForgotPassword(email, username, newPassword);
         return authenticated;
     }
