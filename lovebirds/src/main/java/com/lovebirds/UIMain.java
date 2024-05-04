@@ -410,6 +410,8 @@ public class UIMain {
                         if(userInput >= 18)
                         {
                             //capture user input and update profile
+
+							correctNum = true;
                         }
                         else
                             System.out.println("Must be at least 18 years old.");
