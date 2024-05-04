@@ -185,7 +185,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setInt(6, newPref.getMinWeight());
             pstmt.setString(7, newPref.getPreferredGender());
             pstmt.setInt(8, userID);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.out.println("Could not update preferences.");
@@ -200,6 +200,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             String sql = "DELETE FROM lovebirds_schema.PREFERENCES WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.out.println("Could not delete preferences.");
