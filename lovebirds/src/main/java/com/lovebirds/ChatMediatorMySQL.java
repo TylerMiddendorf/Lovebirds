@@ -56,10 +56,6 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         }
     }
 
-    public boolean updateChat() {
-        return true;
-    }
-
     public boolean deleteChat() {
         return true;
     }
