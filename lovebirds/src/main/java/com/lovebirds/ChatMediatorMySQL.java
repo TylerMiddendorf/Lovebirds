@@ -24,7 +24,7 @@ public class ChatMediatorMySQL extends ChatMediator{ //
             pstmt.setInt(1, SenderID);
             pstmt.setInt(2, RecieverID);
             pstmt.setString(3, message);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch (Exception e) {
             return false;
