@@ -19,6 +19,11 @@ public class MatchmakerHandler {
         return new ArrayList<Profile>();
     }
 
+    /**
+     * retrieves users' average rating of others and number of messages sent
+     * @param stats
+     * @return
+     */
     public ArrayList<String> retrieveStatistics(String stats)
     {
         return new ArrayList<String>();
