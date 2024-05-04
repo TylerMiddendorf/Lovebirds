@@ -100,7 +100,8 @@ public class ProfileHandler extends Handler {
 
     public Profile initializeProfile(int userID) {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        Profile profile = profileOperation.readProfile(userID);
+        Profile returnProfile = profileOperation.readProfile(userID);
+        this.profile = returnProfile;
         return profile;
     }
 
