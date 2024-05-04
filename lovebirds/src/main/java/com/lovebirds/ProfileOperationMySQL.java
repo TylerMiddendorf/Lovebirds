@@ -67,7 +67,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             int weight = rs.getInt(9);
             String gender = rs.getString(10);
             String password = rs.getString(11);
-            Profile newProfile = new Profile(username, email, firstName, lastName, profilePic, age, height, weight, gender, password);
+            Profile newProfile = new Profile(userID, username, email, firstName, lastName, profilePic, age, height, weight, gender, password);
             return newProfile;
             
         } catch (SQLException e) {
