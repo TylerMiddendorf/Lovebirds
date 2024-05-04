@@ -21,7 +21,6 @@ public class MediaOperationMySQL extends MediaOperation { //
     
     public boolean createPhoto(String path, String album, int UID, String Photo_name) {
         
-       
         BufferedImage image = null;
         try {
             image = ImageIO.read(new File(path));
@@ -70,7 +69,6 @@ public class MediaOperationMySQL extends MediaOperation { //
             byte image[] = rs.getBytes(2);
             String photoName = rs.getString(3);
 
-            
             Photo photo = new Photo(photoName, image , "png");
             return photo;
         } catch(SQLException e){
