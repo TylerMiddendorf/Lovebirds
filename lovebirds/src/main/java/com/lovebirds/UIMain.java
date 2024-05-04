@@ -40,9 +40,8 @@ public class UIMain {
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
 					int resultID = controller.logIn(username, password);
-					if(resultID != -1) {
-						controller.initializeProfile(resultID);
-					} 
+					controller.initializeProfile(resultID);
+			
 		
 					break;
 				case 2: //Create Account
