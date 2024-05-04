@@ -75,15 +75,16 @@ public class Controller {
     public boolean editProfile(Profile profile){
         boolean editedProfile = profileHandler.editProfile(profile);
         return editedProfile;
-    }
+    }    
 
     /*
      * THIS NEEDS FIXED to take param
      * @param
      * @return
      */
-    public boolean deleteProfile(){
-        return false;
+    public boolean deleteProfile(Profile profile ){
+       boolean deletedProfile = profileHandler.deleteProfile(profile);
+       return deletedProfile;
     }
 
     /*

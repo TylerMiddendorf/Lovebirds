@@ -31,9 +31,11 @@ public class ProfileHandler extends Handler {
     public boolean deleteProfile(Profile profile)
     {
         // delete the profile from the database
-        profile = null;
+        // ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        // boolean deleted = profileOperation.deleteProfile(profile.getProfileID());
 
-        return true; // profile deleted 
+        //return true; // profile deleted 
+        return FactoryProducer.getSQLFactory().getProfile("MySQL").deleteProfile(profile.getProfileID());
     }
 
     public boolean blockUser(Profile user)
@@ -86,7 +88,6 @@ public class ProfileHandler extends Handler {
         GeneralFactory factory = FactoryProducer.getSQLFactory();
         ProfileOperation profileOp = factory.getProfile("MySQL");
         profileOp.updatePreferences(user.getProfileID(), usersPreferences);
-        
         return true;
     }
 
