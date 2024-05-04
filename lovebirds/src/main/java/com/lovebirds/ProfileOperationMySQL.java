@@ -115,7 +115,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             String sql = "DELETE FROM lovebirds_schema.PROFILE WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
 
         } catch (SQLException e) {

@@ -28,7 +28,7 @@ public class ProfileHandler extends Handler {
         return true;
     }
 
-    public boolean deleteProfile(int userID)
+    public boolean deleteProfile()
     {
         // delete the profile from the database
         // ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
@@ -65,6 +65,13 @@ public class ProfileHandler extends Handler {
         return liked;
     }
 
+    /**
+     * checks ratings table in database
+     * if (USER_ID -> RECIPIENT_ID = like(relationship)) and (RECIPIENT_ID -> USER_ID = like(relationship))
+     * then allow unmatch
+     * @param user
+     * @return
+     */
     public boolean unmatchUser(Profile user)
     {
         return true; // user has been unmatched
