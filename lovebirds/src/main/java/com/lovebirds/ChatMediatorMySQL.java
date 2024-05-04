@@ -19,7 +19,7 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         try {
             db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO PREFERENCES(SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.MESSAGE(SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, SenderID);
             pstmt.setInt(2, RecieverID);
@@ -36,7 +36,7 @@ public class ChatMediatorMySQL extends ChatMediator{ //
             db.connect();
             Connection dbConn = db.getConnection();
             Chat newChat = new Chat();
-            String sql = "SELECT * FROM MESSAGE WHERE (RECIPIENT = ? AND WHERE SENDER = ?) or (RECIPIENT = ? AND WHERE SENDER = ?)";
+            String sql = "SELECT * FROM lovebirds_schema.MESSAGE WHERE (RECIPIENT = ? AND WHERE SENDER = ?) or (RECIPIENT = ? AND WHERE SENDER = ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, senderID);
             pstmt.setInt(2, recieverID);
