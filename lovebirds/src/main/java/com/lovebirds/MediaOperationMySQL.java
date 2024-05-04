@@ -48,7 +48,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             pstmt.setInt(1, UID);
             pstmt.setString(2, album);
             pstmt.setBlob(3,  is);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.out.println("Could not create image. Please try again.");
@@ -88,7 +88,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             pstmt.setInt(1, userID);
             pstmt.setString(2, albumName);
             pstmt.setString(3, photoName);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch(SQLException e){
             System.out.println("Could not delete image. Please try again.");
@@ -129,7 +129,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             pstmt.setString(1, albumName);
             pstmt.setInt(2, userID);
             pstmt.setString(3, newAlbumName); 
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch(SQLException e){
             System.out.println("Could not updateAlbum. Please try again.");
@@ -146,7 +146,7 @@ public class MediaOperationMySQL extends MediaOperation { //
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, albumName);
             pstmt.setInt(2, userID);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             return true;
         } catch(SQLException e){
             System.out.println("Could not updateAlbum. Please try again.");
