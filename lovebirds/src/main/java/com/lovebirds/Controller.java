@@ -83,8 +83,7 @@ public class Controller {
      * @return
      */
     public boolean deleteProfile() {
-        Profile profileToDelete = Handler.getProfile(); 
-        boolean deletedProfile = profileHandler.deleteProfile(profileToDelete.getProfileID());
+        boolean deletedProfile = profileHandler.deleteProfile();
         return deletedProfile;
     }
 

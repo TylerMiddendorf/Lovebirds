@@ -28,7 +28,7 @@ public class ProfileHandler extends Handler {
         return true;
     }
 
-    public boolean deleteProfile(int userID)
+    public boolean deleteProfile()
     {
         // delete the profile from the database
         // ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
