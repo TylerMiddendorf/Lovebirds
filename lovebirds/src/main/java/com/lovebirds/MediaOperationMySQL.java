@@ -19,7 +19,7 @@ public class MediaOperationMySQL extends MediaOperation { //
     }
     
     
-    public boolean createPhoto(String path, String album, int UID, String Photo_name) {
+    public boolean createPhoto(String path, String album, int UID) {
         
         BufferedImage image = null;
         try {
@@ -42,7 +42,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.MESSAGES(USERID, ALBUMNAME, PHOTO, PHOTONAME) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.MESSAGES(USERID, ALBUMNAME, PHOTO) VALUES (?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, UID);
             pstmt.setString(2, album);
