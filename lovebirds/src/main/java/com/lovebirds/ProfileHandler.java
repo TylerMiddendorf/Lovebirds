@@ -12,12 +12,12 @@ public class ProfileHandler extends Handler {
     /*
      * Need to chain these CRUD functions to call the Profile Operation ones???
      */
-    public int createProfile(Profile newProfile)
+    public boolean createProfile(Profile newProfile)
     {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        int createdUserID = profileOperation.createProfile(newProfile);
+        boolean created = profileOperation.createProfile(newProfile);
         // input the username and other data?
-        return createdUserID;
+        return created;
     }
 
     public boolean editProfile(Profile profile)

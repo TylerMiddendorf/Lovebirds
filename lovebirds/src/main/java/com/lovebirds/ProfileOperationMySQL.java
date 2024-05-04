@@ -18,7 +18,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         this.db = db;
     }
 
-    public int createProfile(Profile profile) {
+    public boolean createProfile(Profile profile) {
 
         try {
             this.db.connect();
@@ -37,19 +37,11 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setString(10, profile.getPassword());
             pstmt.executeUpdate();
             pstmt.close();
-
-            sql = "SELECT USER_ID FROM PROFILE WHERE USERNAME = ?";
-            PreparedStatement nextpstmt = dbConn.prepareStatement(sql);
-            nextpstmt.setInt(1, profile.getProfileID());
-            ResultSet rsID = nextpstmt.executeQuery();
-            int returnID = rsID.getInt(1);
-            return returnID;
+            return true;
             
         } catch (SQLException e) {
-            System.out.println(e.getSQLState());
-            System.out.println(e.getNextException());
             System.out.println("Could not create profile. Please try again.");
-            return -1;
+            return false;
         }
             
     }

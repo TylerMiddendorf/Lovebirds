@@ -26,11 +26,11 @@ public class Authentication {
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
-            if(rs.getFetchSize() < 1) {
+            if(!rs.next()) {
                 return -1;
             }
 
-            int userID = rs.getInt(0);
+            int userID = rs.getInt(1);
             return userID;
 
         } catch (SQLException e) {

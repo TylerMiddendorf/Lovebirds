@@ -61,10 +61,10 @@ public class Controller {
      * calls createProfile from Profile Handler
      * @preturn newProfile
      */
-    public int createProfile(String username, String email, String firstName, String lastName, String profilePicture, int age, int height, int weight, String gender, String password){
+    public boolean createProfile(String username, String email, String firstName, String lastName, String profilePicture, int age, int height, int weight, String gender, String password){
         Profile newProfile = new Profile(username, email, firstName, lastName, profilePicture, age, height, weight, gender, password);
-        int createdUserID = profileHandler.createProfile(newProfile);
-        return createdUserID;
+        boolean created = profileHandler.createProfile(newProfile);
+        return created;
     }
 
     /*
@@ -167,30 +167,18 @@ public class Controller {
      * calls clearConversation in Chat Handler
      * return true if clearConversation successful
      */
-<<<<<<< HEAD
-    public boolean clearConversation(){
-        //boolean created = chatHandler.clearConversation();
-        return true;
-=======
     public boolean clearConversation(int recieverID){
         boolean created = chatHandler.clearConversation(recieverID);
         return created;
->>>>>>> 15577c003ea11c8f746145278a063989f5e9984c
     }
 
     /*
      * calls sendMessage in Chat Handler
      * return true if sendMessage successful
      */
-<<<<<<< HEAD
-    public boolean sendMessage(String message){
-        //boolean created = chatHandler.sendMessage(message);
-        return true;
-=======
     public boolean sendMessage(String message, int recieverID){
         boolean created = chatHandler.sendMessage(message, recieverID);
         return created;
->>>>>>> 15577c003ea11c8f746145278a063989f5e9984c
     }
 
     /* 
