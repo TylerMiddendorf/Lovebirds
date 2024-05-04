@@ -3,6 +3,7 @@ package com.lovebirds;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 
@@ -56,8 +57,18 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         }
     }
 
-    public boolean deleteChat() {
-        return true;
+    public boolean deleteChat(int userID) {
+         try {
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "DELETE FROM lovebirds_schema.MESSAGE WHERE USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Could not delete preferences.");
+            return false;
+        }
     }
     
     
