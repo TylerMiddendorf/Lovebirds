@@ -21,7 +21,7 @@ public class Authentication {
             db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
             db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM PROFILE WHERE USERNAME = ? AND EMAIL = ?";
+            String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE USERNAME = ? AND PASSWORD = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
@@ -34,6 +34,9 @@ public class Authentication {
             return userID;
 
         } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getNextException());
+            System.out.println(e.getMessage());
             System.out.println("Could not log into the profile with the profile information provided.\nPlease try again.");
             return -1;
         }

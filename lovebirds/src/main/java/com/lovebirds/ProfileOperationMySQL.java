@@ -53,7 +53,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM PROFILE WHERE USER_ID = ?";
+            String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             ResultSet rs = pstmt.executeQuery();
@@ -83,7 +83,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "UPDATE PROFILE SET USERNAME = ? AND FIRSTNAME = ? AND LASTNAME = ? AND HEIGHT = ? AND WEIGHT = ? AND AGE = ? AND GENDER = ? AND PROFILEPICTURE = ? WHERE USER_ID = ?";
+            String sql = "UPDATE lovebirds_schema.PROFILE SET USERNAME = ? AND FIRSTNAME = ? AND LASTNAME = ? AND HEIGHT = ? AND WEIGHT = ? AND AGE = ? AND GENDER = ? AND PROFILEPICTURE = ? WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, profile.getUsername());
             pstmt.setString(2, profile.getEmail());
@@ -110,7 +110,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM Profile WHERE USER_ID = ?";
+            String sql = "DELETE FROM lovebirds_schema.PROFILE WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.executeQuery();
@@ -128,7 +128,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO PREFERENCES(USERID, PREFERREDGENDER, MINHEIGHT, MAXHEIGHT, MINWEIGHT, MAXWEIGHT, MINAGE, MAXAGE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.PREFERENCES(USERID, PREFERREDGENDER, MINHEIGHT, MAXHEIGHT, MINWEIGHT, MAXWEIGHT, MINAGE, MAXAGE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, newPref.getPreferredGender());
@@ -150,7 +150,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM PREFERNECES WHERE USER_ID = ?";
+            String sql = "SELECT * FROM lovebirds_schema.PREFERNECES WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             ResultSet rs = pstmt.executeQuery();
@@ -175,7 +175,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "UPDATE PREFERENCES SET MinHeight = ? AND MaxHeight = ? AND MinAge = ? AND MaxAge = ? AND MaxWeight = ? AND MinWeight = ? AND PreferedGender = ? AND WHERE USER_ID = ?";
+            String sql = "UPDATE lovebirds_schema.PREFERENCES SET MinHeight = ? AND MaxHeight = ? AND MinAge = ? AND MaxAge = ? AND MaxWeight = ? AND MinWeight = ? AND PreferedGender = ? AND WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, newPref.getMinHeight());
             pstmt.setInt(2, newPref.getMaxHeight());
@@ -197,7 +197,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM Preferences WHERE USER_ID = ?";
+            String sql = "DELETE FROM lovebirds_schema.PREFERENCES WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             return true;
