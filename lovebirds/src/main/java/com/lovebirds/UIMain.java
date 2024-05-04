@@ -24,6 +24,7 @@ public class UIMain {
 		while(userInput == 0){
 			if(!firstTime)
 				System.out.println("Invalid Input (follow instructions)");
+			firstTime = false;
 			displayMenu();
 			userInput = loopForInteger(sc);
 
@@ -41,11 +42,8 @@ public class UIMain {
 					int resultID = controller.logIn(username, password);
 					if(resultID != -1) {
 						controller.initializeProfile(resultID);
-						userInput = 0;
 					} 
-					//error handling something like this
-					//int error_code;
-					//System.out.println((error_code==-1)? "Server is Down":(error_code==-2)? "profile doesn't exist": "success");
+		
 					break;
 				case 2: //Create Account
 					System.out.print("Enter username: ");
@@ -68,13 +66,9 @@ public class UIMain {
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
 					controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
-					// 	call createPreferences()
-					// 	enter & set preferences
 
-					//userInput = 0 so it will loop back into switch statement
-					//force login after creating account
 					userInput = 0;
-					// firstTime = true;
+					firstTime = true;
 					break;
 				case 3: //Forgot Password
 					boolean passwordReset = forgotPassword();
@@ -84,10 +78,8 @@ public class UIMain {
 					else{
 						System.out.println("\nError finding user with the details provided");
 					}
-
-					//userInput = 0 so it will loop back into switch statement
-					//force login after changing password
-					// userInput = 0;
+					userInput = 0;
+					firstTime = true;
 					break;
 				case 4: //exit
 					System.out.println("Exiting...");
