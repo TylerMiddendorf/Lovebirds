@@ -76,16 +76,6 @@ public class UIMain {
 
 					System.out.println("Now you need to enter your preferences that will be used for matching.");
 
-					/*
-						private String preferredGender;
-						private int minHeight;
-						private int maxHeight;
-						private int minWeight;
-						private int maxWeight;
-						private int minAge;
-						private int maxAge;
-					 */
-
 					System.out.println("Please enter the gender you want to match with: ");
 					String preferredGender = sc.nextLine();
 					System.out.println("Please enter your minimum height: ");
@@ -106,12 +96,13 @@ public class UIMain {
 					userInput = 0;
 					firstTime = true;
 					break;
+
 				case 3: //Forgot Password
 					boolean passwordReset = forgotPassword();
 					if (passwordReset){
 						System.out.println("\nPassword has been successfully reset");
 					}
-					else{
+					else {
 						System.out.println("\nError finding user with the details provided");
 					}
 					userInput = 0;
@@ -591,7 +582,7 @@ public class UIMain {
 	private static int loopForInteger(Scanner scan) {
 		while(!scan.hasNextInt()) {
 			scan.nextLine();
-			System.out.print("Please enter a valid integer.");
+			System.out.print("Please enter a valid integer: ");
 		}
 		int num = scan.nextInt();
 		return num;

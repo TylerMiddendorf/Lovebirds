@@ -2,9 +2,9 @@ package com.lovebirds;
 
 public abstract class Handler {
 
-    protected Profile profile;
+    protected static Profile profile;
 
-    public Profile getProfile() {
+    public static Profile getProfile() {
         return profile;
     }
 
