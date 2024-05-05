@@ -216,4 +216,37 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
         }
     }
 
+    public Profile readProfile(int userID) {
+
+        try {
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            
+            String username = rs.getString(2);
+            String email = rs.getString(3);
+            String firstName = rs.getString(4);
+            String lastName = rs.getString(5);
+            String profilePic = rs.getString(6);
+            int age = rs.getInt(7);
+            int height = rs.getInt(8);
+            int weight = rs.getInt(9);
+            String gender = rs.getString(10);
+            String password = rs.getString(11);
+            Profile newProfile = new Profile(userID, username, email, firstName, lastName, profilePic, age, height, weight, gender, password);
+            return newProfile;
+            
+        } catch (SQLException e) {
+            System.out.println("Could not log in to profile.");
+            return null;
+        }
+        
+    }
+
+    
+
 }

@@ -11,7 +11,6 @@ public class UIMain {
 		Scanner sc = new Scanner(System.in);
 		controller = new Controller();
 		
-
 		//variables that assist with looped program
 		int userInput = 0;
 		boolean run = true;
@@ -112,6 +111,18 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve messages.");
 				//retrieve messages
+				int conversationChoice = 0;
+				boolean firstTimeChat = true;
+				do{
+					if(!firstTimeChat)
+						System.out.println("Please enter a valid number");
+					System.out.print("\n1: View Conversation\n2: Clear Conversation\n3: Back\nSelect one of the following: ");
+					conversationChoice = loopForInteger(sc);
+					firstTimeChat = false;
+				}while(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3);
+				
+				System.out.println("Matched users:");
+
 				//this is where you can see messages and people you've "matched with" via messages
 			}
 			else if(userInput == 3) {
@@ -258,7 +269,7 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.print("Invalid option. \n" + agePrompt);
+						System.out.print("Invalid option. Go get some help. No Diddy. No Drizzy.\n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
 					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
