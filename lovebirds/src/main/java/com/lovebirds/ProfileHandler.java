@@ -20,10 +20,94 @@ public class ProfileHandler extends Handler {
         return created;
     }
 
-    public boolean editProfile(Profile profile)
+    /**
+     * updates the profile object with setters based on user entries
+     * and the updates it in the database
+     * NOT CURRENTLY UPDATING IN DATABASE
+     * @param elementToEdit
+     * @param editedElement
+     * @return
+     */
+    public boolean editProfile(String elementToEdit, String editedElement)
     {
-        //edit the profile
-        //able to change first name, last name, age, email, username
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        
+        switch (elementToEdit)
+        {
+            case "username": 
+                profile.createUsername(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "email":
+                profile.enterEmail(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "firstName":
+                profile.setFirstName(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "lastName":
+                profile.setLastName(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "profilePicture":
+                profile.setProfilePicture(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "age":
+                profile.setAge(Integer.parseInt(editedElement));
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "height":
+                profile.setHeight(Integer.parseInt(editedElement));
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "weight":
+                profile.setWeight(Integer.parseInt(editedElement));
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "gender":
+                profile.setGender(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            case "password":
+                profile.createPassword(editedElement);
+                profileOperation.updateProfile(profile);
+
+                System.out.println(profile.toString());
+
+                break;
+            default:
+                System.out.println("never entered");
+                break;
+        }
 
         return true;
     }

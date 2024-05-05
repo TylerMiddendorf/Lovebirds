@@ -82,7 +82,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "UPDATE lovebirds_schema.PROFILE SET USERNAME = ? AND FIRSTNAME = ? AND LASTNAME = ? AND HEIGHT = ? AND WEIGHT = ? AND AGE = ? AND GENDER = ? AND PROFILEPICTURE = ? WHERE USER_ID = ?";
+            String sql = "UPDATE lovebirds_schema.PROFILE SET USERNAME = ?, EMAIL = ?, FIRST_NAME = ?, LAST_NAME = ?, PROFILE_PICTURE = ?, AGE = ?, WEIGHT = ?, HEIGHT = ?, GENDER = ?, PASSWORD = ? WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, profile.getUsername());
             pstmt.setString(2, profile.getEmail());
@@ -94,11 +94,14 @@ public class ProfileOperationMySQL extends ProfileOperation{
             pstmt.setInt(8, profile.getWeight());
             pstmt.setString(9, profile.getGender());
             pstmt.setString(10, profile.getPassword());
-            pstmt.executeQuery();
+            pstmt.setInt(11, profile.getProfileID());
+            pstmt.executeUpdate();
             return true;
             
         } catch (SQLException e) {
             System.out.println("Could not update profile.");
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
             return false;
         }
         

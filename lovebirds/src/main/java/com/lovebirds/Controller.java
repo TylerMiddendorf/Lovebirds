@@ -72,8 +72,8 @@ public class Controller {
      * @param profile
      * @return editedProfile
      */
-    public boolean editProfile(Profile profile){
-        boolean editedProfile = profileHandler.editProfile(profile);
+    public boolean editProfile(String elementToEdit, String editedElement){
+        boolean editedProfile = profileHandler.editProfile(elementToEdit, editedElement);
         return editedProfile;
     }    
 
