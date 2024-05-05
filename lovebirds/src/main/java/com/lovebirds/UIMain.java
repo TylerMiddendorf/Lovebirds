@@ -370,7 +370,7 @@ public class UIMain {
 
 		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
 
-		System.out.println("Here are profiles suggested for you: ");
+		System.out.println("Here are the profiles suggested for you: ");
 		for(int i = 0; i < sugUsers.size(); i++)
 		{
 			System.out.println((i + 1) + ". " + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
