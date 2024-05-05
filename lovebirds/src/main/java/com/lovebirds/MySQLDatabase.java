@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MySQLDatabase extends Database {
 
     private String username;
-    private String password = "GGman567";
+    private String password = "Root123!@#";
     private Connection conn;
 
     public MySQLDatabase() {
