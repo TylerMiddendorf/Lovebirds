@@ -106,6 +106,8 @@ public class ProfileOperationMySQL extends ProfileOperation{
 
     public boolean deleteProfile(int userID) {
 
+        deletePreferences(userID);
+
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
