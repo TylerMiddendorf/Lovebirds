@@ -10,6 +10,10 @@ public class ChatHandler extends Handler {
 
     public boolean sendMessage(String message, int userID)
     {
-        return FactoryProducer.getSQLFactory().getMediator("MySQL").createChat(message, profile.getProfileID(), userID); // message has been sent
+        return FactoryProducer.getSQLFactory().getMediator("MySQL").createChat(profile.getFirstName() + ": " + message, profile.getProfileID(), userID); // message has been sent
+    }
+
+    public Chat getChat(int userID){
+        return FactoryProducer.getSQLFactory().getMediator("MySQL").readChat(userID, profile.getProfileID());
     }
 }
