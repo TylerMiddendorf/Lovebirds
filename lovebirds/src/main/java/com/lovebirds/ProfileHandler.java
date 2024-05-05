@@ -168,6 +168,7 @@ public class ProfileHandler extends Handler {
 
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
         int userID = profile.getProfileID();
+        Preferences preferences = profileOperation.readPreferences(userID);
 
         switch (elementToEdit)
         {
@@ -176,20 +177,20 @@ public class ProfileHandler extends Handler {
                 {
                     //Female
                     case 1:
-                        profile.setPreferences("Female", profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                        profileOperation.updatePreferences(userID, profile.getPreferences());
+                        preferences.setPreferredGender("Female");
+                        profileOperation.updatePreferences(userID, preferences);
                         break;
 
                     //Male
                     case 2:
-                        profile.setPreferences("Male", profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                        profileOperation.updatePreferences(userID, profile.getPreferences());
+                        preferences.setPreferredGender("Male");
+                        profileOperation.updatePreferences(userID, preferences);
                         break;
 
                     //Both
                     case 3:
-                        profile.setPreferences("Both", profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                        profileOperation.updatePreferences(userID, profile.getPreferences());
+                        preferences.setPreferredGender("Both");
+                        profileOperation.updatePreferences(userID, preferences);
                         break;
 
                     default: //should never reach
@@ -198,33 +199,33 @@ public class ProfileHandler extends Handler {
                 break;
 
             case "minHeight":
-                profile.setPreferences(profile.getPreferences().getPreferredGender(), editedElement, profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                profileOperation.updatePreferences(userID, profile.getPreferences());
+                preferences.setMinHeight(editedElement);
+                profileOperation.updatePreferences(userID, preferences);
                 break;
 
             case "maxHeight":
-                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), editedElement, profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                profileOperation.updatePreferences(userID, profile.getPreferences());
+                preferences.setMaxHeight(editedElement);
+                profileOperation.updatePreferences(userID, preferences);
                 break;
 
             case "minWeight":
-                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), editedElement, profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                profileOperation.updatePreferences(userID, profile.getPreferences());
+                preferences.setMinWeight(editedElement);
+                profileOperation.updatePreferences(userID, preferences);
                 break;
             
             case "maxWeight":
-                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), editedElement, profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
-                profileOperation.updatePreferences(userID, profile.getPreferences());
+                preferences.setMaxWeight(editedElement);
+                profileOperation.updatePreferences(userID, preferences);
                 break;
 
             case "minAge":
-                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), editedElement, profile.getPreferences().getMaxAge());
-                profileOperation.updatePreferences(userID, profile.getPreferences());
+                preferences.setMinAge(editedElement);
+                profileOperation.updatePreferences(userID, preferences);
                 break;
 
             case "maxAge":
-                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), editedElement);
-                profileOperation.updatePreferences(userID, profile.getPreferences());
+                preferences.setMaxAge(editedElement);
+                profileOperation.updatePreferences(userID, preferences);
                 break;
 
             default: //should never reach
