@@ -437,6 +437,7 @@ public class UIMain {
         System.out.print("Enter a number: ");
 	}
 
+	//retrieveSugUsers needs to be updated to take blocked users out of the list
 	private static void viewMatches()
 	{
 		int userInput = 0;
