@@ -1,6 +1,7 @@
 package com.lovebirds;
 
 import java.lang.*;
+import java.util.ArrayList;
 
 @SuppressWarnings("unused") public class MediaHandler extends Handler {
 
@@ -32,10 +33,12 @@ import java.lang.*;
         return false;
     }
 
-    public boolean createAlbum() {
-
-
-        return false;
+    public boolean createAlbum(String albumName, ArrayList album) {
+        // need to discuss why MediaOperation does not have a createAlbum function
+        Album newAlbum = new Album(albumName, album);
+        MediaOperation mediaOperation = FactoryProducer.getSQLFactory().getMedia(albumName);
+        boolean created = mediaOperation.createPhoto(albumName, albumName, profile.getProfileID());
+        return created;
     }
     
 }

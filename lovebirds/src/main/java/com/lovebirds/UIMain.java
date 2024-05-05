@@ -286,6 +286,7 @@ public class UIMain {
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
 		System.out.println("8: Delete preferences.");
+		System.out.println("9. Create album");
 		System.out.print("Select one of the following: ");
     }
 
