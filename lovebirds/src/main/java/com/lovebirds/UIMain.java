@@ -178,7 +178,7 @@ public class UIMain {
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
 				
-				editPreferences(); //edit preferences
+				editPreferences(sc); //edit preferences
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
@@ -264,8 +264,14 @@ public class UIMain {
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
 					int resultID = controller.logIn(username, password);
-					controller.initializeProfile(resultID);
-			
+					if(resultID != -1) {
+						controller.initializeProfile(resultID);
+					} else {
+						System.out.println("Username and Password are not correct");
+						userInput = 0;
+						firstTime = true;
+					}
+					
 		
 					break;
 				case 2: //Create Account
@@ -677,11 +683,10 @@ public class UIMain {
         scanner.close();
 	}
 
-	private static void editPreferences()
+	private static void editPreferences(Scanner scanner)
 	{
 		boolean edited = false;
 		boolean correctNum = false;
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -791,7 +796,6 @@ public class UIMain {
             }
             
         }
-        scanner.close();
 	}
 
 	private static int loopForInteger(Scanner scan) {

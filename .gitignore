@@ -4,3 +4,5 @@ lovebirds/target/classes/com/lovebirds/Controller.class
 lovebirds/target/classes/com/lovebirds/ChatHandler.class
 lovebirds/target/classes/com/lovebirds/ChatMediatorMySQL.class
 lovebirds/target/classes/com/lovebirds/Controller.class
+lovebirds/target/classes/com/lovebirds/MySQLDatabase.class
+lovebirds/target/classes/com/lovebirds/UIMain.class
