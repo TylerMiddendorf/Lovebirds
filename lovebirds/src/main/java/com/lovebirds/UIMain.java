@@ -264,7 +264,8 @@ public class UIMain {
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
 					int resultID = controller.logIn(username, password);
-					if(resultID == -1) {
+					System.out.println(resultID);
+					if(resultID != -1) {
 						controller.initializeProfile(resultID);
 					} else {
 						userInput = 0;
