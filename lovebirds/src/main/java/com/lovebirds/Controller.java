@@ -188,36 +188,40 @@ public class Controller {
         return created;
     }
 
-    /* 
-
+    /*
     MediaHandler has been created to encapsulate the Photo and Album methods,
     needs to be updated. I'm just commenting this out to prevent the errors.
+    */
     
-    public Photo uploadPhoto(){
-        return mediaHandler.uploadPhoto();
+    public boolean uploadPhoto(){
+        //return mediaHandler.uploadPhoto();
+        return true;
     }
 
     
     public boolean deletePhoto(){
-        return mediaHandler.deletePhoto();
+        //return mediaHandler.deletePhoto();
+        return true;
     }
 
     
     public boolean editAlbum(){
-        return  mediaHandler.editAlbum();
+        //return mediaHandler.editAlbum();
+        return true;
     }
 
    
     public boolean deleteAlbum(){
-        return albumHandler.deleteAlbum();
+        //return mediaHandler.deleteAlbum();
+        return true;
     }
 
   
-    public Album createAlbum(){
-        return mediaHandler.createAlbum();
+    public boolean createAlbum(){
+        //return mediaHandler.createAlbum();
+        return true;
     }
 
-    */
 
     /**
      * handles login of account
