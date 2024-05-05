@@ -1,6 +1,5 @@
 package com.lovebirds;
 
-import java.util.Scanner;
 
 public class ProfileHandler extends Handler {
 
@@ -238,14 +237,14 @@ public class ProfileHandler extends Handler {
     public Profile initializeProfile(int userID) {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
         Profile returnProfile = profileOperation.readProfile(userID);
-        this.profile = returnProfile;
+        profile = returnProfile;
         return profile;
     }
 
     public boolean deletePreferences()
     {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        boolean deleted = profileOperation.deletePreferences(this.profile.getProfileID());
+        boolean deleted = profileOperation.deletePreferences(profile.getProfileID());
         return deleted;
     }
     
