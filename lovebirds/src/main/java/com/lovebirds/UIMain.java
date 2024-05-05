@@ -336,37 +336,6 @@ public class UIMain {
 		System.out.println("9. Upload photo(s) to existing album");
 		System.out.print("Select one of the following: ");
     }
-
-	/**
-	 * Helper method for "1. View matches"
-	 * Displays menu of options
-	 */
-	private static void displayRetrieveSuggestedUsersMenu() {
-		System.out.println("\n1: View user");
-		System.out.println("2: Dismiss user");
-		System.out.println("Select one of the following: ");
-	}
-
-	/**
-	 * Helper method for "1. View user" 
-	 * Displays menu of options
-	 */
-	private static void displayViewProfileMenu() {
-
-		}	
-	/**
-	 * Helper method for rateUser
-	 * Displays menu of options
-	 */
-	private static void displayRateUserMenu() {
-        System.out.println("\nRate the user 1-5.");
-        System.out.println("\n1: Not interested at all");
-        System.out.println("2: Not interested");
-        System.out.println("3: Kind of interested");
-        System.out.println("4: Interested");
-        System.out.println("5: Very interested");
-        System.out.print("Select one of the following: ");
-    }
 	
 	/*
 	 * Helper method for editPreferences
