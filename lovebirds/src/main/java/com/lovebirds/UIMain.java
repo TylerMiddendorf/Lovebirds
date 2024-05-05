@@ -17,13 +17,9 @@ public class UIMain {
 		boolean run = true;
 				
 		//welcome message
-		System.out.println("\nWelcome to Lovebirds\u2122 dating app!\n");
+		System.out.println("\nWelcome to Lovebirds dating app!");
 
-		for(int i = 0; i < 22; i++) {
-			System.out.print("\u2665");
-		}
-
-		String[] lovebirdsLogo = {"\n\n____(0>       <0)____"," \\\\\\\\_//) \u2665 (\\\\_//// ","  (^/(^)     (^)\\^)  "};
+		String[] lovebirdsLogo = {"\n\n____(0>       <0)____"," \\\\\\\\_//)   (\\\\_//// ","   ^  ^       ^  ^   "};
 		String[] heartSymbol = {"\n      ***   ***  ","     ***** ***** ","    *************","     *********** ","      *********  ","       *******   ","        *****    ","         ***     ","          *      "};
 		for(int i = 0; i < lovebirdsLogo.length; i++) {
 			System.out.println(lovebirdsLogo[i]);
@@ -33,114 +29,7 @@ public class UIMain {
 		}
 		System.out.println();
 
-		for(int i = 0; i < 22; i++) {
-			System.out.print("\u2665");
-		}
-		System.out.println();
-
-<<<<<<< HEAD
-		// display menu for login, create account, forgot password, or exit
-		boolean firstTime = true;
-		while(userInput == 0){
-			if(!firstTime)
-				System.out.println("Invalid Input (follow instructions)");
-			firstTime = false;
-			displayMenu();
-			userInput = loopForInteger(sc);
-
-			//buffer scanner to prevent skipping over the next scanner
-			sc.nextLine();
-			switch (userInput) {
-			//create profile, login, or quit options right here
-				case 1: //login
-				// enter username & password
-				// call logIn()
-					System.out.print("Enter Username: ");
-					username = sc.nextLine();
-					System.out.print("Enter Password: ");
-					password = sc.nextLine();
-					int resultID = controller.logIn(username, password);
-					controller.initializeProfile(resultID);
-			
-		
-					break;
-				case 2: //Create Account
-					System.out.print("Enter username: ");
-					username = sc.nextLine();
-					System.out.print("Enter email: ");
-					String email = sc.nextLine();
-					System.out.print("Enter password: ");
-					password = sc.nextLine();
-					System.out.print("Enter first name: ");
-					String firstName = sc.nextLine();
-					System.out.print("Enter last name: ");
-					String lastName = sc.nextLine();
-					System.out.print("Enter age: ");
-					int age = loopForInteger(sc);
-					System.out.print("Enter height: ");
-					int height = loopForInteger(sc);
-					System.out.print("Enter weight: ");
-					int weight = loopForInteger(sc);
-					sc.nextLine();
-					System.out.print("Enter gender: ");
-					String gender = sc.nextLine();
-					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
-
-					if(!created) {
-						System.out.println("Account could not be created. Please try again.");
-						continue;
-					}
-
-					int userID = controller.logIn(username, password);
-					// could we makethe code below into a helper method (lines 76-93)?
-					System.out.println("\nNow you need to enter your preferences that will be used for matching you with some Lovebirds!\u2122\n");
-
-					System.out.print("\nPlease enter the gender you want to match with: ");
-					String preferredGender = sc.nextLine();
-					System.out.print("Please enter your minimum height (in inches, enter 0 if you have no preference): ");
-					int minHeight = loopForInteger(sc);
-					System.out.print("Please enter your maximum height (in inches, enter 2000 if you have no preference): ");
-					int maxHeight = loopForInteger(sc);
-					System.out.print("Please enter your minimum weight (enter 0 if you have no preference): ");
-					int minWeight = loopForInteger(sc);;
-					System.out.print("Please enter your maximum weight (enter 2000 if you have no preference): ");
-					int maxWeight = loopForInteger(sc);
-					String agePrompt = "Please enter your minimum age (enter 18 if you have no preference): ";
-					System.out.print(agePrompt);
-					int minAge = loopForInteger(sc);
-					while(minAge < 18) {
-						System.out.print("Invalid option. Get some help. No Drizzy. \n" + agePrompt);
-						minAge = loopForInteger(sc);
-					}
-					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
-					int maxAge = loopForInteger(sc);
-					sc.nextLine();
-					controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
-
-					userInput = 0;
-					firstTime = true;
-					break;
-
-				case 3: //Forgot Password
-					boolean success = forgotPassword();
-					if (success)
-					{
-						System.out.println("\nPassword successfully reset.");
-					}
-					
-					userInput = 0;
-					firstTime = true;
-					break;
-				case 4: //exit
-					System.out.println("Exiting...");
-					System.exit(0);
-				default:
-					userInput = 0;		
-			}
-		}
-=======
 		displayStartMenu(sc);
->>>>>>> ddf3730a195011049f03ce27761f516ced8f3fe4
 
 		// then
 		
