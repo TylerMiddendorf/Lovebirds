@@ -57,29 +57,25 @@ public class Authentication {
             db = FactoryProducer.getSQLFactory().getDatabase("MySQL");
             db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM PROFILE WHERE EMAIL = ? AND USERNAME = ?";
+            String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE EMAIL = ? AND USERNAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, username);
             ResultSet rs = pstmt.executeQuery();
+            rs.next();
 
-            // If the user is not found, then the ResultSet will fetch 0 rows
-            if(rs.getFetchSize() == 0) {
-                return false;
-            }
+            int userID = rs.getInt(1);
+            String firstName = rs.getString(4);
+            String lastName = rs.getString(5);
+            String profilePic = rs.getString(6);
+            int age = rs.getInt(7);
+            int height = rs.getInt(8);
+            int weight = rs.getInt(9);
+            String gender = rs.getString(10);
 
-            int userID = rs.getInt(0);
-            String firstName = rs.getString(3);
-            String lastName = rs.getString(4);
-            String profilePic = rs.getString(5);
-            int age = rs.getInt(6);
-            int height = rs.getInt(7);
-            int weight = rs.getInt(8);
-            String gender = rs.getString(9);
-
-            String sqlUpdate = "UPDATE PROFILE SET USERNAME = ? AND FIRSTNAME = ? AND LASTNAME = ? AND HEIGHT = ? AND WEIGHT = ? AND AGE = ? AND GENDER = ? AND PROFILEPICTURE = ? WHERE USER_ID = ?";
+            String sqlUpdate = "UPDATE lovebirds_schema.PROFILE SET USERNAME = ?, EMAIL = ?, FIRST_NAME = ?, LAST_NAME = ?, PROFILE_PICTURE = ?, AGE = ?, WEIGHT = ?, HEIGHT = ?, GENDER = ?, PASSWORD = ? WHERE USER_ID = ?";
             PreparedStatement updatePstmt = dbConn.prepareStatement(sqlUpdate);
-            updatePstmt.setInt(0, userID);
+
             updatePstmt.setString(1, username);
             updatePstmt.setString(2, email);
             updatePstmt.setString(3, firstName);
@@ -90,11 +86,13 @@ public class Authentication {
             updatePstmt.setInt(8, weight);
             updatePstmt.setString(9, gender);
             updatePstmt.setString(10, newPassword);
-            updatePstmt.executeQuery();
+            updatePstmt.setInt(11, userID);
+            updatePstmt.executeUpdate();
+
             return true;
             
         } catch (SQLException e) {
-            System.out.println("Could not find profile to update password. Please try again");
+            System.out.println("\nCould not find profile to update password. Please try again");
             return false;
         }
 

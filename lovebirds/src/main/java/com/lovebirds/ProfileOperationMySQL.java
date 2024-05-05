@@ -100,8 +100,8 @@ public class ProfileOperationMySQL extends ProfileOperation{
             
         } catch (SQLException e) {
             System.out.println("Could not update profile.");
-            System.out.println(e.getSQLState());
-            System.out.println(e.getMessage());
+            // System.out.println(e.getSQLState());
+            // System.out.println(e.getMessage());
             return false;
         }
         

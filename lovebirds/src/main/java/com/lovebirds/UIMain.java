@@ -97,13 +97,12 @@ public class UIMain {
 					break;
 
 				case 3: //Forgot Password
-					boolean passwordReset = forgotPassword();
-					if (passwordReset){
-						System.out.println("\nPassword has been successfully reset");
+					boolean success = forgotPassword();
+					if (success)
+					{
+						System.out.println("\nPassword Successfully reset");
 					}
-					else {
-						System.out.println("\nError finding user with the details provided");
-					}
+					
 					userInput = 0;
 					firstTime = true;
 					break;
@@ -483,6 +482,7 @@ public class UIMain {
 
                 case 11:
                     //exit loop
+					System.out.println("Your profile has been updated.");
                     edited = true;
                     break;
                 default:
@@ -639,13 +639,6 @@ public class UIMain {
 		String usernameInput;
 		String emailInput;
 		String newPasswordInput;
-		boolean success = false;
-
-		//if statement for matching inputs within database
-		//if theres a match, ask user for new password, update password in database for that user,
-		//set success to true
-		//no match set success to false
-		//return success
 
 		System.out.print("Please enter your username: ");
 		usernameInput = scan.nextLine();
@@ -654,15 +647,9 @@ public class UIMain {
 		System.out.print("Please enter your new password: ");
 		newPasswordInput = scan.nextLine();
 
-		//this returns false if no profile is found in database
-		boolean confirmedProfile = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
+		//searching for username and email in database
+		boolean success = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 
-		if(confirmedProfile){
-			success = true;
-			scan.close();
-			return success;
-		}
-		scan.close();
 		return success;
 	}
 
