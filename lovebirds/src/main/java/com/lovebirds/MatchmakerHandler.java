@@ -2,7 +2,7 @@ package com.lovebirds;
 
 import java.util.ArrayList;
 
-public class MatchmakerHandler {
+public class MatchmakerHandler extends Handler {
     
     // displays the suggested users, generates the suggested users on call. 
     public ArrayList<Profile> retrieveSugUsers(int userID) {

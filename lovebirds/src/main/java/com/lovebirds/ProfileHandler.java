@@ -115,11 +115,9 @@ public class ProfileHandler extends Handler {
     public boolean deleteProfile()
     {
         // delete the profile from the database
-        // ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
-        // boolean deleted = profileOperation.deleteProfile(profile.getProfileID());
-
-        //return true; // profile deleted 
-        return FactoryProducer.getSQLFactory().getProfile("MySQL").deleteProfile(profile.getProfileID());
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        boolean deleted = profileOperation.deleteProfile(this.profile.getProfileID());
+        return deleted;
     }
 
     public boolean blockUser(Profile user)

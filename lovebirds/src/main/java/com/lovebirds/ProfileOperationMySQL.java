@@ -67,7 +67,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
             int weight = rs.getInt(9);
             String gender = rs.getString(10);
             String password = rs.getString(11);
-            Profile newProfile = new Profile(username, email, firstName, lastName, profilePic, age, height, weight, gender, password);
+            Profile newProfile = new Profile(userID, username, email, firstName, lastName, profilePic, age, height, weight, gender, password);
             return newProfile;
             
         } catch (SQLException e) {
@@ -109,6 +109,8 @@ public class ProfileOperationMySQL extends ProfileOperation{
 
     public boolean deleteProfile(int userID) {
 
+        deletePreferences(userID);
+
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
@@ -119,10 +121,12 @@ public class ProfileOperationMySQL extends ProfileOperation{
             return true;
 
         } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getNextException());
+            System.out.println(e.getMessage());
             System.out.println("Profile could not be deleted.");
             return false;
         }
-       
     }
 
     public boolean createPreferences(int userID, Preferences newPref) {
