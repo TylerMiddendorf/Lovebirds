@@ -38,6 +38,7 @@ public class ProfileHandler extends Handler {
                 profile.createUsername(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -45,6 +46,7 @@ public class ProfileHandler extends Handler {
                 profile.enterEmail(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -52,6 +54,7 @@ public class ProfileHandler extends Handler {
                 profile.setFirstName(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -59,6 +62,7 @@ public class ProfileHandler extends Handler {
                 profile.setLastName(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -66,6 +70,7 @@ public class ProfileHandler extends Handler {
                 profile.setProfilePicture(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -73,6 +78,7 @@ public class ProfileHandler extends Handler {
                 profile.setAge(Integer.parseInt(editedElement));
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -80,6 +86,7 @@ public class ProfileHandler extends Handler {
                 profile.setHeight(Integer.parseInt(editedElement));
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -87,6 +94,7 @@ public class ProfileHandler extends Handler {
                 profile.setWeight(Integer.parseInt(editedElement));
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -94,6 +102,7 @@ public class ProfileHandler extends Handler {
                 profile.setGender(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
@@ -101,11 +110,12 @@ public class ProfileHandler extends Handler {
                 profile.createPassword(editedElement);
                 profileOperation.updateProfile(profile);
 
+                //for testing
                 System.out.println(profile.toString());
 
                 break;
             default:
-                System.out.println("never entered");
+                //this is never entered
                 break;
         }
 

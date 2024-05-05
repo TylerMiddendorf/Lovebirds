@@ -341,13 +341,14 @@ public class UIMain {
 		System.out.println("8. Weight");
 		System.out.println("9. Gender");
 		System.out.println("10. Password");
-        System.out.println("11. Finish Editing");
+		System.out.println("11. Exit Editing Profile");
         System.out.print("Enter a number: ");
 	}
 
 	/**
 	 * Edit profile method that assists with editing elements of a user's profile
-	 * this includes username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
+	 * this includes username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password
+	 * CASE 11 EXITING LOOP GIVES AN ERROR 
 	 * @param user
 	 */
 	private static void editProfile()
@@ -358,11 +359,8 @@ public class UIMain {
 		int userInput = 0;
 		String elementToEdit = "";
 
-		//show current profile elements here?
-
 		while(!edited)
 		{
-			//print current profile elements here?
 
 			displayEditProfileMenu();
 
@@ -481,10 +479,7 @@ public class UIMain {
 					break;
 
                 case 11:
-                    //update profile in the database
-                    //controller.editProfile(user);
-
-                    System.out.println("Profile has been updated.");
+                    //exit loop
                     edited = true;
                     break;
                 default:
