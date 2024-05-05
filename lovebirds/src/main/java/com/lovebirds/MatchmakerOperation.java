@@ -5,4 +5,5 @@ import java.util.ArrayList;
 public abstract class MatchmakerOperation {
     private Database db;
     public abstract ArrayList<Profile> readProfilesThatMatchPreferences(Profile profile, double rating);
+    public abstract Profile readProfile(int userID);
 }

@@ -25,15 +25,17 @@ public class ChatHandler extends Handler {
     }
 
     public String[] getMatched(){
-        ArrayList<Integer> matches = FactoryProducer.getSQLFactory().getMediator("MySQL").readMatches(profile.getProfileID());
+        ChatMediator chatMediator = FactoryProducer.getSQLFactory().getMediator("MySQL");
+        ArrayList<Integer> matches = chatMediator.readMatches(profile.getProfileID());
         String[] output = new String[matches.size()];
         for(int i=0; i<matches.size();i++){
-            //output[i] = matches.get(i);
+            Profile prof = chatMediator.readProfile(matches.get(i));
+            output[i] = prof.getFirstName() + " " + prof.getLastName();
         }
         return new String[0];
     }
 
     public int getUser(int index){
-        return 0;
+        return FactoryProducer.getSQLFactory().getMediator("MySQL").readMatches(profile.getProfileID()).get(index);
     }
 }
