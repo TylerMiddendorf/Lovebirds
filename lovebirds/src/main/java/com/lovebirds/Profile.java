@@ -47,6 +47,7 @@ public class Profile {
         this.weight = weight;
         this.gender = gender;
         this.profilePicture = profilePicture;
+        this.profileID = userID;
     }
 
     public Profile(String username, String email, String firstName, String lastName, String profilePicture, int age, int height, int weight, String gender, String password) {

@@ -116,6 +116,9 @@ public class ProfileOperationMySQL extends ProfileOperation{
             return true;
 
         } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getNextException());
+            System.out.println(e.getMessage());
             System.out.println("Profile could not be deleted.");
             return false;
         }
