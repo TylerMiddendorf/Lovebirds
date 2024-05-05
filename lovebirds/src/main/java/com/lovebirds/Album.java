@@ -53,8 +53,6 @@ public class Album {
         return found;
     }
 
-    
-
     public int getPhotoCount() {
         return photoCount;
     }

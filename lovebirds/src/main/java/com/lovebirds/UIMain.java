@@ -30,7 +30,6 @@ public class UIMain {
 		displayStartMenu(sc);
 
 		// then
-		
 		// How do we incorporate retrieveSugProfile
 		// add text in the functions for the console messages instead of hardcoding in main
 		// iterate through ArrayList in functions
@@ -216,9 +215,10 @@ public class UIMain {
 				// sc.nextLine();
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 			} else if (userInput == 9) {
-				System.out.println();
+				System.out.print("Please enter what you want the album to be named: ");
+				String albumName = sc.nextLine();
 				controller.createAlbum();
-			}
+			} 
 		}
 		while(run);
 		
@@ -357,7 +357,8 @@ public class UIMain {
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
 		System.out.println("8: Delete preferences.");
-		System.out.println("9. Create album");
+		System.out.println("9. Create album and upload photo(s)");
+		System.out.println("9. Upload photo(s) to existing album");
 		System.out.print("Select one of the following: ");
     }
 
@@ -824,7 +825,6 @@ public class UIMain {
 
 		//searching for username and email in database
 		boolean success = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
-
 		return success;
 	}
 
