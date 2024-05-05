@@ -137,24 +137,10 @@ public class ProfileHandler extends Handler {
         return true; // user has been blocked
     }
 
-    public boolean dismissUser(int profileID)
-    {
-        // take user out of the profiles matches
-
-        return true; // user has been dismissed
-    }
-
     public boolean rateUser(Profile user)
     {
         // rate user 1-5
 	    return true;
-    }
-
-    public boolean likeUser(Profile user)
-    {
-        boolean liked = false;
-        // user may or may not like the user, if they do then turn true
-        return liked;
     }
 
     /**
