@@ -74,22 +74,27 @@ public class UIMain {
 
 					int userID = controller.logIn(username, password);
 					// could we makethe code below into a helper method (lines 76-93)?
-					System.out.println("\nNow you need to enter your preferences that will be used for matching.");
+					System.out.println("\nNow you need to enter your preferences that will be used for matching!\n");
 
-					System.out.println("\nPlease enter the gender you want to match with: ");
+					System.out.print("\nPlease enter the gender you want to match with: ");
 					String preferredGender = sc.nextLine();
-					System.out.println("Please enter your minimum height: ");
-					int minHeight = sc.nextInt();
-					System.out.println("Please enter your maximum height (enter 2000 if you have no preference): ");
-					int maxHeight = sc.nextInt();
-					System.out.println("Please enter your minimum weight (enter 0 if you have no preference): ");
-					int minWeight = sc.nextInt();
-					System.out.println("Please enter your maximum weight (enter 2000 if you have no preference): ");
-					int maxWeight = sc.nextInt();
-					System.out.println("Please enter your minimum age (enter 18 if you have no preference): ");
-					int minAge = sc.nextInt();
+					System.out.print("Please enter your minimum height (in inches, enter 0 if you have no preference): ");
+					int minHeight = loopForInteger(sc);
+					System.out.print("Please enter your maximum height (in inches, enter 2000 if you have no preference): ");
+					int maxHeight = loopForInteger(sc);
+					System.out.print("Please enter your minimum weight (enter 0 if you have no preference): ");
+					int minWeight = loopForInteger(sc);;
+					System.out.print("Please enter your maximum weight (enter 2000 if you have no preference): ");
+					int maxWeight = loopForInteger(sc);
+					String agePrompt = "Please enter your minimum age (enter 18 if you have no preference): ";
+					System.out.print(agePrompt);
+					int minAge = loopForInteger(sc);
+					while(minAge < 18) {
+						System.out.println("Invalid option. \n" + agePrompt);
+						minAge = loopForInteger(sc);
+					}
 					System.out.println("Please enter your maximum age (enter 2000 if you have no preference): ");
-					int maxAge = sc.nextInt();
+					int maxAge = loopForInteger(sc);
 					sc.nextLine();
 					controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 
@@ -679,8 +684,8 @@ public class UIMain {
 
 	private static int loopForInteger(Scanner scan) {
 		while(!scan.hasNextInt()) {
-			scan.nextLine();
 			System.out.print("Please enter a valid integer: ");
+			scan.next();
 		}
 		int num = scan.nextInt();
 		return num;
