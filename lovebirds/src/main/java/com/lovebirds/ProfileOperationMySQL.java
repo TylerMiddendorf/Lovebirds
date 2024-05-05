@@ -124,7 +124,6 @@ public class ProfileOperationMySQL extends ProfileOperation{
             System.out.println("Profile could not be deleted.");
             return false;
         }
-       
     }
 
     public boolean createPreferences(int userID, Preferences newPref) {

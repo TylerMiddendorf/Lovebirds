@@ -33,7 +33,6 @@ public class ProfileHandler extends Handler {
         // delete the profile from the database
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
         boolean deleted = profileOperation.deleteProfile(this.profile.getProfileID());
-
         return deleted;
     }
 
