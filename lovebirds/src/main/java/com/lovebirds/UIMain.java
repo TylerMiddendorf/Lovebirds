@@ -18,7 +18,26 @@ public class UIMain {
 		boolean run = true;
 				
 		//welcome message
-		System.out.println("Welcome to Lovebirds dating app!");
+		System.out.println("\nWelcome to Lovebirds\u2122 dating app!\n");
+
+		for(int i = 0; i < 22; i++) {
+			System.out.print("\u2665");
+		}
+
+		String[] lovebirdsLogo = {"\n\n____(0>       <0)____"," \\\\\\\\_//) \u2665 (\\\\_//// ","  (^/(^)     (^)\\^)  "};
+		String[] heartSymbol = {"\n      ***   ***  ","     ***** ***** ","    *************","     *********** ","      *********  ","       *******   ","        *****    ","         ***     ","          *      "};
+		for(int i = 0; i < lovebirdsLogo.length; i++) {
+			System.out.println(lovebirdsLogo[i]);
+		}
+		for(int i = 0; i < heartSymbol.length; i++) {
+			System.out.println(heartSymbol[i]);
+		}
+		System.out.println();
+
+		for(int i = 0; i < 22; i++) {
+			System.out.print("\u2665");
+		}
+		System.out.println();
 
 		// display menu for login, create account, forgot password, or exit
 		boolean firstTime = true;
@@ -74,7 +93,7 @@ public class UIMain {
 
 					int userID = controller.logIn(username, password);
 					// could we makethe code below into a helper method (lines 76-93)?
-					System.out.println("\nNow you need to enter your preferences that will be used for matching!\n");
+					System.out.println("\nNow you need to enter your preferences that will be used for matching you with some Lovebirds!\u2122\n");
 
 					System.out.print("\nPlease enter the gender you want to match with: ");
 					String preferredGender = sc.nextLine();
@@ -90,7 +109,7 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.print("Invalid option. \n" + agePrompt);
+						System.out.print("Invalid option. Get some help. No Drizzy. \n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
 					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
