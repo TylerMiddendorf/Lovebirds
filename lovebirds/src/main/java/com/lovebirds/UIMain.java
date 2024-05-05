@@ -50,7 +50,7 @@ public class UIMain {
 		do 
 		{
 			//prints menu
-			displayLoginMenu();
+			displayStartMenu();
 			//gets user input
 			userInput = loopForInteger(sc);
 			
@@ -68,8 +68,8 @@ public class UIMain {
 				// if view matches
 				// 	display matches -> call function "retrieveSugUsers()":
 				// 	displays one name from the ArrayList of Profiles
-				// display view matches menu
-				displayViewMatchesMenu();
+				// display retrieve suggested users menu
+				displayRetrieveSuggestedUsersMenu();
 				// 	1. View user								
 				// 		display ViewUserMenu (like user "likeUser()", rate user "rateUser()", 
 				// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
@@ -304,7 +304,7 @@ public class UIMain {
 	 * Helper method to display a menu after login 
 	 * Displays menu of options
 	 */
-    private static void displayLoginMenu(){
+    private static void displayStartMenu(){
 		System.out.println("\n1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
 		System.out.println("3: Edit Profile");
@@ -321,7 +321,7 @@ public class UIMain {
 	 * Helper method for "1. View matches"
 	 * Displays menu of options
 	 */
-	private static void displayViewMatchesMenu() {
+	private static void displayRetrieveSuggestedUsersMenu() {
 		System.out.println("\n1: View user");
 		System.out.println("2: Dismiss user");
 		System.out.println("Select one of the following: ");
@@ -331,8 +331,8 @@ public class UIMain {
 	 * Helper method for "1. View user" 
 	 * Displays menu of options
 	 */
-	private static void displayViewUserMenu() {
-		System.out.println("\n1: Like user");
+	private static void displayViewProfileMenu() {
+		System.out.println("\n1: Match user");
 		System.out.println("2: Rate user");
 		System.out.println("3: Dismiss user");
 		System.out.println("4: Unmatch user");
