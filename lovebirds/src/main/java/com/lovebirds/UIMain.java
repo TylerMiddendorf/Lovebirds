@@ -90,10 +90,10 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.println("Invalid option. \n" + agePrompt);
+						System.out.print("Invalid option. \n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
-					System.out.println("Please enter your maximum age (enter 2000 if you have no preference): ");
+					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
 					int maxAge = loopForInteger(sc);
 					sc.nextLine();
 					controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
