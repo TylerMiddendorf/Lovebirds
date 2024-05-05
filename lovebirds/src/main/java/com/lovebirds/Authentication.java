@@ -92,7 +92,7 @@ public class Authentication {
             return true;
             
         } catch (SQLException e) {
-            System.out.println("\nCould not find profile to update password. Please try again");
+            System.out.println("\nThere is no account associated with that email and username. Please try again.");
             return false;
         }
 

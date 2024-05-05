@@ -100,7 +100,7 @@ public class UIMain {
 					boolean success = forgotPassword();
 					if (success)
 					{
-						System.out.println("\nPassword Successfully reset");
+						System.out.println("\nPassword successfully reset.");
 					}
 					
 					userInput = 0;
