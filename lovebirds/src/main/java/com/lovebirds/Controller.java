@@ -102,7 +102,7 @@ public class Controller {
      * @return true if dismissUser successful
      */
     public boolean dismissUser(int profileID) {
-        return profileHandler.dismissUser(profileID);
+        return matchmakerHandler.dismissUser(profileID);
     }
 
     /**
@@ -120,7 +120,7 @@ public class Controller {
      * @return true if likeUser successful
      */
     public boolean likeUser(Profile user) {
-        return profileHandler.likeUser(user);
+        return matchmakerHandler.likeUser(user);
     }
 
     /**
