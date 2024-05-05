@@ -80,24 +80,24 @@ public class UIMain {
 					// 				print("You already liked this user.")
 					// 			go back to options menu 2
 				// 		2. Rate user
-				displayRateUserMenu();
-				int rating = 0;
-				while (rating == 0) {
-					int ratingInput;
-					if (sc.hasNextInt()) { 
-						ratingInput = sc.nextInt();
-						if (ratingInput >= 1 && ratingInput <= 5) { 
-							rating = ratingInput;
-						} else {
-							System.out.println("\nInvalid input. Please rate the user 1-5.");
-							displayRateUserMenu();
-						}
-					} else {
-						sc.next(); 
-						System.out.print("\nPlease enter a valid integer.\n"); 
-						displayRateUserMenu();
-					}
-				}	
+				// displayRateUserMenu();
+				// int rating = 0;
+				// while (rating == 0) {
+				// 	int ratingInput;
+				// 	if (sc.hasNextInt()) { 
+				// 		ratingInput = sc.nextInt();
+				// 		if (ratingInput >= 1 && ratingInput <= 5) { 
+				// 			rating = ratingInput;
+				// 		} else {
+				// 			System.out.println("\nInvalid input. Please rate the user 1-5.");
+				// 			displayRateUserMenu();
+				// 		}
+				// 	} else {
+				// 		sc.next(); 
+				// 		System.out.print("\nPlease enter a valid integer.\n"); 
+				// 		displayRateUserMenu();
+				// 	}
+				// }	
 
 				// 		3. Unmatch user
 					// 		remove this user from the ArrayList
@@ -178,7 +178,7 @@ public class UIMain {
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
 				
-				editPreferences(); //edit preferences
+				editPreferences(sc); //edit preferences
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
@@ -368,16 +368,6 @@ public class UIMain {
     }
 
 	/**
-	 * Helper method for "1. View matches"
-	 * Displays menu of options
-	 */
-	private static void displayRetrieveSuggestedUsersMenu() {
-		System.out.println("\n1: View user");
-		System.out.println("2: Dismiss user");
-		System.out.println("Select one of the following: ");
-	}
-
-	/**
 	 * Helper method for "1. View user" 
 	 * Displays menu of options
 	 */
@@ -426,8 +416,7 @@ public class UIMain {
 	 * Helper method for editProfile
 	 * Displays menu of options
 	 */
-	private static void displayEditProfileMenu()
-	{
+	private static void displayEditProfileMenu() {
 		System.out.println("\nWhich element of your profie would you like to edit?");
         System.out.println("1. Username");
         System.out.println("2. Email");
@@ -443,8 +432,7 @@ public class UIMain {
         System.out.print("Enter a number: ");
 	}
 
-	private static void viewMatches()
-	{
+	private static void displayRetrieveSuggestedUsersMenu() {
 		int userInput = 0;
 
 		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
@@ -682,11 +670,10 @@ public class UIMain {
         scanner.close();
 	}
 
-	private static void editPreferences()
+	private static void editPreferences(Scanner scanner)
 	{
 		boolean edited = false;
 		boolean correctNum = false;
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -796,7 +783,6 @@ public class UIMain {
             }
             
         }
-        scanner.close();
 	}
 
 	private static int loopForInteger(Scanner scan) {
