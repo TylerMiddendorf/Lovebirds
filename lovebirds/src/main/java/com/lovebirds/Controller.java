@@ -22,7 +22,7 @@ public class Controller {
      * @return suggestedUsers
      */
     public ArrayList<Profile> retrieveSugUsers() {
-        ArrayList<Profile> suggestedUsers = null; //matchmakerHandler.retrieveSugUsers();
+        ArrayList<Profile> suggestedUsers = matchmakerHandler.retrieveSugUsers();
         return suggestedUsers;
     }
 
