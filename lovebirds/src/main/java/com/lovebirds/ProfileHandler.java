@@ -137,7 +137,7 @@ public class ProfileHandler extends Handler {
         return true; // user has been blocked
     }
 
-    public boolean dismissUser(Profile user)
+    public boolean dismissUser(int profileID)
     {
         // take user out of the profiles matches
 

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Authentication {
 
     public static Database db;
-    /*
+    /**
      * handles login of account
      * @param username and password
      * @returns int exception handling?
