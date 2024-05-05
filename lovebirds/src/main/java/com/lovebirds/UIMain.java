@@ -178,7 +178,7 @@ public class UIMain {
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
 				
-				editPreferences(); //edit preferences
+				editPreferences(sc); //edit preferences
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
@@ -682,11 +682,10 @@ public class UIMain {
         scanner.close();
 	}
 
-	private static void editPreferences()
+	private static void editPreferences(Scanner scanner)
 	{
 		boolean edited = false;
 		boolean correctNum = false;
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -796,7 +795,6 @@ public class UIMain {
             }
             
         }
-        scanner.close();
 	}
 
 	private static int loopForInteger(Scanner scan) {
