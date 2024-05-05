@@ -217,12 +217,6 @@ public class Controller {
         return true;
     }
 
-  
-    public boolean createAlbum(){
-        //return mediaHandler.createAlbum();
-        return true;
-    }
-
 
     /**
      * handles login of account
