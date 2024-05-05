@@ -4,7 +4,7 @@ package com.lovebirds;
 
 public class Photo {
 
-    private String photoID;
+    private String photoName;
     private byte photo[]; 
     private String fileFormat;
 
@@ -12,13 +12,11 @@ public class Photo {
         
     }
 
-    public Photo(String photoId, byte photo[], String fileFormat) {
-        this.photoID = photoId;
+    public Photo(String photoName, byte photo[], String fileFormat) {
+        this.photoName = photoName;
         this.photo = photo;
         this.fileFormat = fileFormat;
     }
-
- 
 
 
     public void setPhoto(byte photo[]) {
@@ -37,12 +35,12 @@ public class Photo {
         return fileFormat;
     }
 
-    public void setPhotoID(String photoID) {
-        this.photoID = photoID;
+    public void setPhotoID(String photoName) {
+        this.photoName = photoName;
     }
 
-    public String getPhotoID() {
-        return photoID;
+    public String getPhotoName() {
+        return photoName;
     }
 
     

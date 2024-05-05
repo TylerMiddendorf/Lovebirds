@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MatchmakerOperationMySQL extends MatchmakerOperation{
+public class MatchmakerOperationMySQL extends MatchmakerOperation {
 
     private MySQLDatabase db;
 
@@ -247,6 +247,24 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
         
     }
 
-    
+    public boolean rateUser(int userID, int recipientID, int rating) {
+        try {
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RATING) VALUES (?, ?, ?)";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            pstmt.setInt(2, recipientID);
+            pstmt.setInt(3, rating);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
+            System.out.println("Could not rate user.");
+            return false;
+        }    
+    }
+
 
 }
