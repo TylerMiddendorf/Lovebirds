@@ -1,6 +1,5 @@
 package com.lovebirds;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 
 public class Profile {

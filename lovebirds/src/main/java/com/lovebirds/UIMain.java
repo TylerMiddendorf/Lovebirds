@@ -149,11 +149,17 @@ public class UIMain {
 						chatUserChoice = loopForInteger(sc);
 						firstTimeChat = false;
 					}while(chatUserChoice!=1 && chatUserChoice != 2);
-					if(chatUserChoice != 2){//send message
-
-						//send message code here
-
-
+					if(chatUserChoice == 1){//send message
+						String message = "";
+						firstTimeChat = true;
+						do{
+							if(!firstTimeChat)
+								System.out.print("Message too long, ");
+							System.out.print("enter message of length 250 or less: ");
+							message = sc.nextLine();
+							firstTimeChat = false;
+						}while(message.length()<250);
+						controller.sendMessage(message, controller.getChatUser(chatUserChoice));
 					}
 				}else if(conversationChoice == 2){//clear conversation
 					controller.clearConversation(controller.getChatUser(chatUserChoice));
