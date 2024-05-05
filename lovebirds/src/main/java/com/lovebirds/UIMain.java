@@ -50,7 +50,7 @@ public class UIMain {
 		do 
 		{
 			//prints menu
-			displayLoginMenu();
+			displayStartMenu();
 			//gets user input
 			userInput = loopForInteger(sc);
 			
@@ -68,8 +68,8 @@ public class UIMain {
 				// if view matches
 				// 	display matches -> call function "retrieveSugUsers()":
 				// 	displays one name from the ArrayList of Profiles
-				// display view matches menu
-				displayViewMatchesMenu();
+				// display retrieve suggested users menu
+				displayRetrieveSuggestedUsersMenu();
 				// 	1. View user								
 				// 		display ViewUserMenu (like user "likeUser()", rate user "rateUser()", 
 				// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
@@ -340,7 +340,7 @@ public class UIMain {
 	 * Helper method to display a menu after login 
 	 * Displays menu of options
 	 */
-    private static void displayLoginMenu(){
+    private static void displayStartMenu(){
 		System.out.println("\n1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
 		System.out.println("3: Edit Profile");
@@ -357,7 +357,7 @@ public class UIMain {
 	 * Helper method for "1. View matches"
 	 * Displays menu of options
 	 */
-	private static void displayViewMatchesMenu() {
+	private static void displayRetrieveSuggestedUsersMenu() {
 		System.out.println("\n1: View user");
 		System.out.println("2: Dismiss user");
 		System.out.println("Select one of the following: ");
@@ -367,8 +367,8 @@ public class UIMain {
 	 * Helper method for "1. View user" 
 	 * Displays menu of options
 	 */
-	private static void displayViewUserMenu() {
-		System.out.println("\n1: Like user");
+	private static void displayViewProfileMenu() {
+		System.out.println("\n1: Match user");
 		System.out.println("2: Rate user");
 		System.out.println("3: Dismiss user");
 		System.out.println("4: Unmatch user");
@@ -435,47 +435,90 @@ public class UIMain {
 
 		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
 
-		System.out.println("Here are the profiles suggested for you: ");
+		Scanner scanner = new Scanner(System.in);
+		boolean dismissed = false;
+
 		for(int i = 0; i < sugUsers.size(); i++)
 		{
-			System.out.println((i + 1) + ". " + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
-		}
-
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("If you would like to view one of these profiles, enter the corresponding number.");
-		System.out.println("Otherwise, press 0.");
-		userInput = loopForInteger(scanner);
-
-		if(userInput != 0)
-		{
-			if(userInput > 0 && userInput < sugUsers.size())
+			System.out.println("Here is a profile that is suggested for you: ");
+			System.out.println(sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
+			while (!dismissed)
 			{
+				System.out.println("What would you like to do?");
+				System.out.println("1. View profile");
+				System.out.println("2. Dismiss");
+				System.out.print("Enter a number: ");
 
-				// Call controller with the profile they want.
-				// This profile object must be created here as it is another persons profile, not the user.
-				Profile profileToBeRetrieved = sugUsers.get(userInput - 1);
-				Profile printThis = controller.retrieveSugProfile(profileToBeRetrieved.getProfileID());
+				userInput = loopForInteger(scanner);
 
-				// confused about the two statements above, they are both profiles, and since retrieve is already
-				// getting a list of profile objects, why do we need retrieveSugProfile here?
-
-				printSugProfile(printThis);
+				switch (userInput)
+				{
+					case 1:
+						printSugProfile(sugUsers.get(i));
+						break;
+					case 2:
+						System.out.println("User dismissed."); // just go to next profile
+						dismissed = true;
+						break;
+					default:
+						System.out.println("Choose '1' or '2', try again.");
+						break;
+				}
 			}
-			else
-			{
-				System.out.println("That number is not on the list.");
-			}
+			dismissed = false; //reset dismissed for next profile
 		}
+		scanner.close();
 	}
 
 	private static void printSugProfile(Profile profile)
 	{
-		System.out.println(profile.getFirstName() + " " + profile.getLastName());
-		System.out.println("Age: " + profile.getAge());
-		System.out.println("Height: " + profile.getHeight());
-		System.out.println("Weight: " + profile.getWeight());
-		System.out.println("Gender: " + profile.getGender());
 
+		Scanner scanner = new Scanner(System.in);
+		int userInput = 0;
+		boolean goBack = false;
+
+		while(!goBack)
+		{
+			System.out.println(profile.getFirstName() + " " + profile.getLastName());
+			System.out.println("Age: " + profile.getAge());
+			System.out.println("Height: " + profile.getHeight());
+			System.out.println("Weight: " + profile.getWeight());
+			System.out.println("Gender: " + profile.getGender());
+
+			System.out.println("What would you like to do?");
+			System.out.println("1. Match user"); // like this profile
+			System.out.println("2. Rate user"); 
+			System.out.println("3. Unmatch user"); // remove like from profile
+			System.out.println("4. Block user");
+			System.out.println("5. Go back");
+
+			System.out.print("Enter a number: ");
+			userInput = loopForInteger(scanner);
+
+			switch (userInput)
+			{
+				case 1:
+					System.out.println("not implemented yet");
+					break;
+				case 2:
+					System.out.println("not implemented yet");
+					break;
+				case 3:
+					System.out.println("not implemented yet");
+					break;
+				case 4:
+					System.out.println("not implemented yet");
+					break;
+				case 5:
+					goBack = true;
+					break;
+				default:
+					System.out.println("Enter a number 1-5, try again.");
+					break;
+			}
+		}
+
+		scanner.close();
 	}
 
 	/**
