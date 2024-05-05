@@ -39,7 +39,7 @@ public class Album {
         boolean isFound = false;
         Photo found = null;
         while(i < album.size() && !isFound) {
-            String currentID = album.get(i).getPhotoID();
+            String currentID = album.get(i).getPhotoName();
             if(currentID.equals(photoID)) {
                 found = album.get(i);
                 isFound = true;
