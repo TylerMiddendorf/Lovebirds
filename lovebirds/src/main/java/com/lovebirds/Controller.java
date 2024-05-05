@@ -253,6 +253,17 @@ public class Controller {
         boolean authenticated = Authentication.authenticateForgotPassword(email, username, newPassword);
         return authenticated;
     }
-    
+
+    public String[] getMessages(int recieverID) {
+        return chatHandler.getMessages(recieverID);
+    }
+
+    public String[] getMatched(){
+        return chatHandler.getMatched();
+    }
+
+    public int getChatUser(int index){
+        return chatHandler.getUser(index);
+    }
 
 }

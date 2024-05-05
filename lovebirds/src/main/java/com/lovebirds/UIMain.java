@@ -120,9 +120,9 @@ public class UIMain {
 					conversationChoice = loopForInteger(sc);
 					firstTimeChat = false;
 				}while(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3);
-
-				System.out.println("Matched users:");
 				
+				System.out.println("Matched users:");
+
 				//this is where you can see messages and people you've "matched with" via messages
 			}
 			else if(userInput == 3) {
