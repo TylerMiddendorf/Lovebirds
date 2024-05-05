@@ -1,5 +1,7 @@
 package com.lovebirds;
 
+import java.util.ArrayList;
+
 public class ChatHandler extends Handler {
 
     //set user id in database to admin account
@@ -23,7 +25,11 @@ public class ChatHandler extends Handler {
     }
 
     public String[] getMatched(){
-        
+        ArrayList<Integer> matches = FactoryProducer.getSQLFactory().getMediator("MySQL").readMatches(profile.getProfileID());
+        String[] output = new String[matches.size()];
+        for(int i=0; i<matches.size();i++){
+            //output[i] = matches.get(i);
+        }
         return new String[0];
     }
 

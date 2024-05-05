@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 
@@ -75,6 +76,25 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         } catch (SQLException e) {
             System.out.println("Could not delete preferences.");
             return false;
+        }
+    }
+
+    public ArrayList<Integer> readMatches(int userID){
+        try {
+            db.connect();
+            Connection dbConn = db.getConnection();
+            ArrayList<Integer> matches = new ArrayList<>();
+            String sql = "SELECT * FROM lovebirds_schema.RATINGS WHERE SENDER = ? AND RELATIONSHIP = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            pstmt.setString(2, "Liked");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                matches.add(rs.getInt(2));  
+            }
+            return matches;
+        } catch (Exception e) {
+            return null;
         }
     }
     
