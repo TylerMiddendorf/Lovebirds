@@ -119,11 +119,28 @@ public class UIMain {
 					System.out.print("\n1: View Conversation\n2: Clear Conversation\n3: Back\nSelect one of the following: ");
 					conversationChoice = loopForInteger(sc);
 					firstTimeChat = false;
-				}while(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3);
-				
+				}while(!(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3));
+				if(conversationChoice != 3){
 				System.out.println("Matched users:");
+				String[] chatUserNames = controller.getMatched();
+				for(int i=0;i<chatUserNames.length;i++){
+					System.out.println(i+": " + chatUserNames[i]);
+				}
+				System.out.print("Select one of the following: ");
+				firstTimeChat = true;
+				int chatUserChoice = 0;
+				do{
+					if(!firstTimeChat)
+						System.out.println("Please enter a valid number");
+					chatUserChoice = loopForInteger(sc);
+					firstTimeChat = false;
+				}while(chatUserChoice<0 && chatUserChoice < chatUserNames.length);
+
+				
+
 
 				//this is where you can see messages and people you've "matched with" via messages
+				}
 			}
 			else if(userInput == 3) {
 				System.out.println("Call to edit profile.");
@@ -143,7 +160,6 @@ public class UIMain {
 				System.out.println("Call to edit album.");
                 //edit album
 				// 	Have option to go back to options menu
-
 			}
 			else if(userInput == 6) {
 				System.out.println("\nLogging out...");
