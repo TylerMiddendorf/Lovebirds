@@ -27,7 +27,6 @@ public class UIMain {
 			System.out.println(heartSymbol[i]);
 		}
 		System.out.println();
-
 		displayStartMenu(sc);
 
 		// then
@@ -50,7 +49,7 @@ public class UIMain {
 		do 
 		{
 			//prints menu
-			displayLoginMenu();
+			displayStartMenu();
 			//gets user input
 			userInput = loopForInteger(sc);
 			
@@ -68,8 +67,8 @@ public class UIMain {
 				// if view matches
 				// 	display matches -> call function "retrieveSugUsers()":
 				// 	displays one name from the ArrayList of Profiles
-				// display view matches menu
-				displayViewMatchesMenu();
+				// display retrieve suggested users menu
+				displayRetrieveSuggestedUsersMenu();
 				// 	1. View user								
 				// 		display ViewUserMenu (like user "likeUser()", rate user "rateUser()", 
 				// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
@@ -111,6 +110,9 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve messages.");
 				//retrieve messages
+				if(controller.getMatched().length == 0){
+					System.out.println("you have not matched with anyone");
+				}else{
 				int conversationChoice = 0;
 				boolean firstTimeChat = true;
 				do{
@@ -119,11 +121,45 @@ public class UIMain {
 					System.out.print("\n1: View Conversation\n2: Clear Conversation\n3: Back\nSelect one of the following: ");
 					conversationChoice = loopForInteger(sc);
 					firstTimeChat = false;
-				}while(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3);
-				
+				}while(!(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3));
+				if(conversationChoice != 3){
 				System.out.println("Matched users:");
+				String[] chatUserNames = controller.getMatched();
+				for(int i=0;i<chatUserNames.length;i++)
+					System.out.println(i+": " + chatUserNames[i]);
+				System.out.print("Select one of the following: ");
+				firstTimeChat = true;
+				int chatUserChoice = 0;
+				do{
+					if(!firstTimeChat)
+						System.out.println("Please enter a valid number");
+					chatUserChoice = loopForInteger(sc);
+					firstTimeChat = false;
+				}while(chatUserChoice<0 && chatUserChoice < chatUserNames.length);
+				if(conversationChoice == 1){//view conversation
+					String[] convo = controller.getMessages(controller.getChatUser(chatUserChoice));
+					for(String s:convo)
+						System.out.println(s);
+					System.out.print("\n1: Send Message\n2: back\n Select one of the following: ");
+					firstTimeChat = true;
+					chatUserChoice = 0;
+					do{
+						if(!firstTimeChat)
+							System.out.println("Please enter a valid number");
+						chatUserChoice = loopForInteger(sc);
+						firstTimeChat = false;
+					}while(chatUserChoice!=1 && chatUserChoice != 2);
+					if(chatUserChoice != 2){//send message
 
+						//send message code here
+
+
+					}
+				}else if(conversationChoice == 2){//clear conversation
+					controller.clearConversation(controller.getChatUser(chatUserChoice));
+				}
 				//this is where you can see messages and people you've "matched with" via messages
+				}}
 			}
 			else if(userInput == 3) {
 				System.out.println("Call to edit profile.");
@@ -143,7 +179,6 @@ public class UIMain {
 				System.out.println("Call to edit album.");
                 //edit album
 				// 	Have option to go back to options menu
-
 			}
 			else if(userInput == 6) {
 				System.out.println("\nLogging out...");
@@ -174,6 +209,9 @@ public class UIMain {
 				// int maxAge = sc.nextInt();
 				// sc.nextLine();
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
+			} else if (userInput == 9) {
+				System.out.println();
+				controller.createAlbum();
 			}
 		}
 		while(run);
@@ -269,7 +307,7 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.print("Invalid option. Go get some help. No Diddy. No Drizzy.\n" + agePrompt);
+						System.out.print("\nInvalid option. Go get some help. No Diddy. No Drizzy.\n\n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
 					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
@@ -304,7 +342,7 @@ public class UIMain {
 	 * Helper method to display a menu after login 
 	 * Displays menu of options
 	 */
-    private static void displayLoginMenu(){
+    private static void displayStartMenu(){
 		System.out.println("\n1: Retrieve Suggested Users");
 		System.out.println("2: Retrieve messages");
 		System.out.println("3: Edit Profile");
@@ -321,7 +359,7 @@ public class UIMain {
 	 * Helper method for "1. View matches"
 	 * Displays menu of options
 	 */
-	private static void displayViewMatchesMenu() {
+	private static void displayRetrieveSuggestedUsersMenu() {
 		System.out.println("\n1: View user");
 		System.out.println("2: Dismiss user");
 		System.out.println("Select one of the following: ");
@@ -331,8 +369,8 @@ public class UIMain {
 	 * Helper method for "1. View user" 
 	 * Displays menu of options
 	 */
-	private static void displayViewUserMenu() {
-		System.out.println("\n1: Like user");
+	private static void displayViewProfileMenu() {
+		System.out.println("\n1: Match user");
 		System.out.println("2: Rate user");
 		System.out.println("3: Dismiss user");
 		System.out.println("4: Unmatch user");
