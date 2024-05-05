@@ -181,6 +181,69 @@ public class ProfileHandler extends Handler {
     {
 
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        int userID = profile.getProfileID();
+
+        switch (elementToEdit)
+        {
+            case "gender":
+                switch(editedElement)
+                {
+                    //Female
+                    case 1:
+                        profile.setPreferences("Female", profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                        profileOperation.updatePreferences(userID, profile.getPreferences());
+                        break;
+
+                    //Male
+                    case 2:
+                        profile.setPreferences("Male", profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                        profileOperation.updatePreferences(userID, profile.getPreferences());
+                        break;
+
+                    //Both
+                    case 3:
+                        profile.setPreferences("Both", profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                        profileOperation.updatePreferences(userID, profile.getPreferences());
+                        break;
+
+                    default: //should never reach
+                        System.out.println("Did not set gender, edit preferences error.");
+                }
+                break;
+
+            case "minHeight":
+                profile.setPreferences(profile.getPreferences().getPreferredGender(), editedElement, profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                profileOperation.updatePreferences(userID, profile.getPreferences());
+                break;
+
+            case "maxHeight":
+                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), editedElement, profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                profileOperation.updatePreferences(userID, profile.getPreferences());
+                break;
+
+            case "minWeight":
+                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), editedElement, profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                profileOperation.updatePreferences(userID, profile.getPreferences());
+                break;
+            
+            case "maxWeight":
+                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), editedElement, profile.getPreferences().getMinAge(), profile.getPreferences().getMaxAge());
+                profileOperation.updatePreferences(userID, profile.getPreferences());
+                break;
+
+            case "minAge":
+                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), editedElement, profile.getPreferences().getMaxAge());
+                profileOperation.updatePreferences(userID, profile.getPreferences());
+                break;
+
+            case "maxAge":
+                profile.setPreferences(profile.getPreferences().getPreferredGender(), profile.getPreferences().getMinHeight(), profile.getPreferences().getMaxHeight(), profile.getPreferences().getMinWeight(), profile.getPreferences().getMaxWeight(), profile.getPreferences().getMinAge(), editedElement);
+                profileOperation.updatePreferences(userID, profile.getPreferences());
+                break;
+
+            default: //should never reach
+                System.out.println("Did not set preference, edit preferences error.");
+        }
 
         return true;
     }
@@ -198,14 +261,5 @@ public class ProfileHandler extends Handler {
         boolean deleted = profileOperation.deletePreferences(this.profile.getProfileID());
         return deleted;
     }
-
-    private int loopForInteger(Scanner scan) {
-		while(!scan.hasNextInt()) {
-			scan.nextLine();
-			System.out.print("\nPlease enter a valid integer.");
-		}
-		int num = scan.nextInt();
-		return num;
-	}
     
 }
