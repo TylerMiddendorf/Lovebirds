@@ -126,9 +126,8 @@ public class UIMain {
 				if(conversationChoice != 3){
 				System.out.println("Matched users:");
 				String[] chatUserNames = controller.getMatched();
-				for(int i=0;i<chatUserNames.length;i++){
+				for(int i=0;i<chatUserNames.length;i++)
 					System.out.println(i+": " + chatUserNames[i]);
-				}
 				System.out.print("Select one of the following: ");
 				firstTimeChat = true;
 				int chatUserChoice = 0;
@@ -138,16 +137,28 @@ public class UIMain {
 					chatUserChoice = loopForInteger(sc);
 					firstTimeChat = false;
 				}while(chatUserChoice<0 && chatUserChoice < chatUserNames.length);
-
 				if(conversationChoice == 1){//view conversation
+					String[] convo = controller.getMessages(controller.getChatUser(chatUserChoice));
+					for(String s:convo)
+						System.out.println(s);
+					System.out.print("\n1: Send Message\n2: back\n Select one of the following: ");
+					firstTimeChat = true;
+					chatUserChoice = 0;
+					do{
+						if(!firstTimeChat)
+							System.out.println("Please enter a valid number");
+						chatUserChoice = loopForInteger(sc);
+						firstTimeChat = false;
+					}while(chatUserChoice!=1 && chatUserChoice != 2);
+					if(chatUserChoice != 2){//send message
+
+						//send message code here
 
 
+					}
 				}else if(conversationChoice == 2){//clear conversation
-
-
+					controller.clearConversation(controller.getChatUser(chatUserChoice));
 				}
-
-
 				//this is where you can see messages and people you've "matched with" via messages
 				}}
 			}
