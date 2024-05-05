@@ -177,16 +177,11 @@ public class ProfileHandler extends Handler {
         return created;
     }
 
-    public boolean editPreferences(Profile user)
+    public boolean editPreferences(String elementToEdit, int editedElement)
     {
-        user.getPreferences();
 
-        Preferences usersPreferences = user.getPreferences();
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
 
-        // update preferences in the database
-        GeneralFactory factory = FactoryProducer.getSQLFactory();
-        ProfileOperation profileOp = factory.getProfile("MySQL");
-        profileOp.updatePreferences(user.getProfileID(), usersPreferences);
         return true;
     }
 

@@ -207,10 +207,8 @@ public class UIMain {
 				System.out.println("Call to edit preferences.");
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
-				Profile testProfile = null;
 				
-				//DO NOT put controller. before this. update preferences uses controller
-				updatePreferences(testProfile); //edit preferences
+				editPreferences(); //edit preferences
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
@@ -512,119 +510,112 @@ public class UIMain {
         scanner.close();
 	}
 
-	private static void updatePreferences(Profile user)
-    {
-		//controller = new Controller();
-        //user.getPreferences(); 
-        // get the preferences from the profile
-        // take in input from the user for new preference settings
-        // set each new preference to the new preference in profile
-        // update the new preferences for the profile in the database
+	private static void editPreferences()
+	{
+		boolean edited = false;
+		boolean correctNum = false;
+		Scanner scanner = new Scanner(System.in);
+		int userInput = 0;
+		String elementToEdit = "";
 
-        boolean edited = false;
-        boolean correctNum = false;
-        Scanner scanner = new Scanner(System.in);
-        int userInput = 0;
+		while(!edited)
+		{
 
+			displayEditPreferencesMenu();
 
-        Preferences usersPreferences = user.getPreferences();
+			userInput = loopForInteger(scanner);
 
-        while(!edited)
-        {
-            displayEditPreferencesMenu();
-
-            userInput = loopForInteger(scanner);
-
-            switch (userInput) {
+			//edit below
+			switch (userInput) {
                 case 1:
-                    //update gender
-                    while(!correctNum)
-                    {
-                        System.out.println("Choose your updated preferred gender: ");
-                        System.out.println("1. Female");
-                        System.out.println("2. Male");
-                        System.out.println("3. Both");
-                        System.out.println("Enter a number: ");
-                        userInput = loopForInteger(scanner);
-                        switch (userInput)
-                        {
-                        case 1:
-                            usersPreferences.setPreferredGender("Female");
-                            correctNum = true;
-                            break;
-                        case 2:
-                            usersPreferences.setPreferredGender("Male");
-                            correctNum = true;
-                            break;
-                        case 3:
-                            usersPreferences.setPreferredGender("Both");
-                            correctNum = true;
-                            break;
-                        default:
-                            System.out.println("Enter a number 1-3.");
-                            break;
-                        }
-                    }
-                    correctNum = false;
-                    break;
+					elementToEdit = "gender";
+					System.out.println("Choose your preferred gender: ");
+					System.out.println("1. Female");
+					System.out.println("2. Male");
+					System.out.println("3. Both");
+					System.out.print("Enter a number: ");
+					userInput = loopForInteger(scanner);
+					switch (userInput)
+					{
+						case 1:
+							controller.editPreferences(elementToEdit, 1);
+							break;
+						case 2:
+							controller.editPreferences(elementToEdit, 2);
+							break;
+						case 3:
+							controller.editPreferences(elementToEdit, 3);
+							break;
+						default:
+							System.out.println("Enter a number 1-3. Please try again.");
 
-                case 2:
-                    //min height
-                    System.out.print("Enter preferred minimum height in inches: ");
-                    userInput = loopForInteger(scanner);
-                    usersPreferences.setMinHeight(userInput);
-                    break;
+					}
+					break;
+
+                case 2: 
+					elementToEdit = "minHeight";
+					System.out.print("Enter preferred minimum height in inches: ");
+					userInput = loopForInteger(scanner);
+					controller.editPreferences(elementToEdit, userInput);
+					break;
 
                 case 3:
-                    //max height
-                    System.out.print("Enter preferred maximum height in inches: ");
-                    userInput = loopForInteger(scanner);
-                    usersPreferences.setMaxHeight(userInput);
-                    break;
+					elementToEdit = "maxHeight";
+					System.out.print("Enter preferred maximum height in inches: ");
+					userInput = loopForInteger(scanner);
+					controller.editPreferences(elementToEdit, userInput);
+					break;
 
                 case 4:
-                    //min weight
-                    System.out.print("Enter preferred minimum weight in pounds: ");
-                    userInput = loopForInteger(scanner);
-                    usersPreferences.setMinWeight(userInput);
-                    break;
+					elementToEdit = "minWeight";
+					System.out.print("Enter preferred minimum weight in pounds: ");
+					userInput = loopForInteger(scanner);
+					controller.editPreferences(elementToEdit, userInput);
+					break;
 
                 case 5:
-                    //max weight
-                    System.out.print("Enter preferred maximum weight in pounds: ");
-                    userInput = loopForInteger(scanner);
-                    usersPreferences.setMaxWeight(userInput);
-                    break;
+					elementToEdit = "maxWeight";
+					System.out.print("Enter preferred maximum weight in pounds: ");
+					userInput = loopForInteger(scanner);
+					controller.editPreferences(elementToEdit, userInput);
+					break;
 
                 case 6:
-                    //min age
+                    elementToEdit = "minAge";
                     while(!correctNum)
                     {
-                        System.out.print("Enter preferred minimum age: ");
+                        System.out.print("Enter your preferred minimum age: ");
                         userInput = loopForInteger(scanner);
                         if(userInput >= 18)
                         {
-                            usersPreferences.setMinAge(userInput);
-                            correctNum = true;
+							controller.editPreferences(elementToEdit, userInput);
+							correctNum = true;
                         }
                         else
-                            System.out.println("Minimum age must be at least 18.");
+                            System.out.println("Must be at least 18 years old.");
                     }
                     correctNum = false;
                     break;
 
                 case 7:
-                    //max age
-                    System.out.print("Enter preferred maximum age: ");
-                    userInput = loopForInteger(scanner);
-                    usersPreferences.setMaxAge(userInput);
-                    break;
+					elementToEdit = "maxAge";
+					while(!correctNum)
+					{
+						System.out.print("Enter your preferred maximum age: ");
+						userInput = loopForInteger(scanner);
+						if(userInput >= 18)
+						{
+							controller.editPreferences(elementToEdit, userInput);
+							correctNum = true;
+						}
+						else
+							System.out.println("Must be at least 18 years old.");
+					}
+					correctNum = false;
+					break;
 
                 case 8:
-                    // update preferences in the database
-                    controller.editPreferences(user);
-
-                    System.out.println("Preferences updated.");
+					System.out.println("Your preferences have been updated.");
                     edited = true;
                     break;
                 default:
@@ -634,7 +625,7 @@ public class UIMain {
             
         }
         scanner.close();
-    }
+	}
 
 	private static int loopForInteger(Scanner scan) {
 		while(!scan.hasNextInt()) {

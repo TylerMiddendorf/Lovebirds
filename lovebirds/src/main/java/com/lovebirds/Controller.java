@@ -159,9 +159,9 @@ public class Controller {
      * @param user
      * @return true if preferences have been edited/updated
      */
-    public boolean editPreferences(Profile user) {
-        boolean created = profileHandler.editPreferences(user);
-        return created;
+    public boolean editPreferences(String elementToEdit, int editedElement) {
+        boolean editedProfile = profileHandler.editProfile(elementToEdit, editedElement);
+        return editedProfile;
     }
 
     public boolean deletePreferences() {
