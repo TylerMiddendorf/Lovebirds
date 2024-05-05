@@ -267,6 +267,7 @@ public class UIMain {
 					if(resultID != -1) {
 						controller.initializeProfile(resultID);
 					} else {
+						System.out.println("Username and Password are not correct");
 						userInput = 0;
 						firstTime = true;
 					}
