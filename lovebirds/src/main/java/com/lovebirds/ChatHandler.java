@@ -27,12 +27,14 @@ public class ChatHandler extends Handler {
     public String[] getMatched(){
         ChatMediator chatMediator = FactoryProducer.getSQLFactory().getMediator("MySQL");
         ArrayList<Integer> matches = chatMediator.readMatches(profile.getProfileID());
+        if(matches == null)
+            return new String[0];
         String[] output = new String[matches.size()];
         for(int i=0; i<matches.size();i++){
             Profile prof = chatMediator.readProfile(matches.get(i));
             output[i] = prof.getFirstName() + " " + prof.getLastName();
         }
-        return new String[0];
+        return output;
     }
 
     public int getUser(int index){
