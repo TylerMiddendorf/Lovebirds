@@ -73,9 +73,9 @@ public class UIMain {
 
 					int userID = controller.logIn(username, password);
 
-					System.out.println("Now you need to enter your preferences that will be used for matching.");
+					System.out.println("\nNow you need to enter your preferences that will be used for matching.");
 
-					System.out.println("Please enter the gender you want to match with: ");
+					System.out.println("\nPlease enter the gender you want to match with: ");
 					String preferredGender = sc.nextLine();
 					System.out.println("Please enter your minimum height: ");
 					int minHeight = sc.nextInt();
@@ -125,12 +125,13 @@ public class UIMain {
 		// edit profile "editProfile()", edit preferences 
 		// edit preferences "editPreferences()", edit album "editAlbum()",
 		// logout "logOut()"
-		// 1. View matches 
-		// 2. Edit profile 
-		// 3. Edit preferences
-		// 4. Edit album
-		// 5. Logout
-		// 6. Delete account
+		// 1. View matches
+		// 2. View messages
+		// 3. Edit profile 
+		// 4. Edit preferences
+		// 5. Edit album
+		// 6. Logout
+		// 7. Delete account
 		do 
 		{
 			//prints menu
@@ -224,18 +225,20 @@ public class UIMain {
 			}
 			else if(userInput == 6)
 			{
-				System.out.println("Logging out...");
+				System.out.println("\nLogging out...");
 				run = false;
 			}
 			else if(userInput == 7)
 			{
 				controller.deleteProfile();
+				System.out.println("\nGood riddance!");
+				run = false;
 			}	
 		}
 		while(run);
 		
 		//goodbye message
-		System.out.println("Thank you, Goodbye!");
+		System.out.println("\nThank you, Goodbye!");
 		//close scanner
 		sc.close();
 
