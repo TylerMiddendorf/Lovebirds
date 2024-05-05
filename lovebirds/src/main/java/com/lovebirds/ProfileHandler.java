@@ -199,7 +199,9 @@ public class ProfileHandler extends Handler {
 
     public boolean deletePreferences()
     {
-        return true;
+        ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
+        boolean deleted = profileOperation.deletePreferences(this.profile.getProfileID());
+        return deleted;
     }
 
     private int loopForInteger(Scanner scan) {

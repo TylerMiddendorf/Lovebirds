@@ -72,7 +72,7 @@ public class UIMain {
 					}
 
 					int userID = controller.logIn(username, password);
-
+					// could we makethe code below into a helper method (lines 76-93)?
 					System.out.println("\nNow you need to enter your preferences that will be used for matching.");
 
 					System.out.println("\nPlease enter the gender you want to match with: ");
@@ -140,7 +140,7 @@ public class UIMain {
 			userInput = loopForInteger(sc);
 			
 			//if-else-if for processing user input
-			if(userInput < 1 || userInput > 7)
+			if(userInput < 1 || userInput > 20)
 			{
 				System.out.println("Invalid entry. Try again.");
 			}
@@ -198,15 +198,13 @@ public class UIMain {
 				//retrieve messages
 				//this is where you can see messages and people you've "matched with" via messages
 			}
-			else if(userInput == 3)
-			{
+			else if(userInput == 3) {
 				System.out.println("Call to edit profile.");
 				//calls edit profile in controller 
 				//able to change username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
 				editProfile();
 			}
-			else if(userInput == 4)
-			{
+			else if(userInput == 4) {
 				System.out.println("Call to edit preferences.");
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
@@ -216,24 +214,42 @@ public class UIMain {
 				updatePreferences(testProfile); //edit preferences
 				// 	Have option to go back to options menu	
 			}
-			else if(userInput == 5)
-			{
+			else if(userInput == 5) {
 				System.out.println("Call to edit album.");
                 //edit album
 				// 	Have option to go back to options menu
 
 			}
-			else if(userInput == 6)
-			{
+			else if(userInput == 6) {
 				System.out.println("\nLogging out...");
 				run = false;
 			}
-			else if(userInput == 7)
-			{
+			else if(userInput == 7) {
 				controller.deleteProfile();
 				System.out.println("\nGood riddance!");
 				run = false;
 			}	
+			else if (userInput == 8) {
+				controller.deletePreferences();
+				System.out.println("\nYour preferences has been deleted. You will need to re-enter them.");
+				run = false;
+				// System.out.println("\nPlease enter the gender you want to match with: ");
+				// String preferredGender = sc.nextLine();
+				// System.out.println("Please enter your minimum height: ");
+				// int minHeight = sc.nextInt();
+				// System.out.println("Please enter your maximum height (enter 2000 if you have no preference): ");
+				// int maxHeight = sc.nextInt();
+				// System.out.println("Please enter your minimum weight (enter 0 if you have no preference): ");
+				// int minWeight = sc.nextInt();
+				// System.out.println("Please enter your maximum weight (enter 2000 if you have no preference): ");
+				// int maxWeight = sc.nextInt();
+				// System.out.println("Please enter your minimum age (enter 18 if you have no preference): ");
+				// int minAge = sc.nextInt();
+				// System.out.println("Please enter your maximum age (enter 2000 if you have no preference): ");
+				// int maxAge = sc.nextInt();
+				// sc.nextLine();
+				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
+			}
 		}
 		while(run);
 		
@@ -269,6 +285,7 @@ public class UIMain {
 		System.out.println("5: Edit Album");
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
+		System.out.println("8: Delete preferences.");
 		System.out.print("Select one of the following: ");
     }
 

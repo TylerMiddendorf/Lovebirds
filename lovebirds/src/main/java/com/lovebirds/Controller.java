@@ -164,6 +164,12 @@ public class Controller {
         return created;
     }
 
+    public boolean deletePreferences() {
+        boolean deletedPreferences = profileHandler.deletePreferences();
+        return deletedPreferences;
+    }
+
+
     /*
      * calls clearConversation in Chat Handler
      * return true if clearConversation successful
