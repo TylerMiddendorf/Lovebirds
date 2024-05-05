@@ -182,7 +182,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "UPDATE lovebirds_schema.PREFERENCES SET MIN_HEIGHT = ? AND MAX_HEIGHT = ? AND MIN_AGE = ? AND MAX_AGE = ? AND MAX_WEIGHT = ? AND MIN_WEIGHT = ? AND PREFERRED_GENDER = ? WHERE USER_ID = ?";
+            String sql = "UPDATE lovebirds_schema.PREFERENCES SET MIN_HEIGHT = ?, MAX_HEIGHT = ?, MIN_AGE = ?, MAX_AGE = ?, MAX_WEIGHT = ?, MIN_WEIGHT = ?, PREFERRED_GENDER = ? WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, newPref.getMinHeight());
             pstmt.setInt(2, newPref.getMaxHeight());
