@@ -202,8 +202,7 @@ public class UIMain {
 				System.out.println("Call to edit profile.");
 				//calls edit profile in controller 
 				//able to change username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
-				Profile testProfile = null;
-				editProfile(testProfile);
+				editProfile();
 			}
 			else if(userInput == 4)
 			{
@@ -351,12 +350,13 @@ public class UIMain {
 	 * this includes username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
 	 * @param user
 	 */
-	private static void editProfile(Profile user)
+	private static void editProfile()
 	{
 		boolean edited = false;
 		boolean correctNum = false;
 		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
+		String elementToEdit = "";
 
 		//show current profile elements here?
 
@@ -372,32 +372,50 @@ public class UIMain {
 			switch (userInput) {
                 case 1:
                     //update username
-					System.out.println("Enter your updated username: ");
-					//capture user input here and update profile
+					System.out.print("Enter your updated username: ");
+					scanner.nextLine();
+					String editedUsername = scanner.nextLine();
+					elementToEdit = "username";
+					controller.editProfile(elementToEdit, editedUsername);
                     break;
 
                 case 2:
                     //update email
                     System.out.print("Enter your updated email: ");
-                    //capture user input and update profile
+                    scanner.nextLine();
+					String editedEmail = scanner.nextLine();
+					elementToEdit = "email";
+					controller.editProfile(elementToEdit, editedEmail);
                     break;
 
                 case 3:
                     //update first name
                     System.out.print("Enter your updated first name: ");
                     //capture user input and update profile
+					scanner.nextLine();
+					String editedFirstName = scanner.nextLine();
+					elementToEdit = "firstName";
+					controller.editProfile(elementToEdit, editedFirstName);
                     break;
 
                 case 4:
                     //update last name
                     System.out.print("Enter your updated last name: ");
                     //capture user input and update profile
+					scanner.nextLine();
+					String editedLastName = scanner.nextLine();
+					elementToEdit = "lastName";
+					controller.editProfile(elementToEdit, editedLastName);
                     break;
 
                 case 5:
                     //update profile picture
                     System.out.print("Enter your updated profile picture: ");
                     //capture user input and update profile
+					scanner.nextLine();
+					String editedProfilePicture = scanner.nextLine();
+					elementToEdit = "profilePicture";
+					controller.editProfile(elementToEdit, editedProfilePicture);
                     break;
 
                 case 6:
@@ -409,7 +427,9 @@ public class UIMain {
                         if(userInput >= 18)
                         {
                             //capture user input and update profile
-
+							String editedAge = String.valueOf(userInput);
+							elementToEdit = "age";
+							controller.editProfile(elementToEdit, editedAge);
 							correctNum = true;
                         }
                         else
@@ -423,6 +443,10 @@ public class UIMain {
                     System.out.print("Enter your updated height: ");
                     userInput = loopForInteger(scanner);
                     //capture user input and update profile
+					String editedHeight = String.valueOf(userInput);
+					elementToEdit = "height";
+					controller.editProfile(elementToEdit, editedHeight);
+					correctNum = true;
                     break;
 
 				case 8:
@@ -430,18 +454,30 @@ public class UIMain {
 					System.out.print("Enter your updated weight: ");
 					userInput = loopForInteger(scanner);
 					//capture user input and update profile
+					String editedWeight = String.valueOf(userInput);
+					elementToEdit = "weight";
+					controller.editProfile(elementToEdit, editedWeight);
+					correctNum = true;
 					break;
 
 				case 9:
 					//update gender
 					System.out.print("Enter your updated gender: ");
 					//capture user input and update profile
+					scanner.nextLine();
+					String editedGender = scanner.nextLine();
+					elementToEdit = "gender";
+					controller.editProfile(elementToEdit, editedGender);
 					break;
 
 				case 10:
 					//update password
 					System.out.print("Enter your updated password: ");
 					//capture user input and update profile
+					scanner.nextLine();
+					String editedPassword = scanner.nextLine();
+					elementToEdit = "password";
+					controller.editProfile(elementToEdit, editedPassword);
 					break;
 
                 case 11:
