@@ -111,6 +111,9 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve messages.");
 				//retrieve messages
+				if(controller.getMatched().length == 0){
+					System.out.println("you have not matched with anyone");
+				}else{
 				int conversationChoice = 0;
 				boolean firstTimeChat = true;
 				do{
@@ -136,11 +139,17 @@ public class UIMain {
 					firstTimeChat = false;
 				}while(chatUserChoice<0 && chatUserChoice < chatUserNames.length);
 
-				
+				if(conversationChoice == 1){//view conversation
+
+
+				}else if(conversationChoice == 2){//clear conversation
+
+
+				}
 
 
 				//this is where you can see messages and people you've "matched with" via messages
-				}
+				}}
 			}
 			else if(userInput == 3) {
 				System.out.println("Call to edit profile.");
