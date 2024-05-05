@@ -110,8 +110,9 @@ public class Controller {
      * @param user
      * @return rating
      */
-    public boolean rateUser(Profile user) {
-        return profileHandler.rateUser(user);
+    public boolean rateUser(int userID, int recipientID, int rating) {
+        boolean rated = matchmakerHandler.rateUser(userID, recipientID, rating);
+        return rated;
     }
 
     /**
