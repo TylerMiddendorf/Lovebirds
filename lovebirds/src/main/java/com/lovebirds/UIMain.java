@@ -30,7 +30,6 @@ public class UIMain {
 		displayStartMenu(sc);
 
 		// then
-		
 		// How do we incorporate retrieveSugProfile
 		// add text in the functions for the console messages instead of hardcoding in main
 		// iterate through ArrayList in functions
@@ -68,43 +67,14 @@ public class UIMain {
 				// 	display matches -> call function "retrieveSugUsers()":
 				// 	displays one name from the ArrayList of Profiles
 				// display retrieve suggested users menu
-				displayRetrieveSuggestedUsersMenu();
-				// 	1. View user								
-				// 		display ViewUserMenu (like user "likeUser()", rate user "rateUser()", 
-				// 		dismiss user "dismissUser()", unmatch user "unmatchUser()", block user "blockUser()"
-				// 		1. Like user
-					// 		if Like user	
-					// 			if (isLiked == false)
-					// 				set "isLiked" variable to true
-					// 			else
-					// 				print("You already liked this user.")
-					// 			go back to options menu 2
-				// 		2. Rate user
-				// displayRateUserMenu();
-				// int rating = 0;
-				// while (rating == 0) {
-				// 	int ratingInput;
-				// 	if (sc.hasNextInt()) { 
-				// 		ratingInput = sc.nextInt();
-				// 		if (ratingInput >= 1 && ratingInput <= 5) { 
-				// 			rating = ratingInput;
-				// 		} else {
-				// 			System.out.println("\nInvalid input. Please rate the user 1-5.");
-				// 			displayRateUserMenu();
-				// 		}
-				// 	} else {
-				// 		sc.next(); 
-				// 		System.out.print("\nPlease enter a valid integer.\n"); 
-				// 		displayRateUserMenu();
-				// 	}
-				// }	
-
+				displayRetrieveSuggestedUsersMenu(sc);
+				// 	1. View profile								
+				// 		display ViewProfileMenu
+				// 		1. Rate this person(1-5):
+				// 		2. Match user
 				// 		3. Unmatch user
-					// 		remove this user from the ArrayList
 				// 		4. Block user
-					// need to figure out the logic for this
 				// 	2. Dismiss user
-					// 	increment, move on to next user in ArrayList		
 			}
 			else if(userInput == 2)
 			{
@@ -178,7 +148,7 @@ public class UIMain {
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
 				
-				editPreferences(sc); //edit preferences
+				editPreferences(); //edit preferences
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
@@ -216,9 +186,14 @@ public class UIMain {
 				// sc.nextLine();
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 			} else if (userInput == 9) {
-				System.out.println();
-				controller.createAlbum();
-			}
+				System.out.print("Please enter what you want the album to be named: ");
+				String albumName = sc.nextLine();
+				// public abstract boolean createPhoto(String path, String albumName, int userID);
+				System.out.println("Now you must upload a photo.");
+				System.out.print("Please enter the file path: ");
+				String path = sc.nextLine();
+				controller.uploadPhoto();
+			} 
 		}
 		while(run);
 		
@@ -264,14 +239,8 @@ public class UIMain {
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
 					int resultID = controller.logIn(username, password);
-					if(resultID != -1) {
-						controller.initializeProfile(resultID);
-					} else {
-						System.out.println("Username and Password are not correct");
-						userInput = 0;
-						firstTime = true;
-					}
-					
+					controller.initializeProfile(resultID);
+			
 		
 					break;
 				case 2: //Create Account
@@ -363,35 +332,9 @@ public class UIMain {
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
 		System.out.println("8: Delete preferences.");
-		System.out.println("9. Create album");
+		System.out.println("9. Create album (you must upload at least one photo)");
+		System.out.println("9. Upload photo(s) to existing album");
 		System.out.print("Select one of the following: ");
-    }
-
-	/**
-	 * Helper method for "1. View user" 
-	 * Displays menu of options
-	 */
-	private static void displayViewProfileMenu() {
-		System.out.println("\n1: Match user");
-		System.out.println("2: Rate user");
-		System.out.println("3: Dismiss user");
-		System.out.println("4: Unmatch user");
-		System.out.println("5: Block user");
-		System.out.println("Select one of the following options: ");
-	}
-
-	/**
-	 * Helper method for rateUser
-	 * Displays menu of options
-	 */
-	private static void displayRateUserMenu() {
-        System.out.println("\nRate the user 1-5.");
-        System.out.println("\n1: Not interested at all");
-        System.out.println("2: Not interested");
-        System.out.println("3: Kind of interested");
-        System.out.println("4: Interested");
-        System.out.println("5: Very interested");
-        System.out.print("Select one of the following: ");
     }
 	
 	/*
@@ -416,7 +359,8 @@ public class UIMain {
 	 * Helper method for editProfile
 	 * Displays menu of options
 	 */
-	private static void displayEditProfileMenu() {
+	private static void displayEditProfileMenu()
+	{
 		System.out.println("\nWhich element of your profie would you like to edit?");
         System.out.println("1. Username");
         System.out.println("2. Email");
@@ -432,8 +376,12 @@ public class UIMain {
         System.out.print("Enter a number: ");
 	}
 
+<<<<<<< HEAD
 	//retrieveSugUsers needs to be updated to take blocked users out of the list
 	private static void displayRetrieveSuggestedUsersMenu() {
+=======
+	private static void displayRetrieveSuggestedUsersMenu(Scanner sc) {
+>>>>>>> main
 		int userInput = 0;
 
 		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
@@ -457,7 +405,7 @@ public class UIMain {
 				switch (userInput)
 				{
 					case 1:
-						printSugProfile(sugUsers.get(i));
+						displayViewProfileMenu(sugUsers.get(i), sc);
 						break;
 					case 2:
 						System.out.println("User dismissed."); // just go to next profile
@@ -473,7 +421,7 @@ public class UIMain {
 		scanner.close();
 	}
 
-	private static void printSugProfile(Profile profile)
+	private static void displayViewProfileMenu(Profile profile, Scanner sc)
 	{
 
 		Scanner scanner = new Scanner(System.in);
@@ -488,12 +436,28 @@ public class UIMain {
 			System.out.println("Weight: " + profile.getWeight());
 			System.out.println("Gender: " + profile.getGender());
 
-			System.out.println("What would you like to do?");
+			//ADD THE DISPLAYING OF PROFILE PICTURE
+
+			System.out.print("\nRate this user (1-5): ");
+			int rating = 0;
+			while (rating == 0) {
+				int ratingInput;
+				if (sc.hasNextInt()) { 
+					ratingInput = sc.nextInt();
+					if (ratingInput >= 1 && ratingInput <= 5) { 
+						rating = ratingInput;
+					} else {
+						System.out.println("\nInvalid input. Please rate the user 1-5.");
+					}
+				} else {
+					sc.next(); 
+					System.out.print("\nPlease enter a valid integer.\n"); 
+				}
+			}
+			System.out.println("\nWhat would you like to do?");
 			System.out.println("1. Match user"); // like this profile
-			System.out.println("2. Rate user"); 
-			System.out.println("3. Unmatch user"); // remove like from profile
-			System.out.println("4. Block user");
-			System.out.println("5. Go back");
+			System.out.println("2. Unmatch user"); // remove like from profile
+			System.out.println("3. Block user");
 
 			System.out.print("Enter a number: ");
 			userInput = loopForInteger(scanner);
@@ -502,17 +466,14 @@ public class UIMain {
 			{
 				case 1:
 					System.out.println("not implemented yet");
+					goBack = true;
 					break;
 				case 2:
 					System.out.println("not implemented yet");
+					goBack = true;
 					break;
 				case 3:
 					System.out.println("not implemented yet");
-					break;
-				case 4:
-					System.out.println("not implemented yet");
-					break;
-				case 5:
 					goBack = true;
 					break;
 				default:
@@ -671,10 +632,11 @@ public class UIMain {
         scanner.close();
 	}
 
-	private static void editPreferences(Scanner scanner)
+	private static void editPreferences()
 	{
 		boolean edited = false;
 		boolean correctNum = false;
+		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -784,6 +746,7 @@ public class UIMain {
             }
             
         }
+        scanner.close();
 	}
 
 	private static int loopForInteger(Scanner scan) {
@@ -817,7 +780,6 @@ public class UIMain {
 
 		//searching for username and email in database
 		boolean success = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
-
 		return success;
 	}
 
