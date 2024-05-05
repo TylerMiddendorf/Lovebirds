@@ -11,7 +11,6 @@ public class UIMain {
 		Scanner sc = new Scanner(System.in);
 		controller = new Controller();
 		
-
 		//variables that assist with looped program
 		int userInput = 0;
 		boolean run = true;
@@ -258,7 +257,7 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.print("Invalid option. \n" + agePrompt);
+						System.out.print("Invalid option. Go get some help. No Diddy. No Drizzy.\n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
 					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
