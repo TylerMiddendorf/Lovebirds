@@ -111,6 +111,18 @@ public class UIMain {
 			{
 				System.out.println("Call to retrieve messages.");
 				//retrieve messages
+				int conversationChoice = 0;
+				boolean firstTimeChat = true;
+				do{
+					if(!firstTimeChat)
+						System.out.println("Please enter a valid number");
+					System.out.print("\n1: View Conversation\n2: Clear Conversation\n3: Back\nSelect one of the following: ");
+					conversationChoice = loopForInteger(sc);
+					firstTimeChat = false;
+				}while(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3);
+
+				System.out.println("Matched users:");
+				
 				//this is where you can see messages and people you've "matched with" via messages
 			}
 			else if(userInput == 3) {
