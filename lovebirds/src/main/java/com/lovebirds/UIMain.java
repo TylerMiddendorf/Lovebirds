@@ -258,7 +258,7 @@ public class UIMain {
 
     }//end main
 
-	/*
+	/**
 	 * Helper method to display start menu
 	 * Displays menu of options
 	 */
@@ -270,7 +270,7 @@ public class UIMain {
 		System.out.print("Select one of the following: ");
 	}
 
-	/*
+	/**
 	 * Helper method to display a menu after login 
 	 * Displays menu of options
 	 */
@@ -287,7 +287,7 @@ public class UIMain {
 		System.out.print("Select one of the following: ");
     }
 
-	/*
+	/**
 	 * Helper method for "1. View matches"
 	 * Displays menu of options
 	 */
@@ -297,7 +297,7 @@ public class UIMain {
 		System.out.println("Select one of the following: ");
 	}
 
-	/*
+	/**
 	 * Helper method for "1. View user" 
 	 * Displays menu of options
 	 */
@@ -310,7 +310,7 @@ public class UIMain {
 		System.out.println("Select one of the following options: ");
 	}
 
-	/*
+	/**
 	 * Helper method for rateUser
 	 * Displays menu of options
 	 */

@@ -16,7 +16,7 @@ public class Controller {
         chatHandler = new ChatHandler();
     }
 
-    /*
+    /**
      * calls retrieveSugUsers from Matchmaker Handler
      * @param id
      * @return suggestedUsers
@@ -26,7 +26,7 @@ public class Controller {
         return suggestedUsers;
     }
 
-    /*
+    /**
      * calls retrieveSugProfile from Matchmaker Handler
      * @param id
      * @return suggestedProfile
@@ -36,7 +36,7 @@ public class Controller {
         return suggestedProfile;
     }
 
-    /*
+    /**
      * calls filterUsers from Matchmaker Handler
      * @param filter
      * @return filtered
@@ -47,7 +47,7 @@ public class Controller {
     }
 
 
-    /*
+    /**
      * calls retrieveStatistics from Matchmaker Handler
      * @param stat
      * @return statistics
@@ -57,7 +57,7 @@ public class Controller {
         return statistics;
     }
 
-    /*
+    /**
      * calls createProfile from Profile Handler
      * @preturn newProfile
      */
@@ -67,7 +67,7 @@ public class Controller {
         return created;
     }
 
-    /*
+    /**
      * calls editProfile in Profile Handler
      * @param profile
      * @return editedProfile
@@ -77,7 +77,7 @@ public class Controller {
         return editedProfile;
     }    
 
-    /*
+    /**
      * THIS NEEDS FIXED to take param
      * @param
      * @return
@@ -87,7 +87,7 @@ public class Controller {
         return deletedProfile;
     }
 
-    /*
+    /**
      * calls blockUser in Profile Handler
      * @param user
      * @return true if block successful
@@ -96,16 +96,16 @@ public class Controller {
         return profileHandler.blockUser(user);
     }
 
-    /*
+    /**
      * calls dismissUser in Profile Hanlder
-     * @param user
+     * @param profileID
      * @return true if dismissUser successful
      */
-    public boolean dismissUser(Profile user) {
-        return profileHandler.dismissUser(user);
+    public boolean dismissUser(int profileID) {
+        return profileHandler.dismissUser(profileID);
     }
 
-    /*
+    /**
      * calls rateUser in Profile Handler
      * @param user
      * @return rating
@@ -114,7 +114,7 @@ public class Controller {
         return profileHandler.rateUser(user);
     }
 
-    /*
+    /**
      * calls likeUser in Profile Handler
      * @param user
      * @return true if likeUser successful
@@ -123,7 +123,7 @@ public class Controller {
         return profileHandler.likeUser(user);
     }
 
-    /*
+    /**
      * calls unmatchUnser in Profile Handler
      * @param user
      * @return true if unmatchUser successful
@@ -145,7 +145,7 @@ public class Controller {
 
     */
 
-    /*
+    /**
      * THIS NEEDS FIXED to take parm
      * Also add createPreferences method in ProfileHandler
      */
@@ -154,7 +154,7 @@ public class Controller {
         return created;
     }
 
-    /*
+    /**
      * calls editPreferences in profile handler
      * @param user
      * @return true if preferences have been edited/updated
@@ -170,7 +170,7 @@ public class Controller {
     }
 
 
-    /*
+    /**
      * calls clearConversation in Chat Handler
      * return true if clearConversation successful
      */
@@ -179,7 +179,7 @@ public class Controller {
         return created;
     }
 
-    /*
+    /**
      * calls sendMessage in Chat Handler
      * return true if sendMessage successful
      */
@@ -219,7 +219,7 @@ public class Controller {
 
     */
 
-    /*
+    /**
      * handles login of account
      * @param username and password
      * @returns int exception handling?
@@ -235,14 +235,14 @@ public class Controller {
         return profile;
     } 
 
-    /*
+    /**
      * handles logout of account
      */
     public void logOut() {
         
     }
 
-    /**
+    /***
      * invokes forgot password in Authentication
      * @param email - user's email
      * @param username - user's username
