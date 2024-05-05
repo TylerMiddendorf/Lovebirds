@@ -184,8 +184,9 @@ public class Profile {
         String eight = "Weight: " + weight + "\n";
         String nine = "Age: " + age + "\n";
         String ten = "Gender: " + gender + "\n";
-        String eleven = "Profile Picture: " + profilePicture;
+        String eleven = "Profile Picture: " + profilePicture + "\n";
+        String twelve = "Profile ID: " + profileID;
 
-        return one + two + three + four + five + six + seven + eight + nine + ten + eleven;
+        return one + two + three + four + five + six + seven + eight + nine + ten + eleven + twelve;
     }
 }
