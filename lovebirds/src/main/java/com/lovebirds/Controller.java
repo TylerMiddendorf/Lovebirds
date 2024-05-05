@@ -160,8 +160,8 @@ public class Controller {
      * @return true if preferences have been edited/updated
      */
     public boolean editPreferences(String elementToEdit, int editedElement) {
-        boolean editedProfile = profileHandler.editProfile(elementToEdit, editedElement);
-        return editedProfile;
+        boolean editedPreferences = profileHandler.editPreferences(elementToEdit, editedElement);
+        return editedPreferences;
     }
 
     public boolean deletePreferences() {
