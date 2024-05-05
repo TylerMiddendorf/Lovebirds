@@ -14,7 +14,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
         this.db = db;
     }
 
-    //not finished, do something with rating as well. call rating with -1 if not searching rating.
+    // if not calling with rating, call with -1
     public ArrayList<Profile> readProfilesThatMatchPreferences(Profile profile, double rating) {
         ArrayList<Profile> suggestedUsers = new ArrayList<Profile>();
 
@@ -39,6 +39,31 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
                     pstmt.setString(7, userPreferences.getPreferredGender());
                     ResultSet rs = pstmt.executeQuery();
 
+                    while(rs.next())
+                    {
+                        int userID = rs.getInt(1);
+                        String username = rs.getString(2);
+                        String email = rs.getString(3);
+                        String firstName = rs.getString(4);
+                        String lastName = rs.getString(5);
+                        String profilePic = rs.getString(6);
+                        int age = rs.getInt(7);
+                        int height = rs.getInt(8);
+                        int weight = rs.getInt(9);
+                        String gender = rs.getString(10);
+                        String password = rs.getString(11);
+
+                        Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
+                        newProfile.setAge(age);
+                        newProfile.setHeight(height);
+                        newProfile.setWeight(weight);
+                        newProfile.setGender(gender);
+                        newProfile.setProfilePicture(profilePic);
+
+                        suggestedUsers.add(newProfile);
+
+                    }
+
                     return suggestedUsers;
                 } catch (SQLException e) {
                     System.out.println("Could not create profile.");
@@ -60,6 +85,31 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
                     pstmt.setInt(5, userPreferences.getMinHeight());
                     pstmt.setInt(6, userPreferences.getMaxHeight());
                     ResultSet rs = pstmt.executeQuery();
+
+                    while(rs.next())
+                    {
+                        int userID = rs.getInt(1);
+                        String username = rs.getString(2);
+                        String email = rs.getString(3);
+                        String firstName = rs.getString(4);
+                        String lastName = rs.getString(5);
+                        String profilePic = rs.getString(6);
+                        int age = rs.getInt(7);
+                        int height = rs.getInt(8);
+                        int weight = rs.getInt(9);
+                        String gender = rs.getString(10);
+                        String password = rs.getString(11);
+
+                        Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
+                        newProfile.setAge(age);
+                        newProfile.setHeight(height);
+                        newProfile.setWeight(weight);
+                        newProfile.setGender(gender);
+                        newProfile.setProfilePicture(profilePic);
+
+                        suggestedUsers.add(newProfile);
+
+                    }
 
                     return suggestedUsers;
                 } catch (SQLException e) {
@@ -85,6 +135,31 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
                     pstmt.setString(7, userPreferences.getPreferredGender());
                     ResultSet rs = pstmt.executeQuery();
 
+                    while(rs.next())
+                    {
+                        int userID = rs.getInt(1);
+                        String username = rs.getString(2);
+                        String email = rs.getString(3);
+                        String firstName = rs.getString(4);
+                        String lastName = rs.getString(5);
+                        String profilePic = rs.getString(6);
+                        int age = rs.getInt(7);
+                        int height = rs.getInt(8);
+                        int weight = rs.getInt(9);
+                        String gender = rs.getString(10);
+                        String password = rs.getString(11);
+
+                        Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
+                        newProfile.setAge(age);
+                        newProfile.setHeight(height);
+                        newProfile.setWeight(weight);
+                        newProfile.setGender(gender);
+                        newProfile.setProfilePicture(profilePic);
+
+                        suggestedUsers.add(newProfile);
+
+                    }
+
                     return suggestedUsers;
                 } catch (SQLException e) {
                     System.out.println("Could not create profile.");
@@ -106,6 +181,31 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation{
                     pstmt.setInt(5, userPreferences.getMinHeight());
                     pstmt.setInt(6, userPreferences.getMaxHeight());
                     ResultSet rs = pstmt.executeQuery();
+
+                    while(rs.next())
+                    {
+                        int userID = rs.getInt(1);
+                        String username = rs.getString(2);
+                        String email = rs.getString(3);
+                        String firstName = rs.getString(4);
+                        String lastName = rs.getString(5);
+                        String profilePic = rs.getString(6);
+                        int age = rs.getInt(7);
+                        int height = rs.getInt(8);
+                        int weight = rs.getInt(9);
+                        String gender = rs.getString(10);
+                        String password = rs.getString(11);
+
+                        Profile newProfile = new Profile(userID, email, username, password, firstName, lastName);
+                        newProfile.setAge(age);
+                        newProfile.setHeight(height);
+                        newProfile.setWeight(weight);
+                        newProfile.setGender(gender);
+                        newProfile.setProfilePicture(profilePic);
+
+                        suggestedUsers.add(newProfile);
+
+                    }
 
                     return suggestedUsers;
                 } catch (SQLException e) {
