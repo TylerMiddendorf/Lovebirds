@@ -1,5 +1,6 @@
 package com.lovebirds;
 
+import java.util.ArrayList; // for printing matches
 import java.util.Scanner;
 
 public class UIMain {
@@ -361,6 +362,55 @@ public class UIMain {
 		System.out.println("10. Password");
 		System.out.println("11. Exit Editing Profile");
         System.out.print("Enter a number: ");
+	}
+
+	private static void viewMatches()
+	{
+		int userInput = 0;
+
+		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
+
+		System.out.println("Here are profiles suggested for you: ");
+		for(int i = 0; i < sugUsers.size(); i++)
+		{
+			System.out.println((i + 1) + ". " + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
+		}
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("If you would like to view one of these profiles, enter the corresponding number.");
+		System.out.println("Otherwise, press 0.");
+		userInput = loopForInteger(scanner);
+
+		if(userInput != 0)
+		{
+			if(userInput > 0 && userInput < sugUsers.size())
+			{
+
+				// Call controller with the profile they want.
+				// This profile object must be created here as it is another persons profile, not the user.
+				Profile profileToBeRetrieved = sugUsers.get(userInput - 1);
+				Profile printThis = controller.retrieveSugProfile(profileToBeRetrieved.getProfileID());
+
+				// confused about the two statements above, they are both profiles, and since retrieve is already
+				// getting a list of profile objects, why do we need retrieveSugProfile here?
+
+				printSugProfile(printThis);
+			}
+			else
+			{
+				System.out.println("That number is not on the list.");
+			}
+		}
+	}
+
+	private static void printSugProfile(Profile profile)
+	{
+		System.out.println(profile.getFirstName() + " " + profile.getLastName());
+		System.out.println("Age: " + profile.getAge());
+		System.out.println("Height: " + profile.getHeight());
+		System.out.println("Weight: " + profile.getWeight());
+		System.out.println("Gender: " + profile.getGender());
+
 	}
 
 	/**

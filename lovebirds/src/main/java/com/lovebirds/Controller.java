@@ -21,8 +21,8 @@ public class Controller {
      * @param id
      * @return suggestedUsers
      */
-    public ArrayList<Profile> retrieveSugUsers(int id) {
-        ArrayList<Profile> suggestedUsers = matchmakerHandler.retrieveSugUsers(id);
+    public ArrayList<Profile> retrieveSugUsers() {
+        ArrayList<Profile> suggestedUsers = matchmakerHandler.retrieveSugUsers();
         return suggestedUsers;
     }
 
@@ -31,8 +31,8 @@ public class Controller {
      * @param id
      * @return suggestedProfile
      */
-    public ArrayList<Profile> retrieveSugProfile(int id) { 
-        ArrayList<Profile> suggestedProfile = matchmakerHandler.retrieveSugProfile(id);
+    public Profile retrieveSugProfile(int id) { 
+        Profile suggestedProfile = matchmakerHandler.retrieveSugProfile(id);
         return suggestedProfile;
     }
 

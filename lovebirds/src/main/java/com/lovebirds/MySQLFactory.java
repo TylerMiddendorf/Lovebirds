@@ -43,6 +43,16 @@ public class MySQLFactory extends GeneralFactory {
                 return null;
         }
     }
+
+    @Override
+    public MatchmakerOperation getMatchmaker(String type) {
+        switch(type) {
+            case "MySQL":
+                return new MatchmakerOperationMySQL(mySQLDB);
+            default:
+                return null;
+        }
+    }
     
 }
 

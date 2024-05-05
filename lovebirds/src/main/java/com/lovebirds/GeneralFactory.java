@@ -6,6 +6,7 @@ public abstract class GeneralFactory {
     public abstract ChatMediator getMediator(String chatType);
     public abstract MediaOperation getMedia(String mediaType);
     public abstract ProfileOperation getProfile(String profileType);
+    public abstract MatchmakerOperation getMatchmaker(String matchmakerType);
 }
 
 
