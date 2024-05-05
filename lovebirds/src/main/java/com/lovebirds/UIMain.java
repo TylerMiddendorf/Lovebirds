@@ -27,7 +27,6 @@ public class UIMain {
 			System.out.println(heartSymbol[i]);
 		}
 		System.out.println();
-
 		displayStartMenu(sc);
 
 		// then
@@ -210,6 +209,9 @@ public class UIMain {
 				// int maxAge = sc.nextInt();
 				// sc.nextLine();
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
+			} else if (userInput == 9) {
+				System.out.println();
+				controller.createAlbum();
 			}
 		}
 		while(run);
@@ -305,7 +307,7 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.print("Invalid option. Go get some help. No Diddy. No Drizzy.\n" + agePrompt);
+						System.out.print("\nInvalid option. Go get some help. No Diddy. No Drizzy.\n\n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
 					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");

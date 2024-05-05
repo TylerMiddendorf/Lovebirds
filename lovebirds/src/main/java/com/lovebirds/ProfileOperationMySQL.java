@@ -156,18 +156,19 @@ public class ProfileOperationMySQL extends ProfileOperation{
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT * FROM lovebirds_schema.PREFERNECES WHERE USER_ID = ?";
+            String sql = "SELECT * FROM lovebirds_schema.PREFERENCES WHERE USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             ResultSet rs = pstmt.executeQuery();
+            rs.next();
 
-            String preferredGender = rs.getString(0);
-            int minHeight = rs.getInt(1);
-            int maxHeight = rs.getInt(2);
-            int minWeight = rs.getInt(3);
-            int maxWeight = rs.getInt(4);
-            int minAge = rs.getInt(5);
-            int maxAge = rs.getInt(6);
+            int minHeight = rs.getInt(2);
+            int maxHeight = rs.getInt(3);
+            int minWeight = rs.getInt(4);
+            int maxWeight = rs.getInt(5);
+            int minAge = rs.getInt(6);
+            int maxAge = rs.getInt(7);
+            String preferredGender = rs.getString(8);
             Preferences newPreferences = new Preferences(preferredGender, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge);
             return newPreferences;
 

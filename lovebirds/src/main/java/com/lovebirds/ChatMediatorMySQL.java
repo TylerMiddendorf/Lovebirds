@@ -129,5 +129,4 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         
     }
     
-    
 }
