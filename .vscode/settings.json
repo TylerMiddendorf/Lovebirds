@@ -5,5 +5,10 @@
         "Chat",
         "Album",
         "lovebirds/src/main/java/com/lovebirds"
+    ],
+    
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
     ]
 }
