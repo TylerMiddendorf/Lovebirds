@@ -481,7 +481,6 @@ public class UIMain {
 		{
 			for(int i = 0; i < sugUsers.size(); i++)
 			{
-				System.out.println("This will iteratr through each of your sugegested users until you match with them or dismiss them.");
 				System.out.println("Here is a profile that is suggested for you:");
 				System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
 				while (!dismissed)
@@ -497,6 +496,7 @@ public class UIMain {
 					{
 						case 1:
 							displayViewProfileMenu(sugUsers.get(i), sc);
+							dismissed = true;
 							break;
 						case 2:
 							System.out.println("User dismissed."); // just go to next profile
