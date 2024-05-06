@@ -120,8 +120,8 @@ public class Controller {
      * @param user
      * @return true if likeUser successful
      */
-    public boolean likeUser(Profile user) {
-        return matchmakerHandler.likeUser(user);
+    public boolean changeRelationship(int userID, int recipientID, String relationship) {
+        return matchmakerHandler.updateRelationship(userID, recipientID, relationship);
     }
 
     /**
