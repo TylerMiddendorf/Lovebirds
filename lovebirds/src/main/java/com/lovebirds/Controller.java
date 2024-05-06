@@ -190,8 +190,8 @@ public class Controller {
     }
 
    
-    public boolean deleteAlbum(){
-        //return mediaHandler.deleteAlbum();
+    public boolean deleteAlbum(String albumName){
+        boolean deleted = mediaHandler.deleteAlbum(albumName);
         return true;
     }
 

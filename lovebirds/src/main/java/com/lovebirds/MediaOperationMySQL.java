@@ -26,6 +26,8 @@ public class MediaOperationMySQL extends MediaOperation { //
             image = ImageIO.read(new File(path));
         }
         catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getLocalizedMessage());
             return false;
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

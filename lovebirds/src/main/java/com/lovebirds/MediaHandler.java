@@ -67,7 +67,7 @@ import javax.imageio.ImageIO;
             System.out.println("Could not read image.");
         }
         return img;
- 
+         
     }
     
 }

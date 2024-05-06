@@ -133,7 +133,7 @@ public class UIMain {
 				System.out.println("Call to edit profile.");
 				//calls edit profile in controller 
 				//able to change username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
-				editProfile();
+				editProfile(sc);
 			}
 			else if(userInput == 4) {
 				System.out.println("Call to edit preferences.");
@@ -202,6 +202,16 @@ public class UIMain {
 				controller.uploadPhoto(path, albumName, photoName);
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
+			} else if (userInput == 12) {
+				sc.nextLine();
+				System.out.print("Please enter the file path for your profile picture: ");
+				String path = sc.nextLine();
+				controller.createPhoto(path, "ProfilePicture", "ProfilePicture");
+			} else if (userInput == 13) {
+				sc.nextLine();
+				System.out.print("Please enter the album name of the album you want to delete: ");
+				String albumName = sc.nextLine();
+				controller.deleteAlbum(albumName);
 			}
 		}
 		while(run);
@@ -277,10 +287,7 @@ public class UIMain {
 					sc.nextLine();
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
-					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
-
-					System.out.println("\nNow you need to upload a profile picture.");
-					System.out.println("");
+					boolean created = controller.createProfile(username, email, firstName, lastName, "ProfilePicture", age, height, weight, gender, password);
 
 					if(!created) {
 						System.out.println("Account could not be created. Please try again.");
@@ -348,10 +355,12 @@ public class UIMain {
 		System.out.println("5: Edit album");
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
-		System.out.println("8: Delete preferences.");
-		System.out.println("9. Create album (you must upload at least one photo)");
-		System.out.println("10. Upload photo(s) to existing album");
-		System.out.println("11. Retrieve statistics");
+		System.out.println("8: Delete preferences");
+		System.out.println("9: Create album (you must upload at least one photo)");
+		System.out.println("10: Upload photo(s) to existing album");
+		System.out.println("11: Retrieve statistics");
+		System.out.println("12: Upload profile picture");
+		System.out.println("13: Delete album");
 		System.out.print("Select your choice: ");
     }
 	
@@ -493,7 +502,7 @@ public class UIMain {
 			System.out.println("2. Unmatch user"); // remove like from profile
 			System.out.println("3. Block user");
 
-			System.out.print("Selectr your choice: ");
+			System.out.print("Select your choice: ");
 			userInput = loopForInteger(sc);
 
 			switch (userInput)
@@ -523,11 +532,10 @@ public class UIMain {
 	 * CASE 11 EXITING LOOP GIVES AN ERROR 
 	 * @param user
 	 */
-	private static void editProfile()
+	private static void editProfile(Scanner sc)
 	{
 		boolean edited = false;
 		boolean correctNum = false;
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -536,15 +544,15 @@ public class UIMain {
 
 			displayEditProfileMenu();
 
-			userInput = loopForInteger(scanner);
+			userInput = loopForInteger(sc);
 
 			//edit below
 			switch (userInput) {
                 case 1:
                     //update username
 					System.out.print("Enter your updated username: ");
-					scanner.nextLine();
-					String editedUsername = scanner.nextLine();
+					sc.nextLine();
+					String editedUsername = sc.nextLine();
 					elementToEdit = "username";
 					controller.editProfile(elementToEdit, editedUsername);
                     break;
@@ -552,8 +560,8 @@ public class UIMain {
                 case 2:
                     //update email
                     System.out.print("Enter your updated email: ");
-                    scanner.nextLine();
-					String editedEmail = scanner.nextLine();
+                    sc.nextLine();
+					String editedEmail = sc.nextLine();
 					elementToEdit = "email";
 					controller.editProfile(elementToEdit, editedEmail);
                     break;
@@ -562,8 +570,8 @@ public class UIMain {
                     //update first name
                     System.out.print("Enter your updated first name: ");
                     //capture user input and update profile
-					scanner.nextLine();
-					String editedFirstName = scanner.nextLine();
+					sc.nextLine();
+					String editedFirstName = sc.nextLine();
 					elementToEdit = "firstName";
 					controller.editProfile(elementToEdit, editedFirstName);
                     break;
@@ -572,8 +580,8 @@ public class UIMain {
                     //update last name
                     System.out.print("Enter your updated last name: ");
                     //capture user input and update profile
-					scanner.nextLine();
-					String editedLastName = scanner.nextLine();
+					sc.nextLine();
+					String editedLastName = sc.nextLine();
 					elementToEdit = "lastName";
 					controller.editProfile(elementToEdit, editedLastName);
                     break;
@@ -582,8 +590,8 @@ public class UIMain {
                     //update profile picture
                     System.out.print("Enter your updated profile picture: ");
                     //capture user input and update profile
-					scanner.nextLine();
-					String editedProfilePicture = scanner.nextLine();
+					sc.nextLine();
+					String editedProfilePicture = sc.nextLine();
 					elementToEdit = "profilePicture";
 					controller.editProfile(elementToEdit, editedProfilePicture);
                     break;
@@ -593,7 +601,7 @@ public class UIMain {
                     while(!correctNum)
                     {
                         System.out.print("Enter your updated age: ");
-                        userInput = loopForInteger(scanner);
+                        userInput = loopForInteger(sc);
                         if(userInput >= 18)
                         {
                             //capture user input and update profile
@@ -611,7 +619,7 @@ public class UIMain {
                 case 7:
                     //update height
                     System.out.print("Enter your updated height: ");
-                    userInput = loopForInteger(scanner);
+                    userInput = loopForInteger(sc);
                     //capture user input and update profile
 					String editedHeight = String.valueOf(userInput);
 					elementToEdit = "height";
@@ -622,7 +630,7 @@ public class UIMain {
 				case 8:
 					//update weight
 					System.out.print("Enter your updated weight: ");
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 					//capture user input and update profile
 					String editedWeight = String.valueOf(userInput);
 					elementToEdit = "weight";
@@ -634,8 +642,8 @@ public class UIMain {
 					//update gender
 					System.out.print("Enter your updated gender: ");
 					//capture user input and update profile
-					scanner.nextLine();
-					String editedGender = scanner.nextLine();
+					sc.nextLine();
+					String editedGender = sc.nextLine();
 					elementToEdit = "gender";
 					controller.editProfile(elementToEdit, editedGender);
 					break;
@@ -644,8 +652,8 @@ public class UIMain {
 					//update password
 					System.out.print("Enter your updated password: ");
 					//capture user input and update profile
-					scanner.nextLine();
-					String editedPassword = scanner.nextLine();
+					sc.nextLine();
+					String editedPassword = sc.nextLine();
 					elementToEdit = "password";
 					controller.editProfile(elementToEdit, editedPassword);
 					break;
@@ -661,7 +669,7 @@ public class UIMain {
             }
             
         }
-        scanner.close();
+
 	}
 
 	private static void editPreferences()
