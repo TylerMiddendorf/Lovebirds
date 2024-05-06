@@ -2,6 +2,13 @@ package com.lovebirds;
 
 import java.util.ArrayList; // for printing matches
 import java.util.Scanner;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.WindowConstants;
+import java.awt.*;
+
 
 public class UIMain {
 
@@ -58,23 +65,8 @@ public class UIMain {
 				System.out.println("Invalid entry. Try again.");
 			}
 			else if(userInput == 1)
-			{
-				System.out.println("Call to retrieve suggested users.");
-				//retrieve suggested users
-				//loop to select specific user
-				//loop for specific operations on user (like, match, dismiss, block, rate)
-				// if view matches
-				// 	display matches -> call function "retrieveSugUsers()":
-				// 	displays one name from the ArrayList of Profiles
-				// display retrieve suggested users menu
+			{		
 				displayRetrieveSuggestedUsersMenu(sc);
-				// 	1. View profile								
-				// 		display ViewProfileMenu
-				// 		1. Rate this person(1-5):
-				// 		2. Match user
-				// 		3. Unmatch user
-				// 		4. Block user
-				// 	2. Dismiss user
 			}
 			else if(userInput == 2)
 			{
@@ -404,11 +396,24 @@ public class UIMain {
 
 	private static void displayRetrieveSuggestedUsersMenu(Scanner sc) {
 		int userInput = 0;
-
-		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
-
-		Scanner scanner = new Scanner(System.in);
+		int rating = -1;
+		ArrayList<Profile> sugUsers;
 		boolean dismissed = false;
+
+		System.out.println("Would you like to also filter by rating?");
+		System.out.println("Enter '1' for yes, or any other number for no: ");
+		userInput = loopForInteger(sc);
+
+		if(userInput == 1)
+		{
+			System.out.println("Enter a minimum rating 1-5: ");
+			rating = loopForInteger(sc);
+			sugUsers = controller.retrieveSugUsers(rating);
+		}
+		else
+		{
+			sugUsers = controller.retrieveSugUsers(-1);
+		}
 
 		if( sugUsers == null)
 		{
@@ -428,7 +433,7 @@ public class UIMain {
 					System.out.println("2. Dismiss user");
 					System.out.print("Select your choice: ");
 
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 
 					switch (userInput)
 					{
@@ -464,6 +469,7 @@ public class UIMain {
 			System.out.println("Gender: " + matchedProfile.getGender());
 
 			//ADD THE DISPLAYING OF PROFILE PICTURE
+			display(controller.getImage(matchedProfile.getProfileID()));
 
 			System.out.print("\nRate this user (1-5): ");
 			int rating = 0;
@@ -806,6 +812,22 @@ public class UIMain {
 		//searching for username and email in database
 		boolean success = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
 		return success;
+	}
+	private static JFrame frame;
+	private static JLabel label;
+	public static void display(BufferedImage image){
+   		if(frame==null){
+       		frame=new JFrame();
+       	frame.setTitle("stained_image");
+       	frame.setSize(image.getWidth(), image.getHeight());
+       	frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       	label=new JLabel();
+       	label.setIcon(new ImageIcon(image));
+       	frame.getContentPane().add(label,BorderLayout.CENTER);
+       	frame.setLocationRelativeTo(null);
+       	frame.pack();
+       	frame.setVisible(true);
+   		}else label.setIcon(new ImageIcon(image));
 	}
 
 } //end UIMain

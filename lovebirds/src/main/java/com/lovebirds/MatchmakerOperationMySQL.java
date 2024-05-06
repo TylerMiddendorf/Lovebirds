@@ -339,5 +339,42 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         }
     }
 
+    /**
+     * this needs userID and recipientID parameters for matches searching for matches in the database!!!
+     * ^also change taken parameters in MatchmakerOperation.java
+     * this returns true if the user has already rated target user
+     */
+    public boolean alreadyRatedUser(){
+        try {
+
+            int userID = 0;
+            int recipientID = 0;
+
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "SELECT * FROM lovebirds_schema.RATINGS WHERE RECIPIENT_ID = ? AND USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, recipientID);
+            pstmt.setInt(2, userID);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            //while there is an entry of user rating the target user
+            while(rs.next())
+            {
+                System.out.println("You have already rated this user.");
+                return true;
+            }
+            return false;
+            
+
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
+            System.out.println("Could not retrieve your average rating");
+            return false;
+        }
+    }
+
 
 }
