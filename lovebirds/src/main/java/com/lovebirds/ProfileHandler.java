@@ -131,9 +131,7 @@ public class ProfileHandler extends Handler {
 
     public boolean blockUser(Profile user)
     {
-        // take user out of the profiles matches forever
-
-        return true; // user has been blocked
+        return FactoryProducer.getSQLFactory().getMatchmaker("MySQL").relationship(profile.getProfileID(),user.getProfileID(),"Blocked"); // user has been blocked
     }
 
     public boolean rateUser(Profile user)
