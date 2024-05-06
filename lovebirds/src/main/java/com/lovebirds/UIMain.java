@@ -88,7 +88,7 @@ public class UIMain {
 				do{
 					if(!firstTimeChat)
 						System.out.println("Please enter a valid number");
-					System.out.print("\n1: View Conversation\n2: Clear Conversation\n3: Back\nSelect one of the following: ");
+					System.out.print("\n1: View Conversation\n2: Clear Conversation\n3: Back\nSelect your choice: ");
 					conversationChoice = loopForInteger(sc);
 					firstTimeChat = false;
 				}while(!(conversationChoice == 1 || conversationChoice == 2 || conversationChoice == 3));
@@ -97,7 +97,7 @@ public class UIMain {
 				String[] chatUserNames = controller.getMatched();
 				for(int i=0;i<chatUserNames.length;i++)
 					System.out.println(i+": " + chatUserNames[i]);
-				System.out.print("Select one of the following: ");
+				System.out.print("Select your choice: ");
 				firstTimeChat = true;
 				int chatUserChoice = 0;
 				do{
@@ -110,7 +110,7 @@ public class UIMain {
 					String[] convo = controller.getMessages(controller.getChatUser(chatUserChoice));
 					for(String s:convo)
 						System.out.println(s);
-					System.out.print("\n1: Send Message\n2: back\n Select one of the following: ");
+					System.out.print("\n1: Send Message\n2: back\n Select your choice: ");
 					firstTimeChat = true;
 					chatUserChoice = 0;
 					do{
@@ -224,7 +224,7 @@ public class UIMain {
 			System.out.println("2: Create Account");
 			System.out.println("3: Forgot Password");
 			System.out.println("4: Exit");
-			System.out.print("Select one of the following: ");
+			System.out.print("Select your choice: ");
 			userInput = loopForInteger(sc);
 
 			//buffer scanner to prevent skipping over the next scanner
@@ -334,7 +334,7 @@ public class UIMain {
 		System.out.println("8: Delete preferences.");
 		System.out.println("9. Create album (you must upload at least one photo)");
 		System.out.println("9. Upload photo(s) to existing album");
-		System.out.print("Select one of the following: ");
+		System.out.print("Select your choice: ");
     }
 	
 	/*
@@ -344,15 +344,15 @@ public class UIMain {
 	private static void displayEditPreferencesMenu()
     {
         System.out.println("\nWhich preference would you like to edit?");
-        System.out.println("1. Gender");
-        System.out.println("2. Minimum Height");
-        System.out.println("3. Maximum Height");
-        System.out.println("4. Minimum Weight");
-        System.out.println("5. Maximum Weight");
-        System.out.println("6. Minimum Age");
-        System.out.println("7. Maximum Age");
-        System.out.println("8. Finish Editing");
-        System.out.print("Enter a number: ");
+        System.out.println("1. Preferred gender");
+        System.out.println("2. Minimum height");
+        System.out.println("3. Maximum height");
+        System.out.println("4. Minimum weight");
+        System.out.println("5. Maximum weight");
+        System.out.println("6. Minimum age");
+        System.out.println("7. Maximum age");
+        System.out.println("8. Finish editing");
+        System.out.print("Select your choice: ");
     }
 
 	/**
@@ -364,16 +364,16 @@ public class UIMain {
 		System.out.println("\nWhich element of your profie would you like to edit?");
         System.out.println("1. Username");
         System.out.println("2. Email");
-        System.out.println("3. First Name");
-        System.out.println("4. Last Name");
-        System.out.println("5. Profile Picture");
+        System.out.println("3. First name");
+        System.out.println("4. Last name");
+        System.out.println("5. Profile picture");
         System.out.println("6. Age");
         System.out.println("7. Height");
 		System.out.println("8. Weight");
 		System.out.println("9. Gender");
 		System.out.println("10. Password");
-		System.out.println("11. Exit Editing Profile");
-        System.out.print("Enter a number: ");
+		System.out.println("11. Exit 'Edit profile'");
+        System.out.print("Select your choice: ");
 	}
 
 	private static void displayRetrieveSuggestedUsersMenu(Scanner sc) {
@@ -386,14 +386,14 @@ public class UIMain {
 
 		for(int i = 0; i < sugUsers.size(); i++)
 		{
-			System.out.println("Here is a profile that is suggested for you: ");
-			System.out.println(sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
+			System.out.println("Here is a profile that is suggested for you:");
+			System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
 			while (!dismissed)
 			{
-				System.out.println("What would you like to do?");
+				System.out.println("\nWhat would you like to do?");
 				System.out.println("1. View profile");
-				System.out.println("2. Dismiss");
-				System.out.print("Enter a number: ");
+				System.out.println("2. Dismiss user");
+				System.out.print("Select your choice: ");
 
 				userInput = loopForInteger(scanner);
 
@@ -453,7 +453,7 @@ public class UIMain {
 			System.out.println("2. Unmatch user"); // remove like from profile
 			System.out.println("3. Block user");
 
-			System.out.print("Enter a number: ");
+			System.out.print("Selectr your choice: ");
 			userInput = loopForInteger(scanner);
 
 			switch (userInput)
@@ -645,11 +645,11 @@ public class UIMain {
 			switch (userInput) {
                 case 1:
 					elementToEdit = "gender";
-					System.out.println("Choose your preferred gender: ");
+					System.out.println("Choose your preferred gender. ");
 					System.out.println("1. Female");
 					System.out.println("2. Male");
 					System.out.println("3. Both");
-					System.out.print("Enter a number: ");
+					System.out.print("Select your choice: ");
 					userInput = loopForInteger(scanner);
 					switch (userInput)
 					{
@@ -670,28 +670,28 @@ public class UIMain {
 
                 case 2: 
 					elementToEdit = "minHeight";
-					System.out.print("Enter preferred minimum height in inches: ");
+					System.out.print("Enter preferred minimum height (in inches): ");
 					userInput = loopForInteger(scanner);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
                 case 3:
 					elementToEdit = "maxHeight";
-					System.out.print("Enter preferred maximum height in inches: ");
+					System.out.print("Enter preferred maximum height (in inches): ");
 					userInput = loopForInteger(scanner);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
                 case 4:
 					elementToEdit = "minWeight";
-					System.out.print("Enter preferred minimum weight in pounds: ");
+					System.out.print("Enter preferred minimum weight (in pounds): ");
 					userInput = loopForInteger(scanner);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
                 case 5:
 					elementToEdit = "maxWeight";
-					System.out.print("Enter preferred maximum weight in pounds: ");
+					System.out.print("Enter preferred maximum weight (in pounds): ");
 					userInput = loopForInteger(scanner);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
