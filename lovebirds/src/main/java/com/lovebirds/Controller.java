@@ -165,6 +165,11 @@ public class Controller {
     MediaHandler has been created to encapsulate the Photo and Album methods,
     needs to be updated. I'm just commenting this out to prevent the errors.
     */
+
+    public boolean createPhoto(String path, String albumName, String photoName){
+        mediaHandler.createPhoto(path, albumName, photoName);
+        return true;
+    }
     
     public boolean uploadPhoto(String path, String albumName, String photoName){
         mediaHandler.uploadPhoto(path, albumName, photoName);
