@@ -60,7 +60,7 @@ public class UIMain {
 			userInput = loopForInteger(sc);
 			
 			//if-else-if for processing user input
-			if(userInput < 1 || userInput > 20)
+			if(userInput < 1 || userInput > 12)
 			{
 				System.out.println("Invalid entry. Try again.");
 			}
