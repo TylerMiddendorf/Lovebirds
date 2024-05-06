@@ -466,15 +466,15 @@ public class UIMain {
 			switch (userInput)
 			{
 				case 1://match user
-					System.out.println("not implemented yet");
+				controller.changeRelationship(matchedProfile.getProfileID(), "matched");
 					goBack = true;
 					break;
 				case 2:// unmatch user
-					System.out.println("not implemented yet");
+				controller.changeRelationship(matchedProfile.getProfileID(), "unmatched");
 					goBack = true;
 					break;
 				case 3://block user
-					controller.blockUser(matchedProfile);
+					controller.changeRelationship(matchedProfile.getProfileID(), "blocked");
 					goBack = true;
 					break;
 				default:
