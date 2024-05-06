@@ -250,7 +250,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RELATIONSHIP) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RATING) VALUES (?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setInt(2, recipientID);
