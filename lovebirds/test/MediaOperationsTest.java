@@ -21,4 +21,16 @@ public class MediaOperationsTest {
         boolean created = mediaOperation.createPhoto(test.png, album, name,uid);
         Assert.assertEquals(true, created);
     }
+    @Test
+    public void testDeleteProfile() {
+        MediaOperation MediaOperationOperation = FactoryProducer.getSQLFactory().getMedia("MySQL");
+        int profileID = 1;
+        String path = "test.png"; 
+        String album = "pizza";
+        String name = "test";
+        int uid = 2;
+        boolean created = mediaOperation.deletePhoto(uid, album, name);
+        Assert.assertEquals(true, created);
+    }
+
 }
