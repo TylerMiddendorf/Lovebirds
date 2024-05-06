@@ -269,7 +269,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "UPDATE lovebirds_schema.RATINGS SET RELATIONSHIP = ? WHERE USER_ID = ? and USER_ID = ?";
+            String sql = "UPDATE lovebirds_schema.RATINGS SET RELATIONSHIP = ? WHERE USER_ID = ? and RECIPIENT_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, relationship);
             pstmt.setInt(2, userID);
@@ -282,6 +282,22 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
             System.out.println("Could not add a relationship to user.");
             return false;
         }  
+    }
+
+    public boolean deleteAllRelationships(int userID){
+        try{
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "DELETE * FROM lovebirds_schema.RATINGS WHERE USER_ID = ? OR RECIPIENT_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+            pstmt.setInt(2, userID);
+            pstmt.executeUpdate();
+            return true;
+        } catch(SQLException e){
+            System.out.println("Could not delete image. Please try again.");
+            return false;
+        }
     }
 
 
