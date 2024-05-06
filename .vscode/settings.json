@@ -5,5 +5,6 @@
         "Chat",
         "Album",
         "lovebirds/src/main/java/com/lovebirds"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

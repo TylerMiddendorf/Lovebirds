@@ -1,7 +1,12 @@
 package com.lovebirds;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.lang.*;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 @SuppressWarnings("unused") public class MediaHandler extends Handler {
 
@@ -51,6 +56,12 @@ import java.util.ArrayList;
         MediaOperation mediaOperation = FactoryProducer.getSQLFactory().getMedia("MySQL");
         boolean updated = mediaOperation.deleteAlbum(profile.getProfileID(), albumName);
         return updated;
+    }
+
+    public BufferedImage getImage(int userID){
+        InputStream is = new ByteArrayInputStream(FactoryProducer.getSQLFactory().getMedia("MySQL").readPhoto(userID,"ProfilePicture","ProfilePicture").getPhoto());
+        return ImageIO.read(is);
+        
     }
     
 }
