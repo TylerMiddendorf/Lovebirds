@@ -29,13 +29,15 @@ public class MatchmakerHandler extends Handler {
     }
 
     /**
-     * retrieves users' average rating of others and number of messages sent
+     * retrieves user's own average rating
      * @param stats
      * @return
      */
-    public ArrayList<String> retrieveStatistics(String stats)
+    public boolean retrieveStatistics()
     {
-        return new ArrayList<String>();
+        MatchmakerOperation matchmakerOperation = FactoryProducer.getSQLFactory().getMatchmaker("MySQL");
+        boolean statistics = matchmakerOperation.retrieveStatistics(profile.getProfileID());
+        return statistics;
     }
 
     public boolean dismissUser(int profileID)
