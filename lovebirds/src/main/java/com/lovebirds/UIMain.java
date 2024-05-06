@@ -282,7 +282,7 @@ public class UIMain {
 					int genderInput = 0;
 					while(genderInput != 1 && genderInput !=2)
 					{
-						System.out.println("Choose your preferred gender. ");
+						System.out.println("Choose your gender. ");
 						System.out.println("1. Female");
 						System.out.println("2. Male");
 						System.out.print("Select your choice: ");
