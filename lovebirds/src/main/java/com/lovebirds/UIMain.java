@@ -493,6 +493,7 @@ public class UIMain {
 					{
 						case 1:
 							displayViewProfileMenu(sugUsers.get(i), sc);
+							dismissed = true;
 							break;
 						case 2:
 							System.out.println("User dismissed."); // just go to next profile
