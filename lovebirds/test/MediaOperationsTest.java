@@ -11,7 +11,7 @@ import com.lovebirds.ProfileOperation;
 
 public class MediaOperationsTest {
     @Test
-    public void testCreateProfile() {
+    public void testCreatePic() {
         MediaOperation MediaOperationOperation = FactoryProducer.getSQLFactory().getMedia("MySQL");
         int profileID = 1;
         String path = "test.png"; 
@@ -22,7 +22,7 @@ public class MediaOperationsTest {
         Assert.assertEquals(true, created);
     }
     @Test
-    public void testDeleteProfile() {
+    public void testDeletePic() {
         MediaOperation MediaOperationOperation = FactoryProducer.getSQLFactory().getMedia("MySQL");
         int profileID = 1;
         String path = "test.png"; 
@@ -32,5 +32,6 @@ public class MediaOperationsTest {
         boolean created = mediaOperation.deletePhoto(uid, album, name);
         Assert.assertEquals(true, created);
     }
+
 
 }
