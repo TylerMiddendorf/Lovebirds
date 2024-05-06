@@ -474,7 +474,7 @@ public class UIMain {
 					goBack = true;
 					break;
 				case 3://block user
-					controller.blockUser(profile);
+					controller.blockUser(matchedProfile);
 					goBack = true;
 					break;
 				default:
