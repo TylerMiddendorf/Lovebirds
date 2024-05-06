@@ -215,8 +215,8 @@ public class Controller {
     /**
      * handles logout of account
      */
-    public void logOut() {
-        
+    public boolean logOut() {
+        return true;
     }
 
     /***
