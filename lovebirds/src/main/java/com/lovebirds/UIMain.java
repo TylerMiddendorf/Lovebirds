@@ -415,7 +415,7 @@ public class UIMain {
 			sugUsers = controller.retrieveSugUsers(-1);
 		}
 
-		if( sugUsers == null)
+		if( sugUsers.size() == 0)
 		{
 			System.out.println("There are no suggested users for you.");
 			System.out.println("Try editing your preferences.");
