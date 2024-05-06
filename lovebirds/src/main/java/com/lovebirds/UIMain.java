@@ -198,7 +198,17 @@ public class UIMain {
 				System.out.print("Please enter the file path: ");
 				String path = "/Users/iangowland/Desktop/passports.png";
 				controller.uploadPhoto(path, albumName, photoName);
-			} 
+			} else if (userInput == 10) {
+				sc.nextLine();
+				System.out.print("Please enter the album you want to upload to: ");
+				String albumName = sc.nextLine();
+				System.out.println("\nNow you must upload a photo.");
+				System.out.print("Please enter what you want to name your photo: ");
+				String photoName = sc.nextLine();
+				System.out.print("Please enter the file path: ");
+				String path = "/Users/iangowland/Desktop/passports.png";
+				controller.uploadPhoto(path, albumName, photoName);
+			}
 		}
 		while(run);
 		
