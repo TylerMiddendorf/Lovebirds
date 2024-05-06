@@ -284,6 +284,43 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         }  
     }
 
+<<<<<<< HEAD
+    /**
+     * This needs testing!!!
+     */
+    public boolean retrieveStatistics(int userID){
+        try {
+
+            int updatedRating = 0;
+            int count = 0;
+
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "SELECT * FROM lovebirds_schema.RATINGS WHERE RECIPIENT_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next())
+            {
+                int rating = rs.getInt(3);
+
+                updatedRating += rating;
+                count++;
+            }
+
+            double average = updatedRating/count;
+            
+            System.out.println("Your average rating is " + average + ".");
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
+            System.out.println("Could not retrieve your average rating");
+=======
     public boolean deleteAllRelationships(int userID){
         try{
             this.db.connect();
@@ -296,6 +333,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
             return true;
         } catch(SQLException e){
             System.out.println("Could not delete image. Please try again.");
+>>>>>>> 50653d0300f1a2f4c443a6870e31992a8bed14aa
             return false;
         }
     }

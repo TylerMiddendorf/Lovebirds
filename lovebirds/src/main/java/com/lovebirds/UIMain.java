@@ -391,34 +391,42 @@ public class UIMain {
 		Scanner scanner = new Scanner(System.in);
 		boolean dismissed = false;
 
-		for(int i = 0; i < sugUsers.size(); i++)
+		if( sugUsers == null)
 		{
-			System.out.println("Here is a profile that is suggested for you:");
-			System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
-			while (!dismissed)
+			System.out.println("There are no suggested users for you.");
+			System.out.println("Try editing your preferences.");
+		}
+		else
+		{
+			for(int i = 0; i < sugUsers.size(); i++)
 			{
-				System.out.println("\nWhat would you like to do?");
-				System.out.println("1. View profile");
-				System.out.println("2. Dismiss user");
-				System.out.print("Select your choice: ");
-
-				userInput = loopForInteger(scanner);
-
-				switch (userInput)
+				System.out.println("Here is a profile that is suggested for you:");
+				System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
+				while (!dismissed)
 				{
-					case 1:
-						displayViewProfileMenu(sugUsers.get(i), sc);
-						break;
-					case 2:
-						System.out.println("User dismissed."); // just go to next profile
-						dismissed = true;
-						break;
-					default:
-						System.out.println("Choose '1' or '2', try again.");
-						break;
+					System.out.println("\nWhat would you like to do?");
+					System.out.println("1. View profile");
+					System.out.println("2. Dismiss user");
+					System.out.print("Select your choice: ");
+
+					userInput = loopForInteger(scanner);
+
+					switch (userInput)
+					{
+						case 1:
+							displayViewProfileMenu(sugUsers.get(i), sc);
+							break;
+						case 2:
+							System.out.println("User dismissed."); // just go to next profile
+							dismissed = true;
+							break;
+						default:
+							System.out.println("Choose '1' or '2', try again.");
+							break;
+					}
 				}
+				dismissed = false; //reset dismissed for next profile
 			}
-			dismissed = false; //reset dismissed for next profile
 		}
 	}
 

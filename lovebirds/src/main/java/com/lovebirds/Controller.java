@@ -52,8 +52,8 @@ public class Controller {
      * @param stat
      * @return statistics
      */
-    public ArrayList<String> retrieveStatistics(String stat) {
-        ArrayList<String> statistics = matchmakerHandler.retrieveStatistics(stat);
+    public boolean retrieveStatistics() {
+        boolean statistics = matchmakerHandler.retrieveStatistics();
         return statistics;
     }
 
@@ -85,15 +85,6 @@ public class Controller {
     public boolean deleteProfile() {
         boolean deletedProfile = profileHandler.deleteProfile();
         return deletedProfile;
-    }
-
-    /**
-     * calls dismissUser in Profile Hanlder
-     * @param profileID
-     * @return true if dismissUser successful
-     */
-    public boolean dismissUser(int profileID) {
-        return matchmakerHandler.dismissUser(profileID);
     }
 
     /**
