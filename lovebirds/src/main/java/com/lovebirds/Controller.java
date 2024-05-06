@@ -88,15 +88,6 @@ public class Controller {
     }
 
     /**
-     * calls blockUser in Profile Handler
-     * @param user
-     * @return true if block successful
-     */
-    public boolean blockUser(Profile user) {
-        return profileHandler.blockUser(user);
-    }
-
-    /**
      * calls dismissUser in Profile Hanlder
      * @param profileID
      * @return true if dismissUser successful
@@ -120,19 +111,9 @@ public class Controller {
      * @param user
      * @return true if likeUser successful
      */
-    public boolean likeUser(Profile user) {
-        return matchmakerHandler.likeUser(user);
+    public boolean changeRelationship(int recipientID, String relationship) {
+        return matchmakerHandler.updateRelationship(recipientID, relationship);
     }
-
-    /**
-     * calls unmatchUnser in Profile Handler
-     * @param user
-     * @return true if unmatchUser successful
-     */
-    public boolean unmatchUser(Profile user) {
-        return profileHandler.unmatchUser(user);
-    }
-
 
     /*
 
@@ -194,8 +175,8 @@ public class Controller {
     needs to be updated. I'm just commenting this out to prevent the errors.
     */
     
-    public boolean uploadPhoto(){
-        //return mediaHandler.uploadPhoto();
+    public boolean uploadPhoto(String path, String albumName, String photoName){
+        mediaHandler.uploadPhoto(path, albumName, photoName);
         return true;
     }
 

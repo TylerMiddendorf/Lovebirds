@@ -187,12 +187,14 @@ public class UIMain {
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 			} else if (userInput == 9) {
 				System.out.print("Please enter what you want the album to be named: ");
+				sc.nextLine();
 				String albumName = sc.nextLine();
-				// public abstract boolean createPhoto(String path, String albumName, int userID);
-				System.out.println("Now you must upload a photo.");
+				System.out.println("\nNow you must upload a photo.");
+				System.out.print("Please enter what you want to name your photo: ");
+				String photoName = sc.nextLine();
 				System.out.print("Please enter the file path: ");
-				String path = sc.nextLine();
-				controller.uploadPhoto();
+				String path = "/Users/iangowland/Desktop/passports.png";
+				controller.uploadPhoto(path, albumName, photoName);
 			} 
 		}
 		while(run);
@@ -306,7 +308,7 @@ public class UIMain {
 					break;
 
 				case 3: //Forgot Password
-					boolean success = forgotPassword();
+					boolean success = forgotPassword(sc);
 					if (success)
 					{
 						System.out.println("\nPassword successfully reset.");
@@ -389,34 +391,42 @@ public class UIMain {
 		Scanner scanner = new Scanner(System.in);
 		boolean dismissed = false;
 
-		for(int i = 0; i < sugUsers.size(); i++)
+		if( sugUsers == null)
 		{
-			System.out.println("Here is a profile that is suggested for you:");
-			System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
-			while (!dismissed)
+			System.out.println("There are no suggested users for you.");
+			System.out.println("Try editing your preferences.");
+		}
+		else
+		{
+			for(int i = 0; i < sugUsers.size(); i++)
 			{
-				System.out.println("\nWhat would you like to do?");
-				System.out.println("1. View profile");
-				System.out.println("2. Dismiss user");
-				System.out.print("Select your choice: ");
-
-				userInput = loopForInteger(scanner);
-
-				switch (userInput)
+				System.out.println("Here is a profile that is suggested for you:");
+				System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
+				while (!dismissed)
 				{
-					case 1:
-						displayViewProfileMenu(sugUsers.get(i), sc);
-						break;
-					case 2:
-						System.out.println("User dismissed."); // just go to next profile
-						dismissed = true;
-						break;
-					default:
-						System.out.println("Choose '1' or '2', try again.");
-						break;
+					System.out.println("\nWhat would you like to do?");
+					System.out.println("1. View profile");
+					System.out.println("2. Dismiss user");
+					System.out.print("Select your choice: ");
+
+					userInput = loopForInteger(scanner);
+
+					switch (userInput)
+					{
+						case 1:
+							displayViewProfileMenu(sugUsers.get(i), sc);
+							break;
+						case 2:
+							System.out.println("User dismissed."); // just go to next profile
+							dismissed = true;
+							break;
+						default:
+							System.out.println("Choose '1' or '2', try again.");
+							break;
+					}
 				}
+				dismissed = false; //reset dismissed for next profile
 			}
-			dismissed = false; //reset dismissed for next profile
 		}
 	}
 
@@ -463,16 +473,16 @@ public class UIMain {
 
 			switch (userInput)
 			{
-				case 1:
-					System.out.println("not implemented yet");
+				case 1://match user
+				controller.changeRelationship(matchedProfile.getProfileID(), "matched");
 					goBack = true;
 					break;
-				case 2:
-					System.out.println("not implemented yet");
+				case 2:// unmatch user
+				controller.changeRelationship(matchedProfile.getProfileID(), "unmatched");
 					goBack = true;
 					break;
-				case 3:
-					System.out.println("not implemented yet");
+				case 3://block user
+					controller.changeRelationship(matchedProfile.getProfileID(), "blocked");
 					goBack = true;
 					break;
 				default:
@@ -762,18 +772,17 @@ public class UIMain {
 	 * invoke forgotPassword in Controller
 	 * @return
 	 */
-	private static boolean forgotPassword() {
-		Scanner scan = new Scanner(System.in);
+	private static boolean forgotPassword(Scanner sc) {
 		String usernameInput;
 		String emailInput;
 		String newPasswordInput;
 
 		System.out.print("Please enter your username: ");
-		usernameInput = scan.nextLine();
+		usernameInput = sc.nextLine();
 		System.out.print("Please enter your email: ");
-		emailInput = scan.nextLine();
+		emailInput = sc.nextLine();
 		System.out.print("Please enter your new password: ");
-		newPasswordInput = scan.nextLine();
+		newPasswordInput = sc.nextLine();
 
 		//searching for username and email in database
 		boolean success = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);
