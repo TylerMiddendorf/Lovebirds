@@ -197,7 +197,7 @@ public class UIMain {
 				String photoName = sc.nextLine();
 				System.out.print("Please enter the file path: ");
 				String path = "/Users/iangowland/Desktop/passports.png";
-				controller.uploadPhoto(path, albumName, photoName);
+				controller.createPhoto(path, albumName, photoName);
 			} else if (userInput == 10) {
 				sc.nextLine();
 				System.out.print("Please enter the album you want to upload to: ");
@@ -208,6 +208,7 @@ public class UIMain {
 				System.out.print("Please enter the file path: ");
 				String path = "/Users/iangowland/Desktop/passports.png";
 				controller.uploadPhoto(path, albumName, photoName);
+				System.out.println();
 			}
 		}
 		while(run);

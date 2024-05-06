@@ -52,6 +52,49 @@ public class MediaOperationMySQL extends MediaOperation { //
             return true;
         } catch (SQLException e) {
             System.out.println("Could not create image. Please try again.");
+            System.out.println(e.getSQLState());
+            System.out.println(e.getErrorCode());
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean uploadPhoto(String path, String albumName, String photoName, int UID) {
+
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File(path));
+        }
+        catch (Exception e) {
+            return false;
+        }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        try {
+            ImageIO.write(image, "png", baos);
+        }
+        catch(Exception e) {
+            return false;
+        }
+        InputStream is = new ByteArrayInputStream(baos.toByteArray());
+        //Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+        //setBlob(int parameterIndex, InputStream is)
+        try {
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "INSERT INTO lovebirds_schema.IMAGES ALBUM_NAME = ? AND PHOTO = ? AND PHOTO_NAME = ? WHERE USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setString(1, albumName);
+            pstmt.setBlob(2,  is);
+            pstmt.setString(3, photoName);
+            pstmt.setInt(4, UID);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Could not create image. Please try again.");
+            System.out.println(e.getSQLState());
+            System.out.println(e.getErrorCode());
+            System.out.println(e.getMessage());
             return false;
         }
     }
