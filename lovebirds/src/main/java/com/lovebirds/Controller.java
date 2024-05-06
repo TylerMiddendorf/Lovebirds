@@ -88,15 +88,6 @@ public class Controller {
     }
 
     /**
-     * calls dismissUser in Profile Hanlder
-     * @param profileID
-     * @return true if dismissUser successful
-     */
-    public boolean dismissUser(int profileID) {
-        return matchmakerHandler.dismissUser(profileID);
-    }
-
-    /**
      * calls rateUser in Profile Handler
      * @param user
      * @return rating
