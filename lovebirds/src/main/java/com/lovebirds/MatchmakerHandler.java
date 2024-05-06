@@ -45,16 +45,16 @@ public class MatchmakerHandler extends Handler {
         return true; // user has been dismissed
     }
 
-    public boolean likeUser(Profile user)
+    public boolean updateRelationship(int recipientID, String relationship) //matched, unmatched, blocked
     {
-        boolean liked = false;
-        // user may or may not like the user, if they do then turn true
-        return liked;
+        MatchmakerOperation matchmakerOperation = FactoryProducer.getSQLFactory().getMatchmaker("MySQL");
+        boolean updated = matchmakerOperation.relationship(profile.getProfileID(), recipientID, relationship);
+        return updated;
     }
 
-    public boolean rateUser(int userID, int recipientID, int rating) {
+    public boolean rateUser(int recipientID, int rating) {
         MatchmakerOperation matchmakerOperation = FactoryProducer.getSQLFactory().getMatchmaker("MySQL");
-        boolean rated = matchmakerOperation.rateUser(userID, recipientID, rating);
+        boolean rated = matchmakerOperation.rateUser(profile.getProfileID(), recipientID, rating);
         return rated;
     }
 
