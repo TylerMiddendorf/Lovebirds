@@ -237,4 +237,8 @@ public class Controller {
         return chatHandler.getUser(index);
     }
 
+    public BufferedImage getImage(int userID){
+        return MediaHandler.getImage(userID);
+    }
+
 }
