@@ -52,8 +52,8 @@ public class Controller {
      * @param stat
      * @return statistics
      */
-    public ArrayList<String> retrieveStatistics(String stat) {
-        ArrayList<String> statistics = matchmakerHandler.retrieveStatistics(stat);
+    public boolean retrieveStatistics() {
+        boolean statistics = matchmakerHandler.retrieveStatistics();
         return statistics;
     }
 
@@ -88,15 +88,6 @@ public class Controller {
     }
 
     /**
-     * calls blockUser in Profile Handler
-     * @param user
-     * @return true if block successful
-     */
-    public boolean blockUser(Profile user) {
-        return profileHandler.blockUser(user);
-    }
-
-    /**
      * calls dismissUser in Profile Hanlder
      * @param profileID
      * @return true if dismissUser successful
@@ -120,19 +111,9 @@ public class Controller {
      * @param user
      * @return true if likeUser successful
      */
-    public boolean changeRelationship(int userID, int recipientID, String relationship) {
-        return matchmakerHandler.updateRelationship(userID, recipientID, relationship);
+    public boolean changeRelationship(int recipientID, String relationship) {
+        return matchmakerHandler.updateRelationship(recipientID, relationship);
     }
-
-    /**
-     * calls unmatchUnser in Profile Handler
-     * @param user
-     * @return true if unmatchUser successful
-     */
-    public boolean unmatchUser(Profile user) {
-        return profileHandler.unmatchUser(user);
-    }
-
 
     /*
 
