@@ -277,8 +277,30 @@ public class UIMain {
 					System.out.print("Enter weight: ");
 					int weight = loopForInteger(sc);
 					sc.nextLine();
-					System.out.print("Enter gender: ");
-					String gender = sc.nextLine();
+					//gender
+					String gender = "";
+					int genderInput = 0;
+					while(genderInput != 1 && genderInput !=2)
+					{
+						System.out.println("Choose your preferred gender. ");
+						System.out.println("1. Female");
+						System.out.println("2. Male");
+						System.out.print("Select your choice: ");
+						genderInput = loopForInteger(sc);
+						switch (genderInput)
+						{
+							case 1:
+								gender = "Female";
+								break;
+							case 2:
+								gender = "Male";
+								break;
+							default:
+								System.out.println("Enter either '1' or '2'. Please try again.");
+						}
+					}
+
+
 					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
 
 					System.out.println("\nNow you need to upload a profile picture.");
@@ -294,7 +316,28 @@ public class UIMain {
 					System.out.println("\nNow you need to enter your preferences that will be used for matching!\n");
 
 					System.out.print("\nPlease enter the gender you want to match with: ");
-					String preferredGender = sc.nextLine();
+					//gender
+					String preferredGender = "";
+					genderInput = 0;
+					while(genderInput != 1 && genderInput !=2)
+					{
+						System.out.println("Choose your preferred gender. ");
+						System.out.println("1. Female");
+						System.out.println("2. Male");
+						System.out.print("Select your choice: ");
+						genderInput = loopForInteger(sc);
+						switch (genderInput)
+						{
+							case 1:
+								preferredGender = "Female";
+								break;
+							case 2:
+								preferredGender = "Male";
+								break;
+							default:
+								System.out.println("Enter either '1' or '2'. Please try again.");
+						}
+					}
 					System.out.print("Please enter your minimum height (in inches, enter 0 if you have no preference): ");
 					int minHeight = loopForInteger(sc);
 					System.out.print("Please enter your maximum height (in inches, enter 2000 if you have no preference): ");
@@ -496,7 +539,7 @@ public class UIMain {
 			System.out.println("2. Unmatch user"); // remove like from profile
 			System.out.println("3. Block user");
 
-			System.out.print("Selectr your choice: ");
+			System.out.print("Select your choice: ");
 			userInput = loopForInteger(sc);
 
 			switch (userInput)
