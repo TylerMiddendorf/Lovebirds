@@ -152,9 +152,12 @@ public class UIMain {
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
-				System.out.println("Call to edit album.");
-                //edit album
-				// 	Have option to go back to options menu
+				sc.nextLine();
+				System.out.print("Please enter the name of the album you want to change: ");
+				String albumName = sc.nextLine();
+				System.out.print("Please enter the new name for the album: ");
+				String newAlbumName = sc.nextLine();
+				controller.editAlbum(albumName, newAlbumName);
 			}
 			else if(userInput == 6) {
 				System.out.println("\nLogging out...");
@@ -167,7 +170,7 @@ public class UIMain {
 			}	
 			else if (userInput == 8) {
 				controller.deletePreferences();
-				System.out.println("\nYour preferences has been deleted. You will need to re-enter them.");
+				System.out.println("\nYour preferences have been deleted. You will need to re-enter them.");
 				run = false;
 				// System.out.println("\nPlease enter the gender you want to match with: ");
 				// String preferredGender = sc.nextLine();
@@ -186,8 +189,8 @@ public class UIMain {
 				// sc.nextLine();
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 			} else if (userInput == 9) {
-				System.out.print("Please enter what you want the album to be named: ");
 				sc.nextLine();
+				System.out.print("Please enter what you want the album to be named: ");
 				String albumName = sc.nextLine();
 				System.out.println("\nNow you must upload a photo.");
 				System.out.print("Please enter what you want to name your photo: ");
@@ -340,7 +343,7 @@ public class UIMain {
 		System.out.println("7: Delete account");
 		System.out.println("8: Delete preferences.");
 		System.out.println("9. Create album (you must upload at least one photo)");
-		System.out.println("9. Upload photo(s) to existing album");
+		System.out.println("10. Upload photo(s) to existing album");
 		System.out.print("Select your choice: ");
     }
 	

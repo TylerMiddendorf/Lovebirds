@@ -206,8 +206,8 @@ public class Controller {
     }
 
     
-    public boolean editAlbum(){
-        //return mediaHandler.editAlbum();
+    public boolean editAlbum(String albumName, String newAlbumName){
+        boolean edited = mediaHandler.editAlbum(albumName, newAlbumName);
         return true;
     }
 

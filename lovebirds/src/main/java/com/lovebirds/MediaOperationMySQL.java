@@ -83,7 +83,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM lovebirds_schema.IMAGES WHERE USER_ID = ? AND ALBUMNAME = ? AND PHOTONAME = ?";
+            String sql = "DELETE FROM lovebirds_schema.IMAGES WHERE USER_ID = ? AND ALBUM_NAME = ? AND PHOTO_NAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, albumName);
@@ -116,6 +116,9 @@ public class MediaOperationMySQL extends MediaOperation { //
             }
             return new Album(albumName, photos);
         } catch(SQLException e){
+            System.out.println(e.getSQLState());
+            System.out.println(e.getNextException());
+            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -126,9 +129,9 @@ public class MediaOperationMySQL extends MediaOperation { //
             Connection dbConn = db.getConnection();
             String sql = "UPDATE lovebirds_schema.IMAGES SET ALBUM_NAME = ? WHERE USER_ID = ? AND ALBUM_NAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
-            pstmt.setString(1, albumName);
+            pstmt.setString(1, newAlbumName);
             pstmt.setInt(2, userID);
-            pstmt.setString(3, newAlbumName); 
+            pstmt.setString(3, albumName); 
             pstmt.executeUpdate();
             return true;
         } catch(SQLException e){
@@ -142,7 +145,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM lovebirds_schema.IMAGES WHERE ALBUMNAME = ? AND USER_ID = ?";
+            String sql = "DELETE FROM lovebirds_schema.IMAGES WHERE ALBUM_NAME = ? AND USER_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setString(1, albumName);
             pstmt.setInt(2, userID);
