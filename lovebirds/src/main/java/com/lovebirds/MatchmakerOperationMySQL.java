@@ -250,7 +250,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RATING) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RELATIONSHIP) VALUES (?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setInt(2, recipientID);
@@ -263,6 +263,25 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
             System.out.println("Could not rate user.");
             return false;
         }    
+    }
+
+    public boolean relationship(int userID, int recipientID, String relationship){
+        try {
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "UPDATE lovebirds_schema.RATINGS SET RELATIONSHIP = ? WHERE USER_ID = ? and USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setString(1, relationship);
+            pstmt.setInt(2, userID);
+            pstmt.setInt(3, recipientID);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
+            System.out.println("Could not add a relationship to user.");
+            return false;
+        }  
     }
 
 
