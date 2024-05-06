@@ -215,8 +215,8 @@ public class Controller {
     /**
      * handles logout of account
      */
-    public void logOut() {
-        
+    public boolean logOut() {
+        return true;
     }
 
     /***
@@ -245,6 +245,14 @@ public class Controller {
 
     public BufferedImage getImage(int userID){
         return mediaHandler.getImage(userID);
+    }
+
+    /**
+     * invokes getProfileDetails in handler
+     * @return profile toString
+     */
+    public String getProfileDetails(){
+        return profileHandler.getProfileDetails();
     }
 
 }

@@ -203,6 +203,7 @@ public class UIMain {
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
 			} else if (userInput == 12) {
+<<<<<<< HEAD
 				sc.nextLine();
 				System.out.print("Please enter the file path for your profile picture: ");
 				String path = sc.nextLine();
@@ -212,6 +213,9 @@ public class UIMain {
 				System.out.print("Please enter the album name of the album you want to delete: ");
 				String albumName = sc.nextLine();
 				controller.deleteAlbum(albumName);
+=======
+				System.out.println(controller.getProfileDetails());
+>>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 			}
 		}
 		while(run);
@@ -285,9 +289,39 @@ public class UIMain {
 					System.out.print("Enter weight: ");
 					int weight = loopForInteger(sc);
 					sc.nextLine();
+<<<<<<< HEAD
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
 					boolean created = controller.createProfile(username, email, firstName, lastName, "ProfilePicture", age, height, weight, gender, password);
+=======
+					//gender
+					String gender = "";
+					int genderInput = 0;
+					while(genderInput != 1 && genderInput !=2)
+					{
+						System.out.println("Choose your gender. ");
+						System.out.println("1. Female");
+						System.out.println("2. Male");
+						System.out.print("Select your choice: ");
+						genderInput = loopForInteger(sc);
+						switch (genderInput)
+						{
+							case 1:
+								gender = "Female";
+								break;
+							case 2:
+								gender = "Male";
+								break;
+							default:
+								System.out.println("Enter either '1' or '2'. Please try again.");
+						}
+					}
+
+					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
+
+					System.out.println("\nNow you need to upload a profile picture.");
+					System.out.println("");
+>>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 
 					if(!created) {
 						System.out.println("Account could not be created. Please try again.");
@@ -299,7 +333,28 @@ public class UIMain {
 					System.out.println("\nNow you need to enter your preferences that will be used for matching!\n");
 
 					System.out.print("\nPlease enter the gender you want to match with: ");
-					String preferredGender = sc.nextLine();
+					//gender
+					String preferredGender = "";
+					genderInput = 0;
+					while(genderInput != 1 && genderInput !=2)
+					{
+						System.out.println("Choose your preferred gender. ");
+						System.out.println("1. Female");
+						System.out.println("2. Male");
+						System.out.print("Select your choice: ");
+						genderInput = loopForInteger(sc);
+						switch (genderInput)
+						{
+							case 1:
+								preferredGender = "Female";
+								break;
+							case 2:
+								preferredGender = "Male";
+								break;
+							default:
+								System.out.println("Enter either '1' or '2'. Please try again.");
+						}
+					}
 					System.out.print("Please enter your minimum height (in inches, enter 0 if you have no preference): ");
 					int minHeight = loopForInteger(sc);
 					System.out.print("Please enter your maximum height (in inches, enter 2000 if you have no preference): ");
@@ -355,12 +410,20 @@ public class UIMain {
 		System.out.println("5: Edit album");
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
+<<<<<<< HEAD
 		System.out.println("8: Delete preferences");
 		System.out.println("9: Create album (you must upload at least one photo)");
 		System.out.println("10: Upload photo(s) to existing album");
 		System.out.println("11: Retrieve statistics");
 		System.out.println("12: Upload profile picture");
 		System.out.println("13: Delete album");
+=======
+		System.out.println("8: Delete preferences.");
+		System.out.println("9. Create album (you must upload at least one photo)");
+		System.out.println("10. Upload photo(s) to existing album");
+		System.out.println("11. Retrieve statistics");
+		System.out.println("12. Retrieve user details");
+>>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 		System.out.print("Select your choice: ");
     }
 	
@@ -424,7 +487,7 @@ public class UIMain {
 			sugUsers = controller.retrieveSugUsers(-1);
 		}
 
-		if( sugUsers == null)
+		if( sugUsers.size() == 0)
 		{
 			System.out.println("There are no suggested users for you.");
 			System.out.println("Try editing your preferences.");
@@ -532,7 +595,11 @@ public class UIMain {
 	 * CASE 11 EXITING LOOP GIVES AN ERROR 
 	 * @param user
 	 */
+<<<<<<< HEAD
 	private static void editProfile(Scanner sc)
+=======
+	private static void editProfile(Scanner scanner)
+>>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 	{
 		boolean edited = false;
 		boolean correctNum = false;
@@ -642,8 +709,32 @@ public class UIMain {
 					//update gender
 					System.out.print("Enter your updated gender: ");
 					//capture user input and update profile
+<<<<<<< HEAD
 					sc.nextLine();
 					String editedGender = sc.nextLine();
+=======
+					String editedGender = "";
+					int genderInput = 0;
+					while(genderInput != 1 && genderInput !=2)
+					{
+						System.out.println("Choose your gender. ");
+						System.out.println("1. Female");
+						System.out.println("2. Male");
+						System.out.print("Select your choice: ");
+						genderInput = loopForInteger(scanner);
+						switch (genderInput)
+						{
+							case 1:
+								editedGender = "Female";
+								break;
+							case 2:
+								editedGender = "Male";
+								break;
+							default:
+								System.out.println("Enter either '1' or '2'. Please try again.");
+						}
+					}
+>>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 					elementToEdit = "gender";
 					controller.editProfile(elementToEdit, editedGender);
 					break;
@@ -660,7 +751,7 @@ public class UIMain {
 
                 case 11:
                     //exit loop
-					System.out.println("Your profile has been updated.");
+					System.out.println("\nYour profile has been updated.");
                     edited = true;
                     break;
                 default:
@@ -669,7 +760,10 @@ public class UIMain {
             }
             
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 	}
 
 	private static void editPreferences()
