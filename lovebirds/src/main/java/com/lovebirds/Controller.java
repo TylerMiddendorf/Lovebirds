@@ -194,8 +194,8 @@ public class Controller {
     needs to be updated. I'm just commenting this out to prevent the errors.
     */
     
-    public boolean uploadPhoto(){
-        //return mediaHandler.uploadPhoto();
+    public boolean uploadPhoto(String path, String albumName, String photoName){
+        mediaHandler.uploadPhoto(path, albumName, photoName);
         return true;
     }
 
