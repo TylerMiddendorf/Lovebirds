@@ -60,7 +60,7 @@ public class UIMain {
 			userInput = loopForInteger(sc);
 			
 			//if-else-if for processing user input
-			if(userInput < 1 || userInput > 12)
+			if(userInput < 1 || userInput > 14)
 			{
 				System.out.println("Invalid entry. Try again.");
 			}
@@ -212,6 +212,8 @@ public class UIMain {
 				System.out.print("Please enter the album name of the album you want to delete: ");
 				String albumName = sc.nextLine();
 				controller.deleteAlbum(albumName);
+			} else if (userInput == 14) {
+				System.out.println(controller.getProfileDetails());
 			}
 		}
 		while(run);
@@ -406,6 +408,7 @@ public class UIMain {
 		System.out.println("11: Retrieve statistics");
 		System.out.println("12: Upload profile picture");
 		System.out.println("13: Delete album");
+		System.out.println("14. View users details");
 		System.out.print("Select your choice: ");
     }
 	
