@@ -188,7 +188,7 @@ public class UIMain {
 				System.out.print("Please enter what you want to name your photo: ");
 				String photoName = sc.nextLine();
 				System.out.print("Please enter the file path: ");
-				String path = "/Users/iangowland/Desktop/passports.png";
+				String path = sc.nextLine();
 				controller.createPhoto(path, albumName, photoName);
 			} else if (userInput == 10) {
 				sc.nextLine();
@@ -198,7 +198,7 @@ public class UIMain {
 				System.out.print("Please enter what you want to name your photo: ");
 				String photoName = sc.nextLine();
 				System.out.print("Please enter the file path: ");
-				String path = "/Users/iangowland/Desktop/passports.png";
+				String path = sc.nextLine();
 				controller.uploadPhoto(path, albumName, photoName);
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
