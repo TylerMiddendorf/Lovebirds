@@ -239,8 +239,13 @@ public class UIMain {
 					System.out.print("Enter Password: ");
 					password = sc.nextLine();
 					int resultID = controller.logIn(username, password);
-					controller.initializeProfile(resultID);
-			
+					if(resultID != -1) {
+						controller.initializeProfile(resultID);
+					} else{
+						firstTime = true;
+						userInput = 0;
+						System.out.println("Username and Profile are incorrect");
+					}
 		
 					break;
 				case 2: //Create Account
