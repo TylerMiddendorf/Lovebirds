@@ -140,7 +140,7 @@ public class UIMain {
 				// retrieve the profile of the user that is currently logged in. 
 				// call editPreferences with the profile of user
 				
-				editPreferences(); //edit preferences
+				editPreferences(sc); //edit preferences
 				// 	Have option to go back to options menu	
 			}
 			else if(userInput == 5) {
@@ -203,7 +203,6 @@ public class UIMain {
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
 			} else if (userInput == 12) {
-<<<<<<< HEAD
 				sc.nextLine();
 				System.out.print("Please enter the file path for your profile picture: ");
 				String path = sc.nextLine();
@@ -213,9 +212,6 @@ public class UIMain {
 				System.out.print("Please enter the album name of the album you want to delete: ");
 				String albumName = sc.nextLine();
 				controller.deleteAlbum(albumName);
-=======
-				System.out.println(controller.getProfileDetails());
->>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 			}
 		}
 		while(run);
@@ -289,11 +285,6 @@ public class UIMain {
 					System.out.print("Enter weight: ");
 					int weight = loopForInteger(sc);
 					sc.nextLine();
-<<<<<<< HEAD
-					System.out.print("Enter gender: ");
-					String gender = sc.nextLine();
-					boolean created = controller.createProfile(username, email, firstName, lastName, "ProfilePicture", age, height, weight, gender, password);
-=======
 					//gender
 					String gender = "";
 					int genderInput = 0;
@@ -321,7 +312,6 @@ public class UIMain {
 
 					System.out.println("\nNow you need to upload a profile picture.");
 					System.out.println("");
->>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 
 					if(!created) {
 						System.out.println("Account could not be created. Please try again.");
@@ -367,7 +357,7 @@ public class UIMain {
 					System.out.print(agePrompt);
 					int minAge = loopForInteger(sc);
 					while(minAge < 18) {
-						System.out.print("\nInvalid option. Go get some help. No Diddy. No Drizzy.\n\n" + agePrompt);
+						System.out.print("\nInvalid option. Go get some help.\n\n" + agePrompt);
 						minAge = loopForInteger(sc);
 					}
 					System.out.print("Please enter your maximum age (enter 2000 if you have no preference): ");
@@ -410,20 +400,12 @@ public class UIMain {
 		System.out.println("5: Edit album");
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
-<<<<<<< HEAD
 		System.out.println("8: Delete preferences");
 		System.out.println("9: Create album (you must upload at least one photo)");
 		System.out.println("10: Upload photo(s) to existing album");
 		System.out.println("11: Retrieve statistics");
 		System.out.println("12: Upload profile picture");
 		System.out.println("13: Delete album");
-=======
-		System.out.println("8: Delete preferences.");
-		System.out.println("9. Create album (you must upload at least one photo)");
-		System.out.println("10. Upload photo(s) to existing album");
-		System.out.println("11. Retrieve statistics");
-		System.out.println("12. Retrieve user details");
->>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 		System.out.print("Select your choice: ");
     }
 	
@@ -540,9 +522,6 @@ public class UIMain {
 			System.out.println("Weight: " + matchedProfile.getWeight());
 			System.out.println("Gender: " + matchedProfile.getGender());
 
-			//ADD THE DISPLAYING OF PROFILE PICTURE
-			display(controller.getImage(matchedProfile.getProfileID()));
-
 			System.out.print("\nRate this user (1-5): ");
 			int rating = 0;
 			while (rating == 0) {
@@ -595,11 +574,7 @@ public class UIMain {
 	 * CASE 11 EXITING LOOP GIVES AN ERROR 
 	 * @param user
 	 */
-<<<<<<< HEAD
 	private static void editProfile(Scanner sc)
-=======
-	private static void editProfile(Scanner scanner)
->>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 	{
 		boolean edited = false;
 		boolean correctNum = false;
@@ -709,10 +684,6 @@ public class UIMain {
 					//update gender
 					System.out.print("Enter your updated gender: ");
 					//capture user input and update profile
-<<<<<<< HEAD
-					sc.nextLine();
-					String editedGender = sc.nextLine();
-=======
 					String editedGender = "";
 					int genderInput = 0;
 					while(genderInput != 1 && genderInput !=2)
@@ -721,7 +692,7 @@ public class UIMain {
 						System.out.println("1. Female");
 						System.out.println("2. Male");
 						System.out.print("Select your choice: ");
-						genderInput = loopForInteger(scanner);
+						genderInput = loopForInteger(sc);
 						switch (genderInput)
 						{
 							case 1:
@@ -734,7 +705,6 @@ public class UIMain {
 								System.out.println("Enter either '1' or '2'. Please try again.");
 						}
 					}
->>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 					elementToEdit = "gender";
 					controller.editProfile(elementToEdit, editedGender);
 					break;
@@ -760,17 +730,12 @@ public class UIMain {
             }
             
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 8223a14564d6eb9e6f6d1352ce0966d571d41b1e
 	}
 
-	private static void editPreferences()
+	private static void editPreferences(Scanner sc)
 	{
 		boolean edited = false;
 		boolean correctNum = false;
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -779,7 +744,7 @@ public class UIMain {
 
 			displayEditPreferencesMenu();
 
-			userInput = loopForInteger(scanner);
+			userInput = loopForInteger(sc);
 
 			//edit below
 			switch (userInput) {
@@ -790,7 +755,7 @@ public class UIMain {
 					System.out.println("2. Male");
 					System.out.println("3. Both");
 					System.out.print("Select your choice: ");
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 					switch (userInput)
 					{
 						case 1:
@@ -811,28 +776,28 @@ public class UIMain {
                 case 2: 
 					elementToEdit = "minHeight";
 					System.out.print("Enter preferred minimum height (in inches): ");
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
                 case 3:
 					elementToEdit = "maxHeight";
 					System.out.print("Enter preferred maximum height (in inches): ");
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
                 case 4:
 					elementToEdit = "minWeight";
 					System.out.print("Enter preferred minimum weight (in pounds): ");
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
                 case 5:
 					elementToEdit = "maxWeight";
 					System.out.print("Enter preferred maximum weight (in pounds): ");
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 					controller.editPreferences(elementToEdit, userInput);
 					break;
 
@@ -841,7 +806,7 @@ public class UIMain {
                     while(!correctNum)
                     {
                         System.out.print("Enter your preferred minimum age: ");
-                        userInput = loopForInteger(scanner);
+                        userInput = loopForInteger(sc);
                         if(userInput >= 18)
                         {
 							controller.editPreferences(elementToEdit, userInput);
@@ -858,7 +823,7 @@ public class UIMain {
 					while(!correctNum)
 					{
 						System.out.print("Enter your preferred maximum age: ");
-						userInput = loopForInteger(scanner);
+						userInput = loopForInteger(sc);
 						if(userInput >= 18)
 						{
 							controller.editPreferences(elementToEdit, userInput);
@@ -880,7 +845,7 @@ public class UIMain {
             }
             
         }
-        scanner.close();
+
 	}
 
 	private static int loopForInteger(Scanner scan) {
