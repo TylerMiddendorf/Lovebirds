@@ -383,8 +383,23 @@ public class UIMain {
 
 	private static void displayRetrieveSuggestedUsersMenu(Scanner sc) {
 		int userInput = 0;
+		int rating = -1;
+		ArrayList<Profile> sugUsers;
 
-		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
+		System.out.println("Would you like to also filter by rating?");
+		System.out.println("Enter '1' for yes, or any other number for no: ");
+		userInput = loopForInteger(sc);
+
+		if(userInput == 1)
+		{
+			System.out.println("Enter a minimum rating 1-5: ");
+			rating = loopForInteger(sc);
+			sugUsers = controller.retrieveSugUsers(rating);
+		}
+		else
+		{
+			sugUsers = controller.retrieveSugUsers(-1);
+		}
 
 		boolean dismissed = false;
 
