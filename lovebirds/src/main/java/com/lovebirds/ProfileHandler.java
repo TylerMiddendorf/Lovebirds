@@ -37,80 +37,50 @@ public class ProfileHandler extends Handler {
                 profile.createUsername(editedElement);
                 profileOperation.updateProfile(profile);
 
-                //for testing
-                System.out.println(profile.toString());
-
                 break;
             case "email":
                 profile.enterEmail(editedElement);
                 profileOperation.updateProfile(profile);
-
-                //for testing
-                System.out.println(profile.toString());
 
                 break;
             case "firstName":
                 profile.setFirstName(editedElement);
                 profileOperation.updateProfile(profile);
 
-                //for testing
-                System.out.println(profile.toString());
-
                 break;
             case "lastName":
                 profile.setLastName(editedElement);
                 profileOperation.updateProfile(profile);
-
-                //for testing
-                System.out.println(profile.toString());
 
                 break;
             case "profilePicture":
                 profile.setProfilePicture(editedElement);
                 profileOperation.updateProfile(profile);
 
-                //for testing
-                System.out.println(profile.toString());
-
                 break;
             case "age":
                 profile.setAge(Integer.parseInt(editedElement));
                 profileOperation.updateProfile(profile);
-
-                //for testing
-                System.out.println(profile.toString());
 
                 break;
             case "height":
                 profile.setHeight(Integer.parseInt(editedElement));
                 profileOperation.updateProfile(profile);
 
-                //for testing
-                System.out.println(profile.toString());
-
                 break;
             case "weight":
                 profile.setWeight(Integer.parseInt(editedElement));
                 profileOperation.updateProfile(profile);
-
-                //for testing
-                System.out.println(profile.toString());
 
                 break;
             case "gender":
                 profile.setGender(editedElement);
                 profileOperation.updateProfile(profile);
 
-                //for testing
-                System.out.println(profile.toString());
-
                 break;
             case "password":
                 profile.createPassword(editedElement);
                 profileOperation.updateProfile(profile);
-
-                //for testing
-                System.out.println(profile.toString());
 
                 break;
             default:
@@ -244,6 +214,14 @@ public class ProfileHandler extends Handler {
         ProfileOperation profileOperation = FactoryProducer.getSQLFactory().getProfile("MySQL");
         boolean deleted = profileOperation.deletePreferences(profile.getProfileID());
         return deleted;
+    }
+
+    /**
+     * invokes profile toString
+     * @return profile toString
+     */
+    public String getProfileDetails(){
+        return profile.toString();
     }
     
 }

@@ -284,9 +284,6 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         }  
     }
 
-    /**
-     * This needs testing!!!
-     */
     public boolean retrieveStatistics(int userID){
         try {
 
@@ -309,9 +306,15 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
                 count++;
             }
 
-            double average = updatedRating/count;
-            
-            System.out.println("\nYour average rating is " + average + ".");
+            if(updatedRating == 0)
+            {
+                System.out.println("\nYou have not been rated yet.");
+            }
+            else
+            {
+                double average = updatedRating/count;
+                System.out.println("\nYour average rating is " + average + ".");
+            }
 
             return true;
 
@@ -340,8 +343,6 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
     }
 
     /**
-     * this needs userID and recipientID parameters for matches searching for matches in the database!!!
-     * ^also change taken parameters in MatchmakerOperation.java
      * this returns true if the user has already rated target user
      */
     public boolean alreadyRatedUser(int userID, int recipientID){
