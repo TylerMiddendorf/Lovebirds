@@ -300,7 +300,6 @@ public class UIMain {
 						}
 					}
 
-
 					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
 
 					System.out.println("\nNow you need to upload a profile picture.");
@@ -679,8 +678,27 @@ public class UIMain {
 					//update gender
 					System.out.print("Enter your updated gender: ");
 					//capture user input and update profile
-					scanner.nextLine();
-					String editedGender = scanner.nextLine();
+					String editedGender = "";
+					int genderInput = 0;
+					while(genderInput != 1 && genderInput !=2)
+					{
+						System.out.println("Choose your gender. ");
+						System.out.println("1. Female");
+						System.out.println("2. Male");
+						System.out.print("Select your choice: ");
+						genderInput = loopForInteger(scanner);
+						switch (genderInput)
+						{
+							case 1:
+								editedGender = "Female";
+								break;
+							case 2:
+								editedGender = "Male";
+								break;
+							default:
+								System.out.println("Enter either '1' or '2'. Please try again.");
+						}
+					}
 					elementToEdit = "gender";
 					controller.editProfile(elementToEdit, editedGender);
 					break;
