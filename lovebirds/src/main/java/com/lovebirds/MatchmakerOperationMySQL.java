@@ -288,7 +288,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE * FROM lovebirds_schema.RATINGS WHERE USER_ID = ? OR RECIPIENT_ID = ?";
+            String sql = "DELETE FROM lovebirds_schema.RATINGS WHERE USER_ID = ? OR RECIPIENT_ID = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setInt(2, userID);
