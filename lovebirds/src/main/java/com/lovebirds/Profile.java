@@ -175,17 +175,13 @@ public class Profile {
     {
         String one = "\nUser Details Below\n";
         String two = "Username: " + username + "\n";
-        String three = "Email Address: " + emailAddress + "\n";
-        String four = "Password: " + password + "\n";
         String five = "First Name: " + firstName + "\n";
         String six = "Last Name: " + lastName + "\n";
         String seven = "Height: " + height + "\n";
         String eight = "Weight: " + weight + "\n";
         String nine = "Age: " + age + "\n";
-        String ten = "Gender: " + gender + "\n";
-        String eleven = "Profile Picture: " + profilePicture + "\n";
-        String twelve = "Profile ID: " + profileID;
+        String ten = "Gender: " + gender;
 
-        return one + two + three + four + five + six + seven + eight + nine + ten + eleven + twelve;
+        return one + two + five + six + seven + eight + nine + ten;
     }
 }

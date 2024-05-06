@@ -247,4 +247,12 @@ public class Controller {
         return mediaHandler.getImage(userID);
     }
 
+    /**
+     * invokes getProfileDetails in handler
+     * @return profile toString
+     */
+    public String getProfileDetails(){
+        return profileHandler.getProfileDetails();
+    }
+
 }

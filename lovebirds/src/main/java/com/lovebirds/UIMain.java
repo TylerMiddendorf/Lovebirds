@@ -202,6 +202,8 @@ public class UIMain {
 				controller.uploadPhoto(path, albumName, photoName);
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
+			} else if (userInput == 12) {
+				System.out.println(controller.getProfileDetails());
 			}
 		}
 		while(run);
@@ -352,6 +354,7 @@ public class UIMain {
 		System.out.println("9. Create album (you must upload at least one photo)");
 		System.out.println("10. Upload photo(s) to existing album");
 		System.out.println("11. Retrieve statistics");
+		System.out.println("12. Retrieve user details");
 		System.out.print("Select your choice: ");
     }
 	

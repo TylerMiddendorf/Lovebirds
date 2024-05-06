@@ -215,5 +215,13 @@ public class ProfileHandler extends Handler {
         boolean deleted = profileOperation.deletePreferences(profile.getProfileID());
         return deleted;
     }
+
+    /**
+     * invokes profile toString
+     * @return profile toString
+     */
+    public String getProfileDetails(){
+        return profile.toString();
+    }
     
 }
