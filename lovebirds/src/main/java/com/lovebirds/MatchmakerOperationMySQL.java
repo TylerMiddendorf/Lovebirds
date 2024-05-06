@@ -311,7 +311,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
 
             double average = updatedRating/count;
             
-            System.out.println("Your average rating is " + average + ".");
+            System.out.println("\nYour average rating is " + average + ".");
 
             return true;
 
