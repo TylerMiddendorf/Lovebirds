@@ -463,16 +463,16 @@ public class UIMain {
 
 			switch (userInput)
 			{
-				case 1:
+				case 1://match user
 					System.out.println("not implemented yet");
 					goBack = true;
 					break;
-				case 2:
+				case 2:// unmatch user
 					System.out.println("not implemented yet");
 					goBack = true;
 					break;
-				case 3:
-					System.out.println("not implemented yet");
+				case 3://block user
+					controller.blockUser(profile);
 					goBack = true;
 					break;
 				default:
