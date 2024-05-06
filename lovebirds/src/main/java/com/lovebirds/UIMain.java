@@ -376,12 +376,7 @@ public class UIMain {
         System.out.print("Enter a number: ");
 	}
 
-<<<<<<< HEAD
-	//retrieveSugUsers needs to be updated to take blocked users out of the list
-	private static void displayRetrieveSuggestedUsersMenu() {
-=======
 	private static void displayRetrieveSuggestedUsersMenu(Scanner sc) {
->>>>>>> main
 		int userInput = 0;
 
 		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
@@ -418,7 +413,6 @@ public class UIMain {
 			}
 			dismissed = false; //reset dismissed for next profile
 		}
-		scanner.close();
 	}
 
 	private static void displayViewProfileMenu(Profile profile, Scanner sc)
