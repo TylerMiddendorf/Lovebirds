@@ -133,7 +133,7 @@ public class UIMain {
 				System.out.println("Call to edit profile.");
 				//calls edit profile in controller 
 				//able to change username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password 
-				editProfile();
+				editProfile(sc);
 			}
 			else if(userInput == 4) {
 				System.out.println("Call to edit preferences.");
@@ -523,11 +523,10 @@ public class UIMain {
 	 * CASE 11 EXITING LOOP GIVES AN ERROR 
 	 * @param user
 	 */
-	private static void editProfile()
+	private static void editProfile(Scanner scanner)
 	{
 		boolean edited = false;
 		boolean correctNum = false;
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		String elementToEdit = "";
 
@@ -652,7 +651,7 @@ public class UIMain {
 
                 case 11:
                     //exit loop
-					System.out.println("Your profile has been updated.");
+					System.out.println("\nYour profile has been updated.");
                     edited = true;
                     break;
                 default:
@@ -661,7 +660,6 @@ public class UIMain {
             }
             
         }
-        scanner.close();
 	}
 
 	private static void editPreferences()

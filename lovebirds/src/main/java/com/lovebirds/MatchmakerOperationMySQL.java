@@ -309,9 +309,15 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
                 count++;
             }
 
-            double average = updatedRating/count;
-            
-            System.out.println("\nYour average rating is " + average + ".");
+            if(updatedRating == 0)
+            {
+                System.out.println("\nYou have not been rated yet.");
+            }
+            else
+            {
+                double average = updatedRating/count;
+                System.out.println("\nYour average rating is " + average + ".");
+            }
 
             return true;
 
