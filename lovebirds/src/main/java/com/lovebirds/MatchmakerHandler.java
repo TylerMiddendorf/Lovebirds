@@ -38,13 +38,6 @@ public class MatchmakerHandler extends Handler {
         return new ArrayList<String>();
     }
 
-    public boolean dismissUser(int profileID)
-    {
-        // take user out of the profiles matches
-
-        return true; // user has been dismissed
-    }
-
     public boolean updateRelationship(int recipientID, String relationship) //matched, unmatched, blocked
     {
         MatchmakerOperation matchmakerOperation = FactoryProducer.getSQLFactory().getMatchmaker("MySQL");
