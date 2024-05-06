@@ -208,12 +208,8 @@ public class UIMain {
 				System.out.print("Please enter the file path: ");
 				String path = "/Users/iangowland/Desktop/passports.png";
 				controller.uploadPhoto(path, albumName, photoName);
-<<<<<<< HEAD
-				System.out.println();
-=======
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
->>>>>>> 62e0663506f43352021ad83b09077b4b23280a81
 			}
 		}
 		while(run);
@@ -290,6 +286,9 @@ public class UIMain {
 					System.out.print("Enter gender: ");
 					String gender = sc.nextLine();
 					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
+
+					System.out.println("\nNow you need to upload a profile picture.");
+					System.out.println("");
 
 					if(!created) {
 						System.out.println("Account could not be created. Please try again.");
