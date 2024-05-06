@@ -45,10 +45,10 @@ public class MatchmakerHandler extends Handler {
         return true; // user has been dismissed
     }
 
-    public boolean updateRelationship(int userID, int recipientID, String relationship) //matched, unmatched, blocked
+    public boolean updateRelationship(int recipientID, String relationship) //matched, unmatched, blocked
     {
         MatchmakerOperation matchmakerOperation = FactoryProducer.getSQLFactory().getMatchmaker("MySQL");
-        boolean updated = matchmakerOperation.relationship(userID, recipientID, relationship);
+        boolean updated = matchmakerOperation.relationship(profile.getProfileID(), recipientID, relationship);
         return updated;
     }
 
