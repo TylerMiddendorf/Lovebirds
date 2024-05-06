@@ -106,7 +106,7 @@ public class ProfileOperationMySQL extends ProfileOperation{
     }
 
     public boolean deleteProfile(int userID) {
-
+        FactoryProducer.getSQLFactory().getMatchmaker("MySQL").deleteAllRelationships(userID);
         deletePreferences(userID);
 
         try {
