@@ -19,7 +19,7 @@ public class MediaOperationMySQL extends MediaOperation { //
     }
     
     
-    public boolean createPhoto(String path, String album, int UID) {
+    public boolean createPhoto(String path, String albumName, String photoName, int UID) {
         
         BufferedImage image = null;
         try {
@@ -42,11 +42,12 @@ public class MediaOperationMySQL extends MediaOperation { //
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.MESSAGES(USERID, ALBUMNAME, PHOTO) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.IMAGES(USER_ID, ALBUM_NAME, PHOTO, PHOTO_NAME) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, UID);
-            pstmt.setString(2, album);
+            pstmt.setString(2, albumName);
             pstmt.setBlob(3,  is);
+            pstmt.setString(4, photoName);
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -59,15 +60,16 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "SELECT FROM lovebirds_schema.Images WHERE USER_ID = ? AND PHOTO = ? AND PHOTONAME = ?";
+            String sql = "SELECT FROM lovebirds_schema.IMAGES WHERE USER_ID = ? AND PHOTO = ? AND PHOTONAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, album);
             pstmt.setString(3, photo_name);
 
             ResultSet rs = pstmt.executeQuery();
-            byte image[] = rs.getBytes(2);
-            String photoName = rs.getString(3);
+            rs.next();
+            byte image[] = rs.getBytes(3);
+            String photoName = rs.getString(4);
 
             Photo photo = new Photo(photoName, image , "png");
             return photo;
@@ -81,7 +83,7 @@ public class MediaOperationMySQL extends MediaOperation { //
         try{
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "DELETE FROM lovebirds_schema.Images WHERE USER_ID = ? AND ALBUMNAME = ? AND PHOTONAME = ?";
+            String sql = "DELETE FROM lovebirds_schema.IMAGES WHERE USER_ID = ? AND ALBUMNAME = ? AND PHOTONAME = ?";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setString(2, albumName);

@@ -216,12 +216,14 @@ public class UIMain {
 				// controller.createPreferences(userID, minHeight, maxHeight, minWeight, maxWeight, minAge, maxAge, preferredGender);
 			} else if (userInput == 9) {
 				System.out.print("Please enter what you want the album to be named: ");
+				sc.nextLine();
 				String albumName = sc.nextLine();
-				// public abstract boolean createPhoto(String path, String albumName, int userID);
-				System.out.println("Now you must upload a photo.");
+				System.out.println("\nNow you must upload a photo.");
+				System.out.print("Please enter what you want to name your photo: ");
+				String photoName = sc.nextLine();
 				System.out.print("Please enter the file path: ");
-				String path = sc.nextLine();
-				controller.uploadPhoto();
+				String path = "/Users/iangowland/Desktop/passports.png";
+				controller.uploadPhoto(path, albumName, photoName);
 			} 
 		}
 		while(run);
@@ -330,7 +332,7 @@ public class UIMain {
 					break;
 
 				case 3: //Forgot Password
-					boolean success = forgotPassword();
+					boolean success = forgotPassword(sc);
 					if (success)
 					{
 						System.out.println("\nPassword successfully reset.");
@@ -814,18 +816,17 @@ public class UIMain {
 	 * invoke forgotPassword in Controller
 	 * @return
 	 */
-	private static boolean forgotPassword() {
-		Scanner scan = new Scanner(System.in);
+	private static boolean forgotPassword(Scanner sc) {
 		String usernameInput;
 		String emailInput;
 		String newPasswordInput;
 
 		System.out.print("Please enter your username: ");
-		usernameInput = scan.nextLine();
+		usernameInput = sc.nextLine();
 		System.out.print("Please enter your email: ");
-		emailInput = scan.nextLine();
+		emailInput = sc.nextLine();
 		System.out.print("Please enter your new password: ");
-		newPasswordInput = scan.nextLine();
+		newPasswordInput = sc.nextLine();
 
 		//searching for username and email in database
 		boolean success = controller.forgotPassword(emailInput, usernameInput, newPasswordInput);

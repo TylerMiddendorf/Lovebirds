@@ -14,12 +14,12 @@ import java.util.ArrayList;
     public abstract boolean deleteAlbum(int userID, String albumName);
      */
 
-    public boolean uploadPhoto(String path, String albumName) {
+    public boolean uploadPhoto(String path, String albumName, String photoName) {
         // int userID = getProfile().getProfileID();
         // String albumName = "";
         // return false;
         MediaOperation mediaOperation = FactoryProducer.getSQLFactory().getMedia("MySQL");
-        boolean created = mediaOperation.createPhoto(path, albumName, profile.getProfileID());
+        boolean created = mediaOperation.createPhoto(path, albumName, photoName, profile.getProfileID());
         return created;
     }
 
