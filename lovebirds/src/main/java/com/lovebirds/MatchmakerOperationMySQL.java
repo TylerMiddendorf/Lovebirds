@@ -15,10 +15,9 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
     }
 
     // if not calling with rating, call with -1
-    public ArrayList<Profile> readProfilesThatMatchPreferences(Profile profile, double rating) {
+    public ArrayList<Profile> readProfilesThatMatchPreferences(Preferences userPreferences, double rating) {
         ArrayList<Profile> suggestedUsers = new ArrayList<Profile>();
 
-        Preferences userPreferences = profile.getPreferences();
         String preferredGender = userPreferences.getPreferredGender();
 
         if(rating == -1)
@@ -28,7 +27,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
                 try {
                     this.db.connect();
                     Connection dbConn = db.getConnection();
-                    String sql = "SELECT * FROM PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ? AND GENDER = ?";
+                    String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ? AND GENDER = ?";
                     PreparedStatement pstmt = dbConn.prepareStatement(sql);
                     pstmt.setInt(1, userPreferences.getMinAge());
                     pstmt.setInt(2, userPreferences.getMaxAge());
@@ -66,7 +65,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
 
                     return suggestedUsers;
                 } catch (SQLException e) {
-                    System.out.println("Could not create profile.");
+                    System.out.println("Could not create profile 1. " + e.getMessage());
                     return null;
                 }
             }
@@ -76,7 +75,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
                 {
                     this.db.connect();
                     Connection dbConn = db.getConnection();
-                    String sql = "SELECT * FROM PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ?";
+                    String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ?";
                     PreparedStatement pstmt = dbConn.prepareStatement(sql);
                     pstmt.setInt(1, userPreferences.getMinAge());
                     pstmt.setInt(2, userPreferences.getMaxAge());
@@ -113,7 +112,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
 
                     return suggestedUsers;
                 } catch (SQLException e) {
-                    System.out.println("Could not create profile.");
+                    System.out.println("Could not create profile 2.");
                     return null;
                 }
             }
@@ -124,7 +123,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
                 try {
                     this.db.connect();
                     Connection dbConn = db.getConnection();
-                    String sql = "SELECT * FROM PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ? AND GENDER = ?";
+                    String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ? AND GENDER = ?";
                     PreparedStatement pstmt = dbConn.prepareStatement(sql);
                     pstmt.setInt(1, userPreferences.getMinAge());
                     pstmt.setInt(2, userPreferences.getMaxAge());
@@ -162,7 +161,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
 
                     return suggestedUsers;
                 } catch (SQLException e) {
-                    System.out.println("Could not create profile.");
+                    System.out.println("Could not create profile 3.");
                     return null;
                 }
             }
@@ -172,7 +171,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
                 {
                     this.db.connect();
                     Connection dbConn = db.getConnection();
-                    String sql = "SELECT * FROM PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ?";
+                    String sql = "SELECT * FROM lovebirds_schema.PROFILE WHERE AGE BETWEEN ? AND ? AND WEIGHT BETWEEN ? AND ? AND HEIGHT BETWEEN ? AND ?";
                     PreparedStatement pstmt = dbConn.prepareStatement(sql);
                     pstmt.setInt(1, userPreferences.getMinAge());
                     pstmt.setInt(2, userPreferences.getMaxAge());
@@ -209,7 +208,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
 
                     return suggestedUsers;
                 } catch (SQLException e) {
-                    System.out.println("Could not create profile.");
+                    System.out.println("Could not create profile 4.");
                     return null;
                 }
             }
@@ -251,7 +250,7 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
         try {
             this.db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RATING) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.RATINGS(USER_ID, RECIPIENT_ID, RELATIONSHIP) VALUES (?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, userID);
             pstmt.setInt(2, recipientID);
@@ -264,6 +263,25 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
             System.out.println("Could not rate user.");
             return false;
         }    
+    }
+
+    public boolean relationship(int userID, int recipientID, String relationship){
+        try {
+            this.db.connect();
+            Connection dbConn = db.getConnection();
+            String sql = "UPDATE lovebirds_schema.RATINGS SET RELATIONSHIP = ? WHERE USER_ID = ? and USER_ID = ?";
+            PreparedStatement pstmt = dbConn.prepareStatement(sql);
+            pstmt.setString(1, relationship);
+            pstmt.setInt(2, userID);
+            pstmt.setInt(3, recipientID);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println(e.getMessage());
+            System.out.println("Could not add a relationship to user.");
+            return false;
+        }  
     }
 
 

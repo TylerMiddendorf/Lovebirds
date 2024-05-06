@@ -22,7 +22,7 @@ public class Controller {
      * @return suggestedUsers
      */
     public ArrayList<Profile> retrieveSugUsers() {
-        ArrayList<Profile> suggestedUsers = null; //matchmakerHandler.retrieveSugUsers();
+        ArrayList<Profile> suggestedUsers = matchmakerHandler.retrieveSugUsers();
         return suggestedUsers;
     }
 
@@ -110,8 +110,8 @@ public class Controller {
      * @param user
      * @return rating
      */
-    public boolean rateUser(int userID, int recipientID, int rating) {
-        boolean rated = matchmakerHandler.rateUser(userID, recipientID, rating);
+    public boolean rateUser(int recipientID, int rating) {
+        boolean rated = matchmakerHandler.rateUser(recipientID, rating);
         return rated;
     }
 
@@ -120,8 +120,8 @@ public class Controller {
      * @param user
      * @return true if likeUser successful
      */
-    public boolean likeUser(Profile user) {
-        return matchmakerHandler.likeUser(user);
+    public boolean changeRelationship(int userID, int recipientID, String relationship) {
+        return matchmakerHandler.updateRelationship(userID, recipientID, relationship);
     }
 
     /**
