@@ -344,11 +344,8 @@ public class MatchmakerOperationMySQL extends MatchmakerOperation {
      * ^also change taken parameters in MatchmakerOperation.java
      * this returns true if the user has already rated target user
      */
-    public boolean alreadyRatedUser(){
+    public boolean alreadyRatedUser(int userID, int recipientID){
         try {
-
-            int userID = 0;
-            int recipientID = 0;
 
             this.db.connect();
             Connection dbConn = db.getConnection();
