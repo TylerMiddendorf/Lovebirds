@@ -413,7 +413,6 @@ public class UIMain {
 			}
 			dismissed = false; //reset dismissed for next profile
 		}
-		System.out.println("There are no more suggested matches for you.");
 		scanner.close();
 	}
 
