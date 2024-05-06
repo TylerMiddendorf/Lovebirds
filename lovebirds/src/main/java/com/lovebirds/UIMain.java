@@ -279,6 +279,9 @@ public class UIMain {
 					String gender = sc.nextLine();
 					boolean created = controller.createProfile(username, email, firstName, lastName, "profile_picture", age, height, weight, gender, password);
 
+					System.out.println("\nNow you need to upload a profile picture.");
+					System.out.println("");
+
 					if(!created) {
 						System.out.println("Account could not be created. Please try again.");
 						continue;

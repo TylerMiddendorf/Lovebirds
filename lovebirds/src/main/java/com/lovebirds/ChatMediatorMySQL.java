@@ -21,7 +21,7 @@ public class ChatMediatorMySQL extends ChatMediator{ //
         try {
             db.connect();
             Connection dbConn = db.getConnection();
-            String sql = "INSERT INTO lovebirds_schema.MESSAGE(SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO lovebirds_schema.MESSAGE(SENDER, RECIPIENT, MESSAGE) VALUES (?, ?, ?)";
             PreparedStatement pstmt = dbConn.prepareStatement(sql);
             pstmt.setInt(1, SenderID);
             pstmt.setInt(2, RecieverID);
