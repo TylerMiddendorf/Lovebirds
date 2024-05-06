@@ -48,7 +48,7 @@ public class UIMain {
 		do 
 		{
 			//prints menu
-			displayStartMenu();
+			displayHomeMenu();
 			//gets user input
 			userInput = loopForInteger(sc);
 			
@@ -208,6 +208,8 @@ public class UIMain {
 				System.out.print("Please enter the file path: ");
 				String path = "/Users/iangowland/Desktop/passports.png";
 				controller.uploadPhoto(path, albumName, photoName);
+			} else if (userInput == 11) {
+				controller.retrieveStatistics();
 			}
 		}
 		while(run);
@@ -249,9 +251,9 @@ public class UIMain {
 				case 1: //login
 				// enter username & password
 				// call logIn()
-					System.out.print("Enter Username: ");
+					System.out.print("\nEnter username: ");
 					username = sc.nextLine();
-					System.out.print("Enter Password: ");
+					System.out.print("Enter password: ");
 					password = sc.nextLine();
 					int resultID = controller.logIn(username, password);
 					if(resultID != -1) {
@@ -343,17 +345,18 @@ public class UIMain {
 	 * Helper method to display a menu after login 
 	 * Displays menu of options
 	 */
-    private static void displayStartMenu(){
-		System.out.println("\n1: Retrieve Suggested Users");
+    private static void displayHomeMenu(){
+		System.out.println("\n1: Retrieve suggested users");
 		System.out.println("2: Retrieve messages");
-		System.out.println("3: Edit Profile");
-		System.out.println("4: Edit Preferences");
-		System.out.println("5: Edit Album");
+		System.out.println("3: Edit profile");
+		System.out.println("4: Edit preferences");
+		System.out.println("5: Edit album");
 		System.out.println("6: Logout");
 		System.out.println("7: Delete account");
 		System.out.println("8: Delete preferences.");
 		System.out.println("9. Create album (you must upload at least one photo)");
 		System.out.println("10. Upload photo(s) to existing album");
+		System.out.println("11. Retrieve statistics");
 		System.out.print("Select your choice: ");
     }
 	
