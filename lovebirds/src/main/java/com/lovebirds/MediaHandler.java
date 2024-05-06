@@ -59,9 +59,15 @@ import javax.imageio.ImageIO;
     }
 
     public BufferedImage getImage(int userID){
-        InputStream is = new ByteArrayInputStream(FactoryProducer.getSQLFactory().getMedia("MySQL").readPhoto(userID,"ProfilePicture","ProfilePicture").getPhoto());
-        return ImageIO.read(is);
-        
+        BufferedImage img = null;
+        try {
+            InputStream is = new ByteArrayInputStream(FactoryProducer.getSQLFactory().getMedia("MySQL").readPhoto(userID,"ProfilePicture","ProfilePicture").getPhoto());
+            img =  ImageIO.read(is);
+        } catch (Exception e) {
+            System.out.println("Could not read image.");
+        }
+        return img;
+ 
     }
     
 }

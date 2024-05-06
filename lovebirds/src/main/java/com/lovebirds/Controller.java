@@ -1,5 +1,6 @@
 package com.lovebirds;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Controller {
@@ -243,7 +244,7 @@ public class Controller {
     }
 
     public BufferedImage getImage(int userID){
-        return MediaHandler.getImage(userID);
+        return mediaHandler.getImage(userID);
     }
 
 }
