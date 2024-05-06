@@ -52,8 +52,8 @@ public class Controller {
      * @param stat
      * @return statistics
      */
-    public ArrayList<String> retrieveStatistics(String stat) {
-        ArrayList<String> statistics = matchmakerHandler.retrieveStatistics(stat);
+    public boolean retrieveStatistics() {
+        boolean statistics = matchmakerHandler.retrieveStatistics();
         return statistics;
     }
 
