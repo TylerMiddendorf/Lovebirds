@@ -415,20 +415,19 @@ public class UIMain {
 		}
 	}
 
-	private static void displayViewProfileMenu(Profile profile, Scanner sc)
+	private static void displayViewProfileMenu(Profile matchedProfile, Scanner sc)
 	{
 
-		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
 		boolean goBack = false;
 
 		while(!goBack)
 		{
-			System.out.println(profile.getFirstName() + " " + profile.getLastName());
-			System.out.println("Age: " + profile.getAge());
-			System.out.println("Height: " + profile.getHeight());
-			System.out.println("Weight: " + profile.getWeight());
-			System.out.println("Gender: " + profile.getGender());
+			System.out.println(matchedProfile.getFirstName() + " " + matchedProfile.getLastName());
+			System.out.println("Age: " + matchedProfile.getAge());
+			System.out.println("Height: " + matchedProfile.getHeight());
+			System.out.println("Weight: " + matchedProfile.getWeight());
+			System.out.println("Gender: " + matchedProfile.getGender());
 
 			//ADD THE DISPLAYING OF PROFILE PICTURE
 
@@ -448,13 +447,14 @@ public class UIMain {
 					System.out.print("\nPlease enter a valid integer.\n"); 
 				}
 			}
+			controller.rateUser(matchedProfile.getProfileID(), rating);
 			System.out.println("\nWhat would you like to do?");
 			System.out.println("1. Match user"); // like this profile
 			System.out.println("2. Unmatch user"); // remove like from profile
 			System.out.println("3. Block user");
 
 			System.out.print("Selectr your choice: ");
-			userInput = loopForInteger(scanner);
+			userInput = loopForInteger(sc);
 
 			switch (userInput)
 			{
@@ -475,8 +475,6 @@ public class UIMain {
 					break;
 			}
 		}
-
-		scanner.close();
 	}
 
 	/**

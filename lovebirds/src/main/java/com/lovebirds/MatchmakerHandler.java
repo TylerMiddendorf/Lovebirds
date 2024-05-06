@@ -52,9 +52,9 @@ public class MatchmakerHandler extends Handler {
         return liked;
     }
 
-    public boolean rateUser(int userID, int recipientID, int rating) {
+    public boolean rateUser(int recipientID, int rating) {
         MatchmakerOperation matchmakerOperation = FactoryProducer.getSQLFactory().getMatchmaker("MySQL");
-        boolean rated = matchmakerOperation.rateUser(userID, recipientID, rating);
+        boolean rated = matchmakerOperation.rateUser(profile.getProfileID(), recipientID, rating);
         return rated;
     }
 

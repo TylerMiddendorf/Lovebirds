@@ -110,8 +110,8 @@ public class Controller {
      * @param user
      * @return rating
      */
-    public boolean rateUser(int userID, int recipientID, int rating) {
-        boolean rated = matchmakerHandler.rateUser(userID, recipientID, rating);
+    public boolean rateUser(int recipientID, int rating) {
+        boolean rated = matchmakerHandler.rateUser(recipientID, rating);
         return rated;
     }
 
