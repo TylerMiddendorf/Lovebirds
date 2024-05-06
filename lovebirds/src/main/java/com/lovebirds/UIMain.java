@@ -193,12 +193,8 @@ public class UIMain {
 				System.out.print("Please enter the file path: ");
 				String path = "/Users/iangowland/Desktop/passports.png";
 				controller.uploadPhoto(path, albumName, photoName);
-<<<<<<< HEAD
-				System.out.println();
-=======
 			} else if (userInput == 11) {
 				controller.retrieveStatistics();
->>>>>>> 62e0663506f43352021ad83b09077b4b23280a81
 			}
 		}
 		while(run);
@@ -392,6 +388,7 @@ public class UIMain {
 		int userInput = 0;
 		int rating = -1;
 		ArrayList<Profile> sugUsers;
+		boolean dismissed = false;
 
 		System.out.println("Would you like to also filter by rating?");
 		System.out.println("Enter '1' for yes, or any other number for no: ");
@@ -407,8 +404,6 @@ public class UIMain {
 		{
 			sugUsers = controller.retrieveSugUsers(-1);
 		}
-
-		boolean dismissed = false;
 
 		if( sugUsers == null)
 		{
