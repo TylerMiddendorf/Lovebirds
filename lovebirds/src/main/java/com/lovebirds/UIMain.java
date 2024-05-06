@@ -58,23 +58,8 @@ public class UIMain {
 				System.out.println("Invalid entry. Try again.");
 			}
 			else if(userInput == 1)
-			{
-				System.out.println("Call to retrieve suggested users.");
-				//retrieve suggested users
-				//loop to select specific user
-				//loop for specific operations on user (like, match, dismiss, block, rate)
-				// if view matches
-				// 	display matches -> call function "retrieveSugUsers()":
-				// 	displays one name from the ArrayList of Profiles
-				// display retrieve suggested users menu
+			{		
 				displayRetrieveSuggestedUsersMenu(sc);
-				// 	1. View profile								
-				// 		display ViewProfileMenu
-				// 		1. Rate this person(1-5):
-				// 		2. Match user
-				// 		3. Unmatch user
-				// 		4. Block user
-				// 	2. Dismiss user
 			}
 			else if(userInput == 2)
 			{
@@ -408,7 +393,6 @@ public class UIMain {
 
 		ArrayList<Profile> sugUsers = controller.retrieveSugUsers();
 
-		Scanner scanner = new Scanner(System.in);
 		boolean dismissed = false;
 
 		if( sugUsers == null)
@@ -429,7 +413,7 @@ public class UIMain {
 					System.out.println("2. Dismiss user");
 					System.out.print("Select your choice: ");
 
-					userInput = loopForInteger(scanner);
+					userInput = loopForInteger(sc);
 
 					switch (userInput)
 					{
