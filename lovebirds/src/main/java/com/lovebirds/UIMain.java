@@ -481,10 +481,6 @@ public class UIMain {
 		{
 			for(int i = 0; i < sugUsers.size(); i++)
 			{
-<<<<<<< HEAD
-				System.out.println("This will iterate through each of your sugegested users until you match with them or dismiss them.");
-=======
->>>>>>> dbc680db988b6f341e135d6ce23963991edac882
 				System.out.println("Here is a profile that is suggested for you:");
 				System.out.println('\n' + sugUsers.get(i).getFirstName() + " " + sugUsers.get(i).getLastName());
 				while (!dismissed)
